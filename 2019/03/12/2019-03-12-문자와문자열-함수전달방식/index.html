@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="sug5806의 블로그">
+        <meta property="og:title" content="2019-03-12 문자와 문자열, 함수전달 방식">
     
 
     <!--Open Graph Description-->
@@ -36,7 +36,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website">
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2019/3 - sug5806의 블로그</title>
+    <title>2019-03-12 문자와 문자열, 함수전달 방식 - sug5806의 블로그</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -157,62 +157,93 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>2019/3</h1>
+                <div class="post-heading">
+                    <h1>2019-03-12 문자와 문자열, 함수전달 방식</h1>
+                    
+                    <h2 class="post-subheading">
+                        문자열, 함수전달방식
+                    </h2>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-03-12
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2019/03/15/2019-03-14-15-CPU와-메모리/">
-        <h1 class="post-title archive">
-            2019-03-14~15 CPU와 메모리
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-03-15
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/03/12/2019-03-12-문자와문자열-함수전달방식/">
-        <h1 class="post-title archive">
-            2019-03-12 문자와 문자열, 함수전달 방식
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-03-12
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h2 id="문자와-문자열-함수전달-방식"><a href="#문자와-문자열-함수전달-방식" class="headerlink" title="문자와 문자열, 함수전달 방식"></a>문자와 문자열, 함수전달 방식</h2><ol>
+<li><p>문자, 문자열 -&gt; character set, ASCII( -&gt; UNI-CODE(테이블로 이루어져 있음)-&gt; UTF-8, UTF-16, UTF-32)</p>
+<ul>
+<li>character set -&gt; 문자 집합(Ex. 라틴문자)</li>
+<li>character encoding -&gt; 문자 인코딩(Ex. 모스 부호)</li>
+<li>code point -&gt; 문자 하나에 정수 하나를 매핑해둠(Ex. 아스키 코드표(7bit로 모두 표현가능)</li>
+<li><p>UniCode -&gt; 2byte 기반으로 만듬(2byte 테이블을 17개 만들어놓았고 현재 실생활에서 쓰는건 2개(4개 등록되어있음))</p>
+<ul>
+<li>216개만큼의 문자가 매핑되어있음 BMP -&gt; BMP까지는 2byte면 다 표현이 가능</li>
+<li>아스키는 코드포인트 자체 그대로 메모리에 저장함</li>
+<li>유니코드는 메모리에 저장할때 utf-8, utf-16, utf-32로 나눠서 저장</li>
+<li>UTF-16의 경우 BMP에 해당하는 문자는 그대로 전송(2byte), 2차평면 이상부터는 4byte로보내는 대신 앞을 0으로 다 채워서 보냄</li>
+<li>UTF-32는 처음부터 4byte로 바꿔서 보냄</li>
+<li>UTF-8 -&gt; 가변길이 인코딩, 한글은 3byte로 인식, 엔디언 변환을 무시(Endianness)하고 그대로 저장, 전송을 함</li>
 </ul>
+</li>
+<li><p>사람들이 인식하는 것은 빅엔디언형식이고 컴퓨터는 대부분 Intel CPU를 사용하고 intel은 리틀엔디언 방식으로 저장함</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>U+AC00 을 메모리에 저장할때는 리틀엔디언 방식을 통해 00 AC로 저장함<br>네트워크를 통해 데이터를 보낼때는 빅엔디언으로 보냄<br>실제로 네트워크를 통해 전달되는 방식으로 변환되는것이 유니코드인코딩방식?</p>
+<hr>
+<ol start="2">
+<li>함수를 호출할때 인자 전달 방식 -&gt;&gt; call by value, call by reference -&gt; C언어   call by object reference(call by assignment) -&gt; 파이썬  <ul>
+<li>call by value : 값에 의한 전달 -&gt; 함수 스택프레임 안에서 값이 바뀌어도 밖의 스택프레임에는 영향을 주지않는것을 보장함</li>
+<li>call by reference : 주소에 의한 전달 -&gt; 함수 스택프레임 안에서 주소를 통해 바깥 스택프레임에 있는 변수에 영향을주어 값을 변화시킴</li>
+</ul>
+</li>
+</ol>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr>
