@@ -1,252 +1,222 @@
-
 <!DOCTYPE html>
 <html lang="en">
-    
-<head>
-    <meta charset="UTF-8">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="sug5806의 블로그">
-    <title>2019-03-14~15 CPU와 메모리 - sug5806의 블로그</title>
-    <meta name="author" content="sug5806">
-    
-    
-    
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"CPU :\n\n데이터 버스 : 데이터가 이동하는 통로(양방향)\n주소 버스 : 주소 이동하는 통로(단방향)\nCU : 실제로 명령을 실행하는 주체 (총감독)-&gt; IR에 있는 명령어를 읽어 실행함\nPC(Program Counter) : 다음에 실행될 인스트력션(기계어)이 메모리(RAM)에서 저장된 곳의 주소값을 저장하는 레지스터\n기계어 : 어셈블리어(기계어를 1:1로 대응해서 사람이 읽을 수 있게 바꾼것)\n\n\nIR(Instrcution Register : 현재 실행 중인 인스터럭션 자체가 저장된 레지스터\n다음에 실행할 명령어를 가져오기 위해 제어 버스(Control Bus)에는 READ 모드를 전달하고, 주소 버스에는 다음에 실행할 명령어인 add ax, bx가 저장되어 있는 주소인 0x2를 전달합니다  주소 0x2번지에서 명령어 add ax, bx를 데이터 버스를 통해 IR로 전달합니다\n\n\nALU = 사칙연산과 논리계산\n컨트롤 버스의 read라인을 통해 모드를 전달하고 메모리의 스택프레임 안에있는 변수의 주소를 통해 값을 읽고 데이터 버스를 통해 읽어와 AX로 저장한후 ALU로 계산을 하고 다시 AX에 저장을 한뒤에 메모리에 전달하여 저장함\n\n\n범용레지스터 : 데이터를 일시적으로 저장\n클럭 : 클럭에 맞춰 인스트럭션의 전달을 완료하거나 전달하고있는 과정\n\ninstruction cycle\n\nfetch : PC가 가리키고 있던 익스트럭션을 메모리에서 CPU의 IR로 가져오는 과정\nMMU를 통해 PC에있는 메모리주소를 convert하고 MAR로 전달?\n\n\ndecode : CU가 IR을 분석, 해석하는 과정\nexecute : 연산을 하는것\nwirte back : 최종적으로 연산한것을 메모리에 저장하는 과정\n\n하드웨어적) 한번에 보낼 수 있는 데이터의 양 ___ CPU와 메모리가 연결되어있는 와이어 갯수가 곧 bit (ex 64bit 컴퓨터는 와이어가 64개)32bit –&gt; 2진수 32승 64 bit –&gt; 2진수 64승\n주기 : 인스트럭션이 실행되거나 실행되고있는 시간CPI (Clock cycles per instruction) : Load계열의 경우(CPU내부말고 외부를 거쳐야 하는 명령어)는 Instruction당 clock수가 3정도됨 add같은 명령어는 1임 Ex) 더 짧은데 실행시간은 더 길다 = Line당 CPI가 높다\n로우레벨은 오로지 어셈블리어 하나 뿐 : 어셈블리어는 기계어로 1:1로 대응됨, 어셈블리어를 하려면 레지스터 이름까지 다 알아야함, CPU가 다르면 다시 프로그래밍 해야함, 하드웨어에 의존적임\n\nESP(Stack Pointer) : 스택프레임을 만들고 스택세그먼트의 맨위를 가리킨다FP(Frame Pointer)  = BP(Base Pointer) : 스택 frame의 기준(가운데)을 가리킨다, 변수에 접근할때 기준점EBP(extended base pointer) : 함수의 기준점을 가리키고있음 -&gt; main의 기준점을 가리키고있다가 add함수를 호출하면 add함수 스택에 main함수의 기준점 주소를  add함수 스택에 쌓음\n\nEBP를 기준으로 +-를 하면 변수에 접근이 가능함ESP -&gt; ESP - 지역변수 갯수 만큼 -를 시켜 공간을 미리 확보함 : 스택은 주소공간에서 맨 아래부분(주소가 큰부분 :0xFFFFFFFF)부터 할당되므로 -를 해야 확장 개념임\n미리 확보해놓는 이유 : 스택프레임이란 함수가 실행되면 함수의 지역변수를 미리 확보해야 하나 그렇지 않으면 스택 프레임이란 개념이 깨짐\n\n함수내에서 다른 함수를 불러오기직전에 함수호출 다음의 주소(return address)를 스택에 쌓아둠\n\nMemory :\n\nLocality\n공간 지역성 : 한번 접근했던 메모리가 이전에 접근한 메모리의 근처일 확률이 높다.\n시간 지역성 : 한번 접근했던 메모리에 계속 접근한다. result += e에서 result\n\n\nCache\ncache line = 64 Byte ~ 128 Byte\ncache miss : CPU가 요청했을때 cache에 없어 메모리에서 가져오는것(메모리에서 가져올때 뭉텅이로 가져온다)\ncache hit : CPU가 요청했을때 cache에 있어 바로 보내주는것\n\n\nSegment: Ex) 윈도우는 메모리가 4G라면 유저영역을 2G (유저영역또한 Code, Data, Heap, Stack으로 나눠지고 커널영역도 동일) 커널 영역도 2G , 리눅스는 3G\n가상주소공간(virtual address space) : OS가 프로세스가 시작될때 할당해주는 가상 메모리공간\nCODE : 코드가 변환된 인스터럭션(기계어)이 들어감\nDATA : 전역변수(생성-&gt; 프로세스가 시작될때 / 종료-&gt; 프로세스가 종료될때)\nData : 선언과 동시에 할당을 할 경우 들어감\nBSS : 그냥 선언만 할 경우 BSS에 들어감\n\n\nHEAP : 생성 -&gt; 프로그래머가 원할 때(malloc) / 종료 -&gt; 프로그래머가 원할 때(free)\nHeap의 단점 :\n\n메모리 누수\n\n\n\n느림(malloc) -&gt; 더블 링크드 리스트로 구성되어있어 저장할 공간을 찾을때까지 뒤지고 다녀 느림\n\n\n\n메모리 단편화(memory fragmentation)\n\n\n\n\n제일 처음 잡히는 HEAP을 default Heap이라 함(OS가 줌)\n처음부터 내가 원하는 크기만큼 받고 프로그래머가 입맛에 맞게 분할하여 사용하는 기법이 다이나믹 힙(Dynamic Heap)기법이다\nEx) 데이터를 띄엄띄엄 저장되는것을 방지하여 한쪽으로 몰아넣기\n\n\n\n\nSTACK : 지역변수(생성 -&gt; 함수가 호출될때 / 종료 -&gt; 함수가 종료될때)\n메모리 할당에서 부터 SP가 가리키고 있으므로 찾을 필요없이 차곡차곡 쌓으면 되므로 Heap보다 빠름\ndefault값으로 1MB로 잡혀있음\n\n\n\n\n\nGabage collection : 언어 차원에서 Heap 메모리 관리를 함\n\nreference couner : 가리키는게 아무것도 없으면 알아서 삭제함(파이썬이 이렇게 구현함)\n\n\nVirtual memory (RAM + Page File) / 리눅스(RAM + Swap)\n\n4096 Byte(4KB) 블록 하나를 페이지라고 함 (32bit 컴퓨터)\n232 / 212(=4K) = 220 \npage, page number, offset\nEx) 총 2000byte , page당  100byte, 총 페이지수 20개\npage#0 = 0~99번지, page#1 = 100~ 199번지\n번지수를 100의 자리수로 나누면 그게 곧 페이지 넘버 \nEx) 140 = 1은 페이지넘버 / 40은 offset 각 페이지의 시작주소에서 40바이트만큼 떨어져있는 곳 -&gt; 140 = 페이지넘버 + offset\n140번지의 메모리 주소를 봤더니 1111a/bab라면 앞에있는 20bit가 page넘버 / 뒤에있는 12bit가 offset\n\n\n\n\n\n\nPage File : 디스크의 일정 용량을 RAM처럼 쓰겠다 -&gt; 일정 용량을 Page File이라 함, victim page의 집합 \npage out : 새로운 데이터를 올리기위해 잘 돌고있는 친구를 page file로 내리고 내려진 친구를 victim page라 부름 하고 이러한 행위\npage in : page file에 있는 요청된 페이지를 올리는 행위\n쓰레싱 : CPU의 요청사항이 너무많아 Page in, Page out이 무한적으로 일어나는 행위\n\n실제 Main Memory\n\nframe = 가상메모리의 page를 나누는 것과 동일, frame# = page# 가상메모리와 똑같음\n\nCPU가 명령할때 \n\npage 넘버를 frame넘버로 바꿔 MAR(Memory Address Register)에 전달해주고 전달받은 주소로 가서 데이터를 가져옴\n\nMMU : PC가 가리키고있는 logical address(가상메모리 주소)를 runtime동안 page table를 참조하여 physical address(실제 메모리)로 변환함 (CPU내부에 있음)\n\nMMU는 PTBR에 저장된 페이지 테이블의 시작주소를 참조하고 PC에서 가상페이지넘버 상위 20비트를 참조, 페이지 테이블에서 페이지넘버를 찾고 이에 상응하는 프레임넘버를 가져와 PC의 오프셋 비트(12bit)와 합쳐 물리주소를 만듬. 이 물리주소를 MAR에 저장한다음 CPU는 이 레지스터의 주소 값을 읽어와 메인 메모리에서 인스트럭션(명령어)를 가져오고(fetch) 실행함(execute)PTBR : 페이지 테이블의 시작주소를 가리키는 레지스터(CPU내부에 있음)\n\nPage Table : OS가 프로세스를 시작하면 4G를 할당 해준다(VAS), 프로세스마다 페이지 테이블을 main memory에 만들고 page table의 첫주소를 가르쳐준다.\n\n이러한 페이지 테이블을 만드는거 자체를 4G를 할당해준다라고 친다.\n지금 당장 필요 할것같은 코드영역, 전역변수등을 메인메모리에 먼저 업로드 -&gt; preparing기법\n\ndemand page : CPU가 페이지를 요청할때 올리는것\n현대 운영체재는 세그먼트 + 페이징기법을 같이 씀page#frame#valid bit실제로 메모리가 올라와 있으면 vaild bit는 1 없으면 0없는 상태(0)을 page fault라 한다.\n데이터를 왜 Heap에다 저장하면 page fault가 많이 일어날까?\n\nCPU가 요청하였을때 (Heap에 데이터를 저장할때 순서대로가 아닌 서로 떨어진 빈공간에 넣으므로) 매번 새로운 페이지를 가져올 확률이 생김\n\n","dateCreated":"2019-03-15T13:20:02+09:00","dateModified":"2019-04-03T21:09:27+09:00","datePublished":"2019-03-15T13:20:02+09:00","description":"","headline":"2019-03-14~15 CPU와 메모리","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/","keywords":"CPU, Memory, VirtualMemory"}</script>
-    <meta name="description" content="CPU :  데이터 버스 : 데이터가 이동하는 통로(양방향) 주소 버스 : 주소 이동하는 통로(단방향) CU : 실제로 명령을 실행하는 주체 (총감독)-&amp;gt; IR에 있는 명령어를 읽어 실행함 PC(Program Counter) : 다음에 실행될 인스트력션(기계어)이 메모리(RAM)에서 저장된 곳의 주소값을 저장하는 레지스터 기계어 : 어셈블리어(기계어를">
-<meta name="keywords" content="CPU,Memory,VirtualMemory">
-<meta property="og:type" content="blog">
-<meta property="og:title" content="2019-03-14~15 CPU와 메모리">
-<meta property="og:url" content="https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/index.html">
-<meta property="og:site_name" content="sug5806의 블로그">
-<meta property="og:description" content="CPU :  데이터 버스 : 데이터가 이동하는 통로(양방향) 주소 버스 : 주소 이동하는 통로(단방향) CU : 실제로 명령을 실행하는 주체 (총감독)-&amp;gt; IR에 있는 명령어를 읽어 실행함 PC(Program Counter) : 다음에 실행될 인스트력션(기계어)이 메모리(RAM)에서 저장된 곳의 주소값을 저장하는 레지스터 기계어 : 어셈블리어(기계어를">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-03T12:09:27.244Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019-03-14~15 CPU와 메모리">
-<meta name="twitter:description" content="CPU :  데이터 버스 : 데이터가 이동하는 통로(양방향) 주소 버스 : 주소 이동하는 통로(단방향) CU : 실제로 명령을 실행하는 주체 (총감독)-&amp;gt; IR에 있는 명령어를 읽어 실행함 PC(Program Counter) : 다음에 실행될 인스트력션(기계어)이 메모리(RAM)에서 저장된 곳의 주소값을 저장하는 레지스터 기계어 : 어셈블리어(기계어를">
-    
-    
-        
-    
-    
-    
-    
-    
-    <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-c4ozcsklz4kht2pebhp44xorvyverh23toayhn7i6ubrpyedak24hv1v0hyd.min.css">
-    <!--STYLES END-->
+
+    <!--Description-->
+
     
 
     
+        <meta name="description" content="공부한것을 정리하여 올리는 블로그입니다">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="sug5806">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="2019-03-14~15 CPU와 메모리">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="공부한것을 정리하여 올리는 블로그입니다">
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="sug5806의 블로그">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="https://sug5806.github.iohttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
+    
+
+        <meta name="twitter:card" content="summary_large_image">
+
+    
+
+    
+        <meta name="twitter:image" content="https://sug5806.github.iohttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
+    
+
+    <!-- Title -->
+    
+    <title>2019-03-14~15 CPU와 메모리 - sug5806의 블로그</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
 </head>
 
-    <body>
-        <div id="blog">
-            <!-- Define author's picture -->
 
+<body>
 
-    
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
+        </div>
 
-<header id="header" data-behavior="4">
-    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
-    <div class="header-title">
-        <a class="header-title-link" href="/ ">sug5806의 블로그</a>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
-    
-        
-            <a class="header-right-picture " href="#about">
-        
-        
-        </a>
-    
-</header>
-
-            <!-- Define author's picture -->
-
-
-<nav id="sidebar" data-behavior="4">
-    <div class="sidebar-container">
-        
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/ " title="Home">
-                    
-                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Home</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/all-categories" title="Categories">
-                    
-                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Categories</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/all-tags" title="Tags">
-                    
-                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Tags</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/all-archives" title="Archives">
-                    
-                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Archives</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link open-algolia-search" href="#search" title="Search">
-                    
-                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Search</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="#about" title="About">
-                    
-                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">About</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
-                    
-                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
-                    
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
-                    
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
-                    
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Facebook</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
-                    
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
-                    
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/mailto" title="Mail">
-                    
-                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
-                    
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-    </div>
+    <!-- /.container -->
 </nav>
 
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>2019-03-14~15 CPU와 메모리</h1>
+                    
+                    <h2 class="post-subheading">
+                        CPU와 메모리
+                    </h2>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-03-15
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/CPU/">#CPU</a> <a href="/tags/Memory/">#Memory</a> <a href="/tags/VirtualMemory/">#VirtualMemory</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/컴퓨터구조/">컴퓨터구조</a>
+
+                    
+                </div>
             
-            <div id="main" data-behavior="4"
-                 class="
-                        hasCoverMetaIn
-                        ">
-                
-<article class="post">
-    
-    
-        <div class="post-header main-content-wrap text-left">
-    
-        <h1 class="post-title">
-            2019-03-14~15 CPU와 메모리
-        </h1>
-    
-    
-        <div class="post-meta">
-    <time datetime="2019-03-15T13:20:02+09:00">
-	
-		    Mar 15, 2019
-    	
-    </time>
-    
-        <span>in </span>
-        
-    <a class="category-link" href="/categories/컴퓨터구조/">컴퓨터구조</a>
 
+            <!-- Gallery -->
+            
 
-    
-</div>
-
-    
-</div>
-
-    
-    <div class="post-content markdown">
-        <div class="main-content-wrap">
-            <p>CPU :</p>
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>CPU :</p>
 <ul>
 <li>데이터 버스 : 데이터가 이동하는 통로(양방향)</li>
 <li>주소 버스 : 주소 이동하는 통로(단방향)</li>
@@ -389,244 +359,76 @@
 <li>CPU가 요청하였을때 (Heap에 데이터를 저장할때 순서대로가 아닌 서로 떨어진 빈공간에 넣으므로) 매번 새로운 페이지를 가져올 확률이 생김</li>
 </ul>
 
-            
 
-        </div>
-    </div>
-    <div id="post-footer" class="post-footer main-content-wrap">
-        
-            <div class="post-footer-tags">
-                <span class="text-color-light text-small">TAGGED IN</span><br>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/CPU/">CPU</a> <a class="tag tag--primary tag--small t-link" href="/tags/Memory/">Memory</a> <a class="tag tag--primary tag--small t-link" href="/tags/VirtualMemory/">VirtualMemory</a>
-
             </div>
-        
-        
-            <div class="post-actions-wrap">
-    <nav>
-        <ul class="post-actions post-action-nav">
-            <li class="post-action">
-                
-                    <a class="post-action-btn btn btn--disabled">
-                
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
-                </a>
-            </li>
-            <li class="post-action">
-                
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" data-tooltip="2019-03-12 문자와 문자열, 함수전달 방식" aria-label="NEXT: 2019-03-12 문자와 문자열, 함수전달 방식">
-                
-                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <ul class="post-actions post-action-share">
-        <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
-                <i class="fa fa-share-alt" aria-hidden="true"></i>
-            </a>
-        </li>
-        
-            
-            
-            <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/" title="Share on Facebook">
-                    <i class="fab fa-facebook" aria-hidden="true"></i>
-                </a>
-            </li>
-        
-            
-            
-            <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/" title="Share on Twitter">
-                    <i class="fab fa-twitter" aria-hidden="true"></i>
-                </a>
-            </li>
-        
-            
-            
-            <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/" title="Share on Google+">
-                    <i class="fab fa-google-plus" aria-hidden="true"></i>
-                </a>
-            </li>
-        
-        
-            
-        
-        <li class="post-action">
-            
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
-            
-                <i class="fa fa-list" aria-hidden="true"></i>
-            </a>
-        </li>
-    </ul>
-</div>
-
-
-        
-        
-            
-        
-    </div>
-</article>
-
-
-
-                <footer id="footer" class="main-content-wrap">
-    <span class="copyrights">
-        Copyrights &copy; 2019 sug5806. All Rights Reserved.
-    </span>
-</footer>
-
-            </div>
-            
-                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
-                    <div class="post-actions-wrap">
-    <nav>
-        <ul class="post-actions post-action-nav">
-            <li class="post-action">
-                
-                    <a class="post-action-btn btn btn--disabled">
-                
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
-                </a>
-            </li>
-            <li class="post-action">
-                
-                    
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" data-tooltip="2019-03-12 문자와 문자열, 함수전달 방식" aria-label="NEXT: 2019-03-12 문자와 문자열, 함수전달 방식">
-                
-                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <ul class="post-actions post-action-share">
-        <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
-                <i class="fa fa-share-alt" aria-hidden="true"></i>
-            </a>
-        </li>
-        
-            
-            
-            <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/" title="Share on Facebook">
-                    <i class="fab fa-facebook" aria-hidden="true"></i>
-                </a>
-            </li>
-        
-            
-            
-            <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/" title="Share on Twitter">
-                    <i class="fab fa-twitter" aria-hidden="true"></i>
-                </a>
-            </li>
-        
-            
-            
-            <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/" title="Share on Google+">
-                    <i class="fab fa-google-plus" aria-hidden="true"></i>
-                </a>
-            </li>
-        
-        
-            
-        
-        <li class="post-action">
-            
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
-            
-                <i class="fa fa-list" aria-hidden="true"></i>
-            </a>
-        </li>
-    </ul>
-</div>
 
 
                 </div>
-                
-    <div id="share-options-bar" class="share-options-bar" data-behavior="4">
-        <i id="btn-close-shareoptions" class="fa fa-times"></i>
-        <ul class="share-options">
             
-                
-                
-                <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/">
-                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
-                    </a>
-                </li>
-            
-                
-                
-                <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/">
-                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
-                    </a>
-                </li>
-            
-                
-                
-                <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/">
-                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>Share on Google+</span>
-                    </a>
-                </li>
-            
-        </ul>
+        </div>
     </div>
+</article>
 
+    <!-- Footer -->
+    <hr>
 
-            
-        </div>
-        
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
 
+                    
 
-<div id="about">
-    <div id="about-card">
-        <div id="about-btn-close">
-            <i class="fa fa-times"></i>
-        </div>
-        
-            <h4 id="about-card-name">sug5806</h4>
-        
-            <div id="about-card-bio"><p>author.bio</p>
-</div>
-        
-        
-            <div id="about-card-job">
-                <i class="fa fa-briefcase"></i>
-                <br>
-                <p>author.job</p>
+                    
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
 
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2019 sug5806<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
             </div>
-        
-        
+        </div>
     </div>
-</div>
+</footer>
 
-        
-        
-<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
-        <!--SCRIPTS-->
-<script src="/assets/js/script-dbd16rvloemmuxdzniplmnxxvwoz24eya9wol0b7vvmlokgqsjivmb8dnscy.min.js"></script>
-<!--SCRIPTS END-->
 
+    <!-- After footer scripts -->
     
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
 
 
 
-    </body>
+</body>
+
 </html>
