@@ -268,6 +268,7 @@
 <p>SELECT USER, HOST FROM mysql.user;을 하면 모든 유저가 나옴<br>‘%’ -&gt; 내부, 외부모두 접속 허용<br>‘localhost’ -&gt; 로컬 호스트로 이용  </p>
 <p>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘계정‘@’localhost’<br>WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 줄 수 있음</p>
 <p>mysqldump -u sug5806 -p –databases my_db &gt; mydb.sql -&gt; sug5806 계정에 my_db라는 데이터베이스를 mydb.sql이라는 이름으로 덤프를 놓겠다</p>
+<p>primary key를 지정하지 않아도 unique not null이 있다면 자동으로 이것을 주키로 지정한다</p>
 <hr>
 <h3 id="예시로-만들-TABLE"><a href="#예시로-만들-TABLE" class="headerlink" title="예시로 만들 TABLE"></a>예시로 만들 TABLE</h3><p>Student table</p>
 <ul>
