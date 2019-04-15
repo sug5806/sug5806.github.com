@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="sug5806의 블로그">
+        <meta property="og:title" content="2019-03-22 OOP">
     
 
     <!--Open Graph Description-->
@@ -36,7 +36,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website">
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2019/3 - sug5806의 블로그</title>
+    <title>2019-03-22 OOP - sug5806의 블로그</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -157,88 +157,186 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>2019/3</h1>
+                <div class="post-heading">
+                    <h1>2019-03-22 OOP</h1>
+                    
+                    <h2 class="post-subheading">
+                        OOP
+                    </h2>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-03-22
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/OOP/">#OOP</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/OOP/">OOP</a>
+
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2019/03/29/컴파일러언어와인터프리터언어의차이점/">
-        <h1 class="post-title archive">
-            2019-03-29 컴파일러와 인터프리터의 차이점
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-03-29
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2019/03/22/OOP/">
-        <h1 class="post-title archive">
-            2019-03-22 OOP
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-03-22
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/03/15/2019-03-14-15-CPU와-메모리/">
-        <h1 class="post-title archive">
-            2019-03-14~15 CPU와 메모리
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-03-15
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/03/12/2019-03-12-문자와문자열-함수전달방식/">
-        <h1 class="post-title archive">
-            2019-03-12 문자와 문자열, 함수전달 방식
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-03-12
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Procedural-vs-Object-Oriented"><a href="#Procedural-vs-Object-Oriented" class="headerlink" title="Procedural vs Object-Oriented"></a>Procedural vs Object-Oriented</h1><ul>
+<li>procedural -&gt; 함수를 이용해서 추상화를 했다</li>
+<li>Object-Oriented -&gt; 객체를 통해 추상화를 했다<ul>
+<li>객체 단위로 프로그래밍을 한다</li>
+<li>객체(Object) -&gt; ‘관련있는’ 변수(상태정보)와 ‘관련있는’ 함수를 한곳에 모아놓은 ‘곳’ (곳 = 메모리) -&gt; bundling<ul>
+<li>attribute(속성)<ul>
+<li>instance member(변수)<ul>
+<li>각각의 객체가 가지는 값</li>
 </ul>
+</li>
+<li>instance method(함수)<ul>
+<li>객체가 할 수 있는 행동, 기능</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>message passing</p>
+<ul>
+<li>다른 객체(other)의 상태정보(멤버)를 변경할 때는 반드시 상대 객체가 가진 메서드를 이용한다</li>
+</ul>
+<p>클래스는 함수의 모임</p>
+<p>객체와 인스턴스의 차이<br>객체와 인스턴스의 메모리는 같음<br>인스턴스=&gt; Ex) me라는 객체는 Account라는 클래스의 인스턴스</p>
+<h1 id="OOP"><a href="#OOP" class="headerlink" title="OOP"></a>OOP</h1><ol>
+<li>캡슐화(Encapsulation)<ol>
+<li>관련있는 멤버(변수) 와 메서드(함수)를 하나의 단위(대부분 클래스)로 묶는 것<ol>
+<li>클래스를 제외하고도 하나의 단위로 묶을수 있다면 OOP라고 함<ol>
+<li>Ex) C에서의 구조체</li>
+<li>the bundling of data with methods</li>
+</ol>
+</li>
+<li>정보 은닉을 포함함 </li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>정보은닉( 파이썬은 완벽한 정보은닉을 지원 안함) -&gt; C++에서 클래스 만들면서 private선언</p>
+<ol>
+<li>어떤 멤버를 공개  / 비공개</li>
+<li>어떤 메서드를 공개 / 비공개</li>
+</ol>
+</li>
+<li><p>다형성</p>
+<ol>
+<li>상속<ul>
+<li>상속을 쓰지 말자</li>
+<li>상속은 OOP의 정수이다<ul>
+<li>상속은 쓰되 다중상속은 하지말자</li>
+</ul>
+</li>
+<li>멤버변수에는 절대 직접접근 금지</li>
+<li>객체의 멤버에 접근 -&gt; getter / 수정 -&gt; setter 을 수행할때는 method function을 이용해야함</li>
+<li>내부에서는 멤버처럼 쓰는것처럼 하면서 property를 사용하여 정보은닉을 함</li>
+<li>인스턴스 멤버를 만든다고하면 지금 당장 쓰지 않아도 되도록이면  생성자에서 만들어 주는게 좋음</li>
+<li>멤버는 어디에서든지 생성될 수 있음</li>
+</ul>
+</li>
+<li>Relations between classes<ul>
+<li>choose either inheritance or composition (언제 상속으로하고 언제 컴포지션으로 하는가)<ul>
+<li>IS - A<ul>
+<li>A laptop IS - A computer / ~은 ~의 한 종류이다</li>
+<li>Inheritance (상속)</li>
+<li>조건 1 : 모든 멤버와 모든 메서드의 중복이 되어야함</li>
+<li>재사용성(reusability)  -&gt; 재사용성 만으로 IS -A 상속을 하면 절대 안되고 조건을 모두 충족해야함!</li>
+</ul>
+</li>
+<li>HAS - A <ul>
+<li>A policeman has a gun / ~이 ~을 가지고 있다. or 포함하고 있다</li>
+<li>Composition(합성) -&gt; ◆(In UML)<ul>
+<li>same life cycle = 강하게 연결되어 있다</li>
+</ul>
+</li>
+<li>Aggregation(통합) -&gt; ◇(In UML)<ul>
+<li>NOT same life cycle = weak coupling</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>method overriding (메소드 오버라이딩) -&gt; 상속이 필수<ul>
+<li>polymophism (다형성)<ul>
+<li>상속 관계에 있는 다양한 클래스의 객체에서 같은 이름의 메서드를 호출할 때, 각 객체가 서로 다르게 구현된 메서드를 호출함으로써 서로 다른 행동, 기능, 결과를 가져오는 것</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>abstract class (추상 클래스) = 자바에서의 인터페이스<ul>
+<li>인스턴스를 만들 수 없다.</li>
+<li>하나 이상의 abstract method (추상 메소드)<ul>
+<li>몸체(body)가 없는 함수 -&gt; pass</li>
+</ul>
+</li>
+<li>파생 클래스에서 반드시 overriding을 해야함 -&gt; 구현을 강제하도록 한다</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr>
