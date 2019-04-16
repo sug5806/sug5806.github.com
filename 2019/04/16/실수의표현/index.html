@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="sug5806의 블로그">
+        <meta property="og:title" content="2019-04-16 실수의 표현">
     
 
     <!--Open Graph Description-->
@@ -36,7 +36,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website">
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>page - Archives: 2019/4 - sug5806의 블로그</title>
+    <title>2019-04-16 실수의 표현 - sug5806의 블로그</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -157,103 +157,118 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>2019/4</h1>
+                <div class="post-heading">
+                    <h1>2019-04-16 실수의 표현</h1>
+                    
+                    <h2 class="post-subheading">
+                        실수
+                    </h2>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-04-16
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/실수/">#실수</a> <a href="/tags/Float/">#Float</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/실수/">실수</a>
+
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2019/04/07/2019-04-07-TCP_IP-4계층/">
-        <h1 class="post-title archive">
-            2019-04-07 TCP/IP 4계층
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-07
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2019/04/07/동기식_비동기식/">
-        <h1 class="post-title archive">
-            2019-04-07 Synchronous와 Asynchronous의 차이점
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-07
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/05/2019-04-05-HTML-기초태그/">
-        <h1 class="post-title archive">
-            2019-04-05 HTML 기초태그
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-05
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/04/2019-04-04 Classful addressing/">
-        <h1 class="post-title archive">
-            2019-04-03 Classful addressing
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-04
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/03/Git 시작하기/">
-        <h1 class="post-title archive">
-            2019-04-03 Git 특강1 Init
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-03
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-        <li class="previous"><a href="/archives/2019/04/">&larr;  Newer Posts</a></li>
-    
-    
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h3 id="실수의-표현-epsilon-comparison을-위해-반드시-알아두어야함"><a href="#실수의-표현-epsilon-comparison을-위해-반드시-알아두어야함" class="headerlink" title="실수의 표현 (epsilon comparison을 위해 반드시 알아두어야함)"></a>실수의 표현 (epsilon comparison을 위해 반드시 알아두어야함)</h3><ol>
+<li>고정 소수점 -&gt; 표현숫자를 줄이면 정밀도가 높아아지고 늘리면 정밀도가 낮아짐, 표현범위가 좁음  #현재 잘 사용하지 않음</li>
+<li>부동 소수점 -&gt; 정밀도 매우낮음, 표현범위 넓음<ol>
+<li>단정도 (single precision)<ol>
+<li>32bit (4 byte)</li>
+<li>부호(sign) (1 bit) + 지수(exponent) (8 bit) + 가수(mentissa) (23 bit)<ol>
+<li>지수부 : 표현범위 담당 (클수록 범위)</li>
+<li>가수부 : 정밀도를 담당 (클수록 정확)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>배정도 (double precision)<ol>
+<li>64bit (8 byte)</li>
+<li>부호 (1 bit) + 지수 (11 bit) + 가수 (52 bit)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>10.23 * 102 -&gt; 1.023(가수부) 10(밑수) 3(지수 = exponent real)</li>
+<li><p><img src="../image/real.png" alt> 에서 1도 수학적으로는 mentissa이나 컴퓨터 메모리 저장 X –&gt; 0이 아닌 자연수 1자리로 정규화를 하기위해 한자리는 무조건 남겨둠 /// bias = 2<sup>n-1</sup> -1 /// Ere = Emem - bias  /// float의 bias는 127 –&gt; 지수에도 ±기호가 있으므로 맨앞자리 비트는 제외하고 나머지 1일때 127 // bias + exponent real 한 값을 이진수로 바꿔서 exponent에 저장</p>
+<ul>
+<li>정규화 : 가수 부분을 밑수보다 작은 자연수가 되도록 만드는것</li>
 </ul>
+</li>
+<li><p>실수의 정밀도 보장 : float는 6자리, double 15자리의 의미 : 10진수 1자리를 다 표현하려면 2진수 4자리(0~15), 10진수 2자리를 다 표현하려면 2진수 7자리(0~127), 10진수 3자리 -&gt; 2진수 10자리 </p>
+<ol>
+<li>float는 가수부가 23+1자리이므로 이진수 23+1자리라고 생각가능 -&gt; 십진수 6자리표현을 보장함(정밀도)  </li>
+<li>double은 가수부가 52+1 자리 이므로 이진수 52+1자리라고 생각 가능 -&gt; 십진수 15자리 표현을 보장함</li>
+</ol>
+</li>
+<li><p>1.0과 1.0다음으로 나타낼수 있는 수의 차이를 epsilon이라 함<br><img src="../image/real2.png" alt></p>
+<ul>
+<li>어떠한 수의 지수부분과 엡실론을 곱하면 그 수의 다음수가 나옴</li>
+</ul>
+</li>
+</ol>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr>
