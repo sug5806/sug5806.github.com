@@ -226,11 +226,16 @@
 </li>
 <li>git remote <ul>
 <li>get-url 별명 : 별명이 가지고 있는 주소를 알 수 있다</li>
-<li>별명 주소 : 별명으로 주소의 리모트 레포를 이용 하겠다 반드시 별명이 있어야 함</li>
+<li>별명 주소 : 별명으로 주소의 리모트 레포를 이용 하겠다 <strong>반드시 별명이 있어야 함</strong></li>
 </ul>
 </li>
-<li>git add </li>
-<li>commit을 할때는 동작을 하는 코드만 commit을 해야한다<ul>
+<li><p>git add </p>
+<ul>
+<li>git add 파일이름을 하여 staing으로 올려준다.</li>
+</ul>
+</li>
+<li><p>commit을 할때는 동작을 하는 코드만 commit을 해야한다</p>
+<ul>
 <li>-u를 붙임으로써 같은 브랜치라고 알려준다(브랜치 당  최초 1번만 하면 된다) <ul>
 <li>(git commit -u 별명 master)</li>
 </ul>
@@ -240,6 +245,7 @@
 <li>commit 메시지를 적을때는 제목으로 무엇을 변경했는지 알아볼수 있게 작성하는게 좋다</li>
 <li>collection (list, dictionary, tuple 등)을 사용할때는 나열식으로 하는것 보다는 값마다 한줄 한줄씩 하는게 좋다</li>
 <li>collection을 사용할때는 마지막 원소에 ,(콤마)를 적어주면 깃에서 추가된 내용만 추가가 된다.</li>
+<li>commit을 할때는 <strong>동작하는 최소 단위</strong>로 해주는 것이 좋다(function단위도 좋은 방법)</li>
 </ul>
 </li>
 </ol>
