@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="sug5806의 블로그">
+        <meta property="og:title" content="2019-04-22 Python 가상환경 구축하기">
     
 
     <!--Open Graph Description-->
@@ -36,7 +36,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website">
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>page - sug5806의 블로그</title>
+    <title>2019-04-22 Python 가상환경 구축하기 - sug5806의 블로그</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -158,133 +158,100 @@
 
     <!-- Main Content -->
     <!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>sug5806의 블로그</h1>
-                    <hr class="small">
-                    <span class="subheading"></span>
+                <div class="post-heading">
+                    <h1>2019-04-22 Python 가상환경 구축하기</h1>
+                    
+                    <h2 class="post-subheading">
+                        python, virtualenv
+                    </h2>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-04-22
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            
-                <div class="post-preview">
-    <a href="/2019/03/29/컴파일러언어와인터프리터언어의차이점/">
-        <h2 class="post-title">
-            2019-03-29 컴파일러와 인터프리터의 차이점
-        </h2>
-        
-            <h3 class="post-subtitle">
-                컴파일러, 인터프리터
-            </h3>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2019-03-29
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2019/03/25/기본통계/">
-        <h2 class="post-title">
-            2019-03-25 기초 통계
-        </h2>
-        
-            <h3 class="post-subtitle">
-                기초 통계
-            </h3>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2019-03-25
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2019/03/22/OOP/">
-        <h2 class="post-title">
-            2019-03-22 OOP
-        </h2>
-        
-            <h3 class="post-subtitle">
-                OOP
-            </h3>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2019-03-22
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2019/03/15/2019-03-14-15-CPU와-메모리/">
-        <h2 class="post-title">
-            2019-03-14~15 CPU와 메모리
-        </h2>
-        
-            <h3 class="post-subtitle">
-                CPU와 메모리
-            </h3>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2019-03-15
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2019/03/12/2019-03-12-문자와문자열-함수전달방식/">
-        <h2 class="post-title">
-            2019-03-12 문자와 문자열, 함수전달 방식
-        </h2>
-        
-            <h3 class="post-subtitle">
-                문자열, 함수전달방식
-            </h3>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2019-03-12
-    </p>
-</div>
-<hr>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/python/">#python</a> <a href="/tags/virtualenv/">#virtualenv</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/python/">python</a>
+
+                    
+                </div>
             
 
-            <ul class="pager">
-    
-        <li class="previous"><a href="/page/2/">&larr;  Newer Posts</a></li>
-    
-    
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="우분투에서-python-가상환경-구축하기"><a href="#우분투에서-python-가상환경-구축하기" class="headerlink" title="우분투에서 python 가상환경 구축하기"></a>우분투에서 python 가상환경 구축하기</h1><p>제 우분투 버전은 18.04LTS이며 ZShell을 사용하였습니다.<br>IDE는 Pycham을 기준으로 작성하였습니다.</p>
+<ol>
+<li><p>파이썬 프로젝트를 생성합니다.</p>
+</li>
+<li><p>하단의 터미널을 켜서 <strong>pip3 install virtualenv</strong> 를 치고 설치해 줍니다<br><img src="/image/install_pyenv.png" alt></p>
+<ul>
+<li>저는 파이썬 기본설정이 Python2이기 때문에 pip3라고 하였습니다. 기본설정이 Python3이면 pip라고 하셔도 무방합니다.</li>
 </ul>
+</li>
+<li><p>설치 후 잘 설치가 되었는지 확인하기 위해 <strong>virtualenv –version</strong>을 입력합니다.<br><img src="/image/Pyenv_version.png" alt></p>
+</li>
+<li><p>위와 같이 버전이 뜨면 정상적으로 설치가 되었습니다. 그 다음 가상환경을 만들어 보겠습니다. <strong>virtualevn [가상환경명]</strong> 을 적어줍니다<br><img src="/image/Pyenv2.png" alt><br><img src="/image/pyenv_list.png" alt><br>적고 실행시키면 목록이 뜨게 됩니다.</p>
+</li>
+<li><p>그럼 이제 가상환경을 실행해 보겠습니다.<br><strong>source [가상환경명]/bin/activate</strong>를 실행합니다.<br><img src="/image/pyenv_activate.png" alt><br>실행 하고나면 이런식으로 맨 왼쪽에 [가상환경명]이 뜨게 되며 적용이 된것을 확인할 수 있습니다.<br>이 상태에서 <strong>pip3 install [패키지명]</strong>을 통해 패키지를 설치하시면 됩니다.</p>
+<ul>
+<li>[패키지명]==[버전]을 하게되면 원하는 버전으로 설치가 가능합니다.</li>
+</ul>
+</li>
+<li>가상환경을 종료하시려면 <strong>deactivate</strong>를 실행해 줍니다.<br><img src="/image/pyenv_deactivate.png" alt></li>
+</ol>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
         </div>
     </div>
-</div>
-
-
+</article>
 
     <!-- Footer -->
     <hr>
