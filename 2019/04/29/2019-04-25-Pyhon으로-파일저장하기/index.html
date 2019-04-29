@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="공부한것을 정리하여 올리는 블로그입니다">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="sug5806">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="2019-04-29 Python으로 파일(Excel, text, CSV) 저장하기">
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="공부한것을 정리하여 올리는 블로그입니다">
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="sug5806의 블로그">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="https://sug5806.github.iohttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
+    
+
+        <meta name="twitter:card" content="summary_large_image">
+
+    
+
+    
+        <meta name="twitter:image" content="https://sug5806.github.iohttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
+    
+
+    <!-- Title -->
+    
+    <title>2019-04-29 Python으로 파일(Excel, text, CSV) 저장하기 - sug5806의 블로그</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">sug5806의 블로그</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/sug5806">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>2019-04-29 Python으로 파일(Excel, text, CSV) 저장하기</h1>
+                    
+                    <h2 class="post-subheading">
+                        파일 입출력
+                    </h2>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-04-29
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/파일-입출력/">#파일 입출력</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/python/">python</a>
+
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Python으로-Excel에-자료-저장하기"><a href="#Python으로-Excel에-자료-저장하기" class="headerlink" title="Python으로 Excel에 자료 저장하기"></a>Python으로 Excel에 자료 저장하기</h1><p>파이썬 모듈인 openpyxl을 설치해줍니다</p>
+<ol>
+<li>pip3 install openpyxl</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 메모리 상에 임시 엑셀파일을 하나 만든다</span></span><br><span class="line">wb = workbook()</span><br><span class="line"><span class="comment"># 현재 선택되어 있는 시트(sheet1)을 선택한다.</span></span><br><span class="line">ws = wb.active</span><br><span class="line"><span class="comment"># 2가지 방법으로 셀에 정보를 입력할 수 있다</span></span><br><span class="line">ws1.cell(row=<span class="number">1</span>, column=<span class="number">1</span>, value=<span class="string">"test"</span>) <span class="comment"># A1</span></span><br><span class="line">ws1[<span class="string">'A1'</span>] = <span class="string">"aaa"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 엑셀시트 만들기 -&gt; second sheet라는 이름으로 새 시트를 만든다</span></span><br><span class="line">ws2 = wb.create_sheet(title=<span class="string">"second sheet"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 메모리에 있는 임시 엑셀파일을 현재 디렉토리에 test.xlsx라는 파일로 저장한다.</span></span><br><span class="line">wb.save(<span class="string">"test.xlsx"</span>)</span><br><span class="line"><span class="comment"># 메모리에 있는 Workbook을 메모리에서 해제시킨다</span></span><br><span class="line">wb.close()</span><br></pre></td></tr></table></figure>
+<h1 id="Python으로-Text에-자료-저장하기"><a href="#Python으로-Text에-자료-저장하기" class="headerlink" title="Python으로 Text에 자료 저장하기"></a>Python으로 Text에 자료 저장하기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># f라는 이름으로 'lotto.txt'을 쓰기형식으로 열어준다(파일이 없다면 생성된다.)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># w : 쓰기모드</span></span><br><span class="line"><span class="comment"># r : 읽기모드</span></span><br><span class="line"><span class="comment"># a : 추가모드</span></span><br><span class="line">f = open(<span class="string">"lotto.txt"</span>, <span class="string">'w'</span>)</span><br><span class="line">f.write(내용)</span><br><span class="line">f.writelines(내용)</span><br><span class="line"><span class="comment"># write와 writelines의 차이점은 </span></span><br><span class="line">f.close</span><br></pre></td></tr></table></figure>
+<h1 id="Python-으로-CSV에-자료-저장하기"><a href="#Python-으로-CSV에-자료-저장하기" class="headerlink" title="Python 으로 CSV에 자료 저장하기"></a>Python 으로 CSV에 자료 저장하기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lotto.csv를 쓰기모드로 연다 만약 파일이 없으면 만든다.</span></span><br><span class="line"><span class="comment"># lotto.csv를 csv.writer에 넣어준다.</span></span><br><span class="line"><span class="comment"># newline을 지정해 주지 않는경우 각 라인뒤에 빈 라인이 추가되는 경우가 있다</span></span><br><span class="line">csvfile = open(<span class="string">'lotto.csv'</span>, <span class="string">'w'</span>, newline=<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># delimiter 옵션으로 문자 간격? 당 구분자를 지어준다</span></span><br><span class="line"><span class="comment"># 이것을 ,으로 해주거나 옵션을 주지 않으면 각 열에 따로따로 들어가지만</span></span><br><span class="line"><span class="comment"># 이외의 것을 하게되면 한 열에 전부다 들어가게 된다.</span></span><br><span class="line">writer = csv.writer(csvfile, delimiter=<span class="string">','</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 한 행을 기준으로 데이터가 들어가게 된다</span></span><br><span class="line">writer.writerow(내용)</span><br><span class="line">wr.writerow([<span class="number">1</span>, <span class="string">"김기동"</span>, <span class="literal">False</span>])</span><br><span class="line">wr.writerow([<span class="number">2</span>, <span class="string">"박춘삼"</span>, <span class="literal">True</span>])</span><br></pre></td></tr></table></figure>
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/sug5806" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="mailto:sug5806@gmail.com" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2019 sug5806<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
