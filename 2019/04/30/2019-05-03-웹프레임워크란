@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="sug5806의 블로그">
+        <meta property="og:title" content="2019-04-30 웹프레임워크와 라이브러리의 차이">
     
 
     <!--Open Graph Description-->
@@ -36,7 +36,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website">
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2019/4 - sug5806의 블로그</title>
+    <title>2019-04-30 웹프레임워크와 라이브러리의 차이 - sug5806의 블로그</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -157,168 +157,98 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>2019/4</h1>
+                <div class="post-heading">
+                    <h1>2019-04-30 웹프레임워크와 라이브러리의 차이</h1>
+                    
+                    <h2 class="post-subheading">
+                        웹 프레임워크와 라이브러리의 차이
+                    </h2>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-04-30
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/웹프레임워크/">#웹프레임워크</a> <a href="/tags/라이브러리/">#라이브러리</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/기타/">기타</a>
+
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2019/04/30/2019-05-03-웹프레임워크란?/">
-        <h1 class="post-title archive">
-            2019-04-30 웹프레임워크와 라이브러리의 차이
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-30
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2019/04/30/2019-04-27-bookmark/">
-        <h1 class="post-title archive">
-            2019-04-30 Django bookmark
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-30
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/29/2019-04-25-Pyhon으로-파일저장하기/">
-        <h1 class="post-title archive">
-            2019-04-29 Python으로 파일(Excel, text, CSV) 저장하기
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-29
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/26/2019-04-26-HTTP_server/">
-        <h1 class="post-title archive">
-            2019-04-26 HTTP Server 만들어보기
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-26
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/25/2019-04-25-크롤러만들기2/">
-        <h1 class="post-title archive">
-            2019-04-25 크롤러로 쇼핑몰 목록 가져오기(웹 크롤러 만들기2)
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-25
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/25/2019-04-25-DataBase기초/">
-        <h1 class="post-title archive">
-            2019-04-25 데이터 베이스 기초
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-25
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/24/2019-04-24-Crawler/">
-        <h1 class="post-title archive">
-            2019-04-24 웹 크롤러 만들기 1
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-24
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/23/2019-04-23-Exhaustive-Search/">
-        <h1 class="post-title archive">
-            2019-04-23 Exhaustive Search(과도한 검색)
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-23
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/22/2019-04-22-가상환경/">
-        <h1 class="post-title archive">
-            2019-04-22 Python 가상환경 구축하기
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-22
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/21/2019-04-21-127.0.0.1과-localhost의-차이점/">
-        <h1 class="post-title archive">
-            2019-04-21 localhost와 127.0.0.1의 차이점
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-21
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-        <li class="next"><a href="/archives/2019/04/page/2/">Older Posts  &rarr;</a></li>
-    
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h2 id="프레임워크란"><a href="#프레임워크란" class="headerlink" title="프레임워크란?"></a>프레임워크란?</h2><p>소프트웨어의 구체적인 부분에 해당하는 설계와 구현을 재사용이 가능하게끔 일련의 협업화된 형태로 클래스들을 제공하는 것</p>
+<p>프레임워크는 라이브러리와 달리 애플리케이션의 틀과 구조를 결정할 뿐 아니라, 그 위에 개발된 개발자의 코드를 제어한다.</p>
+<ul>
+<li>프로그램 기본구조(뼈대) -&gt; 자동차 프레임</li>
 </ul>
+<h2 id="라이브러리란"><a href="#라이브러리란" class="headerlink" title="라이브러리란?"></a>라이브러리란?</h2><p>자주 쓰일 만한 기능들을 모아놓은 유틸(클래스)들의 모음집</p>
+<ul>
+<li>자동차 바퀴, 자동차 헤드라이트, 자동차 에어백</li>
+</ul>
+<h2 id="그럼-둘의-차이는-뭘까"><a href="#그럼-둘의-차이는-뭘까" class="headerlink" title="그럼 둘의 차이는 뭘까?"></a>그럼 둘의 차이는 뭘까?</h2><p>라이브러리는 도구(연장)의 개념이다</p>
+<ul>
+<li>망치, 톱, 삽 등등<br>프레임워크는 탈것의 개념이다</li>
+<li>비행기, 차, 배 등등</li>
+</ul>
+<p>사람은 도구를 선택하는 입장이기 때문에, 어떤 도구를 사용하든 원하는 것을 만들어낼 수 있으면 된다.</p>
+<p>반면에 탈것은 정해진 곳으로만 다녀야 한다. 그 목적에 맞게 만들어져 있기 때문에 정해진 규칙에 맞춰 엔진, 기어, 핸들만 잘 다루면 된다.</p>
+<p>라이브러리와 달리 프레임워크는 이미 프로그래밍할 규칙이 정해져있다.</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr>
