@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="sug5806의 블로그">
+        <meta property="og:title" content="2019-05-20 Django Email서버 세팅하기">
     
 
     <!--Open Graph Description-->
@@ -36,7 +36,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website">
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>page - Archives: 2019 - sug5806의 블로그</title>
+    <title>2019-05-20 Django Email서버 세팅하기 - sug5806의 블로그</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -157,170 +157,113 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>2019</h1>
+                <div class="post-heading">
+                    <h1>2019-05-20 Django Email서버 세팅하기</h1>
+                    
+                    <h2 class="post-subheading">
+                        Email 서버
+                    </h2>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-05-20
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Email-서버/">#Email 서버</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/Django/">Django</a>
+
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2019/04/19/2019-04-19-Django시작하기/">
-        <h1 class="post-title archive">
-            2019-04-19 Django 기본
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-19
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2019/04/18/쓰레드와프로세스/">
-        <h1 class="post-title archive">
-            2019-04-18 프로세스와 쓰레드
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-18
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="이메일-서버-세팅하기"><a href="#이메일-서버-세팅하기" class="headerlink" title="이메일 서버 세팅하기"></a>이메일 서버 세팅하기</h1><p><img src="/image/amazon8.png" alt></p>
+<ol>
+<li>외부에서 메일 보내기 서버를 사용하려면 gmail의 설정을 변경해야 한다. gmail에 로그인해서 화면 우측 상단에 있는 설정 버튼을 클릭한다</li>
+</ol>
+<hr>
+<p><img src="/image/amazon9.png" alt></p>
+<ol start="2">
+<li>[전달 및 POP/IMAP] 탭으로 이동해 IMAP 사용에 체크하고 [변경사항 저장]버튼을 누른다.</li>
+</ol>
+<hr>
+<p><img src="/image/amazon10.png" alt></p>
+<ol start="3">
+<li>보안수준이 낮은 앱의 액세스 허용을 위해 계정 -&gt; Google 계정을 클릭해 계정 설정으로 이동한다.</li>
+</ol>
+<hr>
+<p><img src="/image/amazon11.png" alt></p>
+<ol start="4">
+<li>계정 설정 화면에서 [보안] 탭을 클릭한다. 해당 탭에서 [보안 수준이 낮은 앱의 액세스] 부분을 찾아 [액세스 사용 설정] 버튼을 클릭한다.</li>
+</ol>
+<hr>
+<p><img src="/image/amazon12.png" alt></p>
+<ol start="5">
+<li>[보안 수준이 낮은 앱 허용]을 활성화 한다. </li>
+</ol>
+<hr>
+<ol start="6">
+<li><p>장고 프로젝트의 settings.py에 메일 서버를 설정한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">EMAIL_BACKEND = <span class="string">'django.core.mail.backends.smtp.EmailBackend'</span></span><br><span class="line">EMAIL_HOST = <span class="string">"smtp.gmail.com"</span></span><br><span class="line">EMAIL_HOST_USER = <span class="string">'이메일 계정'</span></span><br><span class="line">EMAIL_HOST_PASSWORD = <span class="string">'계정 비밀번호'</span></span><br><span class="line">EMAIL_PORT = <span class="number">587</span></span><br><span class="line">EMAIL_USE_TLS = <span class="literal">True</span></span><br><span class="line">DEFAULT_FROM_EMAIL = EMAIL_HOST_USER</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>메일 보내기를 테스트 해본다</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 쉘 스크립트를 연다</span></span><br><span class="line">./manage.py shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 일반메일 보내기</span></span><br><span class="line"><span class="keyword">from</span> django.core.mail <span class="keyword">import</span> EmailMessage</span><br><span class="line">email = EmailMessage(<span class="string">'제목'</span>, <span class="string">'본문'</span>, to=[<span class="string">'받는사람 이메일주소'</span>])</span><br><span class="line">email.send()</span><br><span class="line"></span><br><span class="line"><span class="comment"># HTML이 포함된 메일 보내기</span></span><br><span class="line"><span class="keyword">from</span> django.core.mail <span class="keyword">import</span> EmailMessage</span><br><span class="line">email = EmailMessage(<span class="string">'제목'</span>, <span class="string">'본문'</span>, to=[<span class="string">'받는사람 이메일주소'</span>])</span><br><span class="line">email.attach_alternative(<span class="string">"html이 포함된 본문"</span>, <span class="string">"text/html"</span>)</span><br><span class="line">email.send()</span><br></pre></td></tr></table></figure>
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2019/04/17/CSS 기초/">
-        <h1 class="post-title archive">
-            2019-04-17 CSS 기초1
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-17
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
             
-                <div class="post-preview">
-    <a href="/2019/04/16/실수의표현/">
-        <h1 class="post-title archive">
-            2019-04-16 실수의 표현
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-16
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/15/알고리즘이론/">
-        <h1 class="post-title archive">
-            2019-04-15 알고리즘이란?
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-15
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/13/greedy/">
-        <h1 class="post-title archive">
-            2019-04-13 Greedy Algorithm
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-13
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/12/Tree/">
-        <h1 class="post-title archive">
-            2019-04-12 Tree
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-12
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/11/data_structure/">
-        <h1 class="post-title archive">
-            2019-04-11 List와 Array의 차이점
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-11
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/10/Git 특강2_git_branch/">
-        <h1 class="post-title archive">
-            2019-04-10 Git 특강2 branch
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-10
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/10/regular_expression/">
-        <h1 class="post-title archive">
-            2019-04-10 reguler-expression
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-10
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-        <li class="previous"><a href="/archives/2019/page/2/">&larr;  Newer Posts</a></li>
-    
-    
-        <li class="next"><a href="/archives/2019/page/4/">Older Posts  &rarr;</a></li>
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr>
