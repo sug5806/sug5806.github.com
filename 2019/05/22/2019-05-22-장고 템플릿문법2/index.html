@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="sug5806의 블로그">
+        <meta property="og:title" content="2019-05-22 장고 템플릿 문법 2">
     
 
     <!--Open Graph Description-->
@@ -36,7 +36,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website">
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>page - Archives: 2019 - sug5806의 블로그</title>
+    <title>2019-05-22 장고 템플릿 문법 2 - sug5806의 블로그</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -157,129 +157,132 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>2019</h1>
+                <div class="post-heading">
+                    <h1>2019-05-22 장고 템플릿 문법 2</h1>
+                    
+                    <h2 class="post-subheading">
+                        장고 템플릿 문법 2
+                    </h2>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-05-22
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/Django/">#Django</a> <a href="/tags/template/">#template</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/Django/">Django</a>
+
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2019/04/04/2019-04-04-클래스풀-어드레싱/">
-        <h1 class="post-title archive">
-            2019-04-03 Classful addressing
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-04
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2019/04/03/Git 시작하기/">
-        <h1 class="post-title archive">
-            2019-04-03 Git 특강1 Init
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-03
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="장고-템플릿-문법-2"><a href="#장고-템플릿-문법-2" class="headerlink" title="장고 템플릿 문법 2"></a>장고 템플릿 문법 2</h1><p>장고에서 화면을 렌더링 하기 위해서는 템플릿 엔진을 사용한다. 템플릿 엔진은 각자 자기만의 템플릿 문법을 제공하는데 여러가지 기본 문법과 태그 필터를 살펴본다</p>
+<ol start="3">
+<li>판별문<br>값이 존재하는지 확인하기 위해서 if문을 사용한다 파이썬의 if문과 마찬가지로 비교연산자를 사용할 수 있고, and, or, not is, in을 사용할 수 있다. 그러나 and, or 사용시 괄호를 사용할수 없고 괄호가 필요한 경우 중첩비교구문을 만들어야 한다.<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if 변수 %&#125;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="4">
+<li><p>판별문 2<br>값을 비교하기 위해서 ifequal과 ifnotequal을 사용한다</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;% ifequal 변수 값 %&#125;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">&#123;% endifequal %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% ifnotequal 변수 값 %&#125;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">&#123;% endifnotequal %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>반복문<br>본수 객체가 들어가는 변수를 반복하여 출력하고 싶을 때는 for문을 사용한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> object <span class="keyword">in</span> object_list % &#125;</span><br><span class="line">  &#123;&#123; object &#125;&#125;</span><br><span class="line">  &#123;% cycle <span class="string">'1'</span> <span class="string">'0'</span> %&#125;</span><br><span class="line">&#123;% empty %&#125;</span><br><span class="line">  반복할 객체가 비어있다면 출력될 영역</span><br><span class="line"></span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+<p>반복문에는 특별한 추가기능이 있다. 리스트를 출력할때 아래 기능을 활용하면 편리하다</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>forloop.counter</td>
+<td>1부터 시작되는 반복횟수</td>
+</tr>
+<tr>
+<td>forloop.counter()</td>
+<td>0부터 시작되는 반복 횟수</td>
+</tr>
+<tr>
+<td>forloop.revcounter</td>
+<td>반복횟수 역순</td>
+</tr>
+<tr>
+<td>forloop.revcounter()</td>
+<td>반복횟수 역순 0부터 시작</td>
+</tr>
+<tr>
+<td>forloop.first</td>
+<td>첫번째 반복회차인지 여부</td>
+</tr>
+<tr>
+<td>forloop.last</td>
+<td>마지막 반복회차인지 여부</td>
+</tr>
+</tbody>
+</table>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2019/03/29/컴파일러언어와인터프리터언어의차이점/">
-        <h1 class="post-title archive">
-            2019-03-29 컴파일러와 인터프리터의 차이점
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-03-29
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
             
-                <div class="post-preview">
-    <a href="/2019/03/25/기본통계/">
-        <h1 class="post-title archive">
-            2019-03-25 기초 통계
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-03-25
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/03/22/OOP/">
-        <h1 class="post-title archive">
-            2019-03-22 OOP
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-03-22
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/03/15/2019-03-14-15-CPU와-메모리/">
-        <h1 class="post-title archive">
-            2019-03-14~15 CPU와 메모리
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-03-15
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/03/12/2019-03-12-문자와문자열-함수전달방식/">
-        <h1 class="post-title archive">
-            2019-03-12 문자와 문자열, 함수전달 방식
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-03-12
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-        <li class="previous"><a href="/archives/2019/page/4/">&larr;  Newer Posts</a></li>
-    
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr>
