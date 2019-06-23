@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="sug5806의 블로그">
+        <meta property="og:title" content="2019-05-25 장고 커스텀 템플릿 태그">
     
 
     <!--Open Graph Description-->
@@ -36,7 +36,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website">
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>page - Archives: 2019 - sug5806의 블로그</title>
+    <title>2019-05-25 장고 커스텀 템플릿 태그 - sug5806의 블로그</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -157,170 +157,114 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>2019</h1>
+                <div class="post-heading">
+                    <h1>2019-05-25 장고 커스텀 템플릿 태그</h1>
+                    
+                    <h2 class="post-subheading">
+                        커스텀 템플릿 태그
+                    </h2>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2019-05-25
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/커스텀템플릿태그/">#커스텀템플릿태그</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                        
+
+<a href="/categories/Django/">Django</a>
+
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2019/04/12/Tree/">
-        <h1 class="post-title archive">
-            2019-04-12 Tree
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-12
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2019/04/11/data_structure/">
-        <h1 class="post-title archive">
-            2019-04-11 List와 Array의 차이점
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-11
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="커스텀-템플릿-태그-만들기"><a href="#커스텀-템플릿-태그-만들기" class="headerlink" title="커스텀 템플릿 태그 만들기"></a>커스텀 템플릿 태그 만들기</h1><p>템플릿 문법을 사용하다보면 필요한 기능이 없는 경우가 있습니다. 이럴 때는 직접 만들어서 사용할 수 있습니다.<br>커스텀 템플릿 태그와 템플릿 필터를 만들 수 있습니다.</p>
+<ol>
+<li><p>커스텀 기능을 만들기 위해서는 앱 안에 templatetags라는 폴더를 만들어야 합니다.</p>
+<p> <img src="/image/custom_template_tags01.png" alt></p>
+</li>
+<li><p>원하는 기능을 작성할 파일을 작성합니다. 템플릿 파일에서 이 파일명으로 기능을 불러 옵니다.<br> <img src="/image/custom_template_tags02.png" alt></p>
+</li>
+<li><p>템플릿 라이브러리 변수를 만듭니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> template</span><br><span class="line">register = template.Library()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="4">
+<li><p>필터를 등록할 때는 다음과 같이 코드를 합니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@register.filter</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_two</span><span class="params">(value)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> value+<span class="number">2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>등록된 필터는 다음과 같이 사용합니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load example %&#125;</span><br><span class="line">&#123;&#123;변수|add_two&#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>태그를 등록할 때는 다음과 같이 코드를 작성합니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@register_simple_tag</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_template</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_to_string(<span class="string">'blog/test.html'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>등록한 태그는 다음과 같이 사용합니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load example %&#125;</span><br><span class="line">&#123;% print_template %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>태그를 실행한 결과를 변수로 지정하려면 as 키워드를 사용합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load %&#125;</span><br><span class="line">&#123;% print_template <span class="keyword">as</span> test %&#125;</span><br><span class="line">&#123;&#123;test&#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>추가 인자가 있는 필터는 다음과 같이 코드를 작성합니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@register.filter</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">string_append</span><span class="params">(left, right)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> left+<span class="string">"-"</span>+right</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>해당 필터는 다음과 같이 사용합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load blog %&#125;</span><br><span class="line">&#123;&#123;<span class="string">'string1'</span>|string_append:<span class="string">'string2'</span>&#125;&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2019/04/10/Git 특강2_git_branch/">
-        <h1 class="post-title archive">
-            2019-04-10 Git 특강2 branch
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-10
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
             
-                <div class="post-preview">
-    <a href="/2019/04/10/regular_expression/">
-        <h1 class="post-title archive">
-            2019-04-10 reguler-expression
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-10
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/09/2019-04-09-Closure/">
-        <h1 class="post-title archive">
-            2019-04-09 파이썬 Closure
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-09
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/08/DB2/">
-        <h1 class="post-title archive">
-            2019-04-08 데이터베이스 관계, 조인, Group, Index
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-08
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/08/DataBase/">
-        <h1 class="post-title archive">
-            2019-04-08 DataBase
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-08
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/07/2019-04-07-TCP_IP-4계층/">
-        <h1 class="post-title archive">
-            2019-04-07 TCP/IP 4계층
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-07
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/07/동기식_비동기식/">
-        <h1 class="post-title archive">
-            2019-04-07 Synchronous와 Asynchronous의 차이점
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-07
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2019/04/05/2019-04-05-HTML-기초태그/">
-        <h1 class="post-title archive">
-            2019-04-05 HTML 기초태그
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2019-04-05
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-        <li class="previous"><a href="/archives/2019/page/3/">&larr;  Newer Posts</a></li>
-    
-    
-        <li class="next"><a href="/archives/2019/page/5/">Older Posts  &rarr;</a></li>
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr>
