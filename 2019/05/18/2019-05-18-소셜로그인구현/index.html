@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"네이버 소셜로그인 구현하기\n1. allauth 모듈 설치하기\n\npip install django-allauth\n\n2. settings.py 수정하기\n1234567891011121314151617181920# 맨 마지막에 추가AUTHENTICATION_BACKENDS = (    ...    # Needed to login by username in Django admin, regardless of `allauth`    'django.contrib.auth.backends.ModelBackend',    # `allauth` specific authentication methods, such as login by e-mail    'allauth.account.auth_backends.AuthenticationBackend',    )SITE_ID = 1# INSTALLED_APPS에 추가하기    'django.contrib.sites',    'allauth',    'allauth.account',    'allauth.socialaccount',    # 이 부분은 소셜로그인을 구현하고 싶은 사이트를 입력하면 된다    'allauth.socialaccount.providers.naver',\n3. app의 urls.py에 추가하기\n1path('accounts', include('allauth.urls')),\n4. DB migrate 하기\n* `python manage.py migate`\n\n5. 네이버 개발자 센터방문\n\n\n사용하고자 하는 이름 작성\n권한은 원하는대로\n\n서비스 URL과 Callback URL을 위와 같이 적어준다\n만약 직접 서비스하고 있는 사이트가 있다면 서비스 URL에 자신의 사이트를 적어준다.\n\n6. app의 url.py에 추가하기 2\n1234from django.contrib.auth.views import LoginView, LogoutViewpath('login/', LoginView.as_view(template_name='account/login.html'), name='login'),    path('logout/', LogoutView.as_view(template_name='account/logout.html'), name='logout'),\n7. ./manage.py admin 사이트로 접속\n\n맨 밑의 Social application으로 접속\n8. Social application에서 추가하기\n\n\n위에서 Key와 ID는 네이버 개발자센터에서 발급받은 자신의 ID와 Key를 적으면 된다\n\n","dateCreated":"2019-05-18T18:32:46+09:00","dateModified":"2019-05-30T12:21:07+09:00","datePublished":"2019-05-18T18:32:46+09:00","description":"","headline":"2019-05-18 Django social login(naver)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/05/18/2019-05-18-소셜로그인구현/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/05/18/2019-05-18-소셜로그인구현/","keywords":"Django, Social login"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"네이버 소셜로그인 구현하기\n1. allauth 모듈 설치하기\n\npip install django-allauth\n\n2. settings.py 수정하기\n1234567891011121314151617181920# 맨 마지막에 추가AUTHENTICATION_BACKENDS = (    ...    # Needed to login by username in Django admin, regardless of `allauth`    'django.contrib.auth.backends.ModelBackend',    # `allauth` specific authentication methods, such as login by e-mail    'allauth.account.auth_backends.AuthenticationBackend',    )SITE_ID = 1# INSTALLED_APPS에 추가하기    'django.contrib.sites',    'allauth',    'allauth.account',    'allauth.socialaccount',    # 이 부분은 소셜로그인을 구현하고 싶은 사이트를 입력하면 된다    'allauth.socialaccount.providers.naver',\n3. app의 urls.py에 추가하기\n1path('accounts', include('allauth.urls')),\n4. DB migrate 하기\n* `python manage.py migate`\n\n5. 네이버 개발자 센터방문\n\n\n사용하고자 하는 이름 작성\n권한은 원하는대로\n\n서비스 URL과 Callback URL을 위와 같이 적어준다\n만약 직접 서비스하고 있는 사이트가 있다면 서비스 URL에 자신의 사이트를 적어준다.\n\n6. app의 url.py에 추가하기 2\n1234from django.contrib.auth.views import LoginView, LogoutViewpath('login/', LoginView.as_view(template_name='account/login.html'), name='login'),    path('logout/', LogoutView.as_view(template_name='account/logout.html'), name='logout'),\n7. ./manage.py admin 사이트로 접속\n\n맨 밑의 Social application으로 접속\n8. Social application에서 추가하기\n\n\n위에서 Key와 ID는 네이버 개발자센터에서 발급받은 자신의 ID와 Key를 적으면 된다\n\n","dateCreated":"2019-05-18T18:32:46+09:00","dateModified":"2019-05-30T12:21:07+09:00","datePublished":"2019-05-18T18:32:46+09:00","description":"","headline":"2019-05-18 Django social login(naver)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/05/18/2019-05-18-소셜로그인구현/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/05/18/2019-05-18-소셜로그인구현/","keywords":"Django, Social login"}</script>
     <meta name="description" content="네이버 소셜로그인 구현하기 1. allauth 모듈 설치하기  pip install django-allauth  2. settings.py 수정하기 1234567891011121314151617181920# 맨 마지막에 추가AUTHENTICATION_BACKENDS = (    ...    # Needed to login by username in Djan">
 <meta name="keywords" content="Django,Social login">
 <meta property="og:type" content="blog">
@@ -141,55 +141,10 @@
             
                 <li class="sidebar-button">
                     
-                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
-                    
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
-                    
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
-                    
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Facebook</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
-                    
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
-                    
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
                     </a>
             </li>
             
@@ -199,19 +154,6 @@
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
-                    
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
                     </a>
             </li>
             
@@ -516,6 +458,12 @@
 
             </div>
         
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
         
     </div>
 </div>

@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"Ajax란?\nAjax는 JavaScript의 라이브러리중 하나이며 Asynchronous Javascript And Xml(비동기식 자바스크립트와 xml)의 약자입니다. 브라우저가 가지고있는 XMLHttpRequest 객체를 이용해서 전체 페이지를 새로 고치지 않고도 페이지의 일부만을 위한 데이터를 로드하는 기법이며 Ajax를 한마디로 정의하자면 JavaScript를 사용한 비동기 통신, 클라이언트와 서버간에 XML데이터를 주고받는 기술이라고 할 수 있습니다.\n\n출처: 코딩팩토리\n\n실생활에서 사용하는 앱중에서 예를들면 인스타그램이나 페이스북의 좋아요를 눌렀을시 새로고침 없이 작동하거나 무한스크롤 기능이 있습니다.\n\n1234567891011121314151617181920212223242526272829$.ajax(&#123;    // url은 반드시 필요한 필수 요소 입니다.    url   : \"url\", // 요청이 전송될 URL 주소    type  : \"GET\", // http 요청 방식 (default = GET)    async : true, // 동기 or 비동기 여부 (default = true)    cache : true, // 캐시 여부    timeout : 3000, // 요청 제한 시간안에 완료되지 않으면 요청을 취소하거나 error 콜백을 호출 (단위 : ms)    data  : &#123;key : value&#125;, // 요청 시 포함될 데이터    processData : true, // 데이터를 컨텐트 타입에 맞게 변환 여부    contentType : \"application/json\", // 요청 컨텐트 타입    dataType    : \"json\", // 응답 데이터 형식(명시하지 않으면 자동으로 추측)    beforeSend  : function() &#123;        // XHR Header를 포함해서 HTTP Request를 하기전에 호출됩니다.    &#125;,    success : function(data, status xhr)&#123;        // 정상적으로 응답 받았을 경우에는 success 콜백이 호출됩니다.        // 이 콜백 함수의 파라미터에서는 응답 바디, 응답 코드 그리고 XHR 헤더를 확인 할 수 있습니다.    &#125;,    error : function(xhr, status, error)&#123;        // 응답을 받지 못하였거나 정상적인 응답이지만 데이터 형식을 확인할 수 없기 때문에        // error 콜백이 호출될 수 있습니다.        // 예를 들어, dataType을 지정해서 응답 받을 데이터 형식을 지정하였지만,        // 서버에서는 다른 데이터형식으로 응답하면 error 콜백이 호출되게 됩니다.    &#125;,    complete : function(xhr, status)&#123;        // success와 error콜백이 호출된 후에 반드시 호출됩니다.        // tyy - catch - finally의 finally 구문과 동일합니다.    &#125;&#125;);\n다음 시간에는 Django에 Ajax를 적용하도록 하겠습니다.\n","dateCreated":"2019-06-18T17:45:01+09:00","dateModified":"2019-08-13T20:35:54+09:00","datePublished":"2019-06-18T17:45:01+09:00","description":"","headline":"2019-06-18 Ajax란?","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/06/18/2019-06-18-ajax란/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/06/18/2019-06-18-ajax란/","keywords":"Ajax"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Ajax란?\nAjax는 JavaScript의 라이브러리중 하나이며 Asynchronous Javascript And Xml(비동기식 자바스크립트와 xml)의 약자입니다. 브라우저가 가지고있는 XMLHttpRequest 객체를 이용해서 전체 페이지를 새로 고치지 않고도 페이지의 일부만을 위한 데이터를 로드하는 기법이며 Ajax를 한마디로 정의하자면 JavaScript를 사용한 비동기 통신, 클라이언트와 서버간에 XML데이터를 주고받는 기술이라고 할 수 있습니다.\n\n출처: 코딩팩토리\n\n실생활에서 사용하는 앱중에서 예를들면 인스타그램이나 페이스북의 좋아요를 눌렀을시 새로고침 없이 작동하거나 무한스크롤 기능이 있습니다.\n\n1234567891011121314151617181920212223242526272829$.ajax(&#123;    // url은 반드시 필요한 필수 요소 입니다.    url   : \"url\", // 요청이 전송될 URL 주소    type  : \"GET\", // http 요청 방식 (default = GET)    async : true, // 동기 or 비동기 여부 (default = true)    cache : true, // 캐시 여부    timeout : 3000, // 요청 제한 시간안에 완료되지 않으면 요청을 취소하거나 error 콜백을 호출 (단위 : ms)    data  : &#123;key : value&#125;, // 요청 시 포함될 데이터    processData : true, // 데이터를 컨텐트 타입에 맞게 변환 여부    contentType : \"application/json\", // 요청 컨텐트 타입    dataType    : \"json\", // 응답 데이터 형식(명시하지 않으면 자동으로 추측)    beforeSend  : function() &#123;        // XHR Header를 포함해서 HTTP Request를 하기전에 호출됩니다.    &#125;,    success : function(data, status xhr)&#123;        // 정상적으로 응답 받았을 경우에는 success 콜백이 호출됩니다.        // 이 콜백 함수의 파라미터에서는 응답 바디, 응답 코드 그리고 XHR 헤더를 확인 할 수 있습니다.    &#125;,    error : function(xhr, status, error)&#123;        // 응답을 받지 못하였거나 정상적인 응답이지만 데이터 형식을 확인할 수 없기 때문에        // error 콜백이 호출될 수 있습니다.        // 예를 들어, dataType을 지정해서 응답 받을 데이터 형식을 지정하였지만,        // 서버에서는 다른 데이터형식으로 응답하면 error 콜백이 호출되게 됩니다.    &#125;,    complete : function(xhr, status)&#123;        // success와 error콜백이 호출된 후에 반드시 호출됩니다.        // tyy - catch - finally의 finally 구문과 동일합니다.    &#125;&#125;);\n다음 시간에는 Django에 Ajax를 적용하도록 하겠습니다.\n","dateCreated":"2019-06-18T17:45:01+09:00","dateModified":"2019-08-13T20:35:54+09:00","datePublished":"2019-06-18T17:45:01+09:00","description":"","headline":"2019-06-18 Ajax란?","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/06/18/2019-06-18-ajax란/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/06/18/2019-06-18-ajax란/","keywords":"Ajax"}</script>
     <meta name="description" content="Ajax란? Ajax는 JavaScript의 라이브러리중 하나이며 Asynchronous Javascript And Xml(비동기식 자바스크립트와 xml)의 약자입니다. 브라우저가 가지고있는 XMLHttpRequest 객체를 이용해서 전체 페이지를 새로 고치지 않고도 페이지의 일부만을 위한 데이터를 로드하는 기법이며 Ajax를 한마디로 정의하자면 JavaS">
 <meta name="keywords" content="Ajax">
 <meta property="og:type" content="blog">
@@ -136,55 +136,10 @@
             
                 <li class="sidebar-button">
                     
-                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
-                    
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
-                    
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
-                    
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Facebook</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
-                    
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
-                    
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
                     </a>
             </li>
             
@@ -194,19 +149,6 @@
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
-                    
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
                     </a>
             </li>
             
@@ -489,6 +431,12 @@
 
             </div>
         
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
         
     </div>
 </div>

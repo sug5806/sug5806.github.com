@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"Classful addressing\n네트워크는 기본적으로 Network 와 Host로 나뉜다\nIP주소를 체계적으로 다루기위해 도입한 개념 이다\n\n–\n\n그림을 보면 각 클래스를 구분하기위해 첫번째 바이트에 각 클래스마다 비트가 구별되어 있다.\n\nA클래스는 0\nB클래스는 10\nC클래스는 110\nD클래스는 잘 사용하지 않음\nE 클래스의 경우 미래를 위해 남겨 둠\n\n\nA 클래스 : 초/대규모의 네트워크에 할당.\n\n\n총 126개의 네트워크를 만들 수 있으며, 각 네트워크당 야 1677만개의 호스트를 연결 할 수 있음\n\n왜 126개 인가? 0.0.0.0(default route 또는 DHCP server를 탐지할 때 this host를 의미하는 source address로 사용하기도 함)과 127.0.0.0(loopback address)은 제외한다. 다른 클래스 역시 마찬가지이다.\n\n\n\nP주소의 구성 : Network 주소. Host 주소. Host주소. Host주소\n\n\nB 클래스 : 대규모 네트워크에 적용.\n\n총 16,382개의 네트워크를 만들 수 있으며 각 네트워크당 6만5천개의 노드를 연결 할 수 있다\nIP주소의 구성 : Network 주소. Network주소. Host주소. Host주소\n\nC 클래스 : 소규모 네트워크에 적용\n\n총 2,097,150개의 네트워크를 만들 수 있으며 각 네트워크마다 254개의 노드를 연결할 수 있다\nIP주소의 구성 : Network 주소. Network주소. Network주소. Host주소\n\n이러한 방식으로 IP를 할당하면 구분하기 힘드므로 subnetting이라는 개념을 도입하여 관리하기 수월하게 함\n","dateCreated":"2019-04-04T19:23:50+09:00","dateModified":"2019-04-04T11:47:02+09:00","datePublished":"2019-04-04T19:23:50+09:00","description":"","headline":"2019-04-03 Classful addressing","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/04/2019-04-04 Classful addressing/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/04/04/2019-04-04 Classful addressing/","keywords":"classful"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Classful addressing\n네트워크는 기본적으로 Network 와 Host로 나뉜다\nIP주소를 체계적으로 다루기위해 도입한 개념 이다\n\n–\n\n그림을 보면 각 클래스를 구분하기위해 첫번째 바이트에 각 클래스마다 비트가 구별되어 있다.\n\nA클래스는 0\nB클래스는 10\nC클래스는 110\nD클래스는 잘 사용하지 않음\nE 클래스의 경우 미래를 위해 남겨 둠\n\n\nA 클래스 : 초/대규모의 네트워크에 할당.\n\n\n총 126개의 네트워크를 만들 수 있으며, 각 네트워크당 야 1677만개의 호스트를 연결 할 수 있음\n\n왜 126개 인가? 0.0.0.0(default route 또는 DHCP server를 탐지할 때 this host를 의미하는 source address로 사용하기도 함)과 127.0.0.0(loopback address)은 제외한다. 다른 클래스 역시 마찬가지이다.\n\n\n\nP주소의 구성 : Network 주소. Host 주소. Host주소. Host주소\n\n\nB 클래스 : 대규모 네트워크에 적용.\n\n총 16,382개의 네트워크를 만들 수 있으며 각 네트워크당 6만5천개의 노드를 연결 할 수 있다\nIP주소의 구성 : Network 주소. Network주소. Host주소. Host주소\n\nC 클래스 : 소규모 네트워크에 적용\n\n총 2,097,150개의 네트워크를 만들 수 있으며 각 네트워크마다 254개의 노드를 연결할 수 있다\nIP주소의 구성 : Network 주소. Network주소. Network주소. Host주소\n\n이러한 방식으로 IP를 할당하면 구분하기 힘드므로 subnetting이라는 개념을 도입하여 관리하기 수월하게 함\n","dateCreated":"2019-04-04T19:23:50+09:00","dateModified":"2019-04-04T11:47:02+09:00","datePublished":"2019-04-04T19:23:50+09:00","description":"","headline":"2019-04-03 Classful addressing","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/04/2019-04-04 Classful addressing/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/04/04/2019-04-04 Classful addressing/","keywords":"classful"}</script>
     <meta name="description" content="Classful addressing 네트워크는 기본적으로 Network 와 Host로 나뉜다 IP주소를 체계적으로 다루기위해 도입한 개념 이다  –  그림을 보면 각 클래스를 구분하기위해 첫번째 바이트에 각 클래스마다 비트가 구별되어 있다.  A클래스는 0 B클래스는 10 C클래스는 110 D클래스는 잘 사용하지 않음 E 클래스의 경우 미래를 위해 남겨 둠">
 <meta name="keywords" content="classful">
 <meta property="og:type" content="blog">
@@ -139,55 +139,10 @@
             
                 <li class="sidebar-button">
                     
-                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
-                    
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
-                    
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
-                    
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Facebook</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
-                    
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
-                    
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
                     </a>
             </li>
             
@@ -197,19 +152,6 @@
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
-                    
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
                     </a>
             </li>
             
@@ -521,6 +463,12 @@
 
             </div>
         
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
         
     </div>
 </div>

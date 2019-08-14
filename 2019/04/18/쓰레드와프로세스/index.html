@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"Program, Process\nProgram =&gt; HDD안의 이미지를 말함 Ex) Python.exe\nProcess =&gt; 실행중인 프로그램(이미 RAM에 올라가있음)\nPID로 구분을 한다 (Process ID) -&gt; 윈도우는 랜덤으로, 리눅스는 순차적으로 배분\npre-emptive OS\n\nmultitasking OS\nsuspend currently running process\ndetermine which process should execute next\n\nprocess scheduling\n\npriority algorithm : 높은 우선순위의 프로세스가 먼저 실행된다.\nround-robin algorithm : 프로세스들 사이에 우선순위를 두지 않고 time slice로 CPU를 할당하는 방법이다.\n\nscheduler\n\nWhen?\n\nevery time slice\na process created or a process ended\na running process blocked (I/O, system call)\n\n\n\n\nBlock으로 빠지는 경우\n\nIO\nSystem call(운영체제에서 사용하는 함수중 사용자에게 인터페이스를 열어놓은 함수 Ex) sleep)\n\nWaiting 과 Running 사이에서 일어나는 일 : context switching\ncontext switching\n\n메모리안에 블록을 하나만듬(Process Control block) 이곳(PCB)에 어디까지 실행하였는지(CPU안의 레지스터들의 상태정보)를 저장함\ncontext = 지금 현재 실행되고있는 CPU안의 레지스터들의 상태정보를 하나로 모은것\n자주일어날경우 메모리접근 시간이 너무 커짐 -&gt; time slice를 잘 정해야함\nPCB를 내리고 새로운 PCB를 올리는 작업을 context switching이라 함\n\n\nProcess와 Thread -&gt; 인스트럭션의 나열 -&gt; 실행의 흐름일 뿐이다\nProcess = 1개 이상의 쓰레드를 갖는다, 쓰레드가 1개일경우 (single thread라 한다)\nConcurrency programming (동시성 프로그래밍) -&gt; 속도를 위해 하는것이 아님(싱글 코어일 경우)\n\n\nmulti - processing\n\n각기 다른 프로세스에서 똑같은 데이터를 가지고 있어야함\nIPC(Inter Process Communication) -&gt; 최악의 효율성\n\n\n\n\nmulti - threading\n\n프로세스안에 스레드가 포함이 됨(스택만 나눠지고 나머지는 공유함)\n스택 영역만 스레드마다 따로잡힘(지금 현재 실행하는 인스트럭션(함수)이 다르므로 스택만 나누고 나머지 공간은 공유가능)\n쓰레드 또한 PCB처럼 TCB가 있고 context switching이 똑같이 일어남\n\n\n\n\nI/O-bound -&gt; asynchronus I/O(비동기 I/O)\n\n한개의 스레드로 동시성으로 만듬\n\n\n\n\nGIL -&gt; Global Interpreter Lock\n\n멀티코어라도 바이트 코드의 실행을 한번에 하나 스레드로 막는다 (없애려고 했으나 해결을 하지 못함) -&gt; Cpython은 아직 해결 못함\n\nrace-condition\n\n공유자원에 대해 너도나도 쓰겠다고 달려들어 결과값을 보장하지 못한다.\n\n임계 구역(critical section) -&gt; 접근하는것 까지는 괜찮으나 수정하는건 안됨\nmutual exclution(상호배제)\n\n세마포어 : 한번에 임계구역에 접근할 수 있는 스레드의 숫자를 조정함\nmutex : 임계구역에 단 하나밖에 접근 못함\n\n코어가 1개 일 경우 시간 단축은 거의 없지만(concurrecy programming)\n코어가 4개 일경우 시간단축 + 멀티코어 프로그래밍이 같이됨\nconcurecncy programming과 pararrelism programming은 다른 개념이다\n","dateCreated":"2019-04-18T21:30:32+09:00","dateModified":"2019-04-19T09:45:16+09:00","datePublished":"2019-04-18T21:30:32+09:00","description":"","headline":"2019-04-18 프로세스와 쓰레드","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/18/쓰레드와프로세스/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/04/18/쓰레드와프로세스/","keywords":"프로세스, 쓰레드"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Program, Process\nProgram =&gt; HDD안의 이미지를 말함 Ex) Python.exe\nProcess =&gt; 실행중인 프로그램(이미 RAM에 올라가있음)\nPID로 구분을 한다 (Process ID) -&gt; 윈도우는 랜덤으로, 리눅스는 순차적으로 배분\npre-emptive OS\n\nmultitasking OS\nsuspend currently running process\ndetermine which process should execute next\n\nprocess scheduling\n\npriority algorithm : 높은 우선순위의 프로세스가 먼저 실행된다.\nround-robin algorithm : 프로세스들 사이에 우선순위를 두지 않고 time slice로 CPU를 할당하는 방법이다.\n\nscheduler\n\nWhen?\n\nevery time slice\na process created or a process ended\na running process blocked (I/O, system call)\n\n\n\n\nBlock으로 빠지는 경우\n\nIO\nSystem call(운영체제에서 사용하는 함수중 사용자에게 인터페이스를 열어놓은 함수 Ex) sleep)\n\nWaiting 과 Running 사이에서 일어나는 일 : context switching\ncontext switching\n\n메모리안에 블록을 하나만듬(Process Control block) 이곳(PCB)에 어디까지 실행하였는지(CPU안의 레지스터들의 상태정보)를 저장함\ncontext = 지금 현재 실행되고있는 CPU안의 레지스터들의 상태정보를 하나로 모은것\n자주일어날경우 메모리접근 시간이 너무 커짐 -&gt; time slice를 잘 정해야함\nPCB를 내리고 새로운 PCB를 올리는 작업을 context switching이라 함\n\n\nProcess와 Thread -&gt; 인스트럭션의 나열 -&gt; 실행의 흐름일 뿐이다\nProcess = 1개 이상의 쓰레드를 갖는다, 쓰레드가 1개일경우 (single thread라 한다)\nConcurrency programming (동시성 프로그래밍) -&gt; 속도를 위해 하는것이 아님(싱글 코어일 경우)\n\n\nmulti - processing\n\n각기 다른 프로세스에서 똑같은 데이터를 가지고 있어야함\nIPC(Inter Process Communication) -&gt; 최악의 효율성\n\n\n\n\nmulti - threading\n\n프로세스안에 스레드가 포함이 됨(스택만 나눠지고 나머지는 공유함)\n스택 영역만 스레드마다 따로잡힘(지금 현재 실행하는 인스트럭션(함수)이 다르므로 스택만 나누고 나머지 공간은 공유가능)\n쓰레드 또한 PCB처럼 TCB가 있고 context switching이 똑같이 일어남\n\n\n\n\nI/O-bound -&gt; asynchronus I/O(비동기 I/O)\n\n한개의 스레드로 동시성으로 만듬\n\n\n\n\nGIL -&gt; Global Interpreter Lock\n\n멀티코어라도 바이트 코드의 실행을 한번에 하나 스레드로 막는다 (없애려고 했으나 해결을 하지 못함) -&gt; Cpython은 아직 해결 못함\n\nrace-condition\n\n공유자원에 대해 너도나도 쓰겠다고 달려들어 결과값을 보장하지 못한다.\n\n임계 구역(critical section) -&gt; 접근하는것 까지는 괜찮으나 수정하는건 안됨\nmutual exclution(상호배제)\n\n세마포어 : 한번에 임계구역에 접근할 수 있는 스레드의 숫자를 조정함\nmutex : 임계구역에 단 하나밖에 접근 못함\n\n코어가 1개 일 경우 시간 단축은 거의 없지만(concurrecy programming)\n코어가 4개 일경우 시간단축 + 멀티코어 프로그래밍이 같이됨\nconcurecncy programming과 pararrelism programming은 다른 개념이다\n","dateCreated":"2019-04-18T21:30:32+09:00","dateModified":"2019-04-19T09:45:16+09:00","datePublished":"2019-04-18T21:30:32+09:00","description":"","headline":"2019-04-18 프로세스와 쓰레드","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/18/쓰레드와프로세스/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/04/18/쓰레드와프로세스/","keywords":"프로세스, 쓰레드"}</script>
     <meta name="description" content="Program, Process Program =&amp;gt; HDD안의 이미지를 말함 Ex) Python.exe Process =&amp;gt; 실행중인 프로그램(이미 RAM에 올라가있음) PID로 구분을 한다 (Process ID) -&amp;gt; 윈도우는 랜덤으로, 리눅스는 순차적으로 배분 pre-emptive OS  multitasking OS suspend curre">
 <meta name="keywords" content="프로세스,쓰레드">
 <meta property="og:type" content="blog">
@@ -140,55 +140,10 @@
             
                 <li class="sidebar-button">
                     
-                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
-                    
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
-                    
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
-                    
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Facebook</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
-                    
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
-                    
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
                     </a>
             </li>
             
@@ -198,19 +153,6 @@
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
-                    
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
                     </a>
             </li>
             
@@ -570,6 +512,12 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
 
             </div>
         
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
         
     </div>
 </div>

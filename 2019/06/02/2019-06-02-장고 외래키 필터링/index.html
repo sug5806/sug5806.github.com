@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"Django Foriegn Key Filterig 하기\n모델\n123456789101112131415161718192021from django.db import models# Create your models here.class Blog(models.Model):    name = models.CharField(max_length=100)    tagline = models.TextField()    def __str__(self):        return self.nameclass Entry(models.Model):    blog = models.ForeignKey(Blog, related_name='entrys', on_delete=models.CASCADE)    headline = models.CharField(max_length=100)    pub_date = models.DateField(auto_now_add=True)    mod_date = models.DateField(auto_now=True)    def __str__(self):        return self.headline\nBlog의 QuerySet\n\nEntry의 QuerySet\n\n\nEntry와 Blog는 1:M(일대다) 관계이다. 여기서 특정 블로그에 속해있는 모든 글을 가지고 오고싶다면 어떻게 해야할까?(1-&gt;M을 참조하여 가져오기)\n12Entry.objects.filter(blog__name='특정블로그')# blog는 Entry모델의 Foriegn Key 필드이며 name은 Blog모델의 필드이다.\n\n그렇다면 역으로 특정 글의 headline을 가지고 있는 블로그는 어떻게 가지고 올 수 있을까?(M-&gt;1을 참조하여 가져오기)\n123Blog.objects.filter(entrys__headline='주스')# Blog 모델과 Entry모델이 Foriegn Key로 연결되어 있으므로 related_name을 통해 역참조가 가능하다\n\n","dateCreated":"2019-06-02T18:32:46+09:00","dateModified":"2019-08-12T14:08:44+09:00","datePublished":"2019-06-02T18:32:46+09:00","description":"","headline":"2019-06-02 Django Foriegn Key 필터링","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/06/02/2019-06-02-장고 외래키 필터링/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/06/02/2019-06-02-장고 외래키 필터링/","keywords":"장고 필터링, 장고 Foriegn Key"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Django Foriegn Key Filterig 하기\n모델\n123456789101112131415161718192021from django.db import models# Create your models here.class Blog(models.Model):    name = models.CharField(max_length=100)    tagline = models.TextField()    def __str__(self):        return self.nameclass Entry(models.Model):    blog = models.ForeignKey(Blog, related_name='entrys', on_delete=models.CASCADE)    headline = models.CharField(max_length=100)    pub_date = models.DateField(auto_now_add=True)    mod_date = models.DateField(auto_now=True)    def __str__(self):        return self.headline\nBlog의 QuerySet\n\nEntry의 QuerySet\n\n\nEntry와 Blog는 1:M(일대다) 관계이다. 여기서 특정 블로그에 속해있는 모든 글을 가지고 오고싶다면 어떻게 해야할까?(1-&gt;M을 참조하여 가져오기)\n12Entry.objects.filter(blog__name='특정블로그')# blog는 Entry모델의 Foriegn Key 필드이며 name은 Blog모델의 필드이다.\n\n그렇다면 역으로 특정 글의 headline을 가지고 있는 블로그는 어떻게 가지고 올 수 있을까?(M-&gt;1을 참조하여 가져오기)\n123Blog.objects.filter(entrys__headline='주스')# Blog 모델과 Entry모델이 Foriegn Key로 연결되어 있으므로 related_name을 통해 역참조가 가능하다\n\n","dateCreated":"2019-06-02T18:32:46+09:00","dateModified":"2019-08-12T14:08:44+09:00","datePublished":"2019-06-02T18:32:46+09:00","description":"","headline":"2019-06-02 Django Foriegn Key 필터링","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/06/02/2019-06-02-장고 외래키 필터링/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/06/02/2019-06-02-장고 외래키 필터링/","keywords":"장고 필터링, 장고 Foriegn Key"}</script>
     <meta name="description" content="Django Foriegn Key Filterig 하기 모델 123456789101112131415161718192021from django.db import models# Create your models here.class Blog(models.Model):    name = models.CharField(max_length=100)    tagline">
 <meta name="keywords" content="장고 필터링,장고 Foriegn Key">
 <meta property="og:type" content="blog">
@@ -141,55 +141,10 @@
             
                 <li class="sidebar-button">
                     
-                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
-                    
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
-                    
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
-                    
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Facebook</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
-                    
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
-                    
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
                     </a>
             </li>
             
@@ -199,19 +154,6 @@
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
-                    
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
                     </a>
             </li>
             
@@ -499,6 +441,12 @@
 
             </div>
         
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
         
     </div>
 </div>

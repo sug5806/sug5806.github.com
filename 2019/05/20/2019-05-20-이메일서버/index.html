@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"이메일 서버 세팅하기\n\n\n외부에서 메일 보내기 서버를 사용하려면 gmail의 설정을 변경해야 한다. gmail에 로그인해서 화면 우측 상단에 있는 설정 버튼을 클릭한다\n\n\n\n\n[전달 및 POP/IMAP] 탭으로 이동해 IMAP 사용에 체크하고 [변경사항 저장]버튼을 누른다.\n\n\n\n\n보안수준이 낮은 앱의 액세스 허용을 위해 계정 -&gt; Google 계정을 클릭해 계정 설정으로 이동한다.\n\n\n\n\n계정 설정 화면에서 [보안] 탭을 클릭한다. 해당 탭에서 [보안 수준이 낮은 앱의 액세스] 부분을 찾아 [액세스 사용 설정] 버튼을 클릭한다.\n\n\n\n\n[보안 수준이 낮은 앱 허용]을 활성화 한다.\n\n\n\n장고 프로젝트의 settings.py에 메일 서버를 설정한다.\n\n1234567EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'EMAIL_HOST = \"smtp.gmail.com\"EMAIL_HOST_USER = '이메일 계정'EMAIL_HOST_PASSWORD = '계정 비밀번호'EMAIL_PORT = 587EMAIL_USE_TLS = TrueDEFAULT_FROM_EMAIL = EMAIL_HOST_USER\n\n메일 보내기를 테스트 해본다\n\n12345678910111213# 쉘 스크립트를 연다./manage.py shell# 일반메일 보내기from django.core.mail import EmailMessageemail = EmailMessage('제목', '본문', to=['받는사람 이메일주소'])email.send()# HTML이 포함된 메일 보내기from django.core.mail import EmailMessageemail = EmailMessage('제목', '본문', to=['받는사람 이메일주소'])email.attach_alternative(\"html이 포함된 본문\", \"text/html\")email.send()","dateCreated":"2019-05-20T18:32:46+09:00","dateModified":"2019-05-30T12:48:26+09:00","datePublished":"2019-05-20T18:32:46+09:00","description":"","headline":"2019-05-20 Django Email서버 세팅하기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/05/20/2019-05-20-이메일서버/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/05/20/2019-05-20-이메일서버/","keywords":"Email 서버"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"이메일 서버 세팅하기\n\n\n외부에서 메일 보내기 서버를 사용하려면 gmail의 설정을 변경해야 한다. gmail에 로그인해서 화면 우측 상단에 있는 설정 버튼을 클릭한다\n\n\n\n\n[전달 및 POP/IMAP] 탭으로 이동해 IMAP 사용에 체크하고 [변경사항 저장]버튼을 누른다.\n\n\n\n\n보안수준이 낮은 앱의 액세스 허용을 위해 계정 -&gt; Google 계정을 클릭해 계정 설정으로 이동한다.\n\n\n\n\n계정 설정 화면에서 [보안] 탭을 클릭한다. 해당 탭에서 [보안 수준이 낮은 앱의 액세스] 부분을 찾아 [액세스 사용 설정] 버튼을 클릭한다.\n\n\n\n\n[보안 수준이 낮은 앱 허용]을 활성화 한다.\n\n\n\n장고 프로젝트의 settings.py에 메일 서버를 설정한다.\n\n1234567EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'EMAIL_HOST = \"smtp.gmail.com\"EMAIL_HOST_USER = '이메일 계정'EMAIL_HOST_PASSWORD = '계정 비밀번호'EMAIL_PORT = 587EMAIL_USE_TLS = TrueDEFAULT_FROM_EMAIL = EMAIL_HOST_USER\n\n메일 보내기를 테스트 해본다\n\n12345678910111213# 쉘 스크립트를 연다./manage.py shell# 일반메일 보내기from django.core.mail import EmailMessageemail = EmailMessage('제목', '본문', to=['받는사람 이메일주소'])email.send()# HTML이 포함된 메일 보내기from django.core.mail import EmailMessageemail = EmailMessage('제목', '본문', to=['받는사람 이메일주소'])email.attach_alternative(\"html이 포함된 본문\", \"text/html\")email.send()","dateCreated":"2019-05-20T18:32:46+09:00","dateModified":"2019-05-30T12:48:26+09:00","datePublished":"2019-05-20T18:32:46+09:00","description":"","headline":"2019-05-20 Django Email서버 세팅하기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/05/20/2019-05-20-이메일서버/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/05/20/2019-05-20-이메일서버/","keywords":"Email 서버"}</script>
     <meta name="description" content="이메일 서버 세팅하기   외부에서 메일 보내기 서버를 사용하려면 gmail의 설정을 변경해야 한다. gmail에 로그인해서 화면 우측 상단에 있는 설정 버튼을 클릭한다     [전달 및 POP/IMAP] 탭으로 이동해 IMAP 사용에 체크하고 [변경사항 저장]버튼을 누른다.     보안수준이 낮은 앱의 액세스 허용을 위해 계정 -&amp;gt; Google 계정을">
 <meta name="keywords" content="Email 서버">
 <meta property="og:type" content="blog">
@@ -142,55 +142,10 @@
             
                 <li class="sidebar-button">
                     
-                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
-                    
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
-                    
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
-                    
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Facebook</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
-                    
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
-                    
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
                     </a>
             </li>
             
@@ -200,19 +155,6 @@
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
-                    
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
                     </a>
             </li>
             
@@ -519,6 +461,12 @@
 
             </div>
         
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
         
     </div>
 </div>

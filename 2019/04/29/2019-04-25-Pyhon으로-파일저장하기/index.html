@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"Python으로 Excel에 자료 저장하기\n파이썬 모듈인 openpyxl을 설치해줍니다\n\npip3 install openpyxl\n\n1234567891011121314151617import openpyxl# 메모리 상에 임시 엑셀파일을 하나 만든다wb = workbook()# 현재 선택되어 있는 시트(sheet1)을 선택한다.ws = wb.active# 2가지 방법으로 셀에 정보를 입력할 수 있다ws1.cell(row=1, column=1, value=\"test\") # A1ws1['A1'] = \"aaa\"# 엑셀시트 만들기 -&gt; second sheet라는 이름으로 새 시트를 만든다ws2 = wb.create_sheet(title=\"second sheet\")# 메모리에 있는 임시 엑셀파일을 현재 디렉토리에 test.xlsx라는 파일로 저장한다.wb.save(\"test.xlsx\")# 메모리에 있는 Workbook을 메모리에서 해제시킨다wb.close()\nPython으로 Text에 자료 저장하기\n12345678910# f라는 이름으로 'lotto.txt'을 쓰기형식으로 열어준다(파일이 없다면 생성된다.)# w : 쓰기모드# r : 읽기모드# a : 추가모드f = open(\"lotto.txt\", 'w')f.write(내용)f.writelines(내용)# write와 writelines의 차이점은 f.close\nPython 으로 CSV에 자료 저장하기\n1234567891011121314# lotto.csv를 쓰기모드로 연다 만약 파일이 없으면 만든다.# lotto.csv를 csv.writer에 넣어준다.# newline을 지정해 주지 않는경우 각 라인뒤에 빈 라인이 추가되는 경우가 있다csvfile = open('lotto.csv', 'w', newline='')# delimiter 옵션으로 문자 간격? 당 구분자를 지어준다# 이것을 ,으로 해주거나 옵션을 주지 않으면 각 열에 따로따로 들어가지만# 이외의 것을 하게되면 한 열에 전부다 들어가게 된다.writer = csv.writer(csvfile, delimiter=',')# 한 행을 기준으로 데이터가 들어가게 된다writer.writerow(내용)wr.writerow([1, \"김기동\", False])wr.writerow([2, \"박춘삼\", True])","dateCreated":"2019-04-29T10:31:23+09:00","dateModified":"2019-04-29T21:27:29+09:00","datePublished":"2019-04-29T10:31:23+09:00","description":"","headline":"2019-04-29 Python으로 파일(Excel, text, CSV) 저장하기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/29/2019-04-25-Pyhon으로-파일저장하기/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/04/29/2019-04-25-Pyhon으로-파일저장하기/","keywords":"파일 입출력"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Python으로 Excel에 자료 저장하기\n파이썬 모듈인 openpyxl을 설치해줍니다\n\npip3 install openpyxl\n\n1234567891011121314151617import openpyxl# 메모리 상에 임시 엑셀파일을 하나 만든다wb = workbook()# 현재 선택되어 있는 시트(sheet1)을 선택한다.ws = wb.active# 2가지 방법으로 셀에 정보를 입력할 수 있다ws1.cell(row=1, column=1, value=\"test\") # A1ws1['A1'] = \"aaa\"# 엑셀시트 만들기 -&gt; second sheet라는 이름으로 새 시트를 만든다ws2 = wb.create_sheet(title=\"second sheet\")# 메모리에 있는 임시 엑셀파일을 현재 디렉토리에 test.xlsx라는 파일로 저장한다.wb.save(\"test.xlsx\")# 메모리에 있는 Workbook을 메모리에서 해제시킨다wb.close()\nPython으로 Text에 자료 저장하기\n12345678910# f라는 이름으로 'lotto.txt'을 쓰기형식으로 열어준다(파일이 없다면 생성된다.)# w : 쓰기모드# r : 읽기모드# a : 추가모드f = open(\"lotto.txt\", 'w')f.write(내용)f.writelines(내용)# write와 writelines의 차이점은 f.close\nPython 으로 CSV에 자료 저장하기\n1234567891011121314# lotto.csv를 쓰기모드로 연다 만약 파일이 없으면 만든다.# lotto.csv를 csv.writer에 넣어준다.# newline을 지정해 주지 않는경우 각 라인뒤에 빈 라인이 추가되는 경우가 있다csvfile = open('lotto.csv', 'w', newline='')# delimiter 옵션으로 문자 간격? 당 구분자를 지어준다# 이것을 ,으로 해주거나 옵션을 주지 않으면 각 열에 따로따로 들어가지만# 이외의 것을 하게되면 한 열에 전부다 들어가게 된다.writer = csv.writer(csvfile, delimiter=',')# 한 행을 기준으로 데이터가 들어가게 된다writer.writerow(내용)wr.writerow([1, \"김기동\", False])wr.writerow([2, \"박춘삼\", True])","dateCreated":"2019-04-29T10:31:23+09:00","dateModified":"2019-04-29T21:27:29+09:00","datePublished":"2019-04-29T10:31:23+09:00","description":"","headline":"2019-04-29 Python으로 파일(Excel, text, CSV) 저장하기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/29/2019-04-25-Pyhon으로-파일저장하기/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/04/29/2019-04-25-Pyhon으로-파일저장하기/","keywords":"파일 입출력"}</script>
     <meta name="description" content="Python으로 Excel에 자료 저장하기 파이썬 모듈인 openpyxl을 설치해줍니다  pip3 install openpyxl  1234567891011121314151617import openpyxl# 메모리 상에 임시 엑셀파일을 하나 만든다wb = workbook()# 현재 선택되어 있는 시트(sheet1)을 선택한다.ws = wb.active# 2가">
 <meta name="keywords" content="파일 입출력">
 <meta property="og:type" content="blog">
@@ -136,55 +136,10 @@
             
                 <li class="sidebar-button">
                     
-                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
-                    
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
-                    
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
-                    
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Facebook</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
-                    
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
-                    
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
                     </a>
             </li>
             
@@ -194,19 +149,6 @@
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
-                    
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
                     </a>
             </li>
             
@@ -489,6 +431,12 @@
 
             </div>
         
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
         
     </div>
 </div>

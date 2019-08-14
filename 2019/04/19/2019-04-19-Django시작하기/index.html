@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"Django 기본\nDjango 프로젝트 구조 살펴보기\n\n\n\nsecond_django 폴더 : 프로젝트 설정 파일과 웹 서비스 실행을 위한 파일들이 들어있다.\n\ninit.py : 파이썬 2.x대 버전과의 호환을 위해 만들어진 비어있는 파일이다. 지워도 무방하다\nsettings.py : 프로젝트 설정에 관한 다양한 내용이 들어있다.\nurls.py : 특정 기능을 수행하기 위해 접속하는 주소를 url이라 하고 이를 설정해주는데, 그 설정을 이 파일에 기록함\nwsgi.py : 웹 서비스를 실행하기 위한 wsgi 관련 내용이 들어있음\n\n\n\nvenv 폴더 : 프로젝트 구동에 필요한 가상환경이 들어있음\n\n\ndb.sqlite3 : SQLite3 DB 파일이다. 다른 DB를 이용할시 필요없다\n\n\n장고 기본 명령들\n\ndjango-admin startproject : 장고 프로젝트를 만드는 명령이다. 웹 서비스를 만들 때 마다 한번 실행한다.\nstartapp : 프로젝트에 기능 단위인 앱을 새로 만들때 사용\nmakemigrations : 어플리케이션에 변경 사항을 추적해 DB에 적용할 내용을 정리함. 보통 앱 안에 있는 모델(model)의 변경 사항이 있을 때 주로 사용함.\nsqlmigrate: 실행할 SQL 명령문을 출력한다\nmigrate : 실제 변경사항을 DB에 반영한다.\nshowmigrations : 프로젝트의 DB 변경사항 목록과 상태를 출력한다.\nrunserver : 테스트 서버를 실행한다.\ndumpdata : 현재 DB의 내용을 백업할 때 사용한다.\nloaddata : 백업 파일에서 DB로 내용을 복구 할 때 사용한다\nflush : DB 테이블은 그대로 두고 테이블의 내용만 전부 삭제한다\nshell : 장고 쉘(Shell)을 실행한다\ndbshell : DB에 직접 접근 할 수 있는 쉘을 실행한다\ncreatesuperuser : 관리자 계정을 생성한다\nchangepassword : 계정의 비밀번호를 변경할 수 있다\n\n\n디자인 패턴\nMVC와 MTV\n\n\n웹 프로그래밍에서 자주 쓰이는 디자인 패턴은 MVC이다 : Model-View-Controller\n\nModel : DB의 구조를 결정한다.\nView : 사용자에게 보여지는 UI부분이다\nController : 기능, 로직부분이다\n\n\n\n장고에서는 MTV라고 하나 이름만 다르고 동일한 패턴이다 : Model-Template-View\n\n양쪽모두 View가 있지만 기능이 서로 다르다 각각 연결해보면 (Model:Model)-(View:Template)-(Controller:View)이다\n\n\n\n","dateCreated":"2019-04-19T14:30:50+09:00","dateModified":"2019-04-23T10:14:11+09:00","datePublished":"2019-04-19T14:30:50+09:00","description":"","headline":"2019-04-19 Django 기본","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/19/2019-04-19-Django시작하기/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/04/19/2019-04-19-Django시작하기/","keywords":"Django"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Django 기본\nDjango 프로젝트 구조 살펴보기\n\n\n\nsecond_django 폴더 : 프로젝트 설정 파일과 웹 서비스 실행을 위한 파일들이 들어있다.\n\ninit.py : 파이썬 2.x대 버전과의 호환을 위해 만들어진 비어있는 파일이다. 지워도 무방하다\nsettings.py : 프로젝트 설정에 관한 다양한 내용이 들어있다.\nurls.py : 특정 기능을 수행하기 위해 접속하는 주소를 url이라 하고 이를 설정해주는데, 그 설정을 이 파일에 기록함\nwsgi.py : 웹 서비스를 실행하기 위한 wsgi 관련 내용이 들어있음\n\n\n\nvenv 폴더 : 프로젝트 구동에 필요한 가상환경이 들어있음\n\n\ndb.sqlite3 : SQLite3 DB 파일이다. 다른 DB를 이용할시 필요없다\n\n\n장고 기본 명령들\n\ndjango-admin startproject : 장고 프로젝트를 만드는 명령이다. 웹 서비스를 만들 때 마다 한번 실행한다.\nstartapp : 프로젝트에 기능 단위인 앱을 새로 만들때 사용\nmakemigrations : 어플리케이션에 변경 사항을 추적해 DB에 적용할 내용을 정리함. 보통 앱 안에 있는 모델(model)의 변경 사항이 있을 때 주로 사용함.\nsqlmigrate: 실행할 SQL 명령문을 출력한다\nmigrate : 실제 변경사항을 DB에 반영한다.\nshowmigrations : 프로젝트의 DB 변경사항 목록과 상태를 출력한다.\nrunserver : 테스트 서버를 실행한다.\ndumpdata : 현재 DB의 내용을 백업할 때 사용한다.\nloaddata : 백업 파일에서 DB로 내용을 복구 할 때 사용한다\nflush : DB 테이블은 그대로 두고 테이블의 내용만 전부 삭제한다\nshell : 장고 쉘(Shell)을 실행한다\ndbshell : DB에 직접 접근 할 수 있는 쉘을 실행한다\ncreatesuperuser : 관리자 계정을 생성한다\nchangepassword : 계정의 비밀번호를 변경할 수 있다\n\n\n디자인 패턴\nMVC와 MTV\n\n\n웹 프로그래밍에서 자주 쓰이는 디자인 패턴은 MVC이다 : Model-View-Controller\n\nModel : DB의 구조를 결정한다.\nView : 사용자에게 보여지는 UI부분이다\nController : 기능, 로직부분이다\n\n\n\n장고에서는 MTV라고 하나 이름만 다르고 동일한 패턴이다 : Model-Template-View\n\n양쪽모두 View가 있지만 기능이 서로 다르다 각각 연결해보면 (Model:Model)-(View:Template)-(Controller:View)이다\n\n\n\n","dateCreated":"2019-04-19T14:30:50+09:00","dateModified":"2019-04-23T10:14:11+09:00","datePublished":"2019-04-19T14:30:50+09:00","description":"","headline":"2019-04-19 Django 기본","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/19/2019-04-19-Django시작하기/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/04/19/2019-04-19-Django시작하기/","keywords":"Django"}</script>
     <meta name="description" content="Django 기본 Django 프로젝트 구조 살펴보기    second_django 폴더 : 프로젝트 설정 파일과 웹 서비스 실행을 위한 파일들이 들어있다.  init.py : 파이썬 2.x대 버전과의 호환을 위해 만들어진 비어있는 파일이다. 지워도 무방하다 settings.py : 프로젝트 설정에 관한 다양한 내용이 들어있다. urls.py : 특정 기능">
 <meta name="keywords" content="Django">
 <meta property="og:type" content="blog">
@@ -138,55 +138,10 @@
             
                 <li class="sidebar-button">
                     
-                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
-                    
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
-                    
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
-                    
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Facebook</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
-                    
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
-                    
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
                     </a>
             </li>
             
@@ -196,19 +151,6 @@
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
-                    
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
                     </a>
             </li>
             
@@ -538,6 +480,12 @@
 
             </div>
         
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
         
     </div>
 </div>

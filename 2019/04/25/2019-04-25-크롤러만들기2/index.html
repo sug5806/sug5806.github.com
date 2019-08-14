@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"네이버 쇼핑에서 주요 쇼핑몰 목록 가져오기\n12345678910111213141516171819202122232425262728import requestsfrom bs4 import BeautifulSoup# 네이버 쇼핑몰의 urlurl = \"https://shopping.naver.com/\"req = requests.get(url)if req.status_code == requests.codes.ok:    print(\"접속성공\")    html = BeautifulSoup(req.text, \"html.parser\")    # 각 리스트 원소마다 태그가 여러개 중첩되어 있음    s_list1 = html.select('ul#mallListPage1 li')    # print(s_list1)    # 각 리스트 원소마다 태그가 1개밖에 없음    s_list2 = html.select('ul#mallListPage1 li img')    # print(s_list2)    for i in s_list1:        # 중첩되어 있는 태그를 하나씩 분리함        mall_url = i.select_one('a')        mall_name = i.select_one('img')        # print(mall_name.get('alt'), mall_url.get('href'))        # print(mall_name['alt'], mall_url['href'])\n\n1234    # s_list2는 애초에 태그가 1개밖에 없으므로 분리 안해도 무방for i in s_list2:    print(i['alt'])    print(i.get('alt'))\n\n","dateCreated":"2019-04-25T10:31:23+09:00","dateModified":"2019-04-25T10:34:25+09:00","datePublished":"2019-04-25T10:31:23+09:00","description":"","headline":"2019-04-25 크롤러로 쇼핑몰 목록 가져오기(웹 크롤러 만들기2)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/25/2019-04-25-크롤러만들기2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/04/25/2019-04-25-크롤러만들기2/","keywords":"웹크롤러"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"네이버 쇼핑에서 주요 쇼핑몰 목록 가져오기\n12345678910111213141516171819202122232425262728import requestsfrom bs4 import BeautifulSoup# 네이버 쇼핑몰의 urlurl = \"https://shopping.naver.com/\"req = requests.get(url)if req.status_code == requests.codes.ok:    print(\"접속성공\")    html = BeautifulSoup(req.text, \"html.parser\")    # 각 리스트 원소마다 태그가 여러개 중첩되어 있음    s_list1 = html.select('ul#mallListPage1 li')    # print(s_list1)    # 각 리스트 원소마다 태그가 1개밖에 없음    s_list2 = html.select('ul#mallListPage1 li img')    # print(s_list2)    for i in s_list1:        # 중첩되어 있는 태그를 하나씩 분리함        mall_url = i.select_one('a')        mall_name = i.select_one('img')        # print(mall_name.get('alt'), mall_url.get('href'))        # print(mall_name['alt'], mall_url['href'])\n\n1234    # s_list2는 애초에 태그가 1개밖에 없으므로 분리 안해도 무방for i in s_list2:    print(i['alt'])    print(i.get('alt'))\n\n","dateCreated":"2019-04-25T10:31:23+09:00","dateModified":"2019-04-25T10:34:25+09:00","datePublished":"2019-04-25T10:31:23+09:00","description":"","headline":"2019-04-25 크롤러로 쇼핑몰 목록 가져오기(웹 크롤러 만들기2)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/25/2019-04-25-크롤러만들기2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/04/25/2019-04-25-크롤러만들기2/","keywords":"웹크롤러"}</script>
     <meta name="description" content="네이버 쇼핑에서 주요 쇼핑몰 목록 가져오기 12345678910111213141516171819202122232425262728import requestsfrom bs4 import BeautifulSoup# 네이버 쇼핑몰의 urlurl = &quot;https://shopping.naver.com/&quot;req = requests.get(url)if req.status">
 <meta name="keywords" content="웹크롤러">
 <meta property="og:type" content="blog">
@@ -139,55 +139,10 @@
             
                 <li class="sidebar-button">
                     
-                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
-                    
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
-                    
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
-                    
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Facebook</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
-                    
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
-                    
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
                     </a>
             </li>
             
@@ -197,19 +152,6 @@
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
-                    
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
                     </a>
             </li>
             
@@ -488,6 +430,12 @@
 
             </div>
         
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
         
     </div>
 </div>

@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"오늘은 admin page에서 검색 기능을 알아보도록 하겠습니다.\n먼저 검색기능을 추가하려면 admin.py에서 수정을 해야합니다\nadmin.py\n12345678910from django.contrib import adminfrom .models import AdminPage# Register your models here.class AdminPageAdmin(admin.ModelAdmin):    search_fields = [&apos;name&apos;]admin.site.register(AdminPage, AdminPageAdmin)\nModelAdmin을 상속받고 기존 admin.site.register(AdminPage)에 AdminPageAdmin을 추가시키면 됩니다.\n\n검색을 해보도록 하겠습니다.\n\n그런데 뭔가 마음에 들지 않습니다. 저는 필드 별로 구분을 하고싶은데 그럴수가 없습니다. 이 문제를 해결하도록 하겠습니다.\nadmin.py를 수정합니다.\n12345678910from django.contrib import adminfrom .models import AdminPage# Register your models here.class AdminPageAdmin(admin.ModelAdmin):    list_display = [&apos;name&apos;, &apos;age&apos;, &apos;address&apos;]    search_fields = [&apos;name&apos;]admin.site.register(AdminPage, AdminPageAdmin)\nlist_display를 추가하였습니다.\n\n","dateCreated":"2019-06-06T15:20:02+09:00","dateModified":"2019-08-12T14:24:55+09:00","datePublished":"2019-06-06T15:20:02+09:00","description":"","headline":"2019-06-06 Django admin page 다루기2","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/","keywords":"Django, admin_page"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"오늘은 admin page에서 검색 기능을 알아보도록 하겠습니다.\n먼저 검색기능을 추가하려면 admin.py에서 수정을 해야합니다\nadmin.py\n12345678910from django.contrib import adminfrom .models import AdminPage# Register your models here.class AdminPageAdmin(admin.ModelAdmin):    search_fields = [&apos;name&apos;]admin.site.register(AdminPage, AdminPageAdmin)\nModelAdmin을 상속받고 기존 admin.site.register(AdminPage)에 AdminPageAdmin을 추가시키면 됩니다.\n\n검색을 해보도록 하겠습니다.\n\n그런데 뭔가 마음에 들지 않습니다. 저는 필드 별로 구분을 하고싶은데 그럴수가 없습니다. 이 문제를 해결하도록 하겠습니다.\nadmin.py를 수정합니다.\n12345678910from django.contrib import adminfrom .models import AdminPage# Register your models here.class AdminPageAdmin(admin.ModelAdmin):    list_display = [&apos;name&apos;, &apos;age&apos;, &apos;address&apos;]    search_fields = [&apos;name&apos;]admin.site.register(AdminPage, AdminPageAdmin)\nlist_display를 추가하였습니다.\n\n","dateCreated":"2019-06-06T15:20:02+09:00","dateModified":"2019-08-12T14:24:55+09:00","datePublished":"2019-06-06T15:20:02+09:00","description":"","headline":"2019-06-06 Django admin page 다루기2","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/","keywords":"Django, admin_page"}</script>
     <meta name="description" content="오늘은 admin page에서 검색 기능을 알아보도록 하겠습니다. 먼저 검색기능을 추가하려면 admin.py에서 수정을 해야합니다 admin.py 12345678910from django.contrib import adminfrom .models import AdminPage# Register your models here.class AdminPageAdm">
 <meta name="keywords" content="Django,admin_page">
 <meta property="og:type" content="blog">
@@ -140,55 +140,10 @@
             
                 <li class="sidebar-button">
                     
-                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
-                    
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
-                    
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
-                    
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Facebook</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
-                    
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
-                    
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
                     </a>
             </li>
             
@@ -198,19 +153,6 @@
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
-                    
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
                     </a>
             </li>
             
@@ -497,6 +439,12 @@
 
             </div>
         
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
         
     </div>
 </div>

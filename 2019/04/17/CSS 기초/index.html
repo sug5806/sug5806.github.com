@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"CSS 기초1 (Syntax ~ background)\nCSS Syntax\nelement Selector\n123h1 &#123;color:blue;font-size:12px;&#125;/*h1 element의 색깔은 blue폰트 사이즈는 12px\nid Selector\n12345#para1&#123;    text-align:center;    color:red;&#125;/*id가 para1인 element의 텍스트 정렬은 중앙,색깔은 red\nclass Selector\n12345.center&#123;    text-align:center;    color:red;&#125;/*center 클래스의 텍스트 정렬은 중앙, 색깔은 red\nclass + element\n12345p.center&#123;    text-align:center;    color: red;/* p태그 이면서 center클래스의 텍스트 정렬은 중앙, 색깔은 red&#125;\n클래스 부여하기\n1&lt;p class=\"center large\"&gt;This paragraph refers to two classed.&lt;/p&gt;\nGrouping Selectors\n12345h1, h2, p&#123;    text-align:center;    color:red;&#125;/* h1, h2, p 태그의 텍스트 정렬은 중앙, 색깔은 red\n\nCSS를 삽입하는 3가지 방법\n1. External style sheet\n123&lt;head&gt;&lt;link rel=\"stylesheet\" type=\"text/css\" href=\"mystyle.css\"&gt;&lt;/head&gt;\n2. Internal stryle sheet\n123456789101112&lt;head&gt;&lt;style&gt;body&#123;    background-color:linen;&#125;h1&#123;    color: maroon;    margin-left: 40px;&#125;&lt;/style&gt;&lt;/head&gt;\n3. Inline style\n1&lt;h1 style=\"color:blue; margin-left:30px;\"&gt;This is a heading&lt;/h1&gt;\n\nBackgrounds\nBackground color\n123body &#123;    background-color: lightblue;&#125;\nBackground Image\n123body &#123;    background-image: url(\"paper.gif\")&#125;\n\n\n이미지를 X좌표로만 반복하기\n1234body&#123;    background-image:url(\"gradient_bg.png\");    background-repeat: repeat-x;&#125;\n\n\ny좌표로만 반복하려면 repteat -y를 해주면 된다.\n\n\n반복없이 하기\n1234body&#123;    background-image:url(\"gradient_bg.png\");    background-repeat: no-repeat;&#125;\n\n\n이미지를 오른쪽 상단에 위치시키기\n12345body&#123;    background-image:url(\"img_tree.png\");    background-repeat: no-repeat;    background-position: right top;&#125;\n\n\n스크롤해도 이미지 이동하지 않게 하기\n123456body&#123;    background-image:url(\"img_tree.png\");    background-repeat:no-repeat;    background-position:right top;    background-attachment: fixed;&#125;\n\n\nBackground - Shorthand roperty\n123body&#123;    bacground: red url(\"img_tree.png\") no-repeat right top;&#125;\n\n","dateCreated":"2019-04-17T21:18:32+09:00","dateModified":"2019-07-09T16:21:01+09:00","datePublished":"2019-04-17T21:18:32+09:00","description":"","headline":"2019-04-17 CSS 기초1","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/17/CSS 기초/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/04/17/CSS 기초/","keywords":"CSS"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"CSS 기초1 (Syntax ~ background)\nCSS Syntax\nelement Selector\n123h1 &#123;color:blue;font-size:12px;&#125;/*h1 element의 색깔은 blue폰트 사이즈는 12px\nid Selector\n12345#para1&#123;    text-align:center;    color:red;&#125;/*id가 para1인 element의 텍스트 정렬은 중앙,색깔은 red\nclass Selector\n12345.center&#123;    text-align:center;    color:red;&#125;/*center 클래스의 텍스트 정렬은 중앙, 색깔은 red\nclass + element\n12345p.center&#123;    text-align:center;    color: red;/* p태그 이면서 center클래스의 텍스트 정렬은 중앙, 색깔은 red&#125;\n클래스 부여하기\n1&lt;p class=\"center large\"&gt;This paragraph refers to two classed.&lt;/p&gt;\nGrouping Selectors\n12345h1, h2, p&#123;    text-align:center;    color:red;&#125;/* h1, h2, p 태그의 텍스트 정렬은 중앙, 색깔은 red\n\nCSS를 삽입하는 3가지 방법\n1. External style sheet\n123&lt;head&gt;&lt;link rel=\"stylesheet\" type=\"text/css\" href=\"mystyle.css\"&gt;&lt;/head&gt;\n2. Internal stryle sheet\n123456789101112&lt;head&gt;&lt;style&gt;body&#123;    background-color:linen;&#125;h1&#123;    color: maroon;    margin-left: 40px;&#125;&lt;/style&gt;&lt;/head&gt;\n3. Inline style\n1&lt;h1 style=\"color:blue; margin-left:30px;\"&gt;This is a heading&lt;/h1&gt;\n\nBackgrounds\nBackground color\n123body &#123;    background-color: lightblue;&#125;\nBackground Image\n123body &#123;    background-image: url(\"paper.gif\")&#125;\n\n\n이미지를 X좌표로만 반복하기\n1234body&#123;    background-image:url(\"gradient_bg.png\");    background-repeat: repeat-x;&#125;\n\n\ny좌표로만 반복하려면 repteat -y를 해주면 된다.\n\n\n반복없이 하기\n1234body&#123;    background-image:url(\"gradient_bg.png\");    background-repeat: no-repeat;&#125;\n\n\n이미지를 오른쪽 상단에 위치시키기\n12345body&#123;    background-image:url(\"img_tree.png\");    background-repeat: no-repeat;    background-position: right top;&#125;\n\n\n스크롤해도 이미지 이동하지 않게 하기\n123456body&#123;    background-image:url(\"img_tree.png\");    background-repeat:no-repeat;    background-position:right top;    background-attachment: fixed;&#125;\n\n\nBackground - Shorthand roperty\n123body&#123;    bacground: red url(\"img_tree.png\") no-repeat right top;&#125;\n\n","dateCreated":"2019-04-17T21:18:32+09:00","dateModified":"2019-07-09T16:21:01+09:00","datePublished":"2019-04-17T21:18:32+09:00","description":"","headline":"2019-04-17 CSS 기초1","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/17/CSS 기초/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/04/17/CSS 기초/","keywords":"CSS"}</script>
     <meta name="description" content="CSS 기초1 (Syntax ~ background) CSS Syntax element Selector 123h1 &amp;#123;color:blue;font-size:12px;&amp;#125;/*h1 element의 색깔은 blue폰트 사이즈는 12px id Selector 12345#para1&amp;#123;    text-align:center;    color:re">
 <meta name="keywords" content="CSS">
 <meta property="og:type" content="blog">
@@ -136,55 +136,10 @@
             
                 <li class="sidebar-button">
                     
-                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
-                    
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
-                    
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
-                    
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Facebook</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
-                    
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
-                    
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
                     </a>
             </li>
             
@@ -194,19 +149,6 @@
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
-                    
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
                     </a>
             </li>
             
@@ -532,6 +474,12 @@
 
             </div>
         
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
         
     </div>
 </div>

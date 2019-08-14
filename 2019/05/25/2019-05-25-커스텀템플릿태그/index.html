@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"커스텀 템플릿 태그 만들기\n템플릿 문법을 사용하다보면 필요한 기능이 없는 경우가 있습니다. 이럴 때는 직접 만들어서 사용할 수 있습니다.\n커스텀 템플릿 태그와 템플릿 필터를 만들 수 있습니다.\n\n\n커스텀 기능을 만들기 위해서는 앱 안에 templatetags라는 폴더를 만들어야 합니다.\n\n\n\n원하는 기능을 작성할 파일을 작성합니다. 템플릿 파일에서 이 파일명으로 기능을 불러 옵니다.\n\n\n\n템플릿 라이브러리 변수를 만듭니다.\n 12from django import templateregister = template.Library()\n\n\n\n\n필터를 등록할 때는 다음과 같이 코드를 합니다.\n 123@register.filterdef add_two(value):    return value+2\n\n\n등록된 필터는 다음과 같이 사용합니다.\n 12&#123;% load example %&#125;&#123;&#123;변수|add_two&#125;&#125;\n\n\n태그를 등록할 때는 다음과 같이 코드를 작성합니다.\n 123@register_simple_tagdef print_template():    return render_to_string('blog/test.html')\n\n\n등록한 태그는 다음과 같이 사용합니다.\n 12&#123;% load example %&#125;&#123;% print_template %&#125;\n\n\n태그를 실행한 결과를 변수로 지정하려면 as 키워드를 사용합니다.\n123&#123;% load %&#125;&#123;% print_template as test %&#125;&#123;&#123;test&#125;&#125;\n\n\n추가 인자가 있는 필터는 다음과 같이 코드를 작성합니다.\n 123@register.filterdef string_append(left, right):    return left+\"-\"+right\n\n\n해당 필터는 다음과 같이 사용합니다.\n12&#123;% load blog %&#125;&#123;&#123;'string1'|string_append:'string2'&#125;&#125;\n\n","dateCreated":"2019-05-25T18:32:46+09:00","dateModified":"2019-06-23T20:04:50+09:00","datePublished":"2019-05-25T18:32:46+09:00","description":"","headline":"2019-05-25 장고 커스텀 템플릿 태그","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/05/25/2019-05-25-커스텀템플릿태그/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/05/25/2019-05-25-커스텀템플릿태그/","keywords":"커스텀템플릿태그"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"커스텀 템플릿 태그 만들기\n템플릿 문법을 사용하다보면 필요한 기능이 없는 경우가 있습니다. 이럴 때는 직접 만들어서 사용할 수 있습니다.\n커스텀 템플릿 태그와 템플릿 필터를 만들 수 있습니다.\n\n\n커스텀 기능을 만들기 위해서는 앱 안에 templatetags라는 폴더를 만들어야 합니다.\n\n\n\n원하는 기능을 작성할 파일을 작성합니다. 템플릿 파일에서 이 파일명으로 기능을 불러 옵니다.\n\n\n\n템플릿 라이브러리 변수를 만듭니다.\n 12from django import templateregister = template.Library()\n\n\n\n\n필터를 등록할 때는 다음과 같이 코드를 합니다.\n 123@register.filterdef add_two(value):    return value+2\n\n\n등록된 필터는 다음과 같이 사용합니다.\n 12&#123;% load example %&#125;&#123;&#123;변수|add_two&#125;&#125;\n\n\n태그를 등록할 때는 다음과 같이 코드를 작성합니다.\n 123@register_simple_tagdef print_template():    return render_to_string('blog/test.html')\n\n\n등록한 태그는 다음과 같이 사용합니다.\n 12&#123;% load example %&#125;&#123;% print_template %&#125;\n\n\n태그를 실행한 결과를 변수로 지정하려면 as 키워드를 사용합니다.\n123&#123;% load %&#125;&#123;% print_template as test %&#125;&#123;&#123;test&#125;&#125;\n\n\n추가 인자가 있는 필터는 다음과 같이 코드를 작성합니다.\n 123@register.filterdef string_append(left, right):    return left+\"-\"+right\n\n\n해당 필터는 다음과 같이 사용합니다.\n12&#123;% load blog %&#125;&#123;&#123;'string1'|string_append:'string2'&#125;&#125;\n\n","dateCreated":"2019-05-25T18:32:46+09:00","dateModified":"2019-06-23T20:04:50+09:00","datePublished":"2019-05-25T18:32:46+09:00","description":"","headline":"2019-05-25 장고 커스텀 템플릿 태그","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/05/25/2019-05-25-커스텀템플릿태그/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/05/25/2019-05-25-커스텀템플릿태그/","keywords":"커스텀템플릿태그"}</script>
     <meta name="description" content="커스텀 템플릿 태그 만들기 템플릿 문법을 사용하다보면 필요한 기능이 없는 경우가 있습니다. 이럴 때는 직접 만들어서 사용할 수 있습니다. 커스텀 템플릿 태그와 템플릿 필터를 만들 수 있습니다.   커스텀 기능을 만들기 위해서는 앱 안에 templatetags라는 폴더를 만들어야 합니다.    원하는 기능을 작성할 파일을 작성합니다. 템플릿 파일에서 이 파일">
 <meta name="keywords" content="커스텀템플릿태그">
 <meta property="og:type" content="blog">
@@ -139,55 +139,10 @@
             
                 <li class="sidebar-button">
                     
-                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
-                    
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
-                    
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
-                    
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Facebook</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
-                    
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
-                    
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
                     </a>
             </li>
             
@@ -197,19 +152,6 @@
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
-                    
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
                     </a>
             </li>
             
@@ -529,6 +471,12 @@
 
             </div>
         
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
         
     </div>
 </div>

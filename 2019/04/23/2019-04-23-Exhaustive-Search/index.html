@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"완전 검색 방법\n\n문제의 해법으로 생각할 수 있는 모든 경우의 수를 나열해보고 확인하는 기법, 다시말해 처음부터 끝까지 하나하나 대입해서 푸는 방법이다\n\nBrute-force 혹은 Henerate-and-Test 기법이라고 불림\n모든 경우의 수를 테스트한 후, 최종 해법을 도출함\n일반적으로 경우의 수가 상대적으로 작을 때 유용함\n모든 경우의 수를 생성하고 테스트하기 때문에 수행 속도는 느리지만, 해답을 찾아내지 못할 확률이 적음\n주어진 문제를 풀 때, 우선 완전 검색으로 접근하여 해답을 도출한 후, 성능 개선을 위해 다른 알고리즘을 사용하고 해답을 확인하는 것이 바람직하다\n\n\nEx) Baby-gin 게임\n\n\n\n6개의 숫자로 만들 수 있는 모든 숫자 나열(중복 포함)\n\n\n\n\n앞의 3자리와 뒤의 3자리를 잘라, run과 triplete 여부를 테스트하고 최종적으로 Baby-gin을 판단함\n\n\n\n\nEx) 순열 : 서로 다른 것들 중 몇 개를 뽑아서 한 줄로 나열하는 것\n\n서로 다른 n개 중 r개를 택하는 순열은 nPr\nnPr은 다음과 같은 식이 성립 : nPr = n*(n-1)(n-2) … * (n-r+1)\nnPn = n! 이라고 표기하며 Factorial이라 부른다\n\n\n\n","dateCreated":"2019-04-23T21:11:12+09:00","dateModified":"2019-04-23T21:11:51+09:00","datePublished":"2019-04-23T21:11:12+09:00","description":"","headline":"2019-04-23 Exhaustive Search(과도한 검색)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/23/2019-04-23-Exhaustive-Search/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/04/23/2019-04-23-Exhaustive-Search/","keywords":"Exhaustive Search"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"완전 검색 방법\n\n문제의 해법으로 생각할 수 있는 모든 경우의 수를 나열해보고 확인하는 기법, 다시말해 처음부터 끝까지 하나하나 대입해서 푸는 방법이다\n\nBrute-force 혹은 Henerate-and-Test 기법이라고 불림\n모든 경우의 수를 테스트한 후, 최종 해법을 도출함\n일반적으로 경우의 수가 상대적으로 작을 때 유용함\n모든 경우의 수를 생성하고 테스트하기 때문에 수행 속도는 느리지만, 해답을 찾아내지 못할 확률이 적음\n주어진 문제를 풀 때, 우선 완전 검색으로 접근하여 해답을 도출한 후, 성능 개선을 위해 다른 알고리즘을 사용하고 해답을 확인하는 것이 바람직하다\n\n\nEx) Baby-gin 게임\n\n\n\n6개의 숫자로 만들 수 있는 모든 숫자 나열(중복 포함)\n\n\n\n\n앞의 3자리와 뒤의 3자리를 잘라, run과 triplete 여부를 테스트하고 최종적으로 Baby-gin을 판단함\n\n\n\n\nEx) 순열 : 서로 다른 것들 중 몇 개를 뽑아서 한 줄로 나열하는 것\n\n서로 다른 n개 중 r개를 택하는 순열은 nPr\nnPr은 다음과 같은 식이 성립 : nPr = n*(n-1)(n-2) … * (n-r+1)\nnPn = n! 이라고 표기하며 Factorial이라 부른다\n\n\n\n","dateCreated":"2019-04-23T21:11:12+09:00","dateModified":"2019-04-23T21:11:51+09:00","datePublished":"2019-04-23T21:11:12+09:00","description":"","headline":"2019-04-23 Exhaustive Search(과도한 검색)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/23/2019-04-23-Exhaustive-Search/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/04/23/2019-04-23-Exhaustive-Search/","keywords":"Exhaustive Search"}</script>
     <meta name="description" content="완전 검색 방법  문제의 해법으로 생각할 수 있는 모든 경우의 수를 나열해보고 확인하는 기법, 다시말해 처음부터 끝까지 하나하나 대입해서 푸는 방법이다  Brute-force 혹은 Henerate-and-Test 기법이라고 불림 모든 경우의 수를 테스트한 후, 최종 해법을 도출함 일반적으로 경우의 수가 상대적으로 작을 때 유용함 모든 경우의 수를 생성하고">
 <meta name="keywords" content="Exhaustive Search">
 <meta property="og:type" content="blog">
@@ -136,55 +136,10 @@
             
                 <li class="sidebar-button">
                     
-                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
-                    
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
-                    
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
-                    
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Facebook</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
-                    
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
-                    
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
                     </a>
             </li>
             
@@ -194,19 +149,6 @@
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
-                    
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
                     </a>
             </li>
             
@@ -513,6 +455,12 @@
 
             </div>
         
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
         
     </div>
 </div>

@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"Heroku에 장고 배포하기\n1. 모듈을 설치해야 한다.\n\n\ndj-database-url : 데이터베이스 관련 옵션을 변수로 쉽게 접근할 수 있게 해주는 유틸리티\n\n\ngunicorn : wsgi용 미들웨어 : 웹서버와 장고 사이에서 다리역할을 한다\n\n\nwhitenoise : static 파일 서빙용 미들웨어\n\n\npsycopg2-binary : postgreSQL용 드라이버\n\n\n2. pip freeze &gt; requirements.txt 명령을 통해 현재 자신한테 설치되어 있는 모듈의 목록을 만든다\n3. settings.py에서 세팅을 한다\n123456789# 맨 밑에 추가STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')DEBUG = FalseALLOWED_HOSTS = ['*']# MIDDLEWARE 2번째 줄에 추가 'whitenoise.middleware.WhiteNoiseMiddleware',\n4. git 설정\n\nheroku login : 헤로쿠 계정으로 로그인한다\ngit init : 현재 폴더로 깃을 사용하겠다\ngit add -A . : 현재 변경 사항 전부를 add하겠다\ngit commit -m &quot;message&quot; : add한 내용을 commit을 하겠다\n\n5. heroku app 만들기\n\nheroku create [app_name] : app_name에서 특수문자는 - 만 사용가능하다\n\n6. 업로드\n\ngit push heroku master\n\n7. db 초기화\n\nheroku run python manage.py migrate\n\n8. 관리자 비밀번호 만들기\n\nheroku run python manage.py createsuperuser\n\n9. 확인하기\n\nheroku open\n\n","dateCreated":"2019-05-09T18:32:50+09:00","dateModified":"2019-05-15T23:13:58+09:00","datePublished":"2019-05-09T18:32:50+09:00","description":"","headline":"2019-05-09 heroku에 장고 배포하기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/05/09/2019-05-03-Django-Heroku배포하기/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/05/09/2019-05-03-Django-Heroku배포하기/","keywords":"Django 배포, Heroku"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Heroku에 장고 배포하기\n1. 모듈을 설치해야 한다.\n\n\ndj-database-url : 데이터베이스 관련 옵션을 변수로 쉽게 접근할 수 있게 해주는 유틸리티\n\n\ngunicorn : wsgi용 미들웨어 : 웹서버와 장고 사이에서 다리역할을 한다\n\n\nwhitenoise : static 파일 서빙용 미들웨어\n\n\npsycopg2-binary : postgreSQL용 드라이버\n\n\n2. pip freeze &gt; requirements.txt 명령을 통해 현재 자신한테 설치되어 있는 모듈의 목록을 만든다\n3. settings.py에서 세팅을 한다\n123456789# 맨 밑에 추가STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')DEBUG = FalseALLOWED_HOSTS = ['*']# MIDDLEWARE 2번째 줄에 추가 'whitenoise.middleware.WhiteNoiseMiddleware',\n4. git 설정\n\nheroku login : 헤로쿠 계정으로 로그인한다\ngit init : 현재 폴더로 깃을 사용하겠다\ngit add -A . : 현재 변경 사항 전부를 add하겠다\ngit commit -m &quot;message&quot; : add한 내용을 commit을 하겠다\n\n5. heroku app 만들기\n\nheroku create [app_name] : app_name에서 특수문자는 - 만 사용가능하다\n\n6. 업로드\n\ngit push heroku master\n\n7. db 초기화\n\nheroku run python manage.py migrate\n\n8. 관리자 비밀번호 만들기\n\nheroku run python manage.py createsuperuser\n\n9. 확인하기\n\nheroku open\n\n","dateCreated":"2019-05-09T18:32:50+09:00","dateModified":"2019-05-15T23:13:58+09:00","datePublished":"2019-05-09T18:32:50+09:00","description":"","headline":"2019-05-09 heroku에 장고 배포하기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/05/09/2019-05-03-Django-Heroku배포하기/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/05/09/2019-05-03-Django-Heroku배포하기/","keywords":"Django 배포, Heroku"}</script>
     <meta name="description" content="Heroku에 장고 배포하기 1. 모듈을 설치해야 한다.   dj-database-url : 데이터베이스 관련 옵션을 변수로 쉽게 접근할 수 있게 해주는 유틸리티   gunicorn : wsgi용 미들웨어 : 웹서버와 장고 사이에서 다리역할을 한다   whitenoise : static 파일 서빙용 미들웨어   psycopg2-binary : postgre">
 <meta name="keywords" content="Django 배포,Heroku">
 <meta property="og:type" content="blog">
@@ -136,55 +136,10 @@
             
                 <li class="sidebar-button">
                     
-                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
-                    
-                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Stack Overflow</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
-                    
-                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Twitter</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
-                    
-                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Facebook</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
-                    
-                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">Google +</span>
-                    </a>
-            </li>
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
-                    
-                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">LinkedIn</span>
                     </a>
             </li>
             
@@ -194,19 +149,6 @@
                     
                         <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">Mail</span>
-                    </a>
-            </li>
-            
-        </ul>
-        
-            <ul class="sidebar-buttons">
-            
-                <li class="sidebar-button">
-                    
-                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
-                    
-                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
-                        <span class="sidebar-button-desc">RSS</span>
                     </a>
             </li>
             
@@ -526,6 +468,12 @@
 
             </div>
         
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
         
     </div>
 </div>
