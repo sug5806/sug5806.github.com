@@ -1,233 +1,278 @@
+
 <!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.8.0">
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<html lang="ko">
+    
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--Description-->
-
-    
-
-    
-        <meta name="description" content="공부한것을 정리하여 올리는 블로그입니다">
-    
-
-    <!--Author-->
-    
-        <meta name="author" content="sug5806">
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="2019-04-24 웹 크롤러 만들기 1">
-    
-
-    <!--Open Graph Description-->
-    
-        <meta property="og:description" content="공부한것을 정리하여 올리는 블로그입니다">
-    
-
-    <!--Open Graph Site Name-->
-        <meta property="og:site_name" content="sug5806의 블로그">
-
-    <!--Type page-->
-    
-        <meta property="og:type" content="article">
-    
-
-    <!--Page Cover-->
-    
-    
-        <meta property="og:image" content="https://sug5806.github.iohttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
-    
-
-        <meta name="twitter:card" content="summary_large_image">
-
-    
-
-    
-        <meta name="twitter:image" content="https://sug5806.github.iohttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
-    
-
-    <!-- Title -->
-    
+    <meta name="generator" content="sug5806의 블로그">
     <title>2019-04-24 웹 크롤러 만들기 1 - sug5806의 블로그</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/style.css">
-
-    <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Gallery -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
-
-    <!-- Google Analytics -->
+    <meta name="author" content="sug5806">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"크롤러 만들기 1\n크롤러 : 웹 페이지에 있는 자료를 자동으로 수집하는 프로그램\nEx) 검색엔진\n–&gt;\nRobot.txt : 검색엔진에게 어디까지 검색을 허용할 것이냐?\n브라우저가 혹은 크롤러 어떤식으로 서버에 접근해서 데이터를 가져오는가?\n\n주소를 입력하면 해당 서버로 접근한다.\n웹 서버 프로그램이 해당 주소에 맞는 내용을 전달한다.\n\nrequest -&gt; 3rd party 모듈\nurllib의 wrapper 클래스\n\n\n소스\n\n받은 내용을 해석해서 내가 원하는 데이터를 찾는다. 뽑아낸다.\n\nBeautifulSoup\nHTML 코드의 해석\nCSS Selector 만드는 방법\n\n\n\n\n\n모듈 설치 :\n\nrequest -&gt; pip install request\nBeautifulSoup -&gt; pip install BeautifulSoup4\n\n크롤러 자체는 불법이 아니나 얻은 정보로 수익창출을 하면 불법이다.\n크롤러를 이용해 매크로 구현가능\n\n웹 페이지에 접근해서 데이터를 가져온다.\nrequests는 Ajax로 받아온 데이터를 실시간으로 반영할 수 없다.\nrequestt로 받아온 데이터는 소스보기에서 보는 소스까지만 있다.(실시간 반영이 안된다)\n\nselenium : 웹 브라우저를 원격 조작하는 방식의 크롤러\n크롤링 모듈 : selenium, scrapy\n\n1import requests\nBeautifulSoup을 사용하여 가져온 데이터를 HTML로 해석한다.\n1from bs4 import BeautifulSoup\n개발자도구의 elements와 우클릭 페이지 소스보기가 다른경우가 있다\n\n페이지 소스보기 : 맨처음 얻게되는 코드\n개발자 도구의 Elements : 실시간으로 바뀌는 코드가 포함되어 있다\n\nAJAX를 이용해 일부만 리프레쉬가능\n\n\n\n개발자도구\n\nSources를 통해 홈페이지가 어떻게 구성되어 있는지 알 수 있다\nNetwork : 웹페이지를 띄울때 파일들이 잘 받아졌나 볼 수 있다\n\nProtocol : h2은 http2.0으로 접속을 하였다.\n\n\n\n\n셀렉터 : 가지고오고 싶은 내용을 감싸고있는 태그를 가져온다.\nHTML 태그\n\nContainer Tag : 안에 내용을 포함하고 있는 태그(Ex. &lt;div td=&quot;asdf&quot;&gt;내용&lt;/div&gt;)\nEmpty Tag : 안에 내용을 포함하고 있지 않는 태그(Ex. &lt;img src=&quot;이미지주소&quot;&gt;)\n\n단일 셀렉터\n\n\ntag이름 : div\n\n태그는 속성을 갖는다. -&gt; &lt;tag id=&quot;&quot; class=&quot;test&quot; data-rel=&quot;&quot; data-num=&quot;&quot;&gt;cont&lt;/tag&gt;\n\n\n\nid : 태그와 구분하기위해 #super -&gt; 한 페이지 내에서 단 한개\n\n\nclass : 태그와 구분하기위해 .test -&gt; 별명또는 그룹 개념\n\n\n다중 셀렉터\n~안에 있는 무엇\n\ndiv ul li.ah_k -&gt; 띄어쓰기로 구분\n\ndiv li.ah_k : 중간경로 생략 가능, 그냥 ~안에\n\n\ndiv &gt; ul &gt; li.ah_k : &gt;로 구분, 조금 더 빠르다\n\n중간경로 생략 불가능, ~바로 ~안에\n\n\n\n~이고 ~인것\n\n&lt;span class=&quot;ah_k&quot;&gt;???&lt;/span&gt;\nspan.ah_k.anroll\n&lt;div class=&quot;ah_k&quot;&gt;???\\&lt;/div&gt;\n\n~의 근처에 있는 것\n\nHTTP Method : Get, Post, Put, Head, Delete\n\nGet : 리소스 얻기\nPost : 데이터 전달 - 로그인, 회원가입, 글쓰기 -&gt; 이후에 수정할때\nPut : 리소스 전달(파일이나 동영상, 사진) - 사진 올리기 -&gt; 최초 업로드\nDelete : 리소스 삭제\nHead : Method 확인\n크롬에서 Postman 이라는 확장프로그램을 설치하라 : 어떠한 방식으로 전달하는지 알 수 있음\n\n네이버에서 실시간 검색어 가져오기\n웹 페이지에 접근해서 데이터를 가져온다.\n1import requests\n가져온 데이터를 HTML로 해석한다.\n1from bs4 import BeautifulSoup\n가져오고자 하는 페이지의 주소를 적는다.\n1url = \"https://www.naver.com/\"\n12345678910111213141516171819202122232425262728293031323334# requests 모듈로 해당 url의 데이터를 가져온다req = requests.get(url)# Response Status을 requests 모듈 안에 명세를 해놓음  if req.status_code == requests.codes.ok:    print('접속 성공')    # 여기서 데이터를 해석하면 된다    # req.text에 받아온 데이터가 담겨져 있다    html = BeautifulSoup(req.text, \"html.parser\")    # select와 select_one의 차이점은 select_one()은 해당하는 것중 제일 첫번째만 반환    # span1 = html.select('.PM_CL_realtimeKeyword_list_base span.ah_k')    # print(\"span1\", span1)    # # 목록에 있는것 20개 돌아가고있는것 40    # print(len(span1))    # ~어떤 요소를 찾고    # 그 요소 안에 각각의 요소를 다시 찾을 수 있다.    # 클래스 ah_item에 각종 정보가 들어있다    items = html.select('.PM_CL_realtimeKeyword_list_base .ah_item')    for item in items:        # select_one으로 하나씩 뽑아온다.        keyword = item.select_one('.ah_k')        rank = item.select_one('.ah_r')        link = item.select_one('.ah_a')        # link['속성명']으로 해당 속성의 링크를 가져올 수 있다        print(rank.text, keyword.text, link['href'])else:    print('접속 실패')\n결과 화면\n\n","dateCreated":"2019-04-24T16:36:02+09:00","dateModified":"2019-07-09T16:21:37+09:00","datePublished":"2019-04-24T16:36:02+09:00","description":"","headline":"2019-04-24 웹 크롤러 만들기 1","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/24/2019-04-24-Crawler/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/04/24/2019-04-24-Crawler/","keywords":"웹크롤러"}</script>
+    <meta name="description" content="크롤러 만들기 1 크롤러 : 웹 페이지에 있는 자료를 자동으로 수집하는 프로그램 Ex) 검색엔진 –&amp;gt; Robot.txt : 검색엔진에게 어디까지 검색을 허용할 것이냐? 브라우저가 혹은 크롤러 어떤식으로 서버에 접근해서 데이터를 가져오는가?  주소를 입력하면 해당 서버로 접근한다. 웹 서버 프로그램이 해당 주소에 맞는 내용을 전달한다.  request">
+<meta name="keywords" content="웹크롤러">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="2019-04-24 웹 크롤러 만들기 1">
+<meta property="og:url" content="https://sug5806.github.io/2019/04/24/2019-04-24-Crawler/index.html">
+<meta property="og:site_name" content="sug5806의 블로그">
+<meta property="og:description" content="크롤러 만들기 1 크롤러 : 웹 페이지에 있는 자료를 자동으로 수집하는 프로그램 Ex) 검색엔진 –&amp;gt; Robot.txt : 검색엔진에게 어디까지 검색을 허용할 것이냐? 브라우저가 혹은 크롤러 어떤식으로 서버에 접근해서 데이터를 가져오는가?  주소를 입력하면 해당 서버로 접근한다. 웹 서버 프로그램이 해당 주소에 맞는 내용을 전달한다.  request">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="https://sug5806.github.io/image/Crawler_naver.png">
+<meta property="og:updated_time" content="2019-07-09T07:21:37.629Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019-04-24 웹 크롤러 만들기 1">
+<meta name="twitter:description" content="크롤러 만들기 1 크롤러 : 웹 페이지에 있는 자료를 자동으로 수집하는 프로그램 Ex) 검색엔진 –&amp;gt; Robot.txt : 검색엔진에게 어디까지 검색을 허용할 것이냐? 브라우저가 혹은 크롤러 어떤식으로 서버에 접근해서 데이터를 가져오는가?  주소를 입력하면 해당 서버로 접근한다. 웹 서버 프로그램이 해당 주소에 맞는 내용을 전달한다.  request">
+<meta name="twitter:image" content="https://sug5806.github.io/image/Crawler_naver.png">
+    
+    
+        
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-xmwjmaw63fz9loualz1qmrwgsqz40hdvx3wm88nlmrq0pgtqesn7rfguwvks.min.css">
+    <!--STYLES END-->
     
 
-
-    <!-- favicon -->
     
 
+    
+        
+    
 </head>
 
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
 
-<body>
 
-    <!-- Menu -->
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">sug5806의 블로그</a>
-        </div>
+    
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                
-                    <li>
-                        <a href="/">
-                            
-                                Home
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/archives">
-                            
-                                Archives
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/tags">
-                            
-                                Tags
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/categories">
-                            
-                                Categories
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="https://github.com/sug5806">
-                            
-                                <i class="fa fa-github fa-stack-2x"></i>
-                            
-                        </a>
-                    </li>
-                
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ " aria-label>
+            sug5806의 블로그
+        </a>
     </div>
-    <!-- /.container -->
-</nav>
-
-    <!-- Main Content -->
-    <!-- Page Header -->
-<!-- Set your background image for this header in your post front-matter: cover -->
-
-<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>2019-04-24 웹 크롤러 만들기 1</h1>
-                    
-                    <h2 class="post-subheading">
-                        웹크롤러 만들기
-                    </h2>
-                    
-                    <span class="meta">
-                        <!-- Date and Author -->
-                        
-                        
-                            2019-04-24
-                        
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+        
+            <a class="header-right-picture " href="#about" aria-label="링크 열기: /#about">
+        
+        
+        </a>
+    
 </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-
-            <!-- Tags and categories -->
-           
-                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
-                    
-                        
+            <!-- Define author's picture -->
 
 
-<a href="/tags/웹크롤러/">#웹크롤러</a>
-
-
-                    
-                </div>
-                <div class="col-lg-4 col-md-5 post-categories">
-                    
-                        
-
-<a href="/categories/python/">python</a>
-
-                    
-                </div>
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+        
+            <ul class="sidebar-buttons">
             
-
-            <!-- Gallery -->
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/ " title="Home">
+                    
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
             
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-categories" title="카테고리">
+                    
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-tags" title="태그">
+                    
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-archives" title="아카이브">
+                    
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">아카이브</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link open-algolia-search" href="#search" title="검색">
+                    
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">검색</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="#about" title="About">
+                    
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
+                    
+                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Stack Overflow</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
+                    
+                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
+                    
+                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Facebook</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
+                    
+                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Google +</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
+                    
+                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">LinkedIn</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/mailto" title="Mail">
+                    
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
+                    
+                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">RSS</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
 
-            <!-- Post Main Content -->
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h1 id="크롤러-만들기-1"><a href="#크롤러-만들기-1" class="headerlink" title="크롤러 만들기 1"></a>크롤러 만들기 1</h1><p>크롤러 : 웹 페이지에 있는 자료를 자동으로 수집하는 프로그램<br>Ex) 검색엔진<br>–&gt;<br>Robot.txt : 검색엔진에게 어디까지 검색을 허용할 것이냐?</p>
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            2019-04-24 웹 크롤러 만들기 1
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2019-04-24T16:36:02+09:00">
+	
+		    2019/04/24
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/python/">python</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h1>크롤러 만들기 1</h1>
+<p>크롤러 : 웹 페이지에 있는 자료를 자동으로 수집하는 프로그램<br>
+Ex) 검색엔진<br>
+–&gt;<br>
+Robot.txt : 검색엔진에게 어디까지 검색을 허용할 것이냐?</p>
 <p>브라우저가 혹은 크롤러 어떤식으로 서버에 접근해서 데이터를 가져오는가?</p>
 <ol>
-<li>주소를 입력하면 해당 서버로 접근한다.  </li>
-<li>웹 서버 프로그램이 해당 주소에 맞는 내용을 전달한다.<ul>
+<li>주소를 입력하면 해당 서버로 접근한다.</li>
+<li>웹 서버 프로그램이 해당 주소에 맞는 내용을 전달한다.
+<ul>
 <li>request -&gt; 3rd party 모듈</li>
-<li>urllib의 wrapper 클래스  </li>
+<li>urllib의 wrapper 클래스</li>
 </ul>
 </li>
-<li>소스 <ul>
-<li>받은 내용을 해석해서 내가 원하는 데이터를 찾는다. 뽑아낸다.<ul>
-<li>BeautifulSoup </li>
+<li>소스
+<ul>
+<li>받은 내용을 해석해서 내가 원하는 데이터를 찾는다. 뽑아낸다.
+<ul>
+<li>BeautifulSoup</li>
 <li>HTML 코드의 해석</li>
 <li>CSS Selector 만드는 방법</li>
 </ul>
@@ -240,19 +285,24 @@
 <li>request -&gt; pip install request</li>
 <li>BeautifulSoup -&gt; pip install BeautifulSoup4</li>
 </ol>
-<p>크롤러 자체는 불법이 아니나 얻은 정보로 수익창출을 하면 불법이다.<br>크롤러를 이용해 매크로 구현가능</p>
+<p>크롤러 자체는 불법이 아니나 얻은 정보로 수익창출을 하면 불법이다.<br>
+크롤러를 이용해 매크로 구현가능</p>
 <hr>
-<p>웹 페이지에 접근해서 데이터를 가져온다.<br>requests는 Ajax로 받아온 데이터를 실시간으로 반영할 수 없다.<br>requestt로 받아온 데이터는 소스보기에서 보는 소스까지만 있다.(실시간 반영이 안된다)</p>
+<p>웹 페이지에 접근해서 데이터를 가져온다.<br>
+requests는 Ajax로 받아온 데이터를 실시간으로 반영할 수 없다.<br>
+requestt로 받아온 데이터는 소스보기에서 보는 소스까지만 있다.(실시간 반영이 안된다)</p>
 <ul>
 <li>selenium : 웹 브라우저를 원격 조작하는 방식의 크롤러</li>
-<li>크롤링 모듈 : selenium, scrapy  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br></pre></td></tr></table></figure>
-</li>
+<li>크롤링 모듈 : selenium, scrapy</li>
 </ul>
-<p>BeautifulSoup을 사용하여 가져온 데이터를 HTML로 해석한다.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br></pre></td></tr></table></figure>
+<p>BeautifulSoup을 사용하여 가져온 데이터를 HTML로 해석한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br></pre></td></tr></table></figure>
 <p>개발자도구의 elements와 우클릭 페이지 소스보기가 다른경우가 있다</p>
 <ul>
 <li>페이지 소스보기 : 맨처음 얻게되는 코드</li>
-<li>개발자 도구의 Elements : 실시간으로 바뀌는 코드가 포함되어 있다<ul>
+<li>개발자 도구의 Elements : 실시간으로 바뀌는 코드가 포함되어 있다
+<ul>
 <li>AJAX를 이용해 일부만 리프레쉬가능</li>
 </ul>
 </li>
@@ -260,41 +310,52 @@
 <p>개발자도구</p>
 <ul>
 <li>Sources를 통해 홈페이지가 어떻게 구성되어 있는지 알 수 있다</li>
-<li>Network : 웹페이지를 띄울때 파일들이 잘 받아졌나 볼 수 있다<ul>
+<li>Network : 웹페이지를 띄울때 파일들이 잘 받아졌나 볼 수 있다
+<ul>
 <li>Protocol : h2은 http2.0으로 접속을 하였다.</li>
 </ul>
 </li>
 </ul>
 <hr>
-<p>셀렉터 : 가지고오고 싶은 내용을 감싸고있는 태그를 가져온다.<br>HTML 태그</p>
+<p>셀렉터 : 가지고오고 싶은 내용을 감싸고있는 태그를 가져온다.<br>
+HTML 태그</p>
 <ol>
 <li>Container Tag : 안에 내용을 포함하고 있는 태그(Ex. <code>&lt;div td=&quot;asdf&quot;&gt;내용&lt;/div&gt;</code>)</li>
 <li>Empty Tag : 안에 내용을 포함하고 있지 않는 태그(Ex. <code>&lt;img src=&quot;이미지주소&quot;&gt;)</code></li>
 </ol>
-<h2 id="단일-셀렉터"><a href="#단일-셀렉터" class="headerlink" title="단일 셀렉터"></a>단일 셀렉터</h2><ol>
-<li><p>tag이름 : div</p>
+<h2>단일 셀렉터</h2>
+<ol>
+<li>
+<p>tag이름 : div</p>
 <ul>
 <li>태그는 속성을 갖는다. -&gt; <code>&lt;tag id=&quot;&quot; class=&quot;test&quot; data-rel=&quot;&quot; data-num=&quot;&quot;&gt;cont&lt;/tag&gt;</code></li>
 </ul>
 </li>
-<li><p>id : 태그와 구분하기위해 #super -&gt; 한 페이지 내에서 단 한개</p>
+<li>
+<p>id : 태그와 구분하기위해 #super -&gt; 한 페이지 내에서 단 한개</p>
 </li>
-<li>class : 태그와 구분하기위해 .test -&gt; 별명또는 그룹 개념</li>
+<li>
+<p>class : 태그와 구분하기위해 .test -&gt; 별명또는 그룹 개념</p>
+</li>
 </ol>
-<h2 id="다중-셀렉터"><a href="#다중-셀렉터" class="headerlink" title="다중 셀렉터"></a>다중 셀렉터</h2><p>~안에 있는 무엇</p>
+<h2>다중 셀렉터</h2>
+<p>~안에 있는 무엇</p>
 <ol>
-<li>div ul li.ah_k -&gt; 띄어쓰기로 구분<ul>
+<li>div ul li.ah_k -&gt; 띄어쓰기로 구분
+<ul>
 <li>div li.ah_k : 중간경로 생략 가능, 그냥 ~안에</li>
 </ul>
 </li>
-<li>div &gt; ul &gt; li.ah_k : &gt;로 구분, 조금 더 빠르다<ul>
-<li>중간경로 생략 불가능, ~바로 ~안에  </li>
+<li>div &gt; ul &gt; li.ah_k : &gt;로 구분, 조금 더 빠르다
+<ul>
+<li>중간경로 생략 불가능, ~바로 ~안에</li>
 </ul>
 </li>
 </ol>
 <p>~이고 ~인것</p>
 <ul>
-<li><code>&lt;span class=&quot;ah_k&quot;&gt;???&lt;/span&gt;</code><br>span.ah_k.anroll</li>
+<li><code>&lt;span class=&quot;ah_k&quot;&gt;???&lt;/span&gt;</code><br>
+span.ah_k.anroll</li>
 <li><code>&lt;div class=&quot;ah_k&quot;&gt;???\&lt;/div&gt;</code></li>
 </ul>
 <p>~의 근처에 있는 것</p>
@@ -308,91 +369,485 @@
 <li>Head : Method 확인</li>
 <li>크롬에서 Postman 이라는 확장프로그램을 설치하라 : 어떠한 방식으로 전달하는지 알 수 있음</li>
 </ul>
-<h1 id="네이버에서-실시간-검색어-가져오기"><a href="#네이버에서-실시간-검색어-가져오기" class="headerlink" title="네이버에서 실시간 검색어 가져오기"></a>네이버에서 실시간 검색어 가져오기</h1><p>웹 페이지에 접근해서 데이터를 가져온다.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br></pre></td></tr></table></figure></p>
-<p>가져온 데이터를 HTML로 해석한다.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br></pre></td></tr></table></figure></p>
-<p>가져오고자 하는 페이지의 주소를 적는다.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">"https://www.naver.com/"</span></span><br></pre></td></tr></table></figure></p>
+<h1>네이버에서 실시간 검색어 가져오기</h1>
+<p>웹 페이지에 접근해서 데이터를 가져온다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br></pre></td></tr></table></figure>
+<p>가져온 데이터를 HTML로 해석한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br></pre></td></tr></table></figure>
+<p>가져오고자 하는 페이지의 주소를 적는다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">"https://www.naver.com/"</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># requests 모듈로 해당 url의 데이터를 가져온다</span></span><br><span class="line">req = requests.get(url)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Response Status을 requests 모듈 안에 명세를 해놓음  </span></span><br><span class="line"><span class="keyword">if</span> req.status_code == requests.codes.ok:</span><br><span class="line">    print(<span class="string">'접속 성공'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 여기서 데이터를 해석하면 된다</span></span><br><span class="line">    <span class="comment"># req.text에 받아온 데이터가 담겨져 있다</span></span><br><span class="line">    html = BeautifulSoup(req.text, <span class="string">"html.parser"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># select와 select_one의 차이점은 select_one()은 해당하는 것중 제일 첫번째만 반환</span></span><br><span class="line">    <span class="comment"># span1 = html.select('.PM_CL_realtimeKeyword_list_base span.ah_k')</span></span><br><span class="line">    <span class="comment"># print("span1", span1)</span></span><br><span class="line">    <span class="comment"># # 목록에 있는것 20개 돌아가고있는것 40</span></span><br><span class="line">    <span class="comment"># print(len(span1))</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># ~어떤 요소를 찾고</span></span><br><span class="line">    <span class="comment"># 그 요소 안에 각각의 요소를 다시 찾을 수 있다.</span></span><br><span class="line">    <span class="comment"># 클래스 ah_item에 각종 정보가 들어있다</span></span><br><span class="line">    items = html.select(<span class="string">'.PM_CL_realtimeKeyword_list_base .ah_item'</span>)</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">        <span class="comment"># select_one으로 하나씩 뽑아온다.</span></span><br><span class="line">        keyword = item.select_one(<span class="string">'.ah_k'</span>)</span><br><span class="line">        rank = item.select_one(<span class="string">'.ah_r'</span>)</span><br><span class="line">        link = item.select_one(<span class="string">'.ah_a'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># link['속성명']으로 해당 속성의 링크를 가져올 수 있다</span></span><br><span class="line">        print(rank.text, keyword.text, link[<span class="string">'href'</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'접속 실패'</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="결과-화면"><a href="#결과-화면" class="headerlink" title="결과 화면"></a>결과 화면</h2><p><img src="/image/Crawler_naver.png" alt></p>
+<h2>결과 화면</h2>
+<p><img src="/image/Crawler_naver.png" alt></p>
 
-
-                
-            </div>
-
-            <!-- Comments -->
             
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    
 
 
-                </div>
-            
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">태그</span><br>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/웹크롤러/">웹크롤러</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/04/25/2019-04-25-DataBase기초/" data-tooltip="2019-04-25 데이터 베이스 기초" aria-label="이전: 2019-04-25 데이터 베이스 기초">
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">이전</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/04/23/2019-04-23-Exhaustive-Search/" data-tooltip="2019-04-23 Exhaustive Search(과도한 검색)" aria-label="다음: 2019-04-23 Exhaustive Search(과도한 검색)">
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">다음</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="이 포스트 공유하기">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/04/24/2019-04-24-Crawler/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/04/24/2019-04-24-Crawler/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/04/24/2019-04-24-Crawler/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="맨 위로">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
     </div>
 </article>
 
-    <!-- Footer -->
-    <hr>
 
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
 
-                    
-
-                    
-                        <li>
-                            <a href="https://github.com/sug5806" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
-
-                    
-
-                    
-                        <li>
-                            <a href="mailto:sug5806@gmail.com" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
-
-                    
-                </ul>
-                <p class="copyright text-muted">&copy; 2019 sug5806<br></p>
-                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
-                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
-            </div>
-        </div>
-    </div>
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 sug5806. All Rights Reserved.
+    </span>
 </footer>
 
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/04/25/2019-04-25-DataBase기초/" data-tooltip="2019-04-25 데이터 베이스 기초" aria-label="이전: 2019-04-25 데이터 베이스 기초">
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">이전</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/04/23/2019-04-23-Exhaustive-Search/" data-tooltip="2019-04-23 Exhaustive Search(과도한 검색)" aria-label="다음: 2019-04-23 Exhaustive Search(과도한 검색)">
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">다음</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="이 포스트 공유하기">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/04/24/2019-04-24-Crawler/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/04/24/2019-04-24-Crawler/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/04/24/2019-04-24-Crawler/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="맨 위로">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
 
-    <!-- After footer scripts -->
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/04/24/2019-04-24-Crawler/" aria-label="Facebook에 공유하기">
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/04/24/2019-04-24-Crawler/" aria-label="Twitter에 공유하기">
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/04/24/2019-04-24-Crawler/" aria-label="Google+에 공유하기">
+                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <h4 id="about-card-name">sug5806</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br>
+                <p>author.job</p>
+
+            </div>
+        
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-times"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="/assets/images/logo-algolia-nebula-blue-full.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search" class="form-control input--large search-input" placeholder="Search ">
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">포스트가 없습니다.</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                            <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 12일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                            <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 15일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                            <h3 class="media-heading">2019-03-22 OOP</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 22일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
+                            <h3 class="media-heading">2019-03-25 기초 통계</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 25일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
+                            <h3 class="media-heading">2019-03-29 컴파일러와 인터프리터의 차이점</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 29일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
+                            <h3 class="media-heading">2019-04-03 Git 특강1 Init</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 4월 3일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
+                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 4월 4일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
+                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 4월 4일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
+                            <h3 class="media-heading">2019-04-05 HTML 기초태그</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 4월 5일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
+                            <h3 class="media-heading">2019-04-07 Synchronous와 Asynchronous의 차이점</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 4월 7일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
+                68 개의 포스트가 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-igy6higovbbudnz2huqqnzan9tbi5p5qzgpza7ddmnsvw8o9l5otrbk5cg9n.min.js"></script>
+<!--SCRIPTS END-->
+
+
     
-<!-- jQuery -->
-<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-
-<!-- Bootstrap -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-<!-- Gallery -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-
-<!-- Disqus Comments -->
 
 
 
-</body>
+    <script src="/assets/js/moment-with-locales.js"></script>
+    <script src="/assets/js/algoliasearch.js"></script>
+    <script>
+      var algoliaClient = algoliasearch('2LOSRWVGZX', '3846f641c03e28f7c9ece942801b6d95');
+      var algoliaIndex = algoliaClient.initIndex('search');
+    </script>
 
+
+    </body>
 </html>

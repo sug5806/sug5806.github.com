@@ -1,345 +1,822 @@
+
 <!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.8.0">
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<html lang="ko">
+    
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--Description-->
-
-    
-
-    
-        <meta name="description" content="공부한것을 정리하여 올리는 블로그입니다">
-    
-
-    <!--Author-->
-    
-        <meta name="author" content="sug5806">
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="2019-05-29 장고 커스텀 유저모델 만들기">
-    
-
-    <!--Open Graph Description-->
-    
-        <meta property="og:description" content="공부한것을 정리하여 올리는 블로그입니다">
-    
-
-    <!--Open Graph Site Name-->
-        <meta property="og:site_name" content="sug5806의 블로그">
-
-    <!--Type page-->
-    
-        <meta property="og:type" content="article">
-    
-
-    <!--Page Cover-->
-    
-    
-        <meta property="og:image" content="https://sug5806.github.iohttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
-    
-
-        <meta name="twitter:card" content="summary_large_image">
-
-    
-
-    
-        <meta name="twitter:image" content="https://sug5806.github.iohttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
-    
-
-    <!-- Title -->
-    
+    <meta name="generator" content="sug5806의 블로그">
     <title>2019-05-29 장고 커스텀 유저모델 만들기 - sug5806의 블로그</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/style.css">
-
-    <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Gallery -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
-
-    <!-- Google Analytics -->
+    <meta name="author" content="sug5806">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"커스텀 유저모델 만들기\n커스텀 유저 모델은 기존의 유저 모델에 추가 필드나 기능을 사용하고 싶거나 이전에 존재하는 유저 데이터를 마이그레이션 해서 사용하고 싶을 때 선택하는 기법입니다. 커스텀 유저 모델을 3가지가 존재합니다.\n\n\n기존의 유저 모델을 확장하여 추가 정보만 입력받는 방법\n\n\nAbstractBaseUser를 사용해서 기본 기능을 제외한 모든 기능과 필드를 새로 만드는법\n\n\nAbstractUser를 사용해서 추가 필드를 포함한 유저 모델을 만드는 방법\n\n\n세가지 방법중 가장 편리한 방법은 3번째 방법인 AbstractUser를 사용하는 방법입니다.\n이 방법의 주의할 점은 기존 유저 정보를 사용할 수 없기 때문에 프로젝트를 시작할 때 커스텀 유저 모델을 만들고 관리자 계정 생성을 진행해야 한다는 것입니다.\n\n\n새 프로젝트를 만들고 account 앱을 만듭니다.\n\n\n\nsettings.py의 INSTALLED_APPS에 accounts 앱을 추가해줍니다.\n\n\n\n모델에서 AbstractUser 클래스를 상속받아 새로운 User 모델을 작성합니다. 모델의 이름은 User일 필요는 없습니다. User 모델에 원하는 추가 필드를 작성합니다.\n\n\n\n새로운 유저 모델을 만들면 settings.py에 모델을 설정해야 합니다.\nAUTH_USER_MODEL이라는 변수를 만들고 값을 설정합니다.\n\n\n\n\n새로 만든 유저 모델의 DB 생성을 위해서 makemigrations 명령을 실행하겠습니다. 그런데 유저 모델에는 이미지 필드가 있으므로 Pillow 모듈을 먼저 설치합니다.\n\n\n\n\n\n\n관리자 계정을 생성합니다\n\n\n\n서버를 실행하고 관리자 페이지에 들어가서 확인해 봅시다.\n\n\n\n관리자 페이지에 로그인을 하면 목록에 유저 모델이 나타나지 않습니다. 유저 모델을 확장하여 새로 만들었기 때문에 새로 등록을 해주어야 합니다. admin.py에 유저 모델을 추가해 봅시다.\n\n\n\n\n관리자 페이지를 새로 고침하면 유저 모델이 나타나는 것을 확인할 수 있습니다.\n\n\n\n유저 모델에 등록되어 있는 관리자 계정의 수정 페이지로 이동합니다. 우리가 만났던 기존의 사용자 관리 화면과는 많이 다릅니다. 기존에 사용했던 페이지와 흡사하게 변경해보겠습니다.\n\n\n\n\nadmin.py에 UserAdmin 클래스를 옵션으로 등록해줍니다. 우리가 admin.py에서 옵션 클래스를 만들어 등록하면 관리자 페이지의 목록을 커스터마이징 했던것처럼 유저 모델도 이 옵션클래스가 필요한데, 기존에 있던 Useradmin 모델이 이 옵션 클래스 역할을 하고 있습니다.\n\n\n\n\n\n그런데 우리가 만든 추가 필드가 나타나지 않습니다. 이것을 나타나게 하려면 Option 클래스를 새로 만들어 등록해줘야 합니다. 기존의 UserAdmin 클래스에는 fieldsets와 add_fieldsets가 존재하는데 fieldsets는 상세 화면에서 출력될 수정 폼 설정이고 add_fieldsets는 추가 화면에 출력될 입력 폼의 설정값 입니다. 두가지에 모두 추가 필드를 입력하겠습니다.\n\n\n\n새로고침해서 화면을 확인해 봅시다. Profile과 Message 값이 잘 출력되는 것을 확인할 수 있습니다.\n\n\n\n","dateCreated":"2019-05-29T12:32:46+09:00","dateModified":"2019-06-23T20:06:05+09:00","datePublished":"2019-05-29T12:32:46+09:00","description":"","headline":"2019-05-29 장고 커스텀 유저모델 만들기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/05/29/2019-05-29-장고-커스텀-유저모델/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/05/29/2019-05-29-장고-커스텀-유저모델/","keywords":"커스텀 유저모델"}</script>
+    <meta name="description" content="커스텀 유저모델 만들기 커스텀 유저 모델은 기존의 유저 모델에 추가 필드나 기능을 사용하고 싶거나 이전에 존재하는 유저 데이터를 마이그레이션 해서 사용하고 싶을 때 선택하는 기법입니다. 커스텀 유저 모델을 3가지가 존재합니다.   기존의 유저 모델을 확장하여 추가 정보만 입력받는 방법   AbstractBaseUser를 사용해서 기본 기능을 제외한 모든 기">
+<meta name="keywords" content="커스텀 유저모델">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="2019-05-29 장고 커스텀 유저모델 만들기">
+<meta property="og:url" content="https://sug5806.github.io/2019/05/29/2019-05-29-장고-커스텀-유저모델/index.html">
+<meta property="og:site_name" content="sug5806의 블로그">
+<meta property="og:description" content="커스텀 유저모델 만들기 커스텀 유저 모델은 기존의 유저 모델에 추가 필드나 기능을 사용하고 싶거나 이전에 존재하는 유저 데이터를 마이그레이션 해서 사용하고 싶을 때 선택하는 기법입니다. 커스텀 유저 모델을 3가지가 존재합니다.   기존의 유저 모델을 확장하여 추가 정보만 입력받는 방법   AbstractBaseUser를 사용해서 기본 기능을 제외한 모든 기">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="https://sug5806.github.io/image/custom_user_model01.png">
+<meta property="og:image" content="https://sug5806.github.io/image/custom_user_model02.png">
+<meta property="og:image" content="https://sug5806.github.io/image/CUM03.png">
+<meta property="og:image" content="https://sug5806.github.io/image/CUM04.png">
+<meta property="og:image" content="https://sug5806.github.io/image/CUM05-1.png">
+<meta property="og:image" content="https://sug5806.github.io/image/CUM05-2.png">
+<meta property="og:image" content="https://sug5806.github.io/image/CUM05-3.png">
+<meta property="og:image" content="https://sug5806.github.io/image/CUM06.png">
+<meta property="og:image" content="https://sug5806.github.io/image/CUM07.png">
+<meta property="og:image" content="https://sug5806.github.io/image/CUM08-1.png">
+<meta property="og:image" content="https://sug5806.github.io/image/CUM08-2.png">
+<meta property="og:image" content="https://sug5806.github.io/image/CUM09.png">
+<meta property="og:image" content="https://sug5806.github.io/image/CUM10.png">
+<meta property="og:image" content="https://sug5806.github.io/image/CUM11-1.png">
+<meta property="og:image" content="https://sug5806.github.io/image/CUM11-2.png">
+<meta property="og:image" content="https://sug5806.github.io/image/CUM12.png">
+<meta property="og:image" content="https://sug5806.github.io/image/CUM13.png">
+<meta property="og:updated_time" content="2019-06-23T11:06:05.051Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019-05-29 장고 커스텀 유저모델 만들기">
+<meta name="twitter:description" content="커스텀 유저모델 만들기 커스텀 유저 모델은 기존의 유저 모델에 추가 필드나 기능을 사용하고 싶거나 이전에 존재하는 유저 데이터를 마이그레이션 해서 사용하고 싶을 때 선택하는 기법입니다. 커스텀 유저 모델을 3가지가 존재합니다.   기존의 유저 모델을 확장하여 추가 정보만 입력받는 방법   AbstractBaseUser를 사용해서 기본 기능을 제외한 모든 기">
+<meta name="twitter:image" content="https://sug5806.github.io/image/custom_user_model01.png">
+    
+    
+        
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-xmwjmaw63fz9loualz1qmrwgsqz40hdvx3wm88nlmrq0pgtqesn7rfguwvks.min.css">
+    <!--STYLES END-->
     
 
-
-    <!-- favicon -->
     
 
+    
+        
+    
 </head>
 
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
 
-<body>
 
-    <!-- Menu -->
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">sug5806의 블로그</a>
-        </div>
+    
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                
-                    <li>
-                        <a href="/">
-                            
-                                Home
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/archives">
-                            
-                                Archives
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/tags">
-                            
-                                Tags
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/categories">
-                            
-                                Categories
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="https://github.com/sug5806">
-                            
-                                <i class="fa fa-github fa-stack-2x"></i>
-                            
-                        </a>
-                    </li>
-                
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ " aria-label>
+            sug5806의 블로그
+        </a>
     </div>
-    <!-- /.container -->
-</nav>
-
-    <!-- Main Content -->
-    <!-- Page Header -->
-<!-- Set your background image for this header in your post front-matter: cover -->
-
-<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>2019-05-29 장고 커스텀 유저모델 만들기</h1>
-                    
-                    <h2 class="post-subheading">
-                        커스텀 유저모델 만들기
-                    </h2>
-                    
-                    <span class="meta">
-                        <!-- Date and Author -->
-                        
-                        
-                            2019-05-29
-                        
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+        
+            <a class="header-right-picture " href="#about" aria-label="링크 열기: /#about">
+        
+        
+        </a>
+    
 </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-
-            <!-- Tags and categories -->
-           
-                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
-                    
-                        
+            <!-- Define author's picture -->
 
 
-<a href="/tags/커스텀-유저모델/">#커스텀 유저모델</a>
-
-
-                    
-                </div>
-                <div class="col-lg-4 col-md-5 post-categories">
-                    
-                        
-
-<a href="/categories/Django/">Django</a>
-
-                    
-                </div>
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+        
+            <ul class="sidebar-buttons">
             
-
-            <!-- Gallery -->
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/ " title="Home">
+                    
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
             
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-categories" title="카테고리">
+                    
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-tags" title="태그">
+                    
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-archives" title="아카이브">
+                    
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">아카이브</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link open-algolia-search" href="#search" title="검색">
+                    
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">검색</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="#about" title="About">
+                    
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
+                    
+                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Stack Overflow</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
+                    
+                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
+                    
+                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Facebook</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
+                    
+                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Google +</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
+                    
+                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">LinkedIn</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/mailto" title="Mail">
+                    
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
+                    
+                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">RSS</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
 
-            <!-- Post Main Content -->
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h1 id="커스텀-유저모델-만들기"><a href="#커스텀-유저모델-만들기" class="headerlink" title="커스텀 유저모델 만들기"></a>커스텀 유저모델 만들기</h1><p>커스텀 유저 모델은 기존의 유저 모델에 추가 필드나 기능을 사용하고 싶거나 이전에 존재하는 유저 데이터를 마이그레이션 해서 사용하고 싶을 때 선택하는 기법입니다. 커스텀 유저 모델을 3가지가 존재합니다.</p>
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            2019-05-29 장고 커스텀 유저모델 만들기
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2019-05-29T12:32:46+09:00">
+	
+		    2019/05/29
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h1>커스텀 유저모델 만들기</h1>
+<p>커스텀 유저 모델은 기존의 유저 모델에 추가 필드나 기능을 사용하고 싶거나 이전에 존재하는 유저 데이터를 마이그레이션 해서 사용하고 싶을 때 선택하는 기법입니다. 커스텀 유저 모델을 3가지가 존재합니다.</p>
 <ol>
-<li><p>기존의 유저 모델을 확장하여 추가 정보만 입력받는 방법</p>
+<li>
+<p>기존의 유저 모델을 확장하여 추가 정보만 입력받는 방법</p>
 </li>
-<li><p>AbstractBaseUser를 사용해서 기본 기능을 제외한 모든 기능과 필드를 새로 만드는법</p>
+<li>
+<p>AbstractBaseUser를 사용해서 기본 기능을 제외한 모든 기능과 필드를 새로 만드는법</p>
 </li>
-<li><p>AbstractUser를 사용해서 추가 필드를 포함한 유저 모델을 만드는 방법</p>
+<li>
+<p>AbstractUser를 사용해서 추가 필드를 포함한 유저 모델을 만드는 방법</p>
 </li>
 </ol>
-<p>세가지 방법중 가장 편리한 방법은 3번째 방법인 AbstractUser를 사용하는 방법입니다.<br><strong>이 방법의 주의할 점은 기존 유저 정보를 사용할 수 없기 때문에 프로젝트를 시작할 때 커스텀 유저 모델을 만들고 관리자 계정 생성을 진행해야 한다는 것입니다.</strong></p>
+<p>세가지 방법중 가장 편리한 방법은 3번째 방법인 AbstractUser를 사용하는 방법입니다.<br>
+<strong>이 방법의 주의할 점은 기존 유저 정보를 사용할 수 없기 때문에 프로젝트를 시작할 때 커스텀 유저 모델을 만들고 관리자 계정 생성을 진행해야 한다는 것입니다.</strong></p>
 <ol>
-<li><p>새 프로젝트를 만들고 account 앱을 만듭니다.<br> <img src="/image/custom_user_model01.png" alt></p>
+<li>
+<p>새 프로젝트를 만들고 account 앱을 만듭니다.<br>
+<img src="/image/custom_user_model01.png" alt></p>
 </li>
-<li><p>settings.py의 INSTALLED_APPS에 accounts 앱을 추가해줍니다.<br><img src="/image/custom_user_model02.png" alt></p>
+<li>
+<p>settings.py의 INSTALLED_APPS에 accounts 앱을 추가해줍니다.<br>
+<img src="/image/custom_user_model02.png" alt></p>
 </li>
-<li><p>모델에서 AbstractUser 클래스를 상속받아 새로운 User 모델을 작성합니다. 모델의 이름은 User일 필요는 없습니다. User 모델에 원하는 추가 필드를 작성합니다.<br> <img src="/image/CUM03.png" alt></p>
+<li>
+<p>모델에서 AbstractUser 클래스를 상속받아 새로운 User 모델을 작성합니다. 모델의 이름은 User일 필요는 없습니다. User 모델에 원하는 추가 필드를 작성합니다.<br>
+<img src="/image/CUM03.png" alt></p>
 </li>
-<li><p>새로운 유저 모델을 만들면 settings.py에 모델을 설정해야 합니다.<br>AUTH_USER_MODEL이라는 변수를 만들고 값을 설정합니다.<br> <img src="/image/CUM04.png" alt></p>
+<li>
+<p>새로운 유저 모델을 만들면 settings.py에 모델을 설정해야 합니다.<br>
+AUTH_USER_MODEL이라는 변수를 만들고 값을 설정합니다.<br>
+<img src="/image/CUM04.png" alt></p>
 </li>
 </ol>
 <ol start="5">
-<li>새로 만든 유저 모델의 DB 생성을 위해서 makemigrations 명령을 실행하겠습니다. 그런데 유저 모델에는 이미지 필드가 있으므로 Pillow 모듈을 먼저 설치합니다.<br><img src="/image/CUM05-1.png" alt><br><img src="/image/CUM05-2.png" alt><br><img src="/image/CUM05-3.png" alt></li>
+<li>새로 만든 유저 모델의 DB 생성을 위해서 makemigrations 명령을 실행하겠습니다. 그런데 유저 모델에는 이미지 필드가 있으므로 Pillow 모듈을 먼저 설치합니다.<br>
+<img src="/image/CUM05-1.png" alt><br>
+<img src="/image/CUM05-2.png" alt><br>
+<img src="/image/CUM05-3.png" alt></li>
 </ol>
 <ol start="6">
-<li><p>관리자 계정을 생성합니다<br> <img src="/image/CUM06.png" alt></p>
+<li>
+<p>관리자 계정을 생성합니다<br>
+<img src="/image/CUM06.png" alt></p>
 </li>
-<li><p>서버를 실행하고 관리자 페이지에 들어가서 확인해 봅시다.<br> <img src="/image/CUM07.png" alt></p>
+<li>
+<p>서버를 실행하고 관리자 페이지에 들어가서 확인해 봅시다.<br>
+<img src="/image/CUM07.png" alt></p>
 </li>
-<li><p>관리자 페이지에 로그인을 하면 목록에 유저 모델이 나타나지 않습니다. 유저 모델을 확장하여 새로 만들었기 때문에 새로 등록을 해주어야 합니다. admin.py에 유저 모델을 추가해 봅시다.<br> <img src="/image/CUM08-1.png" alt><br> <img src="/image/CUM08-2.png" alt></p>
+<li>
+<p>관리자 페이지에 로그인을 하면 목록에 유저 모델이 나타나지 않습니다. 유저 모델을 확장하여 새로 만들었기 때문에 새로 등록을 해주어야 합니다. admin.py에 유저 모델을 추가해 봅시다.<br>
+<img src="/image/CUM08-1.png" alt><br>
+<img src="/image/CUM08-2.png" alt></p>
 </li>
-<li><p>관리자 페이지를 새로 고침하면 유저 모델이 나타나는 것을 확인할 수 있습니다.<br><img src="/image/CUM09.png" alt></p>
+<li>
+<p>관리자 페이지를 새로 고침하면 유저 모델이 나타나는 것을 확인할 수 있습니다.<br>
+<img src="/image/CUM09.png" alt></p>
 </li>
-<li><p>유저 모델에 등록되어 있는 관리자 계정의 수정 페이지로 이동합니다. 우리가 만났던 기존의 사용자 관리 화면과는 많이 다릅니다. 기존에 사용했던 페이지와 흡사하게 변경해보겠습니다.<br><img src="/image/CUM10.png" alt></p>
+<li>
+<p>유저 모델에 등록되어 있는 관리자 계정의 수정 페이지로 이동합니다. 우리가 만났던 기존의 사용자 관리 화면과는 많이 다릅니다. 기존에 사용했던 페이지와 흡사하게 변경해보겠습니다.<br>
+<img src="/image/CUM10.png" alt></p>
 </li>
 </ol>
 <ol start="11">
-<li>admin.py에 UserAdmin 클래스를 옵션으로 등록해줍니다. 우리가 admin.py에서 옵션 클래스를 만들어 등록하면 관리자 페이지의 목록을 커스터마이징 했던것처럼 유저 모델도 이 옵션클래스가 필요한데, 기존에 있던 Useradmin 모델이 이 옵션 클래스 역할을 하고 있습니다.<br><img src="/image/CUM11-1.png" alt><br><img src="/image/CUM11-2.png" alt></li>
+<li>admin.py에 UserAdmin 클래스를 옵션으로 등록해줍니다. 우리가 admin.py에서 옵션 클래스를 만들어 등록하면 관리자 페이지의 목록을 커스터마이징 했던것처럼 유저 모델도 이 옵션클래스가 필요한데, 기존에 있던 Useradmin 모델이 이 옵션 클래스 역할을 하고 있습니다.<br>
+<img src="/image/CUM11-1.png" alt><br>
+<img src="/image/CUM11-2.png" alt></li>
 </ol>
 <ol start="12">
-<li><p>그런데 우리가 만든 추가 필드가 나타나지 않습니다. 이것을 나타나게 하려면 Option 클래스를 새로 만들어 등록해줘야 합니다. 기존의 UserAdmin 클래스에는 fieldsets와 add_fieldsets가 존재하는데 fieldsets는 상세 화면에서 출력될 수정 폼 설정이고 add_fieldsets는 추가 화면에 출력될 입력 폼의 설정값 입니다. 두가지에 모두 추가 필드를 입력하겠습니다.<br><img src="/image/CUM12.png" alt></p>
+<li>
+<p>그런데 우리가 만든 추가 필드가 나타나지 않습니다. 이것을 나타나게 하려면 Option 클래스를 새로 만들어 등록해줘야 합니다. 기존의 UserAdmin 클래스에는 fieldsets와 add_fieldsets가 존재하는데 fieldsets는 상세 화면에서 출력될 수정 폼 설정이고 add_fieldsets는 추가 화면에 출력될 입력 폼의 설정값 입니다. 두가지에 모두 추가 필드를 입력하겠습니다.<br>
+<img src="/image/CUM12.png" alt></p>
 </li>
-<li><p>새로고침해서 화면을 확인해 봅시다. Profile과 Message 값이 잘 출력되는 것을 확인할 수 있습니다.<br><img src="/image/CUM13.png" alt></p>
+<li>
+<p>새로고침해서 화면을 확인해 봅시다. Profile과 Message 값이 잘 출력되는 것을 확인할 수 있습니다.<br>
+<img src="/image/CUM13.png" alt></p>
 </li>
 </ol>
 
-
-                
-            </div>
-
-            <!-- Comments -->
             
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    
 
 
-                </div>
-            
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">태그</span><br>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/커스텀-유저모델/">커스텀 유저모델</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/05/31/2019-05-31-AWS-IAM/" data-tooltip="2019-05-31 Amazon CLI 설정하기" aria-label="이전: 2019-05-31 Amazon CLI 설정하기">
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">이전</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/05/27/2019-5-27-도커/" data-tooltip="2019-05-27 장고 Docker" aria-label="다음: 2019-05-27 장고 Docker">
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">다음</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="이 포스트 공유하기">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/05/29/2019-05-29-장고-커스텀-유저모델/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/05/29/2019-05-29-장고-커스텀-유저모델/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/05/29/2019-05-29-장고-커스텀-유저모델/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="맨 위로">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
     </div>
 </article>
 
-    <!-- Footer -->
-    <hr>
 
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
 
-                    
-
-                    
-                        <li>
-                            <a href="https://github.com/sug5806" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
-
-                    
-
-                    
-                        <li>
-                            <a href="mailto:sug5806@gmail.com" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
-
-                    
-                </ul>
-                <p class="copyright text-muted">&copy; 2019 sug5806<br></p>
-                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
-                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
-            </div>
-        </div>
-    </div>
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 sug5806. All Rights Reserved.
+    </span>
 </footer>
 
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/05/31/2019-05-31-AWS-IAM/" data-tooltip="2019-05-31 Amazon CLI 설정하기" aria-label="이전: 2019-05-31 Amazon CLI 설정하기">
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">이전</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/05/27/2019-5-27-도커/" data-tooltip="2019-05-27 장고 Docker" aria-label="다음: 2019-05-27 장고 Docker">
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">다음</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="이 포스트 공유하기">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/05/29/2019-05-29-장고-커스텀-유저모델/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/05/29/2019-05-29-장고-커스텀-유저모델/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/05/29/2019-05-29-장고-커스텀-유저모델/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="맨 위로">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
 
-    <!-- After footer scripts -->
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/05/29/2019-05-29-장고-커스텀-유저모델/" aria-label="Facebook에 공유하기">
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/05/29/2019-05-29-장고-커스텀-유저모델/" aria-label="Twitter에 공유하기">
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/05/29/2019-05-29-장고-커스텀-유저모델/" aria-label="Google+에 공유하기">
+                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <h4 id="about-card-name">sug5806</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br>
+                <p>author.job</p>
+
+            </div>
+        
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-times"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="/assets/images/logo-algolia-nebula-blue-full.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search" class="form-control input--large search-input" placeholder="Search ">
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">포스트가 없습니다.</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                            <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 12일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                            <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 15일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                            <h3 class="media-heading">2019-03-22 OOP</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 22일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
+                            <h3 class="media-heading">2019-03-25 기초 통계</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 25일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
+                            <h3 class="media-heading">2019-03-29 컴파일러와 인터프리터의 차이점</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 29일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
+                            <h3 class="media-heading">2019-04-03 Git 특강1 Init</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 4월 3일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
+                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 4월 4일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
+                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 4월 4일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
+                            <h3 class="media-heading">2019-04-05 HTML 기초태그</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 4월 5일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
+                            <h3 class="media-heading">2019-04-07 Synchronous와 Asynchronous의 차이점</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 4월 7일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
+                68 개의 포스트가 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-igy6higovbbudnz2huqqnzan9tbi5p5qzgpza7ddmnsvw8o9l5otrbk5cg9n.min.js"></script>
+<!--SCRIPTS END-->
+
+
     
-<!-- jQuery -->
-<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-
-<!-- Bootstrap -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-<!-- Gallery -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-
-<!-- Disqus Comments -->
 
 
 
-</body>
+    <script src="/assets/js/moment-with-locales.js"></script>
+    <script src="/assets/js/algoliasearch.js"></script>
+    <script>
+      var algoliaClient = algoliasearch('2LOSRWVGZX', '3846f641c03e28f7c9ece942801b6d95');
+      var algoliaIndex = algoliaClient.initIndex('search');
+    </script>
 
+
+    </body>
 </html>

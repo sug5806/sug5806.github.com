@@ -1,249 +1,294 @@
+
 <!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
-<head><meta name="generator" content="Hexo 3.8.0">
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<html lang="ko">
+    
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--Description-->
-
-    
-
-    
-        <meta name="description" content="공부한것을 정리하여 올리는 블로그입니다">
-    
-
-    <!--Author-->
-    
-        <meta name="author" content="sug5806">
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="2019-04-18 프로세스와 쓰레드">
-    
-
-    <!--Open Graph Description-->
-    
-        <meta property="og:description" content="공부한것을 정리하여 올리는 블로그입니다">
-    
-
-    <!--Open Graph Site Name-->
-        <meta property="og:site_name" content="sug5806의 블로그">
-
-    <!--Type page-->
-    
-        <meta property="og:type" content="article">
-    
-
-    <!--Page Cover-->
-    
-    
-        <meta property="og:image" content="https://sug5806.github.iohttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
-    
-
-        <meta name="twitter:card" content="summary_large_image">
-
-    
-
-    
-        <meta name="twitter:image" content="https://sug5806.github.iohttp://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg">
-    
-
-    <!-- Title -->
-    
+    <meta name="generator" content="sug5806의 블로그">
     <title>2019-04-18 프로세스와 쓰레드 - sug5806의 블로그</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/style.css">
-
-    <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Gallery -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
-
-    <!-- Google Analytics -->
+    <meta name="author" content="sug5806">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"articleBody":"Program, Process\nProgram =&gt; HDD안의 이미지를 말함 Ex) Python.exe\nProcess =&gt; 실행중인 프로그램(이미 RAM에 올라가있음)\nPID로 구분을 한다 (Process ID) -&gt; 윈도우는 랜덤으로, 리눅스는 순차적으로 배분\npre-emptive OS\n\nmultitasking OS\nsuspend currently running process\ndetermine which process should execute next\n\nprocess scheduling\n\npriority algorithm : 높은 우선순위의 프로세스가 먼저 실행된다.\nround-robin algorithm : 프로세스들 사이에 우선순위를 두지 않고 time slice로 CPU를 할당하는 방법이다.\n\nscheduler\n\nWhen?\n\nevery time slice\na process created or a process ended\na running process blocked (I/O, system call)\n\n\n\n\nBlock으로 빠지는 경우\n\nIO\nSystem call(운영체제에서 사용하는 함수중 사용자에게 인터페이스를 열어놓은 함수 Ex) sleep)\n\nWaiting 과 Running 사이에서 일어나는 일 : context switching\ncontext switching\n\n메모리안에 블록을 하나만듬(Process Control block) 이곳(PCB)에 어디까지 실행하였는지(CPU안의 레지스터들의 상태정보)를 저장함\ncontext = 지금 현재 실행되고있는 CPU안의 레지스터들의 상태정보를 하나로 모은것\n자주일어날경우 메모리접근 시간이 너무 커짐 -&gt; time slice를 잘 정해야함\nPCB를 내리고 새로운 PCB를 올리는 작업을 context switching이라 함\n\n\nProcess와 Thread -&gt; 인스트럭션의 나열 -&gt; 실행의 흐름일 뿐이다\nProcess = 1개 이상의 쓰레드를 갖는다, 쓰레드가 1개일경우 (single thread라 한다)\nConcurrency programming (동시성 프로그래밍) -&gt; 속도를 위해 하는것이 아님(싱글 코어일 경우)\n\n\nmulti - processing\n\n각기 다른 프로세스에서 똑같은 데이터를 가지고 있어야함\nIPC(Inter Process Communication) -&gt; 최악의 효율성\n\n\n\n\nmulti - threading\n\n프로세스안에 스레드가 포함이 됨(스택만 나눠지고 나머지는 공유함)\n스택 영역만 스레드마다 따로잡힘(지금 현재 실행하는 인스트럭션(함수)이 다르므로 스택만 나누고 나머지 공간은 공유가능)\n쓰레드 또한 PCB처럼 TCB가 있고 context switching이 똑같이 일어남\n\n\n\n\nI/O-bound -&gt; asynchronus I/O(비동기 I/O)\n\n한개의 스레드로 동시성으로 만듬\n\n\n\n\nGIL -&gt; Global Interpreter Lock\n\n멀티코어라도 바이트 코드의 실행을 한번에 하나 스레드로 막는다 (없애려고 했으나 해결을 하지 못함) -&gt; Cpython은 아직 해결 못함\n\nrace-condition\n\n공유자원에 대해 너도나도 쓰겠다고 달려들어 결과값을 보장하지 못한다.\n\n임계 구역(critical section) -&gt; 접근하는것 까지는 괜찮으나 수정하는건 안됨\nmutual exclution(상호배제)\n\n세마포어 : 한번에 임계구역에 접근할 수 있는 스레드의 숫자를 조정함\nmutex : 임계구역에 단 하나밖에 접근 못함\n\n코어가 1개 일 경우 시간 단축은 거의 없지만(concurrecy programming)\n코어가 4개 일경우 시간단축 + 멀티코어 프로그래밍이 같이됨\nconcurecncy programming과 pararrelism programming은 다른 개념이다\n","dateCreated":"2019-04-18T21:30:32+09:00","dateModified":"2019-04-19T09:45:16+09:00","datePublished":"2019-04-18T21:30:32+09:00","description":"","headline":"2019-04-18 프로세스와 쓰레드","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/18/쓰레드와프로세스/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/","http://stackoverflow.com/users","https://twitter.com/","https://facebook.com/","https://plus.google.com/","https://www.linkedin.com/profile/","mailto"]},"url":"https://sug5806.github.io/2019/04/18/쓰레드와프로세스/","keywords":"프로세스, 쓰레드"}</script>
+    <meta name="description" content="Program, Process Program =&amp;gt; HDD안의 이미지를 말함 Ex) Python.exe Process =&amp;gt; 실행중인 프로그램(이미 RAM에 올라가있음) PID로 구분을 한다 (Process ID) -&amp;gt; 윈도우는 랜덤으로, 리눅스는 순차적으로 배분 pre-emptive OS  multitasking OS suspend curre">
+<meta name="keywords" content="프로세스,쓰레드">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="2019-04-18 프로세스와 쓰레드">
+<meta property="og:url" content="https://sug5806.github.io/2019/04/18/쓰레드와프로세스/index.html">
+<meta property="og:site_name" content="sug5806의 블로그">
+<meta property="og:description" content="Program, Process Program =&amp;gt; HDD안의 이미지를 말함 Ex) Python.exe Process =&amp;gt; 실행중인 프로그램(이미 RAM에 올라가있음) PID로 구분을 한다 (Process ID) -&amp;gt; 윈도우는 랜덤으로, 리눅스는 순차적으로 배분 pre-emptive OS  multitasking OS suspend curre">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="https://sug5806.github.io/image/schduler.png">
+<meta property="og:image" content="https://sug5806.github.io/image/process.png">
+<meta property="og:image" content="https://sug5806.github.io/image/thread.png">
+<meta property="og:updated_time" content="2019-04-19T00:45:16.975Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019-04-18 프로세스와 쓰레드">
+<meta name="twitter:description" content="Program, Process Program =&amp;gt; HDD안의 이미지를 말함 Ex) Python.exe Process =&amp;gt; 실행중인 프로그램(이미 RAM에 올라가있음) PID로 구분을 한다 (Process ID) -&amp;gt; 윈도우는 랜덤으로, 리눅스는 순차적으로 배분 pre-emptive OS  multitasking OS suspend curre">
+<meta name="twitter:image" content="https://sug5806.github.io/image/schduler.png">
+    
+    
+        
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-xmwjmaw63fz9loualz1qmrwgsqz40hdvx3wm88nlmrq0pgtqesn7rfguwvks.min.css">
+    <!--STYLES END-->
     
 
-
-    <!-- favicon -->
     
 
+    
+        
+    
 </head>
 
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
 
-<body>
 
-    <!-- Menu -->
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">sug5806의 블로그</a>
-        </div>
+    
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                
-                    <li>
-                        <a href="/">
-                            
-                                Home
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/archives">
-                            
-                                Archives
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/tags">
-                            
-                                Tags
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/categories">
-                            
-                                Categories
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="https://github.com/sug5806">
-                            
-                                <i class="fa fa-github fa-stack-2x"></i>
-                            
-                        </a>
-                    </li>
-                
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ " aria-label>
+            sug5806의 블로그
+        </a>
     </div>
-    <!-- /.container -->
-</nav>
-
-    <!-- Main Content -->
-    <!-- Page Header -->
-<!-- Set your background image for this header in your post front-matter: cover -->
-
-<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>2019-04-18 프로세스와 쓰레드</h1>
-                    
-                    <h2 class="post-subheading">
-                        프로세스와 쓰레드
-                    </h2>
-                    
-                    <span class="meta">
-                        <!-- Date and Author -->
-                        
-                        
-                            2019-04-18
-                        
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+        
+            <a class="header-right-picture " href="#about" aria-label="링크 열기: /#about">
+        
+        
+        </a>
+    
 </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-
-            <!-- Tags and categories -->
-           
-                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
-                    
-                        
+            <!-- Define author's picture -->
 
 
-<a href="/tags/프로세스/">#프로세스</a> <a href="/tags/쓰레드/">#쓰레드</a>
-
-
-                    
-                </div>
-                <div class="col-lg-4 col-md-5 post-categories">
-                    
-                        
-
-<a href="/categories/운영체제/">운영체제</a>
-
-                    
-                </div>
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+        
+            <ul class="sidebar-buttons">
             
-
-            <!-- Gallery -->
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/ " title="Home">
+                    
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
             
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-categories" title="카테고리">
+                    
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-tags" title="태그">
+                    
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-archives" title="아카이브">
+                    
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">아카이브</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link open-algolia-search" href="#search" title="검색">
+                    
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">검색</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="#about" title="About">
+                    
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="http://stackoverflow.com/users" target="_blank" rel="noopener" title="Stack Overflow">
+                    
+                        <i class="sidebar-button-icon fab fa-stack-overflow" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Stack Overflow</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://twitter.com/" target="_blank" rel="noopener" title="Twitter">
+                    
+                        <i class="sidebar-button-icon fab fa-twitter" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://facebook.com/" target="_blank" rel="noopener" title="Facebook">
+                    
+                        <i class="sidebar-button-icon fab fa-facebook" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Facebook</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://plus.google.com/" target="_blank" rel="noopener" title="Google +">
+                    
+                        <i class="sidebar-button-icon fab fa-google-plus" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Google +</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://www.linkedin.com/profile/" target="_blank" rel="noopener" title="LinkedIn">
+                    
+                        <i class="sidebar-button-icon fab fa-linkedin" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">LinkedIn</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/mailto" title="Mail">
+                    
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/atom.xml" title="RSS">
+                    
+                        <i class="sidebar-button-icon fa fa-rss" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">RSS</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
 
-            <!-- Post Main Content -->
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <h1 id="Program-Process"><a href="#Program-Process" class="headerlink" title="Program, Process"></a>Program, Process</h1><p>Program =&gt; HDD안의 이미지를 말함 Ex) Python.exe</p>
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            2019-04-18 프로세스와 쓰레드
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2019-04-18T21:30:32+09:00">
+	
+		    2019/04/18
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/운영체제/">운영체제</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <h1>Program, Process</h1>
+<p>Program =&gt; HDD안의 이미지를 말함 Ex) Python.exe</p>
 <p>Process =&gt; 실행중인 프로그램(이미 RAM에 올라가있음)</p>
 <p>PID로 구분을 한다 (Process ID) -&gt; 윈도우는 랜덤으로, 리눅스는 순차적으로 배분</p>
-<h3 id="pre-emptive-OS"><a href="#pre-emptive-OS" class="headerlink" title="pre-emptive OS"></a>pre-emptive OS</h3><ul>
+<h3>pre-emptive OS</h3>
+<ul>
 <li>multitasking OS</li>
 <li>suspend currently running process</li>
 <li>determine which process should execute next</li>
 </ul>
-<h3 id="process-scheduling"><a href="#process-scheduling" class="headerlink" title="process scheduling"></a>process scheduling</h3><ul>
+<h3>process scheduling</h3>
+<ul>
 <li>priority algorithm : 높은 우선순위의 프로세스가 먼저 실행된다.</li>
 <li>round-robin algorithm : 프로세스들 사이에 우선순위를 두지 않고 time slice로 CPU를 할당하는 방법이다.</li>
 </ul>
-<h2 id="scheduler"><a href="#scheduler" class="headerlink" title="scheduler"></a>scheduler</h2><ul>
-<li><p>When?</p>
+<h2>scheduler</h2>
+<ul>
+<li>When?
 <ul>
 <li>every time slice</li>
 <li>a process created or a process ended</li>
 <li>a running process blocked (I/O, system call)</li>
 </ul>
-<p><img src="/image/schduler.png" alt="스케줄링"></p>
 </li>
 </ul>
+<p><img src="/image/schduler.png" alt="스케줄링"></p>
 <p>Block으로 빠지는 경우</p>
 <ul>
 <li>IO</li>
 <li>System call(운영체제에서 사용하는 함수중 사용자에게 인터페이스를 열어놓은 함수 Ex) sleep)</li>
 </ul>
-<h2 id="Waiting-과-Running-사이에서-일어나는-일-context-switching"><a href="#Waiting-과-Running-사이에서-일어나는-일-context-switching" class="headerlink" title="Waiting 과 Running 사이에서 일어나는 일 : context switching"></a>Waiting 과 Running 사이에서 일어나는 일 : context switching</h2><p>context switching</p>
+<h2>Waiting 과 Running 사이에서 일어나는 일 : context switching</h2>
+<p>context switching</p>
 <ul>
 <li>메모리안에 블록을 하나만듬(Process Control block) 이곳(PCB)에 어디까지 실행하였는지(CPU안의 레지스터들의 상태정보)를 저장함</li>
 <li>context = 지금 현재 실행되고있는 CPU안의 레지스터들의 상태정보를 하나로 모은것</li>
@@ -255,14 +300,16 @@
 <p>Process = 1개 이상의 쓰레드를 갖는다, 쓰레드가 1개일경우 (single thread라 한다)</p>
 <p>Concurrency programming (동시성 프로그래밍) -&gt; 속도를 위해 하는것이 아님(싱글 코어일 경우)</p>
 <ol>
-<li><p>multi - processing</p>
+<li>
+<p>multi - processing</p>
 <ul>
 <li>각기 다른 프로세스에서 똑같은 데이터를 가지고 있어야함</li>
 <li>IPC(Inter Process Communication) -&gt; 최악의 효율성</li>
-<li><img src="/image/process.png" alt="프로세스"> </li>
+<li><img src="/image/process.png" alt="프로세스"></li>
 </ul>
 </li>
-<li><p>multi - threading</p>
+<li>
+<p>multi - threading</p>
 <ul>
 <li>프로세스안에 스레드가 포함이 됨(스택만 나눠지고 나머지는 공유함)</li>
 <li>스택 영역만 스레드마다 따로잡힘(지금 현재 실행하는 인스트럭션(함수)이 다르므로 스택만 나누고 나머지 공간은 공유가능)</li>
@@ -270,7 +317,9 @@
 <li><img src="/image/thread.png" alt="쓰레드"></li>
 </ul>
 </li>
-<li>I/O-bound -&gt; asynchronus I/O(비동기 I/O)<ul>
+<li>
+<p>I/O-bound -&gt; asynchronus I/O(비동기 I/O)</p>
+<ul>
 <li>한개의 스레드로 동시성으로 만듬</li>
 </ul>
 </li>
@@ -290,87 +339,478 @@
 <li>세마포어 : 한번에 임계구역에 접근할 수 있는 스레드의 숫자를 조정함</li>
 <li>mutex : 임계구역에 단 하나밖에 접근 못함</li>
 </ul>
-<p>코어가 1개 일 경우 시간 단축은 거의 없지만(concurrecy programming)<br>코어가 4개 일경우 시간단축 + 멀티코어 프로그래밍이 같이됨<br>concurecncy programming과 pararrelism programming은 다른 개념이다</p>
+<p>코어가 1개 일 경우 시간 단축은 거의 없지만(concurrecy programming)<br>
+코어가 4개 일경우 시간단축 + 멀티코어 프로그래밍이 같이됨<br>
+concurecncy programming과 pararrelism programming은 다른 개념이다</p>
 
-
-                
-            </div>
-
-            <!-- Comments -->
             
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    
 
 
-                </div>
-            
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">태그</span><br>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/쓰레드/">쓰레드</a> <a class="tag tag--primary tag--small t-link" href="/tags/프로세스/">프로세스</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/04/19/2019-04-19-Django시작하기/" data-tooltip="2019-04-19 Django 기본" aria-label="이전: 2019-04-19 Django 기본">
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">이전</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/04/17/CSS 기초/" data-tooltip="2019-04-17 CSS 기초1" aria-label="다음: 2019-04-17 CSS 기초1">
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">다음</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="이 포스트 공유하기">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/04/18/쓰레드와프로세스/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/04/18/쓰레드와프로세스/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/04/18/쓰레드와프로세스/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="맨 위로">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
     </div>
 </article>
 
-    <!-- Footer -->
-    <hr>
 
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
 
-                    
-
-                    
-                        <li>
-                            <a href="https://github.com/sug5806" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
-
-                    
-
-                    
-                        <li>
-                            <a href="mailto:sug5806@gmail.com" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
-
-                    
-                </ul>
-                <p class="copyright text-muted">&copy; 2019 sug5806<br></p>
-                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
-                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
-            </div>
-        </div>
-    </div>
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 sug5806. All Rights Reserved.
+    </span>
 </footer>
 
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/04/19/2019-04-19-Django시작하기/" data-tooltip="2019-04-19 Django 기본" aria-label="이전: 2019-04-19 Django 기본">
+                    
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">이전</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/04/17/CSS 기초/" data-tooltip="2019-04-17 CSS 기초1" aria-label="다음: 2019-04-17 CSS 기초1">
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">다음</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="이 포스트 공유하기">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/04/18/쓰레드와프로세스/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/04/18/쓰레드와프로세스/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/04/18/쓰레드와프로세스/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="맨 위로">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
 
-    <!-- After footer scripts -->
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/04/18/쓰레드와프로세스/" aria-label="Facebook에 공유하기">
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/04/18/쓰레드와프로세스/" aria-label="Twitter에 공유하기">
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/04/18/쓰레드와프로세스/" aria-label="Google+에 공유하기">
+                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <h4 id="about-card-name">sug5806</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br>
+                <p>author.job</p>
+
+            </div>
+        
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-times"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="/assets/images/logo-algolia-nebula-blue-full.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search" class="form-control input--large search-input" placeholder="Search ">
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">포스트가 없습니다.</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                            <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 12일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                            <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 15일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                            <h3 class="media-heading">2019-03-22 OOP</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 22일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
+                            <h3 class="media-heading">2019-03-25 기초 통계</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 25일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
+                            <h3 class="media-heading">2019-03-29 컴파일러와 인터프리터의 차이점</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 29일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
+                            <h3 class="media-heading">2019-04-03 Git 특강1 Init</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 4월 3일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
+                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 4월 4일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
+                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 4월 4일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
+                            <h3 class="media-heading">2019-04-05 HTML 기초태그</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 4월 5일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
+                            <h3 class="media-heading">2019-04-07 Synchronous와 Asynchronous의 차이점</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 4월 7일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
+                68 개의 포스트가 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-igy6higovbbudnz2huqqnzan9tbi5p5qzgpza7ddmnsvw8o9l5otrbk5cg9n.min.js"></script>
+<!--SCRIPTS END-->
+
+
     
-<!-- jQuery -->
-<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-
-<!-- Bootstrap -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-<!-- Gallery -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-
-<!-- Disqus Comments -->
 
 
 
-</body>
+    <script src="/assets/js/moment-with-locales.js"></script>
+    <script src="/assets/js/algoliasearch.js"></script>
+    <script>
+      var algoliaClient = algoliasearch('2LOSRWVGZX', '3846f641c03e28f7c9ece942801b6d95');
+      var algoliaIndex = algoliaClient.initIndex('search');
+    </script>
 
+
+    </body>
 </html>
