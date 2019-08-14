@@ -168,6 +168,155 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/06/04/2019-06-04-Django-admin-page다루기1/" aria-label=": 2019-06-04 Django admin page 다루기1">
+                            2019-06-04 Django admin page 다루기1
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-06-04T15:20:02+09:00">
+	
+		    2019/06/04
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>오늘은 장고 어드민 페이지에 대해서 다뤄보도록 하겠습니다</p>
+<h3><code>Models.py</code></h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from django.db import models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Create your models here.</span><br><span class="line"></span><br><span class="line">class AdminPage(models.Model):</span><br><span class="line">    name = models.CharField(max_length=20)</span><br><span class="line">    age = models.PositiveSmallIntegerField()</span><br><span class="line">    address = models.CharField(max_length=30)</span><br></pre></td></tr></table></figure>
+<p>기본적인 모델입니다. 이름, 나이, 주소가 있습니다</p>
+<p><code>settings.py</code>, <code>admin.py</code>에서 방금 만든 앱을 등록하도록 하겠습니다. 앱이름은 <code>admin_page</code>입니다<br>
+<img src="/image/admin3.png" alt="img"><br>
+<img src="/image/admin4.png" alt="img"></p>
+<p><code>./manage.py migrate</code> 명령어를 실행하여 DB반영 합니다.</p>
+<p><code>./manage.py createsuperuser</code> 명령어를 통해 관리자 계정을 생성해 줍니다.</p>
+<p><img src="/image/admin1.png" alt="img"><br>
+비밀번호가 너무 짧고 단조로워 오류가 뜨네요.<br>
+관리자 계정을 만들때는 어렵게 만들도록 합시다</p>
+<p>이제 <code>./manage.py runserver</code>를 통해 서버를 실행시킨후 <code>http://127.0.0.1:8000/admin/</code>로 접속해 관리자 페이지로 들어가도록 하겠습니다</p>
+<p><img src="/image/admin2.png" alt="img"></p>
+<hr>
+<p><img src="/image/admin5.png" alt></p>
+<p>보시면 만든 Admin page가 있습니다 들어가 봅니다.<br>
+들어가면 아무것도 없을텐데 하나 만들어 줍니다.</p>
+<p><img src="/image/admin6.png" alt></p>
+<p>만들었는데 AdminPage object(1)이라고 뜹니다. 이렇게되면 구분을 할수 없습니다. <code>models.py</code>를 수정하여 제대로 출력해보도록 하겠습니다</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from django.db import models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Create your models here.</span><br><span class="line"></span><br><span class="line">class AdminPage(models.Model):</span><br><span class="line">    name = models.CharField(max_length=20)</span><br><span class="line">    age = models.PositiveSmallIntegerField()</span><br><span class="line">    address = models.CharField(max_length=30)</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return f&apos;&#123;self.name&#125; &#123;self.age&#125; &#123;self.address&#125;&apos;</span><br></pre></td></tr></table></figure>
+<p><img src="/image/admin7.png" alt="img"></p>
+<p>수정 후 화면입니다 이름, 나이, 주소가 같이 출력되는 것을 확인 할 수 있습니다.</p>
+<p>다음번엔 admin page에서 검색기능을 추가를 알아보겠습니다</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/06/04/2019-06-04-Django-admin-page다루기1/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/05/23/2019-05-23-장고 템플릿문법3/" aria-label=": 2019-05-23 장고 템플릿 문법 3">
+                            2019-05-23 장고 템플릿 문법 3
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-05-23T19:23:50+09:00">
+	
+		    2019/05/23
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>장고 템플릿 문법 3</h1>
+<p>장고에서 화면을 렌더링 하기 위해서는 템플릿 엔진을 사용한다. 템플릿 엔진은 각자 자기만의 템플릿 문법을 제공하는데 여러가지 기본 문법과 태그 필터를 살펴본다</p>
+<ol start="6">
+<li>
+<p>템플릿 확장<br>
+특정 템플릿을 상속받아 확장하고 싶을 때는 extends를 사용한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends <span class="string">'base.html'</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>블록<br>
+템플릿을 확장해 사용할 경우 부모 템플릿과 자식 템플릿 모두 block을 만들어서 사용한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% block test %&#125; 껴넣을 내용 &#123;% endblock %&#125;</span><br><span class="line">&#123;% block test %&#125; &#123;&#123; block.super &#125;&#125; 부모 블록과 같이 껴넣을 내용 &#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>템플릿 불러오기<br>
+별도 파일에 작성되어 있는 템플릿을 불러와 사용하려면 include를 사용한다</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include <span class="string">'list.html'</span> %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>static 파일 불러오기<br>
+정적 파일을 서버ㅔ서 불러와 사용하고 싶은 경우 경로를 자동으로 찾아서 출력되게 만드는 것이 좋다.</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    &#123;% load static %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&#123;</span> <span class="attr">static</span> '<span class="attr">js</span>/<span class="attr">underscore.js</span>' %&#125;&gt;</span><span class="undefined"> </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    &#123;% load staticfiles %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&#123;%</span> <span class="attr">static</span> '<span class="attr">js</span>/<span class="attr">underscore.js</span>' %&#125;&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">10. url 출력하기  </span><br><span class="line">    템플릿에 주소를 하드 코딩하지 않고 나타내기 위해서 사용한다.</span><br><span class="line">    ```html</span><br><span class="line">    &#123;% url 'URL패턴이름' %&#125;</span><br><span class="line">    &#123;% url 'URL패턴이름' object.id %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>주석만들기</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;# 한줄 주석 #&#125;</span><br><span class="line">&#123;% comment &apos;여러줄 주석&apos; %</span><br><span class="line">    사이에 있는 모든 태그는 무시된다.</span><br><span class="line">&#123;% endcomment %&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/05/23/2019-05-23-장고 템플릿문법3/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/05/22/2019-05-22-장고 템플릿문법2/" aria-label=": 2019-05-22 장고 템플릿 문법 2">
                             2019-05-22 장고 템플릿 문법 2
                         </a>
