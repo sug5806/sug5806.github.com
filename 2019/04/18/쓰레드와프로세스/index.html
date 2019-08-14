@@ -11,23 +11,23 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Program, Process\nProgram =&gt; HDD안의 이미지를 말함 Ex) Python.exe\nProcess =&gt; 실행중인 프로그램(이미 RAM에 올라가있음)\nPID로 구분을 한다 (Process ID) -&gt; 윈도우는 랜덤으로, 리눅스는 순차적으로 배분\npre-emptive OS\n\nmultitasking OS\nsuspend currently running process\ndetermine which process should execute next\n\nprocess scheduling\n\npriority algorithm : 높은 우선순위의 프로세스가 먼저 실행된다.\nround-robin algorithm : 프로세스들 사이에 우선순위를 두지 않고 time slice로 CPU를 할당하는 방법이다.\n\nscheduler\n\nWhen?\n\nevery time slice\na process created or a process ended\na running process blocked (I/O, system call)\n\n\n\n\nBlock으로 빠지는 경우\n\nIO\nSystem call(운영체제에서 사용하는 함수중 사용자에게 인터페이스를 열어놓은 함수 Ex) sleep)\n\nWaiting 과 Running 사이에서 일어나는 일 : context switching\ncontext switching\n\n메모리안에 블록을 하나만듬(Process Control block) 이곳(PCB)에 어디까지 실행하였는지(CPU안의 레지스터들의 상태정보)를 저장함\ncontext = 지금 현재 실행되고있는 CPU안의 레지스터들의 상태정보를 하나로 모은것\n자주일어날경우 메모리접근 시간이 너무 커짐 -&gt; time slice를 잘 정해야함\nPCB를 내리고 새로운 PCB를 올리는 작업을 context switching이라 함\n\n\nProcess와 Thread -&gt; 인스트럭션의 나열 -&gt; 실행의 흐름일 뿐이다\nProcess = 1개 이상의 쓰레드를 갖는다, 쓰레드가 1개일경우 (single thread라 한다)\nConcurrency programming (동시성 프로그래밍) -&gt; 속도를 위해 하는것이 아님(싱글 코어일 경우)\n\n\nmulti - processing\n\n각기 다른 프로세스에서 똑같은 데이터를 가지고 있어야함\nIPC(Inter Process Communication) -&gt; 최악의 효율성\n\n\n\n\nmulti - threading\n\n프로세스안에 스레드가 포함이 됨(스택만 나눠지고 나머지는 공유함)\n스택 영역만 스레드마다 따로잡힘(지금 현재 실행하는 인스트럭션(함수)이 다르므로 스택만 나누고 나머지 공간은 공유가능)\n쓰레드 또한 PCB처럼 TCB가 있고 context switching이 똑같이 일어남\n\n\n\n\nI/O-bound -&gt; asynchronus I/O(비동기 I/O)\n\n한개의 스레드로 동시성으로 만듬\n\n\n\n\nGIL -&gt; Global Interpreter Lock\n\n멀티코어라도 바이트 코드의 실행을 한번에 하나 스레드로 막는다 (없애려고 했으나 해결을 하지 못함) -&gt; Cpython은 아직 해결 못함\n\nrace-condition\n\n공유자원에 대해 너도나도 쓰겠다고 달려들어 결과값을 보장하지 못한다.\n\n임계 구역(critical section) -&gt; 접근하는것 까지는 괜찮으나 수정하는건 안됨\nmutual exclution(상호배제)\n\n세마포어 : 한번에 임계구역에 접근할 수 있는 스레드의 숫자를 조정함\nmutex : 임계구역에 단 하나밖에 접근 못함\n\n코어가 1개 일 경우 시간 단축은 거의 없지만(concurrecy programming)\n코어가 4개 일경우 시간단축 + 멀티코어 프로그래밍이 같이됨\nconcurecncy programming과 pararrelism programming은 다른 개념이다\n","dateCreated":"2019-04-18T21:30:32+09:00","dateModified":"2019-04-19T09:45:16+09:00","datePublished":"2019-04-18T21:30:32+09:00","description":"","headline":"2019-04-18 프로세스와 쓰레드","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://sug5806.site/2019/04/18/쓰레드와프로세스/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://sug5806.site/2019/04/18/쓰레드와프로세스/","keywords":"프로세스, 쓰레드"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Program, Process\nProgram =&gt; HDD안의 이미지를 말함 Ex) Python.exe\nProcess =&gt; 실행중인 프로그램(이미 RAM에 올라가있음)\nPID로 구분을 한다 (Process ID) -&gt; 윈도우는 랜덤으로, 리눅스는 순차적으로 배분\npre-emptive OS\n\nmultitasking OS\nsuspend currently running process\ndetermine which process should execute next\n\nprocess scheduling\n\npriority algorithm : 높은 우선순위의 프로세스가 먼저 실행된다.\nround-robin algorithm : 프로세스들 사이에 우선순위를 두지 않고 time slice로 CPU를 할당하는 방법이다.\n\nscheduler\n\nWhen?\n\nevery time slice\na process created or a process ended\na running process blocked (I/O, system call)\n\n\n\n\nBlock으로 빠지는 경우\n\nIO\nSystem call(운영체제에서 사용하는 함수중 사용자에게 인터페이스를 열어놓은 함수 Ex) sleep)\n\nWaiting 과 Running 사이에서 일어나는 일 : context switching\ncontext switching\n\n메모리안에 블록을 하나만듬(Process Control block) 이곳(PCB)에 어디까지 실행하였는지(CPU안의 레지스터들의 상태정보)를 저장함\ncontext = 지금 현재 실행되고있는 CPU안의 레지스터들의 상태정보를 하나로 모은것\n자주일어날경우 메모리접근 시간이 너무 커짐 -&gt; time slice를 잘 정해야함\nPCB를 내리고 새로운 PCB를 올리는 작업을 context switching이라 함\n\n\nProcess와 Thread -&gt; 인스트럭션의 나열 -&gt; 실행의 흐름일 뿐이다\nProcess = 1개 이상의 쓰레드를 갖는다, 쓰레드가 1개일경우 (single thread라 한다)\nConcurrency programming (동시성 프로그래밍) -&gt; 속도를 위해 하는것이 아님(싱글 코어일 경우)\n\n\nmulti - processing\n\n각기 다른 프로세스에서 똑같은 데이터를 가지고 있어야함\nIPC(Inter Process Communication) -&gt; 최악의 효율성\n\n\n\n\nmulti - threading\n\n프로세스안에 스레드가 포함이 됨(스택만 나눠지고 나머지는 공유함)\n스택 영역만 스레드마다 따로잡힘(지금 현재 실행하는 인스트럭션(함수)이 다르므로 스택만 나누고 나머지 공간은 공유가능)\n쓰레드 또한 PCB처럼 TCB가 있고 context switching이 똑같이 일어남\n\n\n\n\nI/O-bound -&gt; asynchronus I/O(비동기 I/O)\n\n한개의 스레드로 동시성으로 만듬\n\n\n\n\nGIL -&gt; Global Interpreter Lock\n\n멀티코어라도 바이트 코드의 실행을 한번에 하나 스레드로 막는다 (없애려고 했으나 해결을 하지 못함) -&gt; Cpython은 아직 해결 못함\n\nrace-condition\n\n공유자원에 대해 너도나도 쓰겠다고 달려들어 결과값을 보장하지 못한다.\n\n임계 구역(critical section) -&gt; 접근하는것 까지는 괜찮으나 수정하는건 안됨\nmutual exclution(상호배제)\n\n세마포어 : 한번에 임계구역에 접근할 수 있는 스레드의 숫자를 조정함\nmutex : 임계구역에 단 하나밖에 접근 못함\n\n코어가 1개 일 경우 시간 단축은 거의 없지만(concurrecy programming)\n코어가 4개 일경우 시간단축 + 멀티코어 프로그래밍이 같이됨\nconcurecncy programming과 pararrelism programming은 다른 개념이다\n","dateCreated":"2019-04-18T21:30:32+09:00","dateModified":"2019-04-19T09:45:16+09:00","datePublished":"2019-04-18T21:30:32+09:00","description":"","headline":"2019-04-18 프로세스와 쓰레드","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.sug5806.site/2019/04/18/쓰레드와프로세스/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://www.sug5806.site/2019/04/18/쓰레드와프로세스/","keywords":"프로세스, 쓰레드"}</script>
     <meta name="description" content="Program, Process Program =&amp;gt; HDD안의 이미지를 말함 Ex) Python.exe Process =&amp;gt; 실행중인 프로그램(이미 RAM에 올라가있음) PID로 구분을 한다 (Process ID) -&amp;gt; 윈도우는 랜덤으로, 리눅스는 순차적으로 배분 pre-emptive OS  multitasking OS suspend curre">
 <meta name="keywords" content="프로세스,쓰레드">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-04-18 프로세스와 쓰레드">
-<meta property="og:url" content="http://sug5806.site/2019/04/18/쓰레드와프로세스/index.html">
+<meta property="og:url" content="http://www.sug5806.site/2019/04/18/쓰레드와프로세스/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="Program, Process Program =&amp;gt; HDD안의 이미지를 말함 Ex) Python.exe Process =&amp;gt; 실행중인 프로그램(이미 RAM에 올라가있음) PID로 구분을 한다 (Process ID) -&amp;gt; 윈도우는 랜덤으로, 리눅스는 순차적으로 배분 pre-emptive OS  multitasking OS suspend curre">
 <meta property="og:locale" content="ko">
-<meta property="og:image" content="http://sug5806.site/image/schduler.png">
-<meta property="og:image" content="http://sug5806.site/image/process.png">
-<meta property="og:image" content="http://sug5806.site/image/thread.png">
+<meta property="og:image" content="http://www.sug5806.site/image/schduler.png">
+<meta property="og:image" content="http://www.sug5806.site/image/process.png">
+<meta property="og:image" content="http://www.sug5806.site/image/thread.png">
 <meta property="og:updated_time" content="2019-04-19T00:45:16.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-04-18 프로세스와 쓰레드">
 <meta name="twitter:description" content="Program, Process Program =&amp;gt; HDD안의 이미지를 말함 Ex) Python.exe Process =&amp;gt; 실행중인 프로그램(이미 RAM에 올라가있음) PID로 구분을 한다 (Process ID) -&amp;gt; 윈도우는 랜덤으로, 리눅스는 순차적으로 배분 pre-emptive OS  multitasking OS suspend curre">
-<meta name="twitter:image" content="http://sug5806.site/image/schduler.png">
+<meta name="twitter:image" content="http://www.sug5806.site/image/schduler.png">
     
     
         
@@ -40,6 +40,15 @@
     <link rel="stylesheet" href="/assets/css/style-xmwjmaw63fz9loualz1qmrwgsqz40hdvx3wm88nlmrq0pgtqesn7rfguwvks.min.css">
     <!--STYLES END-->
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145695222-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-145695222-1');
+    </script>
+
 
     
 
@@ -342,7 +351,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/04/18/쓰레드와프로세스/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/18/쓰레드와프로세스/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -350,7 +359,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/04/18/쓰레드와프로세스/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/18/쓰레드와프로세스/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -358,7 +367,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/04/18/쓰레드와프로세스/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/18/쓰레드와프로세스/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -438,7 +447,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/04/18/쓰레드와프로세스/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/18/쓰레드와프로세스/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -446,7 +455,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/04/18/쓰레드와프로세스/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/18/쓰레드와프로세스/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -454,7 +463,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/04/18/쓰레드와프로세스/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/18/쓰레드와프로세스/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -488,7 +497,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/04/18/쓰레드와프로세스/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/18/쓰레드와프로세스/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -496,7 +505,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/04/18/쓰레드와프로세스/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/18/쓰레드와프로세스/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -504,7 +513,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/04/18/쓰레드와프로세스/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/18/쓰레드와프로세스/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -568,7 +577,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
                             <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
                         </a>
                         <span class="media-meta">
@@ -587,7 +596,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
                             <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
                         </a>
                         <span class="media-meta">
@@ -606,146 +615,13 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
                             <h3 class="media-heading">2019-03-22 OOP</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
                                     2019년 3월 22일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
-                            <h3 class="media-heading">2019-03-25 기초 통계</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 3월 25일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
-                            <h3 class="media-heading">2019-03-29 컴파일러와 인터프리터의 차이점</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 3월 29일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
-                            <h3 class="media-heading">2019-04-03 Git 특강1 Init</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 3일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
-                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 4일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
-                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 4일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
-                            <h3 class="media-heading">2019-04-05 HTML 기초태그</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 5일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
-                            <h3 class="media-heading">2019-04-07 Synchronous와 Asynchronous의 차이점</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 7일
                                 
                             </span>
                         </span>
@@ -776,7 +652,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://sug5806.site/2019/04/18/쓰레드와프로세스/';
+            this.page.url = 'http://www.sug5806.site/2019/04/18/쓰레드와프로세스/';
               
             this.page.identifier = '2019/04/18/쓰레드와프로세스/';
               

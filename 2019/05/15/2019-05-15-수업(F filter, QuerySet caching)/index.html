@@ -11,12 +11,12 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"F로 DB 속성 자체를 비교하여 추출할 수 있다\nfrom django.db.models import F\nEx) title이 text에 포함이 되어있느냐?\nQ로는 내 DB의 필드를 참조할 수 없어 한계치가 존재한다\nfilter를 걸고 그 결과에 대해 또 filter를 걸 수 있다\n\nfilter는 filter를 걸어도 실제로 값이 필요할때 실행을 하고 그 전에는 실행하지 않는다 -&gt; lazy-evaluation\n\nEx) q = Document.objects.filter author__username=‘sangki’)\nfrom django.db.models import F\nF : 컬럼 참조 -&gt; DB내의 필드를 직접 참조한다\nDocument.objects.filter(text__icontains=‘11’)\nselect_related -&gt; DB에 부담을 줄 것이냐? 아니면 서버에 부담을 줄것이냐?\nDocument.objects.select_related(‘author’).all()\n\nselect_related -&gt; Join Query를 만들어서 한큐에 데이터를 불러온다.\n\nForeingnKey까지만 묶을 수 있다.\nJoin\n\nauthor를 가져오는데 inner_join을 통해 DB access를 줄인다.\ninner_join : 서로 가지고 있는 데이터만 합쳐서 보여준다 -&gt; 교집합\nouter_join : 서로 가지고 있는 데이터와 함께 어떤 테이블을 기준으로 레코드를 가져오는데 없으면 null로 가져온다\n\n\n\n\nprefetch_related -&gt; Join을 사용하지 않음\n\nDocument.objects.prefetch_related(‘author’).all()\nDocument를 부르고, Category를 부러서 DB내에서 붙여서 하지않고 파이썬 코드에서 병합한다.\nManyToMany 이런것도 지원함\nselete_related로 할수 없는 것은 prefetch_related를 사용한다.\n\n\n\nselect_related, prefetch_related를 사용하지 않는 경우\n참조 테이블에 대한 데이터 질의를 항상 실행한다. = DB에 대해 access를 항상하여 부담 증가\nQuerySet 캐시\n장고 내에도 캐시가 있어 한번 질의를 실행하면 캐시에 저장한다.\n\nobject_list = Document.objects.all()  :  쿼리가 실행되지 않음\nobject_list[:4] : 4번까지 꺼내온다\n\nLIMIT을 걸어 slicing을 하게되면 캐싱이 되지않는다\n한번 전체가 돌고 난뒤에 slicing을 하면 캐싱이 된다\n한번 다 돌고 평가가 되어야 캐싱이 일어난다\n\n\n\nobject_list = Document.objects.all() -&gt; 캐싱 아님\n[object.title for object in object_list] -&gt; 캐싱\nobject_list = Document.objects.all()\nobject_list[4] -&gt; 캐싱 아님\nobject_list[5] -&gt; 캐싱 아님\nobject_list = Document.objects.all()\n[object.title for object in object_list]\nobject_list[4] -&gt; 캐싱\nobject_list[5] -&gt; 캐싱\n~을 제외하여 가져오기\nDocument.objects.exclude(title__incontains=‘1’) : 타이틀중에 1이 포함된 것을 제외하고 가져오기\n\n필터를 이용했을때는 필드를 나열하면 자동으로 and연산이 되었지만 exclude는 안된다.\n\n제외하고 싶은 카테고리를 먼저 추출하고 거기서 전체 카테고리에 제외하고싶은 카테고리가 있으면 exclude를 한다\nDocument.objects.exclude(category__in=Category.objects.filter(name__icontains=‘question’))\n블로그에 속한 글들이 있는경우\n\n블로그 제목에 제외 키워드가 있는경우\n\nEx) 블로그에 특정 키워드가 있는경우\n\n\n블로그 생성일이 한달 이내인 경우\n나머지 글들만\n\nDocument.objects.exclude(blog__in=Blog.objects.filter(title__icontains=‘key’, create__gt=dateime.now()-timedelta(months=1)))\n추출한 QuerySet의 기본 정렬값\n\n모델에서 설정한 값이다\n\n123Model:    class Meta:        ordering = ['field name']\n\n\n정렬값이 없다면 PK를 기준으로 한다\n\n\n내가 원하는 정렬값이 있다.\n\n\n12Document.objects.all().order_by('title') # 오름차순Document.objects.all().order_by('-title') # 내림차순\n삭제\n1Document.objects.get(pk=1).delete()\n#갱신\n12Document.objects.get(pk=1).update(title='afasdf')# pk=1인 레코드의 title을 afasdf로 변경\n전체 레코드에 대해서 갱신\n12Document.objects.all().update(title='afasdf')Document.objects.filter(title__icontains='word').update(title='afasdf')\n\n소셜로그인\n기존에는 우리가 구분을 하였으나 소셜로그인을 하면 유저가 맞는지의 구분이 소셜에 대리로 맡긴다.\nallauth로 구현가능\n","dateCreated":"2019-05-15T18:32:46+09:00","dateModified":"2019-05-16T15:17:42+09:00","datePublished":"2019-05-15T18:32:46+09:00","description":"","headline":"2019-05-15 Django 필터링 F, QuerySet 캐싱","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/","keywords":"F 필터링, QuerySet 캐싱"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"F로 DB 속성 자체를 비교하여 추출할 수 있다\nfrom django.db.models import F\nEx) title이 text에 포함이 되어있느냐?\nQ로는 내 DB의 필드를 참조할 수 없어 한계치가 존재한다\nfilter를 걸고 그 결과에 대해 또 filter를 걸 수 있다\n\nfilter는 filter를 걸어도 실제로 값이 필요할때 실행을 하고 그 전에는 실행하지 않는다 -&gt; lazy-evaluation\n\nEx) q = Document.objects.filter author__username=‘sangki’)\nfrom django.db.models import F\nF : 컬럼 참조 -&gt; DB내의 필드를 직접 참조한다\nDocument.objects.filter(text__icontains=‘11’)\nselect_related -&gt; DB에 부담을 줄 것이냐? 아니면 서버에 부담을 줄것이냐?\nDocument.objects.select_related(‘author’).all()\n\nselect_related -&gt; Join Query를 만들어서 한큐에 데이터를 불러온다.\n\nForeingnKey까지만 묶을 수 있다.\nJoin\n\nauthor를 가져오는데 inner_join을 통해 DB access를 줄인다.\ninner_join : 서로 가지고 있는 데이터만 합쳐서 보여준다 -&gt; 교집합\nouter_join : 서로 가지고 있는 데이터와 함께 어떤 테이블을 기준으로 레코드를 가져오는데 없으면 null로 가져온다\n\n\n\n\nprefetch_related -&gt; Join을 사용하지 않음\n\nDocument.objects.prefetch_related(‘author’).all()\nDocument를 부르고, Category를 부러서 DB내에서 붙여서 하지않고 파이썬 코드에서 병합한다.\nManyToMany 이런것도 지원함\nselete_related로 할수 없는 것은 prefetch_related를 사용한다.\n\n\n\nselect_related, prefetch_related를 사용하지 않는 경우\n참조 테이블에 대한 데이터 질의를 항상 실행한다. = DB에 대해 access를 항상하여 부담 증가\nQuerySet 캐시\n장고 내에도 캐시가 있어 한번 질의를 실행하면 캐시에 저장한다.\n\nobject_list = Document.objects.all()  :  쿼리가 실행되지 않음\nobject_list[:4] : 4번까지 꺼내온다\n\nLIMIT을 걸어 slicing을 하게되면 캐싱이 되지않는다\n한번 전체가 돌고 난뒤에 slicing을 하면 캐싱이 된다\n한번 다 돌고 평가가 되어야 캐싱이 일어난다\n\n\n\nobject_list = Document.objects.all() -&gt; 캐싱 아님\n[object.title for object in object_list] -&gt; 캐싱\nobject_list = Document.objects.all()\nobject_list[4] -&gt; 캐싱 아님\nobject_list[5] -&gt; 캐싱 아님\nobject_list = Document.objects.all()\n[object.title for object in object_list]\nobject_list[4] -&gt; 캐싱\nobject_list[5] -&gt; 캐싱\n~을 제외하여 가져오기\nDocument.objects.exclude(title__incontains=‘1’) : 타이틀중에 1이 포함된 것을 제외하고 가져오기\n\n필터를 이용했을때는 필드를 나열하면 자동으로 and연산이 되었지만 exclude는 안된다.\n\n제외하고 싶은 카테고리를 먼저 추출하고 거기서 전체 카테고리에 제외하고싶은 카테고리가 있으면 exclude를 한다\nDocument.objects.exclude(category__in=Category.objects.filter(name__icontains=‘question’))\n블로그에 속한 글들이 있는경우\n\n블로그 제목에 제외 키워드가 있는경우\n\nEx) 블로그에 특정 키워드가 있는경우\n\n\n블로그 생성일이 한달 이내인 경우\n나머지 글들만\n\nDocument.objects.exclude(blog__in=Blog.objects.filter(title__icontains=‘key’, create__gt=dateime.now()-timedelta(months=1)))\n추출한 QuerySet의 기본 정렬값\n\n모델에서 설정한 값이다\n\n123Model:    class Meta:        ordering = ['field name']\n\n\n정렬값이 없다면 PK를 기준으로 한다\n\n\n내가 원하는 정렬값이 있다.\n\n\n12Document.objects.all().order_by('title') # 오름차순Document.objects.all().order_by('-title') # 내림차순\n삭제\n1Document.objects.get(pk=1).delete()\n#갱신\n12Document.objects.get(pk=1).update(title='afasdf')# pk=1인 레코드의 title을 afasdf로 변경\n전체 레코드에 대해서 갱신\n12Document.objects.all().update(title='afasdf')Document.objects.filter(title__icontains='word').update(title='afasdf')\n\n소셜로그인\n기존에는 우리가 구분을 하였으나 소셜로그인을 하면 유저가 맞는지의 구분이 소셜에 대리로 맡긴다.\nallauth로 구현가능\n","dateCreated":"2019-05-15T18:32:46+09:00","dateModified":"2019-05-16T15:17:42+09:00","datePublished":"2019-05-15T18:32:46+09:00","description":"","headline":"2019-05-15 Django 필터링 F, QuerySet 캐싱","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://www.sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/","keywords":"F 필터링, QuerySet 캐싱"}</script>
     <meta name="description" content="F로 DB 속성 자체를 비교하여 추출할 수 있다 from django.db.models import F Ex) title이 text에 포함이 되어있느냐? Q로는 내 DB의 필드를 참조할 수 없어 한계치가 존재한다 filter를 걸고 그 결과에 대해 또 filter를 걸 수 있다  filter는 filter를 걸어도 실제로 값이 필요할때 실행을 하고 그 전에">
 <meta name="keywords" content="F 필터링,QuerySet 캐싱">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-05-15 Django 필터링 F, QuerySet 캐싱">
-<meta property="og:url" content="http://sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/index.html">
+<meta property="og:url" content="http://www.sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="F로 DB 속성 자체를 비교하여 추출할 수 있다 from django.db.models import F Ex) title이 text에 포함이 되어있느냐? Q로는 내 DB의 필드를 참조할 수 없어 한계치가 존재한다 filter를 걸고 그 결과에 대해 또 filter를 걸 수 있다  filter는 filter를 걸어도 실제로 값이 필요할때 실행을 하고 그 전에">
 <meta property="og:locale" content="ko">
@@ -36,6 +36,15 @@
     <link rel="stylesheet" href="/assets/css/style-xmwjmaw63fz9loualz1qmrwgsqz40hdvx3wm88nlmrq0pgtqesn7rfguwvks.min.css">
     <!--STYLES END-->
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145695222-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-145695222-1');
+    </script>
+
 
     
 
@@ -353,7 +362,7 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -361,7 +370,7 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -369,7 +378,7 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -449,7 +458,7 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -457,7 +466,7 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -465,7 +474,7 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -499,7 +508,7 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -507,7 +516,7 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -515,7 +524,7 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -579,7 +588,7 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
                             <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
                         </a>
                         <span class="media-meta">
@@ -598,7 +607,7 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
                             <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
                         </a>
                         <span class="media-meta">
@@ -617,146 +626,13 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
                             <h3 class="media-heading">2019-03-22 OOP</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
                                     2019년 3월 22일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
-                            <h3 class="media-heading">2019-03-25 기초 통계</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 3월 25일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
-                            <h3 class="media-heading">2019-03-29 컴파일러와 인터프리터의 차이점</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 3월 29일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
-                            <h3 class="media-heading">2019-04-03 Git 특강1 Init</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 3일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
-                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 4일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
-                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 4일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
-                            <h3 class="media-heading">2019-04-05 HTML 기초태그</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 5일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
-                            <h3 class="media-heading">2019-04-07 Synchronous와 Asynchronous의 차이점</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 7일
                                 
                             </span>
                         </span>
@@ -787,7 +663,7 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/';
+            this.page.url = 'http://www.sug5806.site/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/';
               
             this.page.identifier = '2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/';
               

@@ -11,21 +11,21 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 것을 정리하였습니다.\n단일 연결 리스트(Singly Linked List)\n일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.\n\n리스트의 기본 동작\n\n리스트 탐색\n리스트 내 아이템 삽입\n리스트에서 아이템을 삭제\n\n단일 연결 리스트의 코드\n123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293class Node:    def __init__(self, data=None):        self.__data = data        self.__link = None    # 소멸자    # 객체가 사라지기 전에    # 반드시 한번 호출 하는것을 보장한다    def __del__(self):        print(f\"node[&#123;self.__data&#125;] deleted!! \")    @property    def data(self):        return self.__data    @data.setter    def data(self, data):        self.__data = data    @property    def link(self):        return self.__link    @link.setter    def link(self, link):        self.__link = linkclass SLinkedList:    def __init__(self):        self.head = None        self.d_size = 0    def empty(self):        if self.d_size == 0:            return True        else:            return False    def size(self):        return self.d_size    def add(self, data):        new_node = Node(data)        new_node.link = self.head        self.head = new_node        self.d_size += 1    def search(self, target):        temp = self.head        while temp:            if temp.data == target:                return temp.data            else:                temp = temp.link        return temp    def delete(self):        if self.head is None:            return        else:            self.head = self.head.link            self.d_size -= 1def show_list(sll):    cur = sll.head    for _ in range(sll.size()):        print(cur.data, end=\"  \")        cur = cur.linkif __name__ == \"__main__\":    SLL = SLinkedList()    SLL.add(1)    SLL.add(3)    SLL.add(4)    SLL.add(5)    SLL.add(8)    show_list(SLL)    print()    print('*' * 100)    target = 4    result = SLL.search(target)    if result:        print(f'target = &#123;target&#125;')        print(f'searched data : &#123;result&#125;')    else:        print(f'there is no such data')    print()","dateCreated":"2019-07-03T19:04:46+09:00","dateModified":"2019-08-14T17:12:16+09:00","datePublished":"2019-07-03T19:04:46+09:00","description":"","headline":"2019-07-03 연결 리스트(Linked List)2","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://sug5806.site/2019/07/03/2019-07-03-연결리스트2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://sug5806.site/2019/07/03/2019-07-03-연결리스트2/","keywords":"자료구조, 연결 리스트, 링크드 리스트"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 것을 정리하였습니다.\n단일 연결 리스트(Singly Linked List)\n일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.\n\n리스트의 기본 동작\n\n리스트 탐색\n리스트 내 아이템 삽입\n리스트에서 아이템을 삭제\n\n단일 연결 리스트의 코드\n123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293class Node:    def __init__(self, data=None):        self.__data = data        self.__link = None    # 소멸자    # 객체가 사라지기 전에    # 반드시 한번 호출 하는것을 보장한다    def __del__(self):        print(f\"node[&#123;self.__data&#125;] deleted!! \")    @property    def data(self):        return self.__data    @data.setter    def data(self, data):        self.__data = data    @property    def link(self):        return self.__link    @link.setter    def link(self, link):        self.__link = linkclass SLinkedList:    def __init__(self):        self.head = None        self.d_size = 0    def empty(self):        if self.d_size == 0:            return True        else:            return False    def size(self):        return self.d_size    def add(self, data):        new_node = Node(data)        new_node.link = self.head        self.head = new_node        self.d_size += 1    def search(self, target):        temp = self.head        while temp:            if temp.data == target:                return temp.data            else:                temp = temp.link        return temp    def delete(self):        if self.head is None:            return        else:            self.head = self.head.link            self.d_size -= 1def show_list(sll):    cur = sll.head    for _ in range(sll.size()):        print(cur.data, end=\"  \")        cur = cur.linkif __name__ == \"__main__\":    SLL = SLinkedList()    SLL.add(1)    SLL.add(3)    SLL.add(4)    SLL.add(5)    SLL.add(8)    show_list(SLL)    print()    print('*' * 100)    target = 4    result = SLL.search(target)    if result:        print(f'target = &#123;target&#125;')        print(f'searched data : &#123;result&#125;')    else:        print(f'there is no such data')    print()","dateCreated":"2019-07-03T19:04:46+09:00","dateModified":"2019-08-14T17:12:16+09:00","datePublished":"2019-07-03T19:04:46+09:00","description":"","headline":"2019-07-03 연결 리스트(Linked List)2","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.sug5806.site/2019/07/03/2019-07-03-연결리스트2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://www.sug5806.site/2019/07/03/2019-07-03-연결리스트2/","keywords":"자료구조, 연결 리스트, 링크드 리스트"}</script>
     <meta name="description" content="개인적으로 공부한 것을 정리하였습니다. 단일 연결 리스트(Singly Linked List) 일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.  리스트의 기본 동작  리스트 탐색 리스트 내 아이템 삽입 리스트에서 아이템을 삭제  단일 연결 리스트의 코드 1234567891011121314">
 <meta name="keywords" content="자료구조,연결 리스트,링크드 리스트">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-07-03 연결 리스트(Linked List)2">
-<meta property="og:url" content="http://sug5806.site/2019/07/03/2019-07-03-연결리스트2/index.html">
+<meta property="og:url" content="http://www.sug5806.site/2019/07/03/2019-07-03-연결리스트2/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="개인적으로 공부한 것을 정리하였습니다. 단일 연결 리스트(Singly Linked List) 일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.  리스트의 기본 동작  리스트 탐색 리스트 내 아이템 삽입 리스트에서 아이템을 삭제  단일 연결 리스트의 코드 1234567891011121314">
 <meta property="og:locale" content="ko">
-<meta property="og:image" content="http://sug5806.site/image/ll1-1.png">
+<meta property="og:image" content="http://www.sug5806.site/image/ll1-1.png">
 <meta property="og:updated_time" content="2019-08-14T08:12:16.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-07-03 연결 리스트(Linked List)2">
 <meta name="twitter:description" content="개인적으로 공부한 것을 정리하였습니다. 단일 연결 리스트(Singly Linked List) 일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.  리스트의 기본 동작  리스트 탐색 리스트 내 아이템 삽입 리스트에서 아이템을 삭제  단일 연결 리스트의 코드 1234567891011121314">
-<meta name="twitter:image" content="http://sug5806.site/image/ll1-1.png">
+<meta name="twitter:image" content="http://www.sug5806.site/image/ll1-1.png">
     
     
         
@@ -38,6 +38,15 @@
     <link rel="stylesheet" href="/assets/css/style-xmwjmaw63fz9loualz1qmrwgsqz40hdvx3wm88nlmrq0pgtqesn7rfguwvks.min.css">
     <!--STYLES END-->
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145695222-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-145695222-1');
+    </script>
+
 
     
 
@@ -264,7 +273,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/07/03/2019-07-03-연결리스트2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/07/03/2019-07-03-연결리스트2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -272,7 +281,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/07/03/2019-07-03-연결리스트2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/07/03/2019-07-03-연결리스트2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -280,7 +289,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/07/03/2019-07-03-연결리스트2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/07/03/2019-07-03-연결리스트2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -359,7 +368,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/07/03/2019-07-03-연결리스트2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/07/03/2019-07-03-연결리스트2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -367,7 +376,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/07/03/2019-07-03-연결리스트2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/07/03/2019-07-03-연결리스트2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -375,7 +384,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/07/03/2019-07-03-연결리스트2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/07/03/2019-07-03-연결리스트2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -409,7 +418,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/07/03/2019-07-03-연결리스트2/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/07/03/2019-07-03-연결리스트2/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -417,7 +426,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/07/03/2019-07-03-연결리스트2/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/07/03/2019-07-03-연결리스트2/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -425,7 +434,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/07/03/2019-07-03-연결리스트2/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/07/03/2019-07-03-연결리스트2/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -489,7 +498,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
                             <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
                         </a>
                         <span class="media-meta">
@@ -508,7 +517,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
                             <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
                         </a>
                         <span class="media-meta">
@@ -527,146 +536,13 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
                             <h3 class="media-heading">2019-03-22 OOP</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
                                     2019년 3월 22일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
-                            <h3 class="media-heading">2019-03-25 기초 통계</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 3월 25일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
-                            <h3 class="media-heading">2019-03-29 컴파일러와 인터프리터의 차이점</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 3월 29일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
-                            <h3 class="media-heading">2019-04-03 Git 특강1 Init</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 3일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
-                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 4일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
-                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 4일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
-                            <h3 class="media-heading">2019-04-05 HTML 기초태그</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 5일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
-                            <h3 class="media-heading">2019-04-07 Synchronous와 Asynchronous의 차이점</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 7일
                                 
                             </span>
                         </span>
@@ -697,7 +573,7 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://sug5806.site/2019/07/03/2019-07-03-연결리스트2/';
+            this.page.url = 'http://www.sug5806.site/2019/07/03/2019-07-03-연결리스트2/';
               
             this.page.identifier = '2019/07/03/2019-07-03-연결리스트2/';
               

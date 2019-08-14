@@ -11,12 +11,12 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"HTTP Server\n\n\n브라우저를 통해 사용자가 HTTP Request Message를 보내면\n\n\n서버는 그 Message를 해석하고 Response Message로 응답한다\n\n어느 페이지로 접속했느냐?\nQuery String은 어떤 데이터를 가지고 있느냐?\n특정 스크립트 요청이 있느냐?\n최종 응답을 HTML, 다운로드는 파일로 할것이냐?\n\n\n\nHTTP Response만 하는 서버\n\n\n\n주소에 검색어값을 넘겨준다 -&gt; 쿼리스패싱?\n쿼리스트링\n\n? : 쿼리스트링의 시작\n&amp; : 다음변수\n\n\n\n\n논외\nwith 구문을 def로 바꾸거나 def를 with구문으로 바꿀줄 알아야함\n요즘에는 404나 이런 오류메시지를 서버에서 만들어주는게 트랜드이다\n랜덤값을 뽑아주는 패키지를 잘 알아두는것이 좋다\n\n123456789101112131415161718import http.serverimport socketserver# 서버에 접속하는 포트PORT = 8000# 요청이 들어오면 어느 객체가 요청을 해석하고 처리할것이냐?# Ex) 수리기사를 부르는 개념# 현재 디렉토리와 하위의 파일을 제공하고 디렉토리 구조를 HTTP 요청에 직접 매핑함Handler = http.server.SimpleHTTPRequestHandler# \"\"으로 하면 localhost(127.0.0.1)이다\"with socketserver.TCPServer((\"\", PORT), Handler) as httpd:    print(\"serving at PORT\", PORT)    # 클라이언트의 접속 요청을 수신대기 한다. 접속 요청이 있을시    # 수락하고 SimpleHTTPRequestHandler의 handle 메소드를 호출한다.    httpd.serve_forever()","dateCreated":"2019-04-26T21:05:12+09:00","dateModified":"2019-04-26T21:05:57+09:00","datePublished":"2019-04-26T21:05:12+09:00","description":"","headline":"2019-04-26 HTTP Server 만들어보기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://sug5806.site/2019/04/26/2019-04-26-HTTP_server/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://sug5806.site/2019/04/26/2019-04-26-HTTP_server/","keywords":"HTTP Server"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"HTTP Server\n\n\n브라우저를 통해 사용자가 HTTP Request Message를 보내면\n\n\n서버는 그 Message를 해석하고 Response Message로 응답한다\n\n어느 페이지로 접속했느냐?\nQuery String은 어떤 데이터를 가지고 있느냐?\n특정 스크립트 요청이 있느냐?\n최종 응답을 HTML, 다운로드는 파일로 할것이냐?\n\n\n\nHTTP Response만 하는 서버\n\n\n\n주소에 검색어값을 넘겨준다 -&gt; 쿼리스패싱?\n쿼리스트링\n\n? : 쿼리스트링의 시작\n&amp; : 다음변수\n\n\n\n\n논외\nwith 구문을 def로 바꾸거나 def를 with구문으로 바꿀줄 알아야함\n요즘에는 404나 이런 오류메시지를 서버에서 만들어주는게 트랜드이다\n랜덤값을 뽑아주는 패키지를 잘 알아두는것이 좋다\n\n123456789101112131415161718import http.serverimport socketserver# 서버에 접속하는 포트PORT = 8000# 요청이 들어오면 어느 객체가 요청을 해석하고 처리할것이냐?# Ex) 수리기사를 부르는 개념# 현재 디렉토리와 하위의 파일을 제공하고 디렉토리 구조를 HTTP 요청에 직접 매핑함Handler = http.server.SimpleHTTPRequestHandler# \"\"으로 하면 localhost(127.0.0.1)이다\"with socketserver.TCPServer((\"\", PORT), Handler) as httpd:    print(\"serving at PORT\", PORT)    # 클라이언트의 접속 요청을 수신대기 한다. 접속 요청이 있을시    # 수락하고 SimpleHTTPRequestHandler의 handle 메소드를 호출한다.    httpd.serve_forever()","dateCreated":"2019-04-26T21:05:12+09:00","dateModified":"2019-04-26T21:05:57+09:00","datePublished":"2019-04-26T21:05:12+09:00","description":"","headline":"2019-04-26 HTTP Server 만들어보기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.sug5806.site/2019/04/26/2019-04-26-HTTP_server/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://www.sug5806.site/2019/04/26/2019-04-26-HTTP_server/","keywords":"HTTP Server"}</script>
     <meta name="description" content="HTTP Server   브라우저를 통해 사용자가 HTTP Request Message를 보내면   서버는 그 Message를 해석하고 Response Message로 응답한다  어느 페이지로 접속했느냐? Query String은 어떤 데이터를 가지고 있느냐? 특정 스크립트 요청이 있느냐? 최종 응답을 HTML, 다운로드는 파일로 할것이냐?    HTTP">
 <meta name="keywords" content="HTTP Server">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-04-26 HTTP Server 만들어보기">
-<meta property="og:url" content="http://sug5806.site/2019/04/26/2019-04-26-HTTP_server/index.html">
+<meta property="og:url" content="http://www.sug5806.site/2019/04/26/2019-04-26-HTTP_server/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="HTTP Server   브라우저를 통해 사용자가 HTTP Request Message를 보내면   서버는 그 Message를 해석하고 Response Message로 응답한다  어느 페이지로 접속했느냐? Query String은 어떤 데이터를 가지고 있느냐? 특정 스크립트 요청이 있느냐? 최종 응답을 HTML, 다운로드는 파일로 할것이냐?    HTTP">
 <meta property="og:locale" content="ko">
@@ -36,6 +36,15 @@
     <link rel="stylesheet" href="/assets/css/style-xmwjmaw63fz9loualz1qmrwgsqz40hdvx3wm88nlmrq0pgtqesn7rfguwvks.min.css">
     <!--STYLES END-->
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145695222-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-145695222-1');
+    </script>
+
 
     
 
@@ -285,7 +294,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/04/26/2019-04-26-HTTP_server/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/26/2019-04-26-HTTP_server/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -293,7 +302,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/04/26/2019-04-26-HTTP_server/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/26/2019-04-26-HTTP_server/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -301,7 +310,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/04/26/2019-04-26-HTTP_server/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/26/2019-04-26-HTTP_server/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -381,7 +390,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/04/26/2019-04-26-HTTP_server/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/26/2019-04-26-HTTP_server/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -389,7 +398,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/04/26/2019-04-26-HTTP_server/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/26/2019-04-26-HTTP_server/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -397,7 +406,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/04/26/2019-04-26-HTTP_server/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/26/2019-04-26-HTTP_server/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -431,7 +440,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/04/26/2019-04-26-HTTP_server/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/26/2019-04-26-HTTP_server/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -439,7 +448,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/04/26/2019-04-26-HTTP_server/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/26/2019-04-26-HTTP_server/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -447,7 +456,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/04/26/2019-04-26-HTTP_server/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/26/2019-04-26-HTTP_server/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -511,7 +520,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
                             <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
                         </a>
                         <span class="media-meta">
@@ -530,7 +539,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
                             <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
                         </a>
                         <span class="media-meta">
@@ -549,146 +558,13 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
                             <h3 class="media-heading">2019-03-22 OOP</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
                                     2019년 3월 22일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
-                            <h3 class="media-heading">2019-03-25 기초 통계</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 3월 25일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
-                            <h3 class="media-heading">2019-03-29 컴파일러와 인터프리터의 차이점</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 3월 29일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
-                            <h3 class="media-heading">2019-04-03 Git 특강1 Init</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 3일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
-                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 4일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
-                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 4일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
-                            <h3 class="media-heading">2019-04-05 HTML 기초태그</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 5일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
-                            <h3 class="media-heading">2019-04-07 Synchronous와 Asynchronous의 차이점</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 7일
                                 
                             </span>
                         </span>
@@ -719,7 +595,7 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://sug5806.site/2019/04/26/2019-04-26-HTTP_server/';
+            this.page.url = 'http://www.sug5806.site/2019/04/26/2019-04-26-HTTP_server/';
               
             this.page.identifier = '2019/04/26/2019-04-26-HTTP_server/';
               

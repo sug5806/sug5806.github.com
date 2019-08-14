@@ -11,34 +11,34 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Amazon CLI를 사용하여 사용자 등록하기\nDjango로 Amazon 서비스를 연동하다 보면 settings.py에 아마존 aws_access_key_id와 aws_secret_access_key를 입력해야 하는데 github 같은 곳에 실수로 올리게 되면 해커들이 도용을 하게됩니다. 이것 방지하기위해 AWS CLI를 통해 등록하면 settings.py에 더이상 access_key를 적지 않아도 됩니다.\n\n\n먼저 아마존에 가입을하고 IAM항목으로 들어갑니다.\n\n\n\n그룹을 누르고 새로운 그룹생성을 합니다.\n\n\n\n그룹이름을 적고 우측하단에 다음단계를 누릅니다\n\n\n\n\n본인이 이용하실 서비스에 대한 정책을 선택하고 우측 하단에 다음단계로 진행합니다. 저는 S3를 이용할것이므로 S3FullAccess를 선택하였습니다.\n\n\n\n선택하신것을 확인하시고 우측 하단에 그룹선택을 눌러줍니다.\n\n\n\n이제 그룹에 사용자를 추가시켜줘야 합니다. 사용자 탭을눌러 사용자 추가를 해줍니다.\n\n\n\n사용자 이름을 적어주시고 우리는 CLI를 통해 등록을 할것이므로 프로그래밍 방식 액세스에 체크하도록 합니다. 그리고 우측 하단의 다음으로 넘어갑니다\n\n\n\n방금 만든 그룹이 보이실텐데 추가하고 싶은 그룹을 체크박스 하신뒤 우측 하단의 다음버튼을 눌러줍니다\n\n\n\n태그 추가는 지금당장 할일이 없으므로 생략하도록 합니다\n\n\n\n이제 그동안 설정한 값들을 확인할 수 있는 화면입니다. 확인후 사용자 만들기를 누릅니다.\n\n\n\n제일 중요한 화면입니다. 이 화면을 벗어나게되면 확인할 수가 없습니다. 그러므로 .csv 다운로드를 통해 등록한 사용자의 ID와 시크릿키를 다운받습니다. 절대 다른사람에게 노출이 되면 안됩니다.\n\n\n\n이제 django에서 사용자를 등록하도록 하겠습니다.\npip install awscli를 입력하여 설치해줍니다\n\n\n\n설치가 다 되면 aws configure을 통해 다운받으신 csv파일의 ID와 Key를 입력하시면 됩니다. region은 서울이니 ap-northeast-2, output format은 json, text, table중 하나를 입력해주면 됩니다.\n\n\n\n등록을 마치면 더이상 settings.py에 ID와 Key를 입력하지 않아도 자동으로 본인 root디렉토리에 .aws디렉토리 내부의 파일을 읽어 사용할 수 있습니다.\n\n\n","dateCreated":"2019-05-31T13:20:02+09:00","dateModified":"2019-06-24T13:09:38+09:00","datePublished":"2019-05-31T13:20:02+09:00","description":"","headline":"2019-05-31 Amazon CLI 설정하기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://sug5806.site/2019/05/31/2019-05-31-AWS-IAM/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://sug5806.site/2019/05/31/2019-05-31-AWS-IAM/","keywords":"Amazon CLI, IAM"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Amazon CLI를 사용하여 사용자 등록하기\nDjango로 Amazon 서비스를 연동하다 보면 settings.py에 아마존 aws_access_key_id와 aws_secret_access_key를 입력해야 하는데 github 같은 곳에 실수로 올리게 되면 해커들이 도용을 하게됩니다. 이것 방지하기위해 AWS CLI를 통해 등록하면 settings.py에 더이상 access_key를 적지 않아도 됩니다.\n\n\n먼저 아마존에 가입을하고 IAM항목으로 들어갑니다.\n\n\n\n그룹을 누르고 새로운 그룹생성을 합니다.\n\n\n\n그룹이름을 적고 우측하단에 다음단계를 누릅니다\n\n\n\n\n본인이 이용하실 서비스에 대한 정책을 선택하고 우측 하단에 다음단계로 진행합니다. 저는 S3를 이용할것이므로 S3FullAccess를 선택하였습니다.\n\n\n\n선택하신것을 확인하시고 우측 하단에 그룹선택을 눌러줍니다.\n\n\n\n이제 그룹에 사용자를 추가시켜줘야 합니다. 사용자 탭을눌러 사용자 추가를 해줍니다.\n\n\n\n사용자 이름을 적어주시고 우리는 CLI를 통해 등록을 할것이므로 프로그래밍 방식 액세스에 체크하도록 합니다. 그리고 우측 하단의 다음으로 넘어갑니다\n\n\n\n방금 만든 그룹이 보이실텐데 추가하고 싶은 그룹을 체크박스 하신뒤 우측 하단의 다음버튼을 눌러줍니다\n\n\n\n태그 추가는 지금당장 할일이 없으므로 생략하도록 합니다\n\n\n\n이제 그동안 설정한 값들을 확인할 수 있는 화면입니다. 확인후 사용자 만들기를 누릅니다.\n\n\n\n제일 중요한 화면입니다. 이 화면을 벗어나게되면 확인할 수가 없습니다. 그러므로 .csv 다운로드를 통해 등록한 사용자의 ID와 시크릿키를 다운받습니다. 절대 다른사람에게 노출이 되면 안됩니다.\n\n\n\n이제 django에서 사용자를 등록하도록 하겠습니다.\npip install awscli를 입력하여 설치해줍니다\n\n\n\n설치가 다 되면 aws configure을 통해 다운받으신 csv파일의 ID와 Key를 입력하시면 됩니다. region은 서울이니 ap-northeast-2, output format은 json, text, table중 하나를 입력해주면 됩니다.\n\n\n\n등록을 마치면 더이상 settings.py에 ID와 Key를 입력하지 않아도 자동으로 본인 root디렉토리에 .aws디렉토리 내부의 파일을 읽어 사용할 수 있습니다.\n\n\n","dateCreated":"2019-05-31T13:20:02+09:00","dateModified":"2019-06-24T13:09:38+09:00","datePublished":"2019-05-31T13:20:02+09:00","description":"","headline":"2019-05-31 Amazon CLI 설정하기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.sug5806.site/2019/05/31/2019-05-31-AWS-IAM/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://www.sug5806.site/2019/05/31/2019-05-31-AWS-IAM/","keywords":"Amazon CLI, IAM"}</script>
     <meta name="description" content="Amazon CLI를 사용하여 사용자 등록하기 Django로 Amazon 서비스를 연동하다 보면 settings.py에 아마존 aws_access_key_id와 aws_secret_access_key를 입력해야 하는데 github 같은 곳에 실수로 올리게 되면 해커들이 도용을 하게됩니다. 이것 방지하기위해 AWS CLI를 통해 등록하면 settings.py">
 <meta name="keywords" content="Amazon CLI,IAM">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-05-31 Amazon CLI 설정하기">
-<meta property="og:url" content="http://sug5806.site/2019/05/31/2019-05-31-AWS-IAM/index.html">
+<meta property="og:url" content="http://www.sug5806.site/2019/05/31/2019-05-31-AWS-IAM/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="Amazon CLI를 사용하여 사용자 등록하기 Django로 Amazon 서비스를 연동하다 보면 settings.py에 아마존 aws_access_key_id와 aws_secret_access_key를 입력해야 하는데 github 같은 곳에 실수로 올리게 되면 해커들이 도용을 하게됩니다. 이것 방지하기위해 AWS CLI를 통해 등록하면 settings.py">
 <meta property="og:locale" content="ko">
-<meta property="og:image" content="http://sug5806.site/image/Amazon01.png">
-<meta property="og:image" content="http://sug5806.site/image/Amazon02.png">
-<meta property="og:image" content="http://sug5806.site/image/Amazon03.png">
-<meta property="og:image" content="http://sug5806.site/image/Amazon04.png">
-<meta property="og:image" content="http://sug5806.site/image/Amazon05.png">
-<meta property="og:image" content="http://sug5806.site/image/Amazon06.png">
-<meta property="og:image" content="http://sug5806.site/image/Amazon07.png">
-<meta property="og:image" content="http://sug5806.site/image/Amazon08.png">
-<meta property="og:image" content="http://sug5806.site/image/Amazon09.png">
-<meta property="og:image" content="http://sug5806.site/image/Amazon10.png">
-<meta property="og:image" content="http://sug5806.site/image/Amazon11.png">
-<meta property="og:image" content="http://sug5806.site/image/Amazon12.png">
-<meta property="og:image" content="http://sug5806.site/image/Amazon13.png">
-<meta property="og:image" content="http://sug5806.site/image/Amazon14.png">
+<meta property="og:image" content="http://www.sug5806.site/image/Amazon01.png">
+<meta property="og:image" content="http://www.sug5806.site/image/Amazon02.png">
+<meta property="og:image" content="http://www.sug5806.site/image/Amazon03.png">
+<meta property="og:image" content="http://www.sug5806.site/image/Amazon04.png">
+<meta property="og:image" content="http://www.sug5806.site/image/Amazon05.png">
+<meta property="og:image" content="http://www.sug5806.site/image/Amazon06.png">
+<meta property="og:image" content="http://www.sug5806.site/image/Amazon07.png">
+<meta property="og:image" content="http://www.sug5806.site/image/Amazon08.png">
+<meta property="og:image" content="http://www.sug5806.site/image/Amazon09.png">
+<meta property="og:image" content="http://www.sug5806.site/image/Amazon10.png">
+<meta property="og:image" content="http://www.sug5806.site/image/Amazon11.png">
+<meta property="og:image" content="http://www.sug5806.site/image/Amazon12.png">
+<meta property="og:image" content="http://www.sug5806.site/image/Amazon13.png">
+<meta property="og:image" content="http://www.sug5806.site/image/Amazon14.png">
 <meta property="og:updated_time" content="2019-06-24T04:09:38.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-05-31 Amazon CLI 설정하기">
 <meta name="twitter:description" content="Amazon CLI를 사용하여 사용자 등록하기 Django로 Amazon 서비스를 연동하다 보면 settings.py에 아마존 aws_access_key_id와 aws_secret_access_key를 입력해야 하는데 github 같은 곳에 실수로 올리게 되면 해커들이 도용을 하게됩니다. 이것 방지하기위해 AWS CLI를 통해 등록하면 settings.py">
-<meta name="twitter:image" content="http://sug5806.site/image/Amazon01.png">
+<meta name="twitter:image" content="http://www.sug5806.site/image/Amazon01.png">
     
     
         
@@ -51,6 +51,15 @@
     <link rel="stylesheet" href="/assets/css/style-xmwjmaw63fz9loualz1qmrwgsqz40hdvx3wm88nlmrq0pgtqesn7rfguwvks.min.css">
     <!--STYLES END-->
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145695222-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-145695222-1');
+    </script>
+
 
     
 
@@ -328,7 +337,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -336,7 +345,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -344,7 +353,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -424,7 +433,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -432,7 +441,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -440,7 +449,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -474,7 +483,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -482,7 +491,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -490,7 +499,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/05/31/2019-05-31-AWS-IAM/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -554,7 +563,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
                             <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
                         </a>
                         <span class="media-meta">
@@ -573,7 +582,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
                             <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
                         </a>
                         <span class="media-meta">
@@ -592,146 +601,13 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
                             <h3 class="media-heading">2019-03-22 OOP</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
                                     2019년 3월 22일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
-                            <h3 class="media-heading">2019-03-25 기초 통계</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 3월 25일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
-                            <h3 class="media-heading">2019-03-29 컴파일러와 인터프리터의 차이점</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 3월 29일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
-                            <h3 class="media-heading">2019-04-03 Git 특강1 Init</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 3일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
-                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 4일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
-                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 4일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
-                            <h3 class="media-heading">2019-04-05 HTML 기초태그</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 5일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
-                            <h3 class="media-heading">2019-04-07 Synchronous와 Asynchronous의 차이점</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 7일
                                 
                             </span>
                         </span>
@@ -762,7 +638,7 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://sug5806.site/2019/05/31/2019-05-31-AWS-IAM/';
+            this.page.url = 'http://www.sug5806.site/2019/05/31/2019-05-31-AWS-IAM/';
               
             this.page.identifier = '2019/05/31/2019-05-31-AWS-IAM/';
               

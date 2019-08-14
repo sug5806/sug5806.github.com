@@ -15,7 +15,7 @@
     <meta name="description" content="공부한것을 정리하여 올리는 블로그입니다">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="sug5806의 블로그">
-<meta property="og:url" content="http://sug5806.site/archives/2019/page/5/index.html">
+<meta property="og:url" content="http://www.sug5806.site/archives/2019/page/5/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="공부한것을 정리하여 올리는 블로그입니다">
 <meta property="og:locale" content="ko">
@@ -34,6 +34,15 @@
     <link rel="stylesheet" href="/assets/css/style-xmwjmaw63fz9loualz1qmrwgsqz40hdvx3wm88nlmrq0pgtqesn7rfguwvks.min.css">
     <!--STYLES END-->
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145695222-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-145695222-1');
+    </script>
+
 
     
 
@@ -177,418 +186,15 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/04/24/2019-04-24-Crawler/" aria-label=": 2019-04-24 웹 크롤러 만들기 1">
-                            2019-04-24 웹 크롤러 만들기 1
+                        <a class="link-unstyled" href="/2019/06/10/2019-06-10-Django-Shell다루기1/" aria-label=": 2019-06-10 Django Shell 다루기1">
+                            2019-06-10 Django Shell 다루기1
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-04-24T16:36:02+09:00">
+    <time datetime="2019-06-10T11:38:02+09:00">
 	
-		    2019/04/24
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/python/">python</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>크롤러 만들기 1</h1>
-<p>크롤러 : 웹 페이지에 있는 자료를 자동으로 수집하는 프로그램<br>
-Ex) 검색엔진<br>
-–&gt;<br>
-Robot.txt : 검색엔진에게 어디까지 검색을 허용할 것이냐?</p>
-<p>브라우저가 혹은 크롤러 어떤식으로 서버에 접근해서 데이터를 가져오는가?</p>
-<ol>
-<li>주소를 입력하면 해당 서버로 접근한다.</li>
-<li>웹 서버 프로그램이 해당 주소에 맞는 내용을 전달한다.
-<ul>
-<li>request -&gt; 3rd party 모듈</li>
-<li>urllib의 wrapper 클래스</li>
-</ul>
-</li>
-<li>소스
-<ul>
-<li>받은 내용을 해석해서 내가 원하는 데이터를 찾는다. 뽑아낸다.
-<ul>
-<li>BeautifulSoup</li>
-<li>HTML 코드의 해석</li>
-<li>CSS Selector 만드는 방법</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<p>모듈 설치 :</p>
-<ol>
-<li>request -&gt; pip install request</li>
-<li>BeautifulSoup -&gt; pip install BeautifulSoup4</li>
-</ol>
-<p>크롤러 자체는 불법이 아니나 얻은 정보로 수익창출을 하면 불법이다.<br>
-크롤러를 이용해 매크로 구현가능</p>
-<hr>
-<p>웹 페이지에 접근해서 데이터를 가져온다.<br>
-requests는 Ajax로 받아온 데이터를 실시간으로 반영할 수 없다.<br>
-requestt로 받아온 데이터는 소스보기에서 보는 소스까지만 있다.(실시간 반영이 안된다)</p>
-<ul>
-<li>selenium : 웹 브라우저를 원격 조작하는 방식의 크롤러</li>
-<li>크롤링 모듈 : selenium, scrapy</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br></pre></td></tr></table></figure>
-<p>BeautifulSoup을 사용하여 가져온 데이터를 HTML로 해석한다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br></pre></td></tr></table></figure>
-<p>개발자도구의 elements와 우클릭 페이지 소스보기가 다른경우가 있다</p>
-<ul>
-<li>페이지 소스보기 : 맨처음 얻게되는 코드</li>
-<li>개발자 도구의 Elements : 실시간으로 바뀌는 코드가 포함되어 있다
-<ul>
-<li>AJAX를 이용해 일부만 리프레쉬가능</li>
-</ul>
-</li>
-</ul>
-<p>개발자도구</p>
-<ul>
-<li>Sources를 통해 홈페이지가 어떻게 구성되어 있는지 알 수 있다</li>
-<li>Network : 웹페이지를 띄울때 파일들이 잘 받아졌나 볼 수 있다
-<ul>
-<li>Protocol : h2은 http2.0으로 접속을 하였다.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>셀렉터 : 가지고오고 싶은 내용을 감싸고있는 태그를 가져온다.<br>
-HTML 태그</p>
-<ol>
-<li>Container Tag : 안에 내용을 포함하고 있는 태그(Ex. <code>&lt;div td=&quot;asdf&quot;&gt;내용&lt;/div&gt;</code>)</li>
-<li>Empty Tag : 안에 내용을 포함하고 있지 않는 태그(Ex. <code>&lt;img src=&quot;이미지주소&quot;&gt;)</code></li>
-</ol>
-<h2>단일 셀렉터</h2>
-<ol>
-<li>
-<p>tag이름 : div</p>
-<ul>
-<li>태그는 속성을 갖는다. -&gt; <code>&lt;tag id=&quot;&quot; class=&quot;test&quot; data-rel=&quot;&quot; data-num=&quot;&quot;&gt;cont&lt;/tag&gt;</code></li>
-</ul>
-</li>
-<li>
-<p>id : 태그와 구분하기위해 #super -&gt; 한 페이지 내에서 단 한개</p>
-</li>
-<li>
-<p>class : 태그와 구분하기위해 .test -&gt; 별명또는 그룹 개념</p>
-</li>
-</ol>
-<h2>다중 셀렉터</h2>
-<p>~안에 있는 무엇</p>
-<ol>
-<li>div ul li.ah_k -&gt; 띄어쓰기로 구분
-<ul>
-<li>div li.ah_k : 중간경로 생략 가능, 그냥 ~안에</li>
-</ul>
-</li>
-<li>div &gt; ul &gt; li.ah_k : &gt;로 구분, 조금 더 빠르다
-<ul>
-<li>중간경로 생략 불가능, ~바로 ~안에</li>
-</ul>
-</li>
-</ol>
-<p>~이고 ~인것</p>
-<ul>
-<li><code>&lt;span class=&quot;ah_k&quot;&gt;???&lt;/span&gt;</code><br>
-span.ah_k.anroll</li>
-<li><code>&lt;div class=&quot;ah_k&quot;&gt;???\&lt;/div&gt;</code></li>
-</ul>
-<p>~의 근처에 있는 것</p>
-<hr>
-<p>HTTP Method : Get, Post, Put, Head, Delete</p>
-<ul>
-<li>Get : 리소스 얻기</li>
-<li>Post : 데이터 전달 - 로그인, 회원가입, 글쓰기 -&gt; 이후에 수정할때</li>
-<li>Put : 리소스 전달(파일이나 동영상, 사진) - 사진 올리기 -&gt; 최초 업로드</li>
-<li>Delete : 리소스 삭제</li>
-<li>Head : Method 확인</li>
-<li>크롬에서 Postman 이라는 확장프로그램을 설치하라 : 어떠한 방식으로 전달하는지 알 수 있음</li>
-</ul>
-<h1>네이버에서 실시간 검색어 가져오기</h1>
-<p>웹 페이지에 접근해서 데이터를 가져온다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br></pre></td></tr></table></figure>
-<p>가져온 데이터를 HTML로 해석한다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br></pre></td></tr></table></figure>
-<p>가져오고자 하는 페이지의 주소를 적는다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">"https://www.naver.com/"</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># requests 모듈로 해당 url의 데이터를 가져온다</span></span><br><span class="line">req = requests.get(url)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Response Status을 requests 모듈 안에 명세를 해놓음  </span></span><br><span class="line"><span class="keyword">if</span> req.status_code == requests.codes.ok:</span><br><span class="line">    print(<span class="string">'접속 성공'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 여기서 데이터를 해석하면 된다</span></span><br><span class="line">    <span class="comment"># req.text에 받아온 데이터가 담겨져 있다</span></span><br><span class="line">    html = BeautifulSoup(req.text, <span class="string">"html.parser"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># select와 select_one의 차이점은 select_one()은 해당하는 것중 제일 첫번째만 반환</span></span><br><span class="line">    <span class="comment"># span1 = html.select('.PM_CL_realtimeKeyword_list_base span.ah_k')</span></span><br><span class="line">    <span class="comment"># print("span1", span1)</span></span><br><span class="line">    <span class="comment"># # 목록에 있는것 20개 돌아가고있는것 40</span></span><br><span class="line">    <span class="comment"># print(len(span1))</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># ~어떤 요소를 찾고</span></span><br><span class="line">    <span class="comment"># 그 요소 안에 각각의 요소를 다시 찾을 수 있다.</span></span><br><span class="line">    <span class="comment"># 클래스 ah_item에 각종 정보가 들어있다</span></span><br><span class="line">    items = html.select(<span class="string">'.PM_CL_realtimeKeyword_list_base .ah_item'</span>)</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">        <span class="comment"># select_one으로 하나씩 뽑아온다.</span></span><br><span class="line">        keyword = item.select_one(<span class="string">'.ah_k'</span>)</span><br><span class="line">        rank = item.select_one(<span class="string">'.ah_r'</span>)</span><br><span class="line">        link = item.select_one(<span class="string">'.ah_a'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># link['속성명']으로 해당 속성의 링크를 가져올 수 있다</span></span><br><span class="line">        print(rank.text, keyword.text, link[<span class="string">'href'</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'접속 실패'</span>)</span><br></pre></td></tr></table></figure>
-<h2>결과 화면</h2>
-<p><img src="/image/Crawler_naver.png" alt></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/24/2019-04-24-Crawler/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/23/2019-04-23-Exhaustive-Search/" aria-label=": 2019-04-23 Exhaustive Search(과도한 검색)">
-                            2019-04-23 Exhaustive Search(과도한 검색)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-23T21:11:12+09:00">
-	
-		    2019/04/23
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/알고리즘/">알고리즘</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h3>완전 검색 방법</h3>
-<ul>
-<li>문제의 해법으로 생각할 수 있는 모든 경우의 수를 나열해보고 확인하는 기법, 다시말해 처음부터 끝까지 하나하나 대입해서 푸는 방법이다
-<ul>
-<li>Brute-force 혹은 Henerate-and-Test 기법이라고 불림</li>
-<li>모든 경우의 수를 테스트한 후, 최종 해법을 도출함</li>
-<li>일반적으로 경우의 수가 상대적으로 작을 때 유용함</li>
-<li>모든 경우의 수를 생성하고 테스트하기 때문에 수행 속도는 느리지만, 해답을 찾아내지 못할 확률이 적음</li>
-<li>주어진 문제를 풀 때, 우선 완전 검색으로 접근하여 해답을 도출한 후, 성능 개선을 위해 다른 알고리즘을 사용하고 해답을 확인하는 것이 바람직하다</li>
-</ul>
-</li>
-<li>Ex) Baby-gin 게임
-<ul>
-<li>
-<ol>
-<li>6개의 숫자로 만들 수 있는 모든 숫자 나열(중복 포함)</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li>앞의 3자리와 뒤의 3자리를 잘라, run과 triplete 여부를 테스트하고 최종적으로 Baby-gin을 판단함</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>Ex) 순열 : 서로 다른 것들 중 몇 개를 뽑아서 한 줄로 나열하는 것
-<ul>
-<li>서로 다른 n개 중 r개를 택하는 순열은 nPr</li>
-<li>nPr은 다음과 같은 식이 성립 : nPr = n*(n-1)<em>(n-2)</em> … * (n-r+1)</li>
-<li>nPn = n! 이라고 표기하며 Factorial이라 부른다</li>
-</ul>
-</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/23/2019-04-23-Exhaustive-Search/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/22/2019-04-22-가상환경/" aria-label=": 2019-04-22 Python 가상환경 구축하기">
-                            2019-04-22 Python 가상환경 구축하기
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-22T16:29:12+09:00">
-	
-		    2019/04/22
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/python/">python</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>우분투에서 python 가상환경 구축하기</h1>
-<p>제 우분투 버전은 18.04LTS이며 ZShell을 사용하였습니다.<br>
-IDE는 Pycham을 기준으로 작성하였습니다.</p>
-<ol>
-<li>
-<p>파이썬 프로젝트를 생성합니다.</p>
-</li>
-<li>
-<p>하단의 터미널을 켜서 <strong>pip3 install virtualenv</strong> 를 치고 설치해 줍니다<br>
-<img src="/image/install_pyenv.png" alt></p>
-<ul>
-<li>저는 파이썬 기본설정이 Python2이기 때문에 pip3라고 하였습니다. 기본설정이 Python3이면 pip라고 하셔도 무방합니다.</li>
-</ul>
-</li>
-<li>
-<p>설치 후 잘 설치가 되었는지 확인하기 위해 <strong>virtualenv --version</strong>을 입력합니다.<br>
-<img src="/image/Pyenv_version.png" alt></p>
-</li>
-<li>
-<p>위와 같이 버전이 뜨면 정상적으로 설치가 되었습니다. 그 다음 가상환경을 만들어 보겠습니다. <strong>virtualevn [가상환경명]</strong> 을 적어줍니다<br>
-<img src="/image/Pyenv2.png" alt><br>
-<img src="/image/pyenv_list.png" alt><br>
-적고 실행시키면 목록이 뜨게 됩니다.</p>
-</li>
-<li>
-<p>그럼 이제 가상환경을 실행해 보겠습니다.<br>
-<strong>source [가상환경명]/bin/activate</strong>를 실행합니다.<br>
-<img src="/image/pyenv_activate.png" alt><br>
-실행 하고나면 이런식으로 맨 왼쪽에 [가상환경명]이 뜨게 되며 적용이 된것을 확인할 수 있습니다.<br>
-이 상태에서 **pip3 install [패키지명]**을 통해 패키지를 설치하시면 됩니다.</p>
-<ul>
-<li>[패키지명]==[버전]을 하게되면 원하는 버전으로 설치가 가능합니다.</li>
-</ul>
-</li>
-<li>
-<p>가상환경을 종료하시려면 <strong>deactivate</strong>를 실행해 줍니다.<br>
-<img src="/image/pyenv_deactivate.png" alt></p>
-</li>
-</ol>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/22/2019-04-22-가상환경/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/21/2019-04-21-127.0.0.1과-localhost의-차이점/" aria-label=": 2019-04-21 localhost와 127.0.0.1의 차이점">
-                            2019-04-21 localhost와 127.0.0.1의 차이점
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-21T20:11:12+09:00">
-	
-		    2019/04/21
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/네트워크/">네트워크</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>127.0.0.1은 무엇인가?</h1>
-<p>127.0.0.1은 IPv4 및 IPv6에서 자기 자신을 가리키기 위한 목적으로 쓰기 위해 예약된 IP이다. 모든 컴퓨터는 이 주소를 자신의 주소로 사용하지만 실제 IP 주소처럼 다른 장치와 통신 할 수는 없다.</p>
-<ul>
-<li>Ex) 컴퓨터에서 실행중인 웹 서버는 127.0.0.1을 가리킬 수 있으므로 페이지를 배포하기 전에 로컬에서 실행하고 테스트 할 수 있다.</li>
-</ul>
-<h1>LocalHost는 무엇인가?</h1>
-<p>localhost은 자기 자신을 가리키는 IP의 도메인 네임으로써 알기 쉽게 해놓은 것이다. 그러므로 localhost로 접속을 하게되면 DNS의 테이블과 비교를 해야하는 번거로움이 있다 그로 인하여 127.0.0.1로 직접 접속하는것 보다 느리지만 기억하기는 쉽다.<br>
-그리고 localhost는 hosts 파일을 통해 변경될 수 있다</p>
-<h1>루프백</h1>
-<p>호스트 자신을 가리키는 주소이다 127.0.0.1을 사용한다. 루프백 주소로 네트워크에 직접 연결하지 않은 상태에서 빠르게 프로그램의 테스트를 할 수 있다. 또한 루프백 IP를 갖는 패킷은 외부 네트워크로 전송할수 없다</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/21/2019-04-21-127.0.0.1과-localhost의-차이점/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/19/2019-04-19-Django시작하기/" aria-label=": 2019-04-19 Django 기본">
-                            2019-04-19 Django 기본
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-19T14:30:50+09:00">
-	
-		    2019/04/19
+		    2019/06/10
     	
     </time>
     
@@ -603,62 +209,36 @@ IDE는 Pycham을 기준으로 작성하였습니다.</p>
             </div>
             
                 <div class="postShorten-content">
-                    <h1>Django 기본</h1>
-<h3>Django 프로젝트 구조 살펴보기</h3>
-<p><img src="/image/Django1.png" alt></p>
-<ol>
-<li>
-<p>second_django 폴더 : 프로젝트 설정 파일과 웹 서비스 실행을 위한 파일들이 들어있다.</p>
-<ul>
-<li><strong>init</strong>.py : 파이썬 2.x대 버전과의 호환을 위해 만들어진 비어있는 파일이다. 지워도 무방하다</li>
-<li>settings.py : 프로젝트 설정에 관한 다양한 내용이 들어있다.</li>
-<li>urls.py : 특정 기능을 수행하기 위해 접속하는 주소를 url이라 하고 이를 설정해주는데, 그 설정을 이 파일에 기록함</li>
-<li>wsgi.py : 웹 서비스를 실행하기 위한 wsgi 관련 내용이 들어있음</li>
-</ul>
-</li>
-<li>
-<p>venv 폴더 : 프로젝트 구동에 필요한 가상환경이 들어있음</p>
-</li>
-<li>
-<p>db.sqlite3 : SQLite3 DB 파일이다. 다른 DB를 이용할시 필요없다</p>
-</li>
-</ol>
-<h3>장고 기본 명령들</h3>
-<ol>
-<li>django-admin startproject : 장고 프로젝트를 만드는 명령이다. 웹 서비스를 만들 때 마다 한번 실행한다.</li>
-<li>startapp : 프로젝트에 기능 단위인 앱을 새로 만들때 사용</li>
-<li>makemigrations : 어플리케이션에 변경 사항을 추적해 DB에 적용할 내용을 정리함. 보통 앱 안에 있는 모델(model)의 변경 사항이 있을 때 주로 사용함.</li>
-<li>sqlmigrate: 실행할 SQL 명령문을 출력한다</li>
-<li>migrate : 실제 변경사항을 DB에 반영한다.</li>
-<li>showmigrations : 프로젝트의 DB 변경사항 목록과 상태를 출력한다.</li>
-<li>runserver : 테스트 서버를 실행한다.</li>
-<li>dumpdata : 현재 DB의 내용을 백업할 때 사용한다.</li>
-<li>loaddata : 백업 파일에서 DB로 내용을 복구 할 때 사용한다</li>
-<li>flush : DB 테이블은 그대로 두고 테이블의 내용만 전부 삭제한다</li>
-<li>shell : 장고 쉘(Shell)을 실행한다</li>
-<li>dbshell : DB에 직접 접근 할 수 있는 쉘을 실행한다</li>
-<li>createsuperuser : 관리자 계정을 생성한다</li>
-<li>changepassword : 계정의 비밀번호를 변경할 수 있다</li>
-</ol>
-<hr>
-<h2>디자인 패턴</h2>
-<h4>MVC와 MTV</h4>
-<ul>
-<li>
-<p>웹 프로그래밍에서 자주 쓰이는 디자인 패턴은 MVC이다 : Model-View-Controller</p>
-<ol>
-<li>Model : DB의 구조를 결정한다.</li>
-<li>View : 사용자에게 보여지는 UI부분이다</li>
-<li>Controller : 기능, 로직부분이다</li>
-</ol>
-</li>
-<li>
-<p>장고에서는 MTV라고 하나 <strong>이름만 다르고 동일한 패턴이다</strong> : Model-Template-View</p>
-<ul>
-<li>양쪽모두 View가 있지만 기능이 서로 다르다 각각 연결해보면 (Model:Model)-(View:Template)-(Controller:View)이다</li>
-</ul>
-</li>
-</ul>
+                    <p>오늘은 Django Shell로 데이터를 다뤄보겠습니다.</p>
+<p>먼저 일반 Shell도 있지만 그보다 더 좋은 Shell-plus를 사용하도록 하겠습니다. 먼저<br>
+<code>pip install django-extension</code>을 설치합니다</p>
+<p>설치후 <code>settings.py</code>내부 <code>INSTALLED_APPS</code>에 추가시켜 줍니다</p>
+<p><img src="/image/shell1-1.png" alt="img"></p>
+<p>그 다음 모델을 만들고 <code>settings.py</code>와 <code>admin.py</code>에 추가시켜 줍니다</p>
+<h3><code>models.py</code></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your models here.</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    name = models.CharField(max_length=<span class="number">20</span>)</span><br><span class="line">    age = models.PositiveSmallIntegerField()</span><br><span class="line">    address = models.CharField(max_length=<span class="number">50</span>)</span><br><span class="line">    parent = models.ForeignKey(<span class="string">'Parent'</span>, models.CASCADE, related_name=<span class="string">'child'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f'<span class="subst">&#123;self.name&#125;</span> <span class="subst">&#123;self.age&#125;</span> <span class="subst">&#123;self.address&#125;</span> <span class="subst">&#123;self.parent&#125;</span>'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    name = models.CharField(max_length=<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f'<span class="subst">&#123;self.name&#125;</span>'</span></span><br></pre></td></tr></table></figure>
+<h3><code>settings.py</code></h3>
+<p><img src="/image/shell1-2.png" alt="img"></p>
+<h3><code>admin.py</code></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Child, Parent</span><br><span class="line"></span><br><span class="line"><span class="comment"># Register your models here.</span></span><br><span class="line"></span><br><span class="line">admin.site.register(Child)</span><br><span class="line">admin.site.register(Parent)</span><br></pre></td></tr></table></figure>
+<p>이제 <code>./manage.py migrate</code>로 DB에 반영하도록 합니다</p>
+<p>그런다음 <code>./manage.py shell_plus</code>로 django shell로 접속합니다</p>
+<p><img src="/image/shell1-3.png" alt="img"></p>
+<p>이런 화면이 뜰텐데요. 일반 shell로하면 직접 import 해야하는것을 shell_plus로 하면 자동으로 import가 됩니다. 매우 편리합니다</p>
+<p>이제 shell_plus에서 QuerySet을 이용하여 DB를 다뤄보도록 하겠습니다.</p>
+<p>Django에서는 objects라는 인터페이스를 통해 DB를 조작할 수 있습니다</p>
+<p>먼저 Parent를 만들어줍니다</p>
+<p><img src="/image/shell1-4.png" alt="img"></p>
+<p>그 다음으로 Child를 만들어 줍니다</p>
+<p><img src="/image/shell1-5.png" alt="img"></p>
+<p>여기서 다른 필드들은 다 문자열이나 정수인데 parent는 왜 parent인가요? 라는 의문점이 생길 수 있는데 다음시간에 알아보도록 하겠습니다.</p>
+<p>그럼 이제 만든 자식1을 수정 해보도록 하겠습니다.</p>
+<p><img src="/image/shell1-6.png" alt="img"></p>
+<p><code>name</code>이 자식1, <code>age</code>가 13이던 자식이 자식10, age가 20으로 변경되었습니다.</p>
+<p>그럼 이제 생성한 <code>자식</code>을 삭제하도록 하겠습니다</p>
+<p><img src="/image/shell1-7.png" alt="img"></p>
+<p>중간에 오타 죄송합니다. 확인해 보면 삭제된것을 알 수 있습니다.</p>
+<p>다음번에는 좀더 자세하게 알아보도록 하겠습니다</p>
 
                     
                         
@@ -667,7 +247,7 @@ IDE는 Pycham을 기준으로 작성하였습니다.</p>
                     
                     
                         <p>
-                            <a href="/2019/04/19/2019-04-19-Django시작하기/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/06/10/2019-06-10-Django-Shell다루기1/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -685,21 +265,21 @@ IDE는 Pycham을 기준으로 작성하였습니다.</p>
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/04/18/쓰레드와프로세스/" aria-label=": 2019-04-18 프로세스와 쓰레드">
-                            2019-04-18 프로세스와 쓰레드
+                        <a class="link-unstyled" href="/2019/06/08/2019-06-08-Django-admin-page다루기3/" aria-label=": 2019-06-08 Django admin page 다루기3">
+                            2019-06-08 Django admin page 다루기3
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-04-18T21:30:32+09:00">
+    <time datetime="2019-06-08T15:20:02+09:00">
 	
-		    2019/04/18
+		    2019/06/08
     	
     </time>
     
         <span>카테고리 </span>
         
-    <a class="category-link" href="/categories/운영체제/">운영체제</a>
+    <a class="category-link" href="/categories/Django/">Django</a>
 
 
     
@@ -708,92 +288,23 @@ IDE는 Pycham을 기준으로 작성하였습니다.</p>
             </div>
             
                 <div class="postShorten-content">
-                    <h1>Program, Process</h1>
-<p>Program =&gt; HDD안의 이미지를 말함 Ex) Python.exe</p>
-<p>Process =&gt; 실행중인 프로그램(이미 RAM에 올라가있음)</p>
-<p>PID로 구분을 한다 (Process ID) -&gt; 윈도우는 랜덤으로, 리눅스는 순차적으로 배분</p>
-<h3>pre-emptive OS</h3>
-<ul>
-<li>multitasking OS</li>
-<li>suspend currently running process</li>
-<li>determine which process should execute next</li>
-</ul>
-<h3>process scheduling</h3>
-<ul>
-<li>priority algorithm : 높은 우선순위의 프로세스가 먼저 실행된다.</li>
-<li>round-robin algorithm : 프로세스들 사이에 우선순위를 두지 않고 time slice로 CPU를 할당하는 방법이다.</li>
-</ul>
-<h2>scheduler</h2>
-<ul>
-<li>When?
-<ul>
-<li>every time slice</li>
-<li>a process created or a process ended</li>
-<li>a running process blocked (I/O, system call)</li>
-</ul>
-</li>
-</ul>
-<p><img src="/image/schduler.png" alt="스케줄링"></p>
-<p>Block으로 빠지는 경우</p>
-<ul>
-<li>IO</li>
-<li>System call(운영체제에서 사용하는 함수중 사용자에게 인터페이스를 열어놓은 함수 Ex) sleep)</li>
-</ul>
-<h2>Waiting 과 Running 사이에서 일어나는 일 : context switching</h2>
-<p>context switching</p>
-<ul>
-<li>메모리안에 블록을 하나만듬(Process Control block) 이곳(PCB)에 어디까지 실행하였는지(CPU안의 레지스터들의 상태정보)를 저장함</li>
-<li>context = 지금 현재 실행되고있는 CPU안의 레지스터들의 상태정보를 하나로 모은것</li>
-<li>자주일어날경우 메모리접근 시간이 너무 커짐 -&gt; time slice를 잘 정해야함</li>
-<li>PCB를 내리고 새로운 PCB를 올리는 작업을 context switching이라 함</li>
-</ul>
-<hr>
-<p>Process와 Thread -&gt; 인스트럭션의 나열 -&gt; 실행의 흐름일 뿐이다</p>
-<p>Process = 1개 이상의 쓰레드를 갖는다, 쓰레드가 1개일경우 (single thread라 한다)</p>
-<p>Concurrency programming (동시성 프로그래밍) -&gt; 속도를 위해 하는것이 아님(싱글 코어일 경우)</p>
-<ol>
-<li>
-<p>multi - processing</p>
-<ul>
-<li>각기 다른 프로세스에서 똑같은 데이터를 가지고 있어야함</li>
-<li>IPC(Inter Process Communication) -&gt; 최악의 효율성</li>
-<li><img src="/image/process.png" alt="프로세스"></li>
-</ul>
-</li>
-<li>
-<p>multi - threading</p>
-<ul>
-<li>프로세스안에 스레드가 포함이 됨(스택만 나눠지고 나머지는 공유함)</li>
-<li>스택 영역만 스레드마다 따로잡힘(지금 현재 실행하는 인스트럭션(함수)이 다르므로 스택만 나누고 나머지 공간은 공유가능)</li>
-<li>쓰레드 또한 PCB처럼 TCB가 있고 context switching이 똑같이 일어남</li>
-<li><img src="/image/thread.png" alt="쓰레드"></li>
-</ul>
-</li>
-<li>
-<p>I/O-bound -&gt; asynchronus I/O(비동기 I/O)</p>
-<ul>
-<li>한개의 스레드로 동시성으로 만듬</li>
-</ul>
-</li>
-</ol>
-<hr>
-<p>GIL -&gt; Global Interpreter Lock</p>
-<ul>
-<li>멀티코어라도 바이트 코드의 실행을 한번에 하나 스레드로 막는다 (없애려고 했으나 해결을 하지 못함) -&gt; Cpython은 아직 해결 못함</li>
-</ul>
-<p><strong>race-condition</strong></p>
-<ul>
-<li>공유자원에 대해 너도나도 쓰겠다고 달려들어 결과값을 보장하지 못한다.</li>
-</ul>
-<p>임계 구역(critical section) -&gt; 접근하는것 까지는 괜찮으나 수정하는건 안됨</p>
-<p>mutual exclution(상호배제)</p>
-<ul>
-<li>세마포어 : 한번에 임계구역에 접근할 수 있는 스레드의 숫자를 조정함</li>
-<li>mutex : 임계구역에 단 하나밖에 접근 못함</li>
-</ul>
-<p>코어가 1개 일 경우 시간 단축은 거의 없지만(concurrecy programming)<br>
-코어가 4개 일경우 시간단축 + 멀티코어 프로그래밍이 같이됨<br>
-concurecncy programming과 pararrelism programming은 다른 개념이다</p>
+                    <p>오늘은 admin page에서 수정과 link에 대해서 알아보겠습니다.</p>
+<p><img src="/image/admin2-3.png" alt="img"></p>
+<p>기존의 admin page입니다 여기서 나이나 주소를 수정하려면 일일히 들어가서 수정해야합니다. 매우 번거롭지 않나요? 이 문제를 해결하겠습니다.</p>
+<p><code>admin.py</code>를 수정합니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from django.contrib import admin</span><br><span class="line">from .models import AdminPage</span><br><span class="line"># Register your models here.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class AdminPageAdmin(admin.ModelAdmin):</span><br><span class="line">    list_display = [&apos;name&apos;, &apos;age&apos;, &apos;address&apos;]</span><br><span class="line">    search_fields = [&apos;name&apos;]</span><br><span class="line">    # 수정 하고자하는 필드 이름을 적어줍니다.</span><br><span class="line">    list_editable = [&apos;age&apos;, &apos;address&apos;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">admin.site.register(AdminPage, AdminPageAdmin)</span><br></pre></td></tr></table></figure>
+<p><img src="/image/admin3-1.png" alt="img"></p>
+<p>그런데 name을 변경하고 싶은데 할 수 없습니다. 왜냐하면, name에 link가 걸려있기 때문입니다. 이 문제를 해결하도록 하겠습니다.</p>
+<p><code>admin.py</code>를 수정합니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">from django.contrib import admin</span><br><span class="line">from .models import AdminPage</span><br><span class="line"># Register your models here.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class AdminPageAdmin(admin.ModelAdmin):</span><br><span class="line">    list_display = [&apos;id&apos;, &apos;name&apos;, &apos;age&apos;, &apos;address&apos;]</span><br><span class="line">    search_fields = [&apos;name&apos;]</span><br><span class="line">    # 수정 하고자하는 필드 이름을 적어줍니다.</span><br><span class="line">    list_editable = [&apos;name&apos;, &apos;age&apos;, &apos;address&apos;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">admin.site.register(AdminPage, AdminPageAdmin)</span><br></pre></td></tr></table></figure>
+<p><code>list_display</code>에 <code>id</code>를 추가시켰습니다. <code>id</code>는 django에서 모델을 만들때 자동으로 만들어주는 primary key입니다.</p>
+<p><img src="/image/admin3-2.png" alt="img"></p>
+<p>그러나 이번엔 숫자가 너무 작아 클릭을 하기 힘듭니다. 이것을 수정하도록 하겠습니다</p>
+<p><code>admin.py</code>를 수정합니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from django.contrib import admin</span><br><span class="line">from .models import AdminPage</span><br><span class="line"># Register your models here.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class AdminPageAdmin(admin.ModelAdmin):</span><br><span class="line">    list_display = [&apos;id&apos;, &apos;name&apos;, &apos;age&apos;, &apos;address&apos;]</span><br><span class="line">    search_fields = [&apos;name&apos;]</span><br><span class="line">    # 수정 하고자하는 필드 이름을 적어줍니다.</span><br><span class="line">    list_editable = [&apos;age&apos;, &apos;address&apos;]</span><br><span class="line">    # 클릭하고 싶은 필드를 적어줍니다.</span><br><span class="line">    list_display_links = [&apos;id&apos;, &apos;name&apos;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">admin.site.register(AdminPage, AdminPageAdmin)</span><br></pre></td></tr></table></figure>
+<p><img src="/image/admin3-3.png" alt="img"></p>
+<p>문제가 생겼습니다. 앞서 말한 것과 같이 link를 클릭하려면 수정을 할 수 없습니다.</p>
+<p>개인적인 의견으로는 <code>name</code>에 link를 걸지 않아도 모든 필드 값을 수정할 수 있으므로 link는 <code>id</code>만 거는 게 좋다 생각합니다.</p>
 
                     
                         
@@ -802,7 +313,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
                     
                     
                         <p>
-                            <a href="/2019/04/18/쓰레드와프로세스/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/06/08/2019-06-08-Django-admin-page다루기3/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -820,21 +331,21 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/04/17/CSS 기초/" aria-label=": 2019-04-17 CSS 기초1">
-                            2019-04-17 CSS 기초1
+                        <a class="link-unstyled" href="/2019/06/06/2019-06-06-Django-admin-page다루기2/" aria-label=": 2019-06-06 Django admin page 다루기2">
+                            2019-06-06 Django admin page 다루기2
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-04-17T21:18:32+09:00">
+    <time datetime="2019-06-06T15:20:02+09:00">
 	
-		    2019/04/17
+		    2019/06/06
     	
     </time>
     
         <span>카테고리 </span>
         
-    <a class="category-link" href="/categories/CSS/">CSS</a>
+    <a class="category-link" href="/categories/Django/">Django</a>
 
 
     
@@ -843,58 +354,19 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
             </div>
             
                 <div class="postShorten-content">
-                    <h1>CSS 기초1 (Syntax ~ background)</h1>
-<h2>CSS Syntax</h2>
-<h4>element Selector</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>:blue;<span class="attribute">font-size</span>:<span class="number">12px</span>;&#125;</span><br><span class="line"><span class="comment">/*h1 element의 색깔은 blue</span></span><br><span class="line"><span class="comment">폰트 사이즈는 12px</span></span><br></pre></td></tr></table></figure>
-<h4>id Selector</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#para1</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*id가 para1인 element의 텍스트 정렬은 중앙,색깔은 red</span></span><br></pre></td></tr></table></figure>
-<h4>class Selector</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.center</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*center 클래스의 텍스트 정렬은 중앙, 색깔은 red</span></span><br></pre></td></tr></table></figure>
-<h4>class + element</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-class">.center</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line"><span class="comment">/* p태그 이면서 center클래스의 텍스트 정렬은 중앙, 색깔은 red</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
-<h4>클래스 부여하기</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p class="center large"&gt;This paragraph refers to two classed.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-<h4>Grouping Selectors</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* h1, h2, p 태그의 텍스트 정렬은 중앙, 색깔은 red</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h2>CSS를 삽입하는 3가지 방법</h2>
-<h4>1. External style sheet</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">head</span>&gt;</span><br><span class="line">&lt;link rel="stylesheet" type="text/css" href="mystyle.css"&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
-<h4>2. Internal stryle sheet</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">head</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>:linen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: maroon;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
-<h4>3. Inline style</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 style="color:blue; margin-left:30px;"&gt;This is a heading&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2>Backgrounds</h2>
-<h4>Background color</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: lightblue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4>Background Image</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">"paper.gif"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>
-<p>이미지를 X좌표로만 반복하기</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"gradient_bg.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: repeat-x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>y좌표로만 반복하려면 repteat -y를 해주면 된다.</p>
-</li>
-<li>
-<p>반복없이 하기</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"gradient_bg.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>이미지를 오른쪽 상단에 위치시키기</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"img_tree.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="attribute">background-position</span>: right top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>스크롤해도 이미지 이동하지 않게 하기</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"img_tree.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>:no-repeat;</span><br><span class="line">    <span class="attribute">background-position</span>:right top;</span><br><span class="line">    <span class="attribute">background-attachment</span>: fixed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>Background - Shorthand roperty</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">bacground</span>: red <span class="built_in">url</span>(<span class="string">"img_tree.png"</span>) no-repeat right top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
+                    <p>오늘은 admin page에서 검색 기능을 알아보도록 하겠습니다.</p>
+<p>먼저 검색기능을 추가하려면 <code>admin.py</code>에서 수정을 해야합니다</p>
+<p><code>admin.py</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from django.contrib import admin</span><br><span class="line">from .models import AdminPage</span><br><span class="line"># Register your models here.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class AdminPageAdmin(admin.ModelAdmin):</span><br><span class="line">    search_fields = [&apos;name&apos;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">admin.site.register(AdminPage, AdminPageAdmin)</span><br></pre></td></tr></table></figure>
+<p><code>ModelAdmin</code>을 상속받고 기존 <code>admin.site.register(AdminPage)</code>에 <code>AdminPageAdmin</code>을 추가시키면 됩니다.</p>
+<p><img src="/image/admin2-1.png" alt="img"></p>
+<p>검색을 해보도록 하겠습니다.</p>
+<p><img src="/image/admin2-2.png" alt="img"></p>
+<p>그런데 뭔가 마음에 들지 않습니다. 저는 필드 별로 구분을 하고싶은데 그럴수가 없습니다. 이 문제를 해결하도록 하겠습니다.</p>
+<p><code>admin.py</code>를 수정합니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from django.contrib import admin</span><br><span class="line">from .models import AdminPage</span><br><span class="line"># Register your models here.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class AdminPageAdmin(admin.ModelAdmin):</span><br><span class="line">    list_display = [&apos;name&apos;, &apos;age&apos;, &apos;address&apos;]</span><br><span class="line">    search_fields = [&apos;name&apos;]</span><br><span class="line"></span><br><span class="line">admin.site.register(AdminPage, AdminPageAdmin)</span><br></pre></td></tr></table></figure>
+<p><code>list_display</code>를 추가하였습니다.</p>
+<p><img src="/image/admin2-3.png" alt="img"></p>
 
                     
                         
@@ -903,277 +375,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
                     
                     
                         <p>
-                            <a href="/2019/04/17/CSS 기초/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/16/실수의표현/" aria-label=": 2019-04-16 실수의 표현">
-                            2019-04-16 실수의 표현
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-16T21:48:32+09:00">
-	
-		    2019/04/16
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/컴퓨터구조/">컴퓨터구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h3>실수의 표현 (epsilon comparison을 위해 반드시 알아두어야함)</h3>
-<ol>
-<li>
-<p>고정 소수점 -&gt; 표현숫자를 줄이면 정밀도가 높아아지고 늘리면 정밀도가 낮아짐, 표현범위가 좁음  #현재 잘 사용하지 않음</p>
-</li>
-<li>
-<p>부동 소수점 -&gt; 정밀도 매우낮음, 표현범위 넓음</p>
-<ol>
-<li>단정도 (single precision)
-<ol>
-<li>32bit (4 byte)</li>
-<li>부호(sign) (1 bit) + 지수(exponent) (8 bit) + 가수(mentissa) (23 bit)
-<ol>
-<li>지수부 : 표현범위 담당 (클수록 범위)</li>
-<li>가수부 : 정밀도를 담당 (클수록 정확)</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>배정도 (double precision)
-<ol>
-<li>64bit (8 byte)</li>
-<li>부호 (1 bit) + 지수 (11 bit) + 가수 (52 bit)</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>
-<p>10.23 * 102 -&gt; 1.023(가수부) 10(밑수) 3(지수 = exponent real)</p>
-</li>
-<li>
-<p><img src="../image/real.png" alt> 에서 1도 수학적으로는 mentissa이나 컴퓨터 메모리 저장 X --&gt; 0이 아닌 자연수 1자리로 정규화를 하기위해 한자리는 무조건 남겨둠 /// bias = 2<sup>n-1</sup> -1 /// Ere = Emem - bias  /// float의 bias는 127 --&gt; 지수에도 ±기호가 있으므로 맨앞자리 비트는 제외하고 나머지 1일때 127 // bias + exponent real 한 값을 이진수로 바꿔서 exponent에 저장</p>
-<ul>
-<li>정규화 : 가수 부분을 밑수보다 작은 자연수가 되도록 만드는것</li>
-</ul>
-</li>
-<li>
-<p>실수의 정밀도 보장 : float는 6자리, double 15자리의 의미 : 10진수 1자리를 다 표현하려면 2진수 4자리(0~15), 10진수 2자리를 다 표현하려면 2진수 7자리(0~127), 10진수 3자리 -&gt; 2진수 10자리</p>
-<ol>
-<li>float는 가수부가 23+1자리이므로 이진수 23+1자리라고 생각가능 -&gt; 십진수 6자리표현을 보장함(정밀도)</li>
-<li>double은 가수부가 52+1 자리 이므로 이진수 52+1자리라고 생각 가능 -&gt; 십진수 15자리 표현을 보장함</li>
-</ol>
-</li>
-<li>
-<p>1.0과 1.0다음으로 나타낼수 있는 수의 차이를 epsilon이라 함<br>
-<img src="../image/real2.png" alt></p>
-<ul>
-<li>어떠한 수의 지수부분과 엡실론을 곱하면 그 수의 다음수가 나옴</li>
-</ul>
-</li>
-</ol>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/16/실수의표현/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/15/알고리즘이론/" aria-label=": 2019-04-15 알고리즘이란?">
-                            2019-04-15 알고리즘이란?
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-15T19:39:46+09:00">
-	
-		    2019/04/15
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/알고리즘/">알고리즘</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h2>알고리즘이란?</h2>
-<ul>
-<li>유한한 단계를 통해 문제를 해결하기 위한 절차나 방법</li>
-</ul>
-<h4>알고리즘 표현방법</h4>
-<ul>
-<li>슈도코드 : 특정 프로그래밍 언어의 문법을 따라 쓰여진 것이 아니라, 일반적인 언어로 코드를 흉내내어 알고리즘을 써 놓은 코드
-<ul>
-<li>의사 코드로 흉내낸 코드</li>
-<li>실제적인 프로그래밍 언어로 작성된 코드처럼 컴퓨터에서 실행할 수 없음</li>
-<li>특정 언어로 프로그램을  작성하기 전에 알고리즘을 대략적으로 모델링하는데 쓰임</li>
-</ul>
-</li>
-<li>순서도 : 프로그램이나 작업의 진행 흐름을 순서에 따라 여러 가지 기호나 문자로 나타낸 도표</li>
-</ul>
-<h4>무엇이 좋은 알고리즘인가?</h4>
-<ul>
-<li>정확성 : 얼마나 정확하게 동작하는가?</li>
-<li>작업량 : 얼마나 적은 연산으로 원하는 결과를 얻어내는가?</li>
-<li>메모리 사용량 : 얼마나 적은 메모리를 사용하는가?</li>
-<li>단순성 : 얼마나 단순한가?</li>
-<li>최적성 : 더 이상 개선할 여지 없이 최적화 되어있는가?</li>
-</ul>
-<h4>알고리즘의 성능 분석</h4>
-<ul>
-<li>많은 문제에서 알고리즘의 성능 분석기준으로 알고리즘의 작업량을 비교
-<ul>
-<li>Ex) 1~100까지의 합을 구하는 문제</li>
-</ul>
-</li>
-<li>
-<ol>
-<li>실제 걸리는 시간을측정</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li>실행되는 명령문의 개수를 계산 -&gt; 일반적으로 많이 사용됨</li>
-</ol>
-</li>
-<li>
-<ol start="3">
-<li>Big-O 표기법 : 시간 복잡도 함수 중에서 가장 큰 영향력을 주는 n에 대한 항만을 표시, 계수는 생략하여 표시</li>
-</ol>
-<ul>
-<li>요소 수가 증가함에 따라 각기 다른 시간 복잡도의 알고리즘은 아래와 같은 연산 수를 보임</li>
-</ul>
-</li>
-</ul>
-<p><img src="../image/algorithm.png" alt></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/15/알고리즘이론/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/13/greedy/" aria-label=": 2019-04-13 Greedy Algorithm">
-                            2019-04-13 Greedy Algorithm
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-13T19:39:46+09:00">
-	
-		    2019/04/13
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/알고리즘/">알고리즘</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h2>greedy algorithm</h2>
-<ul>
-<li>각 단계마다 지금 당장 가장 좋은 방법만을 선택</li>
-<li>많은 경우 최적해를 찾지 못한다</li>
-<li>항상 최적해를 구할 수 있는 문제에 적용하고 수행 시간이 다른 알고리즘에 비해 훨씬 빠르다</li>
-<li>시간이나 공간적 제약으로 인해 다른 방법으로 최적해를 찾기 너무 어려운 경우 최적해 대신 근사해로 대체한다</li>
-</ul>
-<h3>예시</h3>
-<ul>
-<li>동전 거스르기
-<ul>
-<li>가장 큰 동전으로 거스르면 최적해이다</li>
-</ul>
-</li>
-<li>회의실 배정</li>
-<li>최단경로</li>
-</ul>
-<h4>다익스트라 알고리즘</h4>
-<ul>
-<li>아직 방문하지 않은 정점들 중 가장 거리가 짧은 정점을 방문</li>
-<li>정점에서 인접하고 아직 방문하지 않은 정점들의 거리 갱신</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/13/greedy/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/06/06/2019-06-06-Django-admin-page다루기2/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -1202,7 +404,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
             </a>
           </li>
         
-        <li class="pagination-number">page 5 of 7</li>
+        <li class="pagination-number">page 5 of 23</li>
     </ul>
 </div>
 
@@ -1272,7 +474,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
                             <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
                         </a>
                         <span class="media-meta">
@@ -1291,7 +493,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
                             <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
                         </a>
                         <span class="media-meta">
@@ -1310,146 +512,13 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
                             <h3 class="media-heading">2019-03-22 OOP</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
                                     2019년 3월 22일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
-                            <h3 class="media-heading">2019-03-25 기초 통계</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 3월 25일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
-                            <h3 class="media-heading">2019-03-29 컴파일러와 인터프리터의 차이점</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 3월 29일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
-                            <h3 class="media-heading">2019-04-03 Git 특강1 Init</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 3일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
-                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 4일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
-                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 4일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
-                            <h3 class="media-heading">2019-04-05 HTML 기초태그</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 5일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
-                            <h3 class="media-heading">2019-04-07 Synchronous와 Asynchronous의 차이점</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 7일
                                 
                             </span>
                         </span>

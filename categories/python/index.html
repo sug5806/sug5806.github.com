@@ -15,7 +15,7 @@
     <meta name="description" content="공부한것을 정리하여 올리는 블로그입니다">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="sug5806의 블로그">
-<meta property="og:url" content="http://sug5806.site/categories/python/index.html">
+<meta property="og:url" content="http://www.sug5806.site/categories/python/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="공부한것을 정리하여 올리는 블로그입니다">
 <meta property="og:locale" content="ko">
@@ -34,6 +34,15 @@
     <link rel="stylesheet" href="/assets/css/style-xmwjmaw63fz9loualz1qmrwgsqz40hdvx3wm88nlmrq0pgtqesn7rfguwvks.min.css">
     <!--STYLES END-->
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145695222-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-145695222-1');
+    </script>
+
 
     
 
@@ -456,169 +465,18 @@ span.ah_k.anroll</li>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/22/2019-04-22-가상환경/" aria-label=": 2019-04-22 Python 가상환경 구축하기">
-                            2019-04-22 Python 가상환경 구축하기
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-22T16:29:12+09:00">
-	
-		    2019/04/22
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/python/">python</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>우분투에서 python 가상환경 구축하기</h1>
-<p>제 우분투 버전은 18.04LTS이며 ZShell을 사용하였습니다.<br>
-IDE는 Pycham을 기준으로 작성하였습니다.</p>
-<ol>
-<li>
-<p>파이썬 프로젝트를 생성합니다.</p>
-</li>
-<li>
-<p>하단의 터미널을 켜서 <strong>pip3 install virtualenv</strong> 를 치고 설치해 줍니다<br>
-<img src="/image/install_pyenv.png" alt></p>
-<ul>
-<li>저는 파이썬 기본설정이 Python2이기 때문에 pip3라고 하였습니다. 기본설정이 Python3이면 pip라고 하셔도 무방합니다.</li>
-</ul>
-</li>
-<li>
-<p>설치 후 잘 설치가 되었는지 확인하기 위해 <strong>virtualenv --version</strong>을 입력합니다.<br>
-<img src="/image/Pyenv_version.png" alt></p>
-</li>
-<li>
-<p>위와 같이 버전이 뜨면 정상적으로 설치가 되었습니다. 그 다음 가상환경을 만들어 보겠습니다. <strong>virtualevn [가상환경명]</strong> 을 적어줍니다<br>
-<img src="/image/Pyenv2.png" alt><br>
-<img src="/image/pyenv_list.png" alt><br>
-적고 실행시키면 목록이 뜨게 됩니다.</p>
-</li>
-<li>
-<p>그럼 이제 가상환경을 실행해 보겠습니다.<br>
-<strong>source [가상환경명]/bin/activate</strong>를 실행합니다.<br>
-<img src="/image/pyenv_activate.png" alt><br>
-실행 하고나면 이런식으로 맨 왼쪽에 [가상환경명]이 뜨게 되며 적용이 된것을 확인할 수 있습니다.<br>
-이 상태에서 **pip3 install [패키지명]**을 통해 패키지를 설치하시면 됩니다.</p>
-<ul>
-<li>[패키지명]==[버전]을 하게되면 원하는 버전으로 설치가 가능합니다.</li>
-</ul>
-</li>
-<li>
-<p>가상환경을 종료하시려면 <strong>deactivate</strong>를 실행해 줍니다.<br>
-<img src="/image/pyenv_deactivate.png" alt></p>
-</li>
-</ol>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/22/2019-04-22-가상환경/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/09/2019-04-09-Closure/" aria-label=": 2019-04-09 파이썬 Closure">
-                            2019-04-09 파이썬 Closure
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-09T11:48:12+09:00">
-	
-		    2019/04/09
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/python/">python</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>파이썬의 함수는 first-class로 취급한다.<br>
-함수를 변수에 할당하거나 자료구조 안에 저장할 수 있고 다른 함수의 인자로 사용할 수 있다.</p>
-<h3>Closure란?</h3>
-<p>프로그래밍 언어에서의 클로저란 퍼스트클래스 함수를 지원하는 언어의 네임 바인딩 기술이다. 클로저는 어떤 함수를 함수 자신이 가지고 있는 환경과 함께 저장한 레코드이다. 또한 함수가 가진 프리변수(free variable)를 클로저가 만들어지는 당시의 값과 레퍼런스에 맵핑하여 주는 역할을 한다. 클로저는 일반 함수와는 다르게, 자신의 영역 밖에서 호출된 함수의 변수값과 레퍼런스를 복사하고 저장한 뒤, 이 캡처한 값들에 액세스할 수 있게 도와준다.<br>
-출처 <a href="http://schoolofweb.net/blog/posts/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%81%B4%EB%A1%9C%EC%A0%80-closure/" target="_blank" rel="noopener">School Of Web</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 계좌</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">account</span><span class="params">(clnt_name, balance)</span>:</span>  </span><br><span class="line">    <span class="comment"># clnt_name과 balance가 상태정보 (free variable) </span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">change_money</span><span class="params">(money)</span>:</span></span><br><span class="line">        <span class="comment"># free variable인 balance를 변경하기위해</span></span><br><span class="line">        <span class="comment"># nonlocal을 써준다.</span></span><br><span class="line">        <span class="keyword">nonlocal</span> balance</span><br><span class="line">        balance += money</span><br><span class="line">        <span class="keyword">return</span> (clnt_name, balance)</span><br><span class="line">    <span class="keyword">return</span> change_money</span><br><span class="line"><span class="comment"># 기존의 함수는 input이 같으면 output이 같았으나 </span></span><br><span class="line"><span class="comment"># 초기값(상태정보)에 따라 input이 같아도 output이 달라짐</span></span><br><span class="line"><span class="comment"># input이 아닌 상태정보에 의존적임</span></span><br></pre></td></tr></table></figure>
-<p>기존의 함수들은 input이 같으면 output역시 같았다. 그러나 초기값에 따라 input이 같아도 out은 다르다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my_account = account(<span class="string">"김기동"</span>,<span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
-<ol>
-<li>my_account라는 변수에 account함수를 호출하여 &quot;김기동&quot;과 5000이라는 값을 넘겨주었다</li>
-<li>account 함수에서는 넘겨받은 값들을 사용하지 않고 바로<br>
-return change_money를 해주었다</li>
-<li>my_account는 return받은 change_money가 되었다</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my_account(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>3번에서 my_account가 change_money가 되었으므로<br>
-my_account(3000)을 하게되면 change_money(3000)을 하게된것과 똑같다.<br>
-그리하여 결과값은 “김기동”, 8000이 된다.</li>
-</ol>
-<p>그렇다면 account함수 내의 change_money함수는 account가 return되어 종료되었음에도 불구하고 account의 지역변수인 clnt_name과 balance에 접근할수 있는걸까? 이것은 클로저는 스택이 아닌 힙에 저장되기 때문이다 힙에 저장된 값들은 사용자가 직접 제거하지 않는 이상 사라지지 않는다.</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/09/2019-04-09-Closure/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
         
-        <li class="pagination-number">page 1 of 1</li>
+          <li class="pagination-next">
+            <a class="btn btn--default btn--small" href="/categories/python/page/2/" aria-label="이전 포스트">
+              <span>이전 포스트</span>
+              <i class="fa fa-angle-right text-base icon-ml"></i>
+            </a>
+          </li>
+        
+        <li class="pagination-number">page 1 of 2</li>
     </ul>
 </div>
 
@@ -688,7 +546,7 @@ my_account(3000)을 하게되면 change_money(3000)을 하게된것과 똑같다
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
                             <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
                         </a>
                         <span class="media-meta">
@@ -707,7 +565,7 @@ my_account(3000)을 하게되면 change_money(3000)을 하게된것과 똑같다
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
                             <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
                         </a>
                         <span class="media-meta">
@@ -726,146 +584,13 @@ my_account(3000)을 하게되면 change_money(3000)을 하게된것과 똑같다
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
                             <h3 class="media-heading">2019-03-22 OOP</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
                                     2019년 3월 22일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
-                            <h3 class="media-heading">2019-03-25 기초 통계</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 3월 25일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
-                            <h3 class="media-heading">2019-03-29 컴파일러와 인터프리터의 차이점</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 3월 29일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
-                            <h3 class="media-heading">2019-04-03 Git 특강1 Init</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 3일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
-                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 4일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
-                            <h3 class="media-heading">2019-04-03 Classful addressing</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 4일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
-                            <h3 class="media-heading">2019-04-05 HTML 기초태그</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 5일
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
-                            <h3 class="media-heading">2019-04-07 Synchronous와 Asynchronous의 차이점</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2019년 4월 7일
                                 
                             </span>
                         </span>
