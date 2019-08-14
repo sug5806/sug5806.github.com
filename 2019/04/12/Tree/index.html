@@ -11,12 +11,12 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Tree\n트리는 그래프의 일종이다(Connected acyclic graph)\n\n그래프에서의 순회를 트리에서 적용할 수 있다\n\n정의\n\n연결이 있고 사이클이 있는 그래프\n루트 노드(root)가 있다\n트리를 구성하는 노드 간에 단순 경로가 존재\n\n이동할때 갔던 경로를 다시 방문하지 않고 갈 수 있으면 단순경로가 있다고 한다\n\n\nStart에서 출발해서 Start로 올수있다 (cyclic)\nConnected : 경로가 무조건 하나는 있다\n\nTree 용어\n\n노드의 차수 : 자식의 갯수\n트리의 차수 : 노드의 차수 중에 가장 큰것\n리프 노드 : 자식이 없는 노드\n엣지 : 노드와 노드를 연결하는것\n트리의 높이 = 깊이 : 트리의 레벨\n트리가 되기위한 조건식 : 엣지 = 노드 - 1\n포레스트 : 서브 트리의 집합(Connected 만족 X) -&gt; 트리가 모여있으므로 포레스트\n일반적으로 트리를 이야기 하면 이진트리(binary Tree)\n\n\nBinary Tree\n정의\n\n어떤 노드의 최대 자식 수가 2개이하 인것\n공집합 혹은 루트와 왼쪽 서브트리, 오른쪽 서브 트리로 이루어진 유한집합, 각각의 서브트리는 모두 이진 트리이다\n\n자식이 없지만 있다고 치는 노드를 공노드(Empty Node)라 한다.\n\n\n\n특징\n\n각 Level에서의 최대 노드수 : 2^(level-1) 개\n트리 전체의 최대 노드 수 : 2^(Tree level) -1 개\n\n\n포화 이진트리\n\n모든 레벨이 꽉 차 있다.\n\n완전 이진트리\n\n일정 레벨 까지는 꽉 차있고 바로 밑 레벨부터 왼쪽에서 오른쪽으로 채워져있는 트리\n\n편향 이진트리\n\n한쪽으로만 치우친 트리\n\n\n트리의 순회\n\n재방문을 허용하지 않고 트리를 구성하는 모든 노드를 한번씩 방문하는것\n\n순회의 계열은 2가지로 나뉜다\n\n\nStack계열\n\nDFS(Depth First Search) - 그래프용어 : 깊이 우선 순회\n\n전위순회(Preorder traversal) : A - B - C의 순서\n중위순회(Inorder traversal) : B - A - C의 순서\n후위순회(Post traversal) : B - C - A의 순서\n\n\n재귀 : 재귀를 하면 Stack Frame이 쌓임\n반복문 + Stack\n\n\n\nQueue계열\n\nBFS(Broath First Search) - 그래프용어: 너비 우선 순회\n\n트리에서는 레벨 순서 순회(level order)\n\n\n\n\n\nBST(Binary Search Tree)\ndictionary 구현하기\n\nhashing -&gt; 파이썬의 dictionary는 hashing으로 구현됨\n\n테이블\n\n\nBST -&gt; O(log N)\n\n이진트리의 일종\n모든 원소는 서로 다른 key를 가진다\n왼쪽 서브 트리에 있는 모든 키들은 루트의 키보다 작다.\n오른쪽 서브 트리에 있는 모든 키들은 루트의 키보다 크다.\n왼쪽 서브 트리와 오른쪽 서브 트리도 이진 탐색 트리이다.\n재귀적으로도 만족 해야한다 : 자식 트리역시 똑같은 로직으로 작동해야 한다\n\n\n\n사족\n\ndelete() -&gt; None : 리스트에서도 지워지고 메모리에서 지워짐\nremove() -&gt; removed data : 리스트에서 지워진 데이터를 반환(데이터를 반환 함으로써 사용자에게 어떻게 처리할건지 결정하게함)\npython의 dictionary는 immutable 객체만 key로 사용할 수 있다\nBST는 속도가 빠르기때문에 DB에서 사용하는 B-Tree역시 BST의 일종이다\nBST는 Binary Tree의일종이므로 만들때는 상속으로 만드는게 좋다\n\n","dateCreated":"2019-04-12T20:16:16+09:00","dateModified":"2019-04-15T10:17:26+09:00","datePublished":"2019-04-12T20:16:16+09:00","description":"","headline":"2019-04-12 Tree","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.sug5806.site/2019/04/12/Tree/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://www.sug5806.site/2019/04/12/Tree/","keywords":"Tree"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Tree\n트리는 그래프의 일종이다(Connected acyclic graph)\n\n그래프에서의 순회를 트리에서 적용할 수 있다\n\n정의\n\n연결이 있고 사이클이 있는 그래프\n루트 노드(root)가 있다\n트리를 구성하는 노드 간에 단순 경로가 존재\n\n이동할때 갔던 경로를 다시 방문하지 않고 갈 수 있으면 단순경로가 있다고 한다\n\n\nStart에서 출발해서 Start로 올수있다 (cyclic)\nConnected : 경로가 무조건 하나는 있다\n\nTree 용어\n\n노드의 차수 : 자식의 갯수\n트리의 차수 : 노드의 차수 중에 가장 큰것\n리프 노드 : 자식이 없는 노드\n엣지 : 노드와 노드를 연결하는것\n트리의 높이 = 깊이 : 트리의 레벨\n트리가 되기위한 조건식 : 엣지 = 노드 - 1\n포레스트 : 서브 트리의 집합(Connected 만족 X) -&gt; 트리가 모여있으므로 포레스트\n일반적으로 트리를 이야기 하면 이진트리(binary Tree)\n\n\nBinary Tree\n정의\n\n어떤 노드의 최대 자식 수가 2개이하 인것\n공집합 혹은 루트와 왼쪽 서브트리, 오른쪽 서브 트리로 이루어진 유한집합, 각각의 서브트리는 모두 이진 트리이다\n\n자식이 없지만 있다고 치는 노드를 공노드(Empty Node)라 한다.\n\n\n\n특징\n\n각 Level에서의 최대 노드수 : 2^(level-1) 개\n트리 전체의 최대 노드 수 : 2^(Tree level) -1 개\n\n\n포화 이진트리\n\n모든 레벨이 꽉 차 있다.\n\n완전 이진트리\n\n일정 레벨 까지는 꽉 차있고 바로 밑 레벨부터 왼쪽에서 오른쪽으로 채워져있는 트리\n\n편향 이진트리\n\n한쪽으로만 치우친 트리\n\n\n트리의 순회\n\n재방문을 허용하지 않고 트리를 구성하는 모든 노드를 한번씩 방문하는것\n\n순회의 계열은 2가지로 나뉜다\n\n\nStack계열\n\nDFS(Depth First Search) - 그래프용어 : 깊이 우선 순회\n\n전위순회(Preorder traversal) : A - B - C의 순서\n중위순회(Inorder traversal) : B - A - C의 순서\n후위순회(Post traversal) : B - C - A의 순서\n\n\n재귀 : 재귀를 하면 Stack Frame이 쌓임\n반복문 + Stack\n\n\n\nQueue계열\n\nBFS(Broath First Search) - 그래프용어: 너비 우선 순회\n\n트리에서는 레벨 순서 순회(level order)\n\n\n\n\n\nBST(Binary Search Tree)\ndictionary 구현하기\n\nhashing -&gt; 파이썬의 dictionary는 hashing으로 구현됨\n\n테이블\n\n\nBST -&gt; O(log N)\n\n이진트리의 일종\n모든 원소는 서로 다른 key를 가진다\n왼쪽 서브 트리에 있는 모든 키들은 루트의 키보다 작다.\n오른쪽 서브 트리에 있는 모든 키들은 루트의 키보다 크다.\n왼쪽 서브 트리와 오른쪽 서브 트리도 이진 탐색 트리이다.\n재귀적으로도 만족 해야한다 : 자식 트리역시 똑같은 로직으로 작동해야 한다\n\n\n\n사족\n\ndelete() -&gt; None : 리스트에서도 지워지고 메모리에서 지워짐\nremove() -&gt; removed data : 리스트에서 지워진 데이터를 반환(데이터를 반환 함으로써 사용자에게 어떻게 처리할건지 결정하게함)\npython의 dictionary는 immutable 객체만 key로 사용할 수 있다\nBST는 속도가 빠르기때문에 DB에서 사용하는 B-Tree역시 BST의 일종이다\nBST는 Binary Tree의일종이므로 만들때는 상속으로 만드는게 좋다\n\n","dateCreated":"2019-04-12T20:16:16+09:00","dateModified":"2019-04-15T10:17:26+09:00","datePublished":"2019-04-12T20:16:16+09:00","description":"","headline":"2019-04-12 Tree","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://sug5806.site/2019/04/12/Tree/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://sug5806.site/2019/04/12/Tree/","keywords":"Tree"}</script>
     <meta name="description" content="Tree 트리는 그래프의 일종이다(Connected acyclic graph)  그래프에서의 순회를 트리에서 적용할 수 있다  정의  연결이 있고 사이클이 있는 그래프 루트 노드(root)가 있다 트리를 구성하는 노드 간에 단순 경로가 존재  이동할때 갔던 경로를 다시 방문하지 않고 갈 수 있으면 단순경로가 있다고 한다   Start에서 출발해서 Start">
 <meta name="keywords" content="Tree">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-04-12 Tree">
-<meta property="og:url" content="http://www.sug5806.site/2019/04/12/Tree/index.html">
+<meta property="og:url" content="http://sug5806.site/2019/04/12/Tree/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="Tree 트리는 그래프의 일종이다(Connected acyclic graph)  그래프에서의 순회를 트리에서 적용할 수 있다  정의  연결이 있고 사이클이 있는 그래프 루트 노드(root)가 있다 트리를 구성하는 노드 간에 단순 경로가 존재  이동할때 갔던 경로를 다시 방문하지 않고 갈 수 있으면 단순경로가 있다고 한다   Start에서 출발해서 Start">
 <meta property="og:locale" content="ko">
@@ -368,7 +368,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/12/Tree/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/04/12/Tree/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -376,7 +376,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/12/Tree/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/04/12/Tree/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -384,7 +384,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/12/Tree/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/04/12/Tree/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -464,7 +464,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/12/Tree/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/04/12/Tree/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -472,7 +472,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/12/Tree/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/04/12/Tree/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -480,7 +480,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/12/Tree/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/04/12/Tree/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -514,7 +514,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/12/Tree/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/04/12/Tree/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -522,7 +522,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/12/Tree/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/04/12/Tree/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -530,7 +530,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/12/Tree/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/04/12/Tree/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -594,7 +594,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
                             <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
                         </a>
                         <span class="media-meta">
@@ -613,7 +613,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
                             <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
                         </a>
                         <span class="media-meta">
@@ -632,7 +632,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
                             <h3 class="media-heading">2019-03-22 OOP</h3>
                         </a>
                         <span class="media-meta">
@@ -651,7 +651,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
                             <h3 class="media-heading">2019-03-25 기초 통계</h3>
                         </a>
                         <span class="media-meta">
@@ -670,7 +670,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
                             <h3 class="media-heading">2019-03-29 컴파일러와 인터프리터의 차이점</h3>
                         </a>
                         <span class="media-meta">
@@ -689,7 +689,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
                             <h3 class="media-heading">2019-04-03 Git 특강1 Init</h3>
                         </a>
                         <span class="media-meta">
@@ -708,7 +708,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
                             <h3 class="media-heading">2019-04-03 Classful addressing</h3>
                         </a>
                         <span class="media-meta">
@@ -727,7 +727,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
                             <h3 class="media-heading">2019-04-03 Classful addressing</h3>
                         </a>
                         <span class="media-meta">
@@ -746,7 +746,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
                             <h3 class="media-heading">2019-04-05 HTML 기초태그</h3>
                         </a>
                         <span class="media-meta">
@@ -765,7 +765,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
                             <h3 class="media-heading">2019-04-07 Synchronous와 Asynchronous의 차이점</h3>
                         </a>
                         <span class="media-meta">
@@ -802,7 +802,7 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://www.sug5806.site/2019/04/12/Tree/';
+            this.page.url = 'http://sug5806.site/2019/04/12/Tree/';
               
             this.page.identifier = '2019/04/12/Tree/';
               

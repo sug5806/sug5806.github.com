@@ -11,21 +11,21 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"bootstrap 적용하기\n\nbase.html에 bootstrap 설치하기\n\n\nCDN 스크립트로 설치하기 : 리소스 절감효과, 최신버전을 자동 유지, CDN을 사용하면 접속 속도가 증가\n\n\n다운로드해서 설치하기 : 커스터마이징 가능, 도메인을 넘나들지 않아도 된다.(특정 위치에서는 더 빠를 수 있다)\n\n\njQuery Slim 버전은 ajax 기능이 빠져있다.\n\nmin 버전 : 용량을 최소화한 버전 -&gt; 띄어쓰기 생략, 엔터 생략\nbeautify : min 버전은 소스코드를 알아보기 힘들기 때문에 beautify해서 다시 보기 좋게 만든다.\n\n\n\n모든 static 리소스들은 캐시가 걸린다. -&gt; 수정사항 바로 반영되지 않음\n\n웹 서버에서 캐시타임 조절 -&gt; 자주 수정되는 경우 캐시 타임을 확 줄인다.(보통 1~2일 유지)\n이미 받은것은 만료가 될때까지 갱신이 안됨 -&gt; static 리소스의 파일명을 변경한다.(가장 쉬운 방법이지만 장고의 소스코드를 바꿔야하므로 귀찮은 방법)\nstatic 리소스 뒤에 Query String을 붙인다. -&gt; 아예 캐싱이 안되도록 한다.(뒤에 Query string을 붙이면 다른 파일이라고 인식하여 다운받음)\n\n\n\nHTML 파일에 적용하기\n\n\nCSS 파일은 헤더 바로밑에\nJS파일은 /body태그 바로위에 위치시킨다 - jQuery, popper, bootstrap 순으로 위치시킨다\n\n\n\n\n\n\n기존에는 user-agent로 모바일, 데스크탑, 태블릿으로 구분을 했으나 현재에는 반응형 웹을통해 화면의 너비를 통해 기종 구분없이 화면이 달라진다\n\nGrid system : Bootstrap에서 지원하는 내장 반응형웹\n\ncol-로 쪼갠 나머지를 다른 애들이 먹는다\n여백을 col로 지정만 해주고 내용 부분만 조절하면 된다.\n\n","dateCreated":"2019-05-17T18:32:46+09:00","dateModified":"2019-05-19T21:02:19+09:00","datePublished":"2019-05-17T18:32:46+09:00","description":"","headline":"2019-05-17 Django에 Bootstrap 적용하기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.sug5806.site/2019/05/17/2019-04-30-Bootstrap/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://www.sug5806.site/2019/05/17/2019-04-30-Bootstrap/","keywords":"Bootstrap"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"bootstrap 적용하기\n\nbase.html에 bootstrap 설치하기\n\n\nCDN 스크립트로 설치하기 : 리소스 절감효과, 최신버전을 자동 유지, CDN을 사용하면 접속 속도가 증가\n\n\n다운로드해서 설치하기 : 커스터마이징 가능, 도메인을 넘나들지 않아도 된다.(특정 위치에서는 더 빠를 수 있다)\n\n\njQuery Slim 버전은 ajax 기능이 빠져있다.\n\nmin 버전 : 용량을 최소화한 버전 -&gt; 띄어쓰기 생략, 엔터 생략\nbeautify : min 버전은 소스코드를 알아보기 힘들기 때문에 beautify해서 다시 보기 좋게 만든다.\n\n\n\n모든 static 리소스들은 캐시가 걸린다. -&gt; 수정사항 바로 반영되지 않음\n\n웹 서버에서 캐시타임 조절 -&gt; 자주 수정되는 경우 캐시 타임을 확 줄인다.(보통 1~2일 유지)\n이미 받은것은 만료가 될때까지 갱신이 안됨 -&gt; static 리소스의 파일명을 변경한다.(가장 쉬운 방법이지만 장고의 소스코드를 바꿔야하므로 귀찮은 방법)\nstatic 리소스 뒤에 Query String을 붙인다. -&gt; 아예 캐싱이 안되도록 한다.(뒤에 Query string을 붙이면 다른 파일이라고 인식하여 다운받음)\n\n\n\nHTML 파일에 적용하기\n\n\nCSS 파일은 헤더 바로밑에\nJS파일은 /body태그 바로위에 위치시킨다 - jQuery, popper, bootstrap 순으로 위치시킨다\n\n\n\n\n\n\n기존에는 user-agent로 모바일, 데스크탑, 태블릿으로 구분을 했으나 현재에는 반응형 웹을통해 화면의 너비를 통해 기종 구분없이 화면이 달라진다\n\nGrid system : Bootstrap에서 지원하는 내장 반응형웹\n\ncol-로 쪼갠 나머지를 다른 애들이 먹는다\n여백을 col로 지정만 해주고 내용 부분만 조절하면 된다.\n\n","dateCreated":"2019-05-17T18:32:46+09:00","dateModified":"2019-05-19T21:02:19+09:00","datePublished":"2019-05-17T18:32:46+09:00","description":"","headline":"2019-05-17 Django에 Bootstrap 적용하기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://sug5806.site/2019/05/17/2019-04-30-Bootstrap/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://sug5806.site/2019/05/17/2019-04-30-Bootstrap/","keywords":"Bootstrap"}</script>
     <meta name="description" content="bootstrap 적용하기  base.html에 bootstrap 설치하기   CDN 스크립트로 설치하기 : 리소스 절감효과, 최신버전을 자동 유지, CDN을 사용하면 접속 속도가 증가   다운로드해서 설치하기 : 커스터마이징 가능, 도메인을 넘나들지 않아도 된다.(특정 위치에서는 더 빠를 수 있다)   jQuery Slim 버전은 ajax 기능이 빠져있다">
 <meta name="keywords" content="Bootstrap">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-05-17 Django에 Bootstrap 적용하기">
-<meta property="og:url" content="http://www.sug5806.site/2019/05/17/2019-04-30-Bootstrap/index.html">
+<meta property="og:url" content="http://sug5806.site/2019/05/17/2019-04-30-Bootstrap/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="bootstrap 적용하기  base.html에 bootstrap 설치하기   CDN 스크립트로 설치하기 : 리소스 절감효과, 최신버전을 자동 유지, CDN을 사용하면 접속 속도가 증가   다운로드해서 설치하기 : 커스터마이징 가능, 도메인을 넘나들지 않아도 된다.(특정 위치에서는 더 빠를 수 있다)   jQuery Slim 버전은 ajax 기능이 빠져있다">
 <meta property="og:locale" content="ko">
-<meta property="og:image" content="http://www.sug5806.site/image/Boot.png">
+<meta property="og:image" content="http://sug5806.site/image/Boot.png">
 <meta property="og:updated_time" content="2019-05-19T12:02:19.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-05-17 Django에 Bootstrap 적용하기">
 <meta name="twitter:description" content="bootstrap 적용하기  base.html에 bootstrap 설치하기   CDN 스크립트로 설치하기 : 리소스 절감효과, 최신버전을 자동 유지, CDN을 사용하면 접속 속도가 증가   다운로드해서 설치하기 : 커스터마이징 가능, 도메인을 넘나들지 않아도 된다.(특정 위치에서는 더 빠를 수 있다)   jQuery Slim 버전은 ajax 기능이 빠져있다">
-<meta name="twitter:image" content="http://www.sug5806.site/image/Boot.png">
+<meta name="twitter:image" content="http://sug5806.site/image/Boot.png">
     
     
         
@@ -298,7 +298,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/05/17/2019-04-30-Bootstrap/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/05/17/2019-04-30-Bootstrap/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -306,7 +306,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/05/17/2019-04-30-Bootstrap/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/05/17/2019-04-30-Bootstrap/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -314,7 +314,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/05/17/2019-04-30-Bootstrap/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/05/17/2019-04-30-Bootstrap/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -394,7 +394,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/05/17/2019-04-30-Bootstrap/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/05/17/2019-04-30-Bootstrap/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -402,7 +402,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/05/17/2019-04-30-Bootstrap/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/05/17/2019-04-30-Bootstrap/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -410,7 +410,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/05/17/2019-04-30-Bootstrap/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/05/17/2019-04-30-Bootstrap/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -444,7 +444,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/05/17/2019-04-30-Bootstrap/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/05/17/2019-04-30-Bootstrap/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -452,7 +452,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/05/17/2019-04-30-Bootstrap/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/05/17/2019-04-30-Bootstrap/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -460,7 +460,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/05/17/2019-04-30-Bootstrap/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/05/17/2019-04-30-Bootstrap/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -524,7 +524,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
                             <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
                         </a>
                         <span class="media-meta">
@@ -543,7 +543,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
                             <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
                         </a>
                         <span class="media-meta">
@@ -562,7 +562,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
                             <h3 class="media-heading">2019-03-22 OOP</h3>
                         </a>
                         <span class="media-meta">
@@ -581,7 +581,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
                             <h3 class="media-heading">2019-03-25 기초 통계</h3>
                         </a>
                         <span class="media-meta">
@@ -600,7 +600,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
                             <h3 class="media-heading">2019-03-29 컴파일러와 인터프리터의 차이점</h3>
                         </a>
                         <span class="media-meta">
@@ -619,7 +619,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
                             <h3 class="media-heading">2019-04-03 Git 특강1 Init</h3>
                         </a>
                         <span class="media-meta">
@@ -638,7 +638,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
                             <h3 class="media-heading">2019-04-03 Classful addressing</h3>
                         </a>
                         <span class="media-meta">
@@ -657,7 +657,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
                             <h3 class="media-heading">2019-04-03 Classful addressing</h3>
                         </a>
                         <span class="media-meta">
@@ -676,7 +676,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
                             <h3 class="media-heading">2019-04-05 HTML 기초태그</h3>
                         </a>
                         <span class="media-meta">
@@ -695,7 +695,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
                             <h3 class="media-heading">2019-04-07 Synchronous와 Asynchronous의 차이점</h3>
                         </a>
                         <span class="media-meta">
@@ -732,7 +732,7 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://www.sug5806.site/2019/05/17/2019-04-30-Bootstrap/';
+            this.page.url = 'http://sug5806.site/2019/05/17/2019-04-30-Bootstrap/';
               
             this.page.identifier = '2019/05/17/2019-04-30-Bootstrap/';
               

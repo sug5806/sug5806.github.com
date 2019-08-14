@@ -11,28 +11,28 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"안녕하세요 이번시간에는 저번에 미처 다루지 못했던 QuerySet의 기능들을 알아보도록 하겠습니다.\n미리 5개의 데이터를 만들어 놓았습니다.\n\n\n전체 객체 불러오기\n\nModel.objects.all()\n\n\n\n\n특정 객체 불러오기\n\nModel.objects.get(pk=값)\n\n일치한것만 가져옵니다. 일치한 것이 없을 시 오류를 발생합니다\n\npk or id는 Django에서 DB 테이블을 작성하면 자동으로 추가시켜주는 필드입니다. 데이터를 추가할때마다 자동으로 1씩 증가합니다.\n\n\n\n\n\n객체가 존재하는지 확인\n\nModel.objetcs.filter(pk=1).exists()\n\n존재하면 True, 안하면 False를 반환합니다.\n\n\n\n\n\n검색어로 검색하기\n\nModel.objects.filter(필드명__옵션=값)\n\nexact : 값 매치\niexact : 대소문자 구분없이 값 매치\nstartswith, istartswith : 값으로 시작하는 결과 찾기\nendswith, iendswith : 값으로 끝나는 결과 찾기\ncontains, icontains : 값을 포함하는 결과 찾기\ngt, gte : 값보다 큰경우, 크거나 같은 경우 찾기\nlt, lte : 값보다 작은 경우, 작거나 같은 경우 찾기\n위의 옵션 말고도 여러가지 옵션이 있습니다.\n\n\n\n\n\n\n필터를 연속해서 사용시 and 조건으로 연결됩니다.\n이름이 자식이면서 나이가 10살 이상인 데이터\n\n\n특정 조건 제외하기\n\nModel.objects.exclude(조건)\n\n이름이 자식1을 제외한 데이터\n\n\n\n갯수 끊어서 가져오기\n\nModel.objects.all[:3] -&gt; 3개만 가져오기\n\n\n\n\n정렬하기\n\nModel.objects.all().order_by(‘age’)\n\n나이를 기준으로 오름차순으로 정렬\n내림차순으로 정렬하고 싶다면 -를 붙여준다(-age)\n\n\n\n조건의 or 연결\n\n필터는 기본적으로 and연산 입니다. or연산을 하고싶다면 Q객체를 사용해야 합니다.\n\n이름이 자식1 이거나 나이가 5살 초과인 데이터\n\n\n\nForeignKey로 연결된 필드를 참조하는 경우\n\nModel.objects.filter(parent__name=‘부모1’)\n\n\n\n\n","dateCreated":"2019-06-12T16:38:02+09:00","dateModified":"2019-08-12T18:29:09+09:00","datePublished":"2019-06-12T16:38:02+09:00","description":"","headline":"2019-06-12 Django Shell 다루기2","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://www.sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/","keywords":"Django, shell, ORM"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"안녕하세요 이번시간에는 저번에 미처 다루지 못했던 QuerySet의 기능들을 알아보도록 하겠습니다.\n미리 5개의 데이터를 만들어 놓았습니다.\n\n\n전체 객체 불러오기\n\nModel.objects.all()\n\n\n\n\n특정 객체 불러오기\n\nModel.objects.get(pk=값)\n\n일치한것만 가져옵니다. 일치한 것이 없을 시 오류를 발생합니다\n\npk or id는 Django에서 DB 테이블을 작성하면 자동으로 추가시켜주는 필드입니다. 데이터를 추가할때마다 자동으로 1씩 증가합니다.\n\n\n\n\n\n객체가 존재하는지 확인\n\nModel.objetcs.filter(pk=1).exists()\n\n존재하면 True, 안하면 False를 반환합니다.\n\n\n\n\n\n검색어로 검색하기\n\nModel.objects.filter(필드명__옵션=값)\n\nexact : 값 매치\niexact : 대소문자 구분없이 값 매치\nstartswith, istartswith : 값으로 시작하는 결과 찾기\nendswith, iendswith : 값으로 끝나는 결과 찾기\ncontains, icontains : 값을 포함하는 결과 찾기\ngt, gte : 값보다 큰경우, 크거나 같은 경우 찾기\nlt, lte : 값보다 작은 경우, 작거나 같은 경우 찾기\n위의 옵션 말고도 여러가지 옵션이 있습니다.\n\n\n\n\n\n\n필터를 연속해서 사용시 and 조건으로 연결됩니다.\n이름이 자식이면서 나이가 10살 이상인 데이터\n\n\n특정 조건 제외하기\n\nModel.objects.exclude(조건)\n\n이름이 자식1을 제외한 데이터\n\n\n\n갯수 끊어서 가져오기\n\nModel.objects.all[:3] -&gt; 3개만 가져오기\n\n\n\n\n정렬하기\n\nModel.objects.all().order_by(‘age’)\n\n나이를 기준으로 오름차순으로 정렬\n내림차순으로 정렬하고 싶다면 -를 붙여준다(-age)\n\n\n\n조건의 or 연결\n\n필터는 기본적으로 and연산 입니다. or연산을 하고싶다면 Q객체를 사용해야 합니다.\n\n이름이 자식1 이거나 나이가 5살 초과인 데이터\n\n\n\nForeignKey로 연결된 필드를 참조하는 경우\n\nModel.objects.filter(parent__name=‘부모1’)\n\n\n\n\n","dateCreated":"2019-06-12T16:38:02+09:00","dateModified":"2019-08-12T18:29:09+09:00","datePublished":"2019-06-12T16:38:02+09:00","description":"","headline":"2019-06-12 Django Shell 다루기2","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/","keywords":"Django, shell, ORM"}</script>
     <meta name="description" content="안녕하세요 이번시간에는 저번에 미처 다루지 못했던 QuerySet의 기능들을 알아보도록 하겠습니다. 미리 5개의 데이터를 만들어 놓았습니다.   전체 객체 불러오기  Model.objects.all()     특정 객체 불러오기  Model.objects.get(pk=값)  일치한것만 가져옵니다. 일치한 것이 없을 시 오류를 발생합니다  pk or id는">
 <meta name="keywords" content="Django,shell,ORM">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-06-12 Django Shell 다루기2">
-<meta property="og:url" content="http://www.sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/index.html">
+<meta property="og:url" content="http://sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="안녕하세요 이번시간에는 저번에 미처 다루지 못했던 QuerySet의 기능들을 알아보도록 하겠습니다. 미리 5개의 데이터를 만들어 놓았습니다.   전체 객체 불러오기  Model.objects.all()     특정 객체 불러오기  Model.objects.get(pk=값)  일치한것만 가져옵니다. 일치한 것이 없을 시 오류를 발생합니다  pk or id는">
 <meta property="og:locale" content="ko">
-<meta property="og:image" content="http://www.sug5806.site/image/shell2-1.png">
-<meta property="og:image" content="http://www.sug5806.site/image/shell2-2.png">
-<meta property="og:image" content="http://www.sug5806.site/image/shell2-4.png">
-<meta property="og:image" content="http://www.sug5806.site/image/shell2-5.png">
-<meta property="og:image" content="http://www.sug5806.site/image/shell2-6.png">
-<meta property="og:image" content="http://www.sug5806.site/image/shell2-7.png">
-<meta property="og:image" content="http://www.sug5806.site/image/shell2-8.png">
-<meta property="og:image" content="http://www.sug5806.site/image/shell2-9.png">
+<meta property="og:image" content="http://sug5806.site/image/shell2-1.png">
+<meta property="og:image" content="http://sug5806.site/image/shell2-2.png">
+<meta property="og:image" content="http://sug5806.site/image/shell2-4.png">
+<meta property="og:image" content="http://sug5806.site/image/shell2-5.png">
+<meta property="og:image" content="http://sug5806.site/image/shell2-6.png">
+<meta property="og:image" content="http://sug5806.site/image/shell2-7.png">
+<meta property="og:image" content="http://sug5806.site/image/shell2-8.png">
+<meta property="og:image" content="http://sug5806.site/image/shell2-9.png">
 <meta property="og:updated_time" content="2019-08-12T09:29:09.551Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-06-12 Django Shell 다루기2">
 <meta name="twitter:description" content="안녕하세요 이번시간에는 저번에 미처 다루지 못했던 QuerySet의 기능들을 알아보도록 하겠습니다. 미리 5개의 데이터를 만들어 놓았습니다.   전체 객체 불러오기  Model.objects.all()     특정 객체 불러오기  Model.objects.get(pk=값)  일치한것만 가져옵니다. 일치한 것이 없을 시 오류를 발생합니다  pk or id는">
-<meta name="twitter:image" content="http://www.sug5806.site/image/shell2-1.png">
+<meta name="twitter:image" content="http://sug5806.site/image/shell2-1.png">
     
     
         
@@ -355,7 +355,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -363,7 +363,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -371,7 +371,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -451,7 +451,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -459,7 +459,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -467,7 +467,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -501,7 +501,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -509,7 +509,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -517,7 +517,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -581,7 +581,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
                             <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
                         </a>
                         <span class="media-meta">
@@ -600,7 +600,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
                             <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
                         </a>
                         <span class="media-meta">
@@ -619,7 +619,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
                             <h3 class="media-heading">2019-03-22 OOP</h3>
                         </a>
                         <span class="media-meta">
@@ -638,7 +638,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
                             <h3 class="media-heading">2019-03-25 기초 통계</h3>
                         </a>
                         <span class="media-meta">
@@ -657,7 +657,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
                             <h3 class="media-heading">2019-03-29 컴파일러와 인터프리터의 차이점</h3>
                         </a>
                         <span class="media-meta">
@@ -676,7 +676,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
                             <h3 class="media-heading">2019-04-03 Git 특강1 Init</h3>
                         </a>
                         <span class="media-meta">
@@ -695,7 +695,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
                             <h3 class="media-heading">2019-04-03 Classful addressing</h3>
                         </a>
                         <span class="media-meta">
@@ -714,7 +714,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
                             <h3 class="media-heading">2019-04-03 Classful addressing</h3>
                         </a>
                         <span class="media-meta">
@@ -733,7 +733,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
                             <h3 class="media-heading">2019-04-05 HTML 기초태그</h3>
                         </a>
                         <span class="media-meta">
@@ -752,7 +752,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
                             <h3 class="media-heading">2019-04-07 Synchronous와 Asynchronous의 차이점</h3>
                         </a>
                         <span class="media-meta">
@@ -789,7 +789,7 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://www.sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/';
+            this.page.url = 'http://sug5806.site/2019/06/12/2019-06-12-Django-Shell다루기2/';
               
             this.page.identifier = '2019/06/12/2019-06-12-Django-Shell다루기2/';
               

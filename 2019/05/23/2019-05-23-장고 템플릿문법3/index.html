@@ -11,12 +11,12 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"장고 템플릿 문법 3\n장고에서 화면을 렌더링 하기 위해서는 템플릿 엔진을 사용한다. 템플릿 엔진은 각자 자기만의 템플릿 문법을 제공하는데 여러가지 기본 문법과 태그 필터를 살펴본다\n\n\n템플릿 확장\n특정 템플릿을 상속받아 확장하고 싶을 때는 extends를 사용한다.\n1&#123;% extends 'base.html'&#125;\n\n\n블록\n템플릿을 확장해 사용할 경우 부모 템플릿과 자식 템플릿 모두 block을 만들어서 사용한다.\n12&#123;% block test %&#125; 껴넣을 내용 &#123;% endblock %&#125;&#123;% block test %&#125; &#123;&#123; block.super &#125;&#125; 부모 블록과 같이 껴넣을 내용 &#123;% endblock %&#125;\n\n\n템플릿 불러오기\n별도 파일에 작성되어 있는 템플릿을 불러와 사용하려면 include를 사용한다\n1&#123;% include 'list.html' %&#125;\n\n\nstatic 파일 불러오기\n정적 파일을 서버ㅔ서 불러와 사용하고 싶은 경우 경로를 자동으로 찾아서 출력되게 만드는 것이 좋다.\n 1234567891011    &#123;% load static %&#125;    &lt;script src=&#123; static 'js/underscore.js' %&#125;&gt; &lt;/script&gt;    &#123;% load staticfiles %&#125;    &lt;script src=&#123;% static 'js/underscore.js' %&#125;&gt;&lt;/script&gt;10. url 출력하기      템플릿에 주소를 하드 코딩하지 않고 나타내기 위해서 사용한다.    ```html    &#123;% url 'URL패턴이름' %&#125;    &#123;% url 'URL패턴이름' object.id %&#125;\n\n\n주석만들기\n1234&#123;# 한줄 주석 #&#125;&#123;% comment &apos;여러줄 주석&apos; %    사이에 있는 모든 태그는 무시된다.&#123;% endcomment %&#125;\n\n","dateCreated":"2019-05-23T19:23:50+09:00","dateModified":"2019-06-02T13:32:05+09:00","datePublished":"2019-05-23T19:23:50+09:00","description":"","headline":"2019-05-23 장고 템플릿 문법 3","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://www.sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/","keywords":"Django, template"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"장고 템플릿 문법 3\n장고에서 화면을 렌더링 하기 위해서는 템플릿 엔진을 사용한다. 템플릿 엔진은 각자 자기만의 템플릿 문법을 제공하는데 여러가지 기본 문법과 태그 필터를 살펴본다\n\n\n템플릿 확장\n특정 템플릿을 상속받아 확장하고 싶을 때는 extends를 사용한다.\n1&#123;% extends 'base.html'&#125;\n\n\n블록\n템플릿을 확장해 사용할 경우 부모 템플릿과 자식 템플릿 모두 block을 만들어서 사용한다.\n12&#123;% block test %&#125; 껴넣을 내용 &#123;% endblock %&#125;&#123;% block test %&#125; &#123;&#123; block.super &#125;&#125; 부모 블록과 같이 껴넣을 내용 &#123;% endblock %&#125;\n\n\n템플릿 불러오기\n별도 파일에 작성되어 있는 템플릿을 불러와 사용하려면 include를 사용한다\n1&#123;% include 'list.html' %&#125;\n\n\nstatic 파일 불러오기\n정적 파일을 서버ㅔ서 불러와 사용하고 싶은 경우 경로를 자동으로 찾아서 출력되게 만드는 것이 좋다.\n 1234567891011    &#123;% load static %&#125;    &lt;script src=&#123; static 'js/underscore.js' %&#125;&gt; &lt;/script&gt;    &#123;% load staticfiles %&#125;    &lt;script src=&#123;% static 'js/underscore.js' %&#125;&gt;&lt;/script&gt;10. url 출력하기      템플릿에 주소를 하드 코딩하지 않고 나타내기 위해서 사용한다.    ```html    &#123;% url 'URL패턴이름' %&#125;    &#123;% url 'URL패턴이름' object.id %&#125;\n\n\n주석만들기\n1234&#123;# 한줄 주석 #&#125;&#123;% comment &apos;여러줄 주석&apos; %    사이에 있는 모든 태그는 무시된다.&#123;% endcomment %&#125;\n\n","dateCreated":"2019-05-23T19:23:50+09:00","dateModified":"2019-06-02T13:32:05+09:00","datePublished":"2019-05-23T19:23:50+09:00","description":"","headline":"2019-05-23 장고 템플릿 문법 3","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/","keywords":"Django, template"}</script>
     <meta name="description" content="장고 템플릿 문법 3 장고에서 화면을 렌더링 하기 위해서는 템플릿 엔진을 사용한다. 템플릿 엔진은 각자 자기만의 템플릿 문법을 제공하는데 여러가지 기본 문법과 태그 필터를 살펴본다   템플릿 확장 특정 템플릿을 상속받아 확장하고 싶을 때는 extends를 사용한다. 1&amp;#123;% extends &apos;base.html&apos;&amp;#125;   블록 템플릿을 확장해 사용">
 <meta name="keywords" content="Django,template">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-05-23 장고 템플릿 문법 3">
-<meta property="og:url" content="http://www.sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/index.html">
+<meta property="og:url" content="http://sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="장고 템플릿 문법 3 장고에서 화면을 렌더링 하기 위해서는 템플릿 엔진을 사용한다. 템플릿 엔진은 각자 자기만의 템플릿 문법을 제공하는데 여러가지 기본 문법과 태그 필터를 살펴본다   템플릿 확장 특정 템플릿을 상속받아 확장하고 싶을 때는 extends를 사용한다. 1&amp;#123;% extends &apos;base.html&apos;&amp;#125;   블록 템플릿을 확장해 사용">
 <meta property="og:locale" content="ko">
@@ -279,7 +279,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -287,7 +287,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -295,7 +295,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -375,7 +375,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -383,7 +383,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -391,7 +391,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -425,7 +425,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -433,7 +433,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -441,7 +441,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -505,7 +505,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
                             <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
                         </a>
                         <span class="media-meta">
@@ -524,7 +524,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
                             <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
                         </a>
                         <span class="media-meta">
@@ -543,7 +543,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
                             <h3 class="media-heading">2019-03-22 OOP</h3>
                         </a>
                         <span class="media-meta">
@@ -562,7 +562,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
                             <h3 class="media-heading">2019-03-25 기초 통계</h3>
                         </a>
                         <span class="media-meta">
@@ -581,7 +581,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
                             <h3 class="media-heading">2019-03-29 컴파일러와 인터프리터의 차이점</h3>
                         </a>
                         <span class="media-meta">
@@ -600,7 +600,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
                             <h3 class="media-heading">2019-04-03 Git 특강1 Init</h3>
                         </a>
                         <span class="media-meta">
@@ -619,7 +619,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
                             <h3 class="media-heading">2019-04-03 Classful addressing</h3>
                         </a>
                         <span class="media-meta">
@@ -638,7 +638,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
                             <h3 class="media-heading">2019-04-03 Classful addressing</h3>
                         </a>
                         <span class="media-meta">
@@ -657,7 +657,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
                             <h3 class="media-heading">2019-04-05 HTML 기초태그</h3>
                         </a>
                         <span class="media-meta">
@@ -676,7 +676,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
+                        <a class="link-unstyled" href="http://sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
                             <h3 class="media-heading">2019-04-07 Synchronous와 Asynchronous의 차이점</h3>
                         </a>
                         <span class="media-meta">
@@ -713,7 +713,7 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://www.sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/';
+            this.page.url = 'http://sug5806.site/2019/05/23/2019-05-23-장고 템플릿문법3/';
               
             this.page.identifier = '2019/05/23/2019-05-23-장고 템플릿문법3/';
               
