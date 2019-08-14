@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"HTTP Server\n\n\n브라우저를 통해 사용자가 HTTP Request Message를 보내면\n\n\n서버는 그 Message를 해석하고 Response Message로 응답한다\n\n어느 페이지로 접속했느냐?\nQuery String은 어떤 데이터를 가지고 있느냐?\n특정 스크립트 요청이 있느냐?\n최종 응답을 HTML, 다운로드는 파일로 할것이냐?\n\n\n\nHTTP Response만 하는 서버\n\n\n\n주소에 검색어값을 넘겨준다 -&gt; 쿼리스패싱?\n쿼리스트링\n\n? : 쿼리스트링의 시작\n&amp; : 다음변수\n\n\n\n\n논외\nwith 구문을 def로 바꾸거나 def를 with구문으로 바꿀줄 알아야함\n요즘에는 404나 이런 오류메시지를 서버에서 만들어주는게 트랜드이다\n랜덤값을 뽑아주는 패키지를 잘 알아두는것이 좋다\n\n123456789101112131415161718import http.serverimport socketserver# 서버에 접속하는 포트PORT = 8000# 요청이 들어오면 어느 객체가 요청을 해석하고 처리할것이냐?# Ex) 수리기사를 부르는 개념# 현재 디렉토리와 하위의 파일을 제공하고 디렉토리 구조를 HTTP 요청에 직접 매핑함Handler = http.server.SimpleHTTPRequestHandler# \"\"으로 하면 localhost(127.0.0.1)이다\"with socketserver.TCPServer((\"\", PORT), Handler) as httpd:    print(\"serving at PORT\", PORT)    # 클라이언트의 접속 요청을 수신대기 한다. 접속 요청이 있을시    # 수락하고 SimpleHTTPRequestHandler의 handle 메소드를 호출한다.    httpd.serve_forever()","dateCreated":"2019-04-26T21:05:12+09:00","dateModified":"2019-04-26T21:05:57+09:00","datePublished":"2019-04-26T21:05:12+09:00","description":"","headline":"2019-04-26 HTTP Server 만들어보기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/26/2019-04-26-HTTP_server/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/04/26/2019-04-26-HTTP_server/","keywords":"HTTP Server"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"HTTP Server\n\n\n브라우저를 통해 사용자가 HTTP Request Message를 보내면\n\n\n서버는 그 Message를 해석하고 Response Message로 응답한다\n\n어느 페이지로 접속했느냐?\nQuery String은 어떤 데이터를 가지고 있느냐?\n특정 스크립트 요청이 있느냐?\n최종 응답을 HTML, 다운로드는 파일로 할것이냐?\n\n\n\nHTTP Response만 하는 서버\n\n\n\n주소에 검색어값을 넘겨준다 -&gt; 쿼리스패싱?\n쿼리스트링\n\n? : 쿼리스트링의 시작\n&amp; : 다음변수\n\n\n\n\n논외\nwith 구문을 def로 바꾸거나 def를 with구문으로 바꿀줄 알아야함\n요즘에는 404나 이런 오류메시지를 서버에서 만들어주는게 트랜드이다\n랜덤값을 뽑아주는 패키지를 잘 알아두는것이 좋다\n\n123456789101112131415161718import http.serverimport socketserver# 서버에 접속하는 포트PORT = 8000# 요청이 들어오면 어느 객체가 요청을 해석하고 처리할것이냐?# Ex) 수리기사를 부르는 개념# 현재 디렉토리와 하위의 파일을 제공하고 디렉토리 구조를 HTTP 요청에 직접 매핑함Handler = http.server.SimpleHTTPRequestHandler# \"\"으로 하면 localhost(127.0.0.1)이다\"with socketserver.TCPServer((\"\", PORT), Handler) as httpd:    print(\"serving at PORT\", PORT)    # 클라이언트의 접속 요청을 수신대기 한다. 접속 요청이 있을시    # 수락하고 SimpleHTTPRequestHandler의 handle 메소드를 호출한다.    httpd.serve_forever()","dateCreated":"2019-04-26T21:05:12+09:00","dateModified":"2019-04-26T21:05:57+09:00","datePublished":"2019-04-26T21:05:12+09:00","description":"","headline":"2019-04-26 HTTP Server 만들어보기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/26/2019-04-26-HTTP_server/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/04/26/2019-04-26-HTTP_server/","keywords":"HTTP Server"}</script>
     <meta name="description" content="HTTP Server   브라우저를 통해 사용자가 HTTP Request Message를 보내면   서버는 그 Message를 해석하고 Response Message로 응답한다  어느 페이지로 접속했느냐? Query String은 어떤 데이터를 가지고 있느냐? 특정 스크립트 요청이 있느냐? 최종 응답을 HTML, 다운로드는 파일로 할것이냐?    HTTP">
 <meta name="keywords" content="HTTP Server">
 <meta property="og:type" content="blog">
@@ -140,6 +140,15 @@
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="http://portfolio.sug5806.site/" target="_blank" rel="noopener" title="포트폴리오">
+                    
+                        <i class="sidebar-button-icon fas fa-user-tie" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">포트폴리오</span>
                     </a>
             </li>
             

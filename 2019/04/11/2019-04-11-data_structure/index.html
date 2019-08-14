@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"리스트(List)와 배열(Array)의 차이점\n\n\n동적배열(Dynamic Array) vs 연결리스트(Linked List)의 차이\n\n\nDynamicArray\n\n장점:\n\nsearch : O(1) -&gt; Indexing을 사용하기 때문\n\n메모리에 가져올때 지역성이 적용되어 캐시히트가 일어나기 때문\n\n\n\n\n단점:\n\nInsert : O(n) -&gt; 삽입을 하기위해 기존의 n개의 데이터를 뒤로 밀어야 한다\nDelete : O(n) -&gt; 삭제를 한 뒤 남아있는 데이터를 앞으로 당겨야 한다.\n\n\n\n\n\nLinkedList\n\n장점: 데이터의 삽입, 삭제가 매우 빠르다\n\nInsert : O(1)\nDelete : O(1)\n\n\n단점:\n\nSearch : O(n)\n\n지역성이 적용될 확률이 낮기때문에 캐시히트가 일어나기 힘들다\n\n\n\n\n\n\n\n\n\nSearch를 많이하면 배열을, Insert, Delete를 할때는 연결리스트를 주로 사용한다\n다이나믹 힙(Dynamic Heap)기법으로 메모리 할당을 한쪽으로 몰아도 되도록이면 배열을 사용한다\n","dateCreated":"2019-04-11T19:04:46+09:00","dateModified":"2019-08-11T18:49:54+09:00","datePublished":"2019-04-11T19:04:46+09:00","description":"","headline":"2019-04-11 List와 Array의 차이점","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/11/2019-04-11-data_structure/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/04/11/2019-04-11-data_structure/","keywords":"List, Array"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"리스트(List)와 배열(Array)의 차이점\n\n\n동적배열(Dynamic Array) vs 연결리스트(Linked List)의 차이\n\n\nDynamicArray\n\n장점:\n\nsearch : O(1) -&gt; Indexing을 사용하기 때문\n\n메모리에 가져올때 지역성이 적용되어 캐시히트가 일어나기 때문\n\n\n\n\n단점:\n\nInsert : O(n) -&gt; 삽입을 하기위해 기존의 n개의 데이터를 뒤로 밀어야 한다\nDelete : O(n) -&gt; 삭제를 한 뒤 남아있는 데이터를 앞으로 당겨야 한다.\n\n\n\n\n\nLinkedList\n\n장점: 데이터의 삽입, 삭제가 매우 빠르다\n\nInsert : O(1)\nDelete : O(1)\n\n\n단점:\n\nSearch : O(n)\n\n지역성이 적용될 확률이 낮기때문에 캐시히트가 일어나기 힘들다\n\n\n\n\n\n\n\n\n\nSearch를 많이하면 배열을, Insert, Delete를 할때는 연결리스트를 주로 사용한다\n다이나믹 힙(Dynamic Heap)기법으로 메모리 할당을 한쪽으로 몰아도 되도록이면 배열을 사용한다\n","dateCreated":"2019-04-11T19:04:46+09:00","dateModified":"2019-08-11T18:49:54+09:00","datePublished":"2019-04-11T19:04:46+09:00","description":"","headline":"2019-04-11 List와 Array의 차이점","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/11/2019-04-11-data_structure/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/04/11/2019-04-11-data_structure/","keywords":"List, Array"}</script>
     <meta name="description" content="리스트(List)와 배열(Array)의 차이점   동적배열(Dynamic Array) vs 연결리스트(Linked List)의 차이   DynamicArray  장점:  search : O(1) -&amp;gt; Indexing을 사용하기 때문  메모리에 가져올때 지역성이 적용되어 캐시히트가 일어나기 때문     단점:  Insert : O(n) -&amp;gt; 삽입을">
 <meta name="keywords" content="List,Array">
 <meta property="og:type" content="blog">
@@ -140,6 +140,15 @@
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="http://portfolio.sug5806.site/" target="_blank" rel="noopener" title="포트폴리오">
+                    
+                        <i class="sidebar-button-icon fas fa-user-tie" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">포트폴리오</span>
                     </a>
             </li>
             

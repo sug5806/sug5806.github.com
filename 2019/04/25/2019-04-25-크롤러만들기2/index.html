@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"네이버 쇼핑에서 주요 쇼핑몰 목록 가져오기\n12345678910111213141516171819202122232425262728import requestsfrom bs4 import BeautifulSoup# 네이버 쇼핑몰의 urlurl = \"https://shopping.naver.com/\"req = requests.get(url)if req.status_code == requests.codes.ok:    print(\"접속성공\")    html = BeautifulSoup(req.text, \"html.parser\")    # 각 리스트 원소마다 태그가 여러개 중첩되어 있음    s_list1 = html.select('ul#mallListPage1 li')    # print(s_list1)    # 각 리스트 원소마다 태그가 1개밖에 없음    s_list2 = html.select('ul#mallListPage1 li img')    # print(s_list2)    for i in s_list1:        # 중첩되어 있는 태그를 하나씩 분리함        mall_url = i.select_one('a')        mall_name = i.select_one('img')        # print(mall_name.get('alt'), mall_url.get('href'))        # print(mall_name['alt'], mall_url['href'])\n\n1234    # s_list2는 애초에 태그가 1개밖에 없으므로 분리 안해도 무방for i in s_list2:    print(i['alt'])    print(i.get('alt'))\n\n","dateCreated":"2019-04-25T10:31:23+09:00","dateModified":"2019-04-25T10:34:25+09:00","datePublished":"2019-04-25T10:31:23+09:00","description":"","headline":"2019-04-25 크롤러로 쇼핑몰 목록 가져오기(웹 크롤러 만들기2)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/25/2019-04-25-크롤러만들기2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/04/25/2019-04-25-크롤러만들기2/","keywords":"웹크롤러"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"네이버 쇼핑에서 주요 쇼핑몰 목록 가져오기\n12345678910111213141516171819202122232425262728import requestsfrom bs4 import BeautifulSoup# 네이버 쇼핑몰의 urlurl = \"https://shopping.naver.com/\"req = requests.get(url)if req.status_code == requests.codes.ok:    print(\"접속성공\")    html = BeautifulSoup(req.text, \"html.parser\")    # 각 리스트 원소마다 태그가 여러개 중첩되어 있음    s_list1 = html.select('ul#mallListPage1 li')    # print(s_list1)    # 각 리스트 원소마다 태그가 1개밖에 없음    s_list2 = html.select('ul#mallListPage1 li img')    # print(s_list2)    for i in s_list1:        # 중첩되어 있는 태그를 하나씩 분리함        mall_url = i.select_one('a')        mall_name = i.select_one('img')        # print(mall_name.get('alt'), mall_url.get('href'))        # print(mall_name['alt'], mall_url['href'])\n\n1234    # s_list2는 애초에 태그가 1개밖에 없으므로 분리 안해도 무방for i in s_list2:    print(i['alt'])    print(i.get('alt'))\n\n","dateCreated":"2019-04-25T10:31:23+09:00","dateModified":"2019-04-25T10:34:25+09:00","datePublished":"2019-04-25T10:31:23+09:00","description":"","headline":"2019-04-25 크롤러로 쇼핑몰 목록 가져오기(웹 크롤러 만들기2)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/25/2019-04-25-크롤러만들기2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/04/25/2019-04-25-크롤러만들기2/","keywords":"웹크롤러"}</script>
     <meta name="description" content="네이버 쇼핑에서 주요 쇼핑몰 목록 가져오기 12345678910111213141516171819202122232425262728import requestsfrom bs4 import BeautifulSoup# 네이버 쇼핑몰의 urlurl = &quot;https://shopping.naver.com/&quot;req = requests.get(url)if req.status">
 <meta name="keywords" content="웹크롤러">
 <meta property="og:type" content="blog">
@@ -143,6 +143,15 @@
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="http://portfolio.sug5806.site/" target="_blank" rel="noopener" title="포트폴리오">
+                    
+                        <i class="sidebar-button-icon fas fa-user-tie" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">포트폴리오</span>
                     </a>
             </li>
             

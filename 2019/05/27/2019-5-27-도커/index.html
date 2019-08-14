@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"로컬 시스템에 개발 환경 구축\n\n파이참\n파이썬 개발환경\n프로젝트에 필요한 모듈 설치\n\n배포\n\nPythonanywhere - Paas\nHeroku\n클라우드 시스템 - 모든 환경 설정, EB\nHosting - 서버의 일정 공간을 대여받아 사용\n사내 서버 구축 (NAS, 라즈베리 파이, 구형 스마트폰)\n\n\nElastic Beanstalk\n개발 환경과 배포 환경 상이하다\n컨테이터 서비스 도커 : 가상환경 구축(운영체제 환경까지 어느 정도 지원)\n모토 : 개발환경을 그대로 배포환경까지 이어가겠다.\n\nLCX 시스템 - 도커는 리눅스에서만 동작한다.\nrunC - 리눅스, 맥, 윈도우 모두 가능\n\n도커 시스템은 무조건 리눅스이다\n장점 : 개발환경을 그대로 감싸서 배포까지 한번에\n단점 : 배포 환경 그대로 개발 환경에서 사용해야 한다.\n도커 이미지를 만드는 절차\n\n기본 베이스 이미지를 선택한다. - 도커 허브(각종 배포용 이미지가 있다) 기본 리눅스 이미즐 선택\n컨테이너 구동(개발용, 배포용)\n2-1) 개발 환경 셋팅 - Docker file 이라는 곳에 명령행을 기록\n2-2) 변경사항이 남아있는 이미지를 생성\n이미지를 리포지터리에 업로드\n배포\n4-1) 도커 - 리눅스시스템, 서버 시스템에서 도커이미지를 받아서 여러개의 컨테이너를 구동\n4-2) 엘라스틱 빈즈토크 - 도커용 시스템\n\n\n\n개발+배포용 도커이미지 만들고\n해당 이미지를 사용해서 장고 어플리케이션 구동\n개인 리포지터리에 업로드\n\n\n코드를 업데이트 하는 방법\n\nDockerfile에 ADD 명령을 통해 넣기\ncontainer를 마운팅해서 넣는 방법 : -v 내 프로젝트 경로 : container의 마운팅시킬 디렉토리의 경로\n\n","dateCreated":"2019-05-27T18:32:46+09:00","dateModified":"2019-06-23T19:13:28+09:00","datePublished":"2019-05-27T18:32:46+09:00","description":"","headline":"2019-05-27 장고 Docker","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/05/27/2019-5-27-도커/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/05/27/2019-5-27-도커/","keywords":"장고, Docker"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"로컬 시스템에 개발 환경 구축\n\n파이참\n파이썬 개발환경\n프로젝트에 필요한 모듈 설치\n\n배포\n\nPythonanywhere - Paas\nHeroku\n클라우드 시스템 - 모든 환경 설정, EB\nHosting - 서버의 일정 공간을 대여받아 사용\n사내 서버 구축 (NAS, 라즈베리 파이, 구형 스마트폰)\n\n\nElastic Beanstalk\n개발 환경과 배포 환경 상이하다\n컨테이터 서비스 도커 : 가상환경 구축(운영체제 환경까지 어느 정도 지원)\n모토 : 개발환경을 그대로 배포환경까지 이어가겠다.\n\nLCX 시스템 - 도커는 리눅스에서만 동작한다.\nrunC - 리눅스, 맥, 윈도우 모두 가능\n\n도커 시스템은 무조건 리눅스이다\n장점 : 개발환경을 그대로 감싸서 배포까지 한번에\n단점 : 배포 환경 그대로 개발 환경에서 사용해야 한다.\n도커 이미지를 만드는 절차\n\n기본 베이스 이미지를 선택한다. - 도커 허브(각종 배포용 이미지가 있다) 기본 리눅스 이미즐 선택\n컨테이너 구동(개발용, 배포용)\n2-1) 개발 환경 셋팅 - Docker file 이라는 곳에 명령행을 기록\n2-2) 변경사항이 남아있는 이미지를 생성\n이미지를 리포지터리에 업로드\n배포\n4-1) 도커 - 리눅스시스템, 서버 시스템에서 도커이미지를 받아서 여러개의 컨테이너를 구동\n4-2) 엘라스틱 빈즈토크 - 도커용 시스템\n\n\n\n개발+배포용 도커이미지 만들고\n해당 이미지를 사용해서 장고 어플리케이션 구동\n개인 리포지터리에 업로드\n\n\n코드를 업데이트 하는 방법\n\nDockerfile에 ADD 명령을 통해 넣기\ncontainer를 마운팅해서 넣는 방법 : -v 내 프로젝트 경로 : container의 마운팅시킬 디렉토리의 경로\n\n","dateCreated":"2019-05-27T18:32:46+09:00","dateModified":"2019-06-23T19:13:28+09:00","datePublished":"2019-05-27T18:32:46+09:00","description":"","headline":"2019-05-27 장고 Docker","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/05/27/2019-5-27-도커/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/05/27/2019-5-27-도커/","keywords":"장고, Docker"}</script>
     <meta name="description" content="로컬 시스템에 개발 환경 구축  파이참 파이썬 개발환경 프로젝트에 필요한 모듈 설치  배포  Pythonanywhere - Paas Heroku 클라우드 시스템 - 모든 환경 설정, EB Hosting - 서버의 일정 공간을 대여받아 사용 사내 서버 구축 (NAS, 라즈베리 파이, 구형 스마트폰)   Elastic Beanstalk 개발 환경과 배포 환경">
 <meta name="keywords" content="장고,Docker">
 <meta property="og:type" content="blog">
@@ -140,6 +140,15 @@
                     
                         <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
                         <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="http://portfolio.sug5806.site/" target="_blank" rel="noopener" title="포트폴리오">
+                    
+                        <i class="sidebar-button-icon fas fa-user-tie" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">포트폴리오</span>
                     </a>
             </li>
             
