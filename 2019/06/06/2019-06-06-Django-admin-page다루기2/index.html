@@ -11,23 +11,23 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"오늘은 admin page에서 검색 기능을 알아보도록 하겠습니다.\n먼저 검색기능을 추가하려면 admin.py에서 수정을 해야합니다\nadmin.py\n12345678910from django.contrib import adminfrom .models import AdminPage# Register your models here.class AdminPageAdmin(admin.ModelAdmin):    search_fields = [&apos;name&apos;]admin.site.register(AdminPage, AdminPageAdmin)\nModelAdmin을 상속받고 기존 admin.site.register(AdminPage)에 AdminPageAdmin을 추가시키면 됩니다.\n\n검색을 해보도록 하겠습니다.\n\n그런데 뭔가 마음에 들지 않습니다. 저는 필드 별로 구분을 하고싶은데 그럴수가 없습니다. 이 문제를 해결하도록 하겠습니다.\nadmin.py를 수정합니다.\n12345678910from django.contrib import adminfrom .models import AdminPage# Register your models here.class AdminPageAdmin(admin.ModelAdmin):    list_display = [&apos;name&apos;, &apos;age&apos;, &apos;address&apos;]    search_fields = [&apos;name&apos;]admin.site.register(AdminPage, AdminPageAdmin)\nlist_display를 추가하였습니다.\n\n","dateCreated":"2019-06-06T15:20:02+09:00","dateModified":"2019-08-12T14:24:55+09:00","datePublished":"2019-06-06T15:20:02+09:00","description":"","headline":"2019-06-06 Django admin page 다루기2","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/","keywords":"Django, admin_page"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"오늘은 admin page에서 검색 기능을 알아보도록 하겠습니다.\n먼저 검색기능을 추가하려면 admin.py에서 수정을 해야합니다\nadmin.py\n12345678910from django.contrib import adminfrom .models import AdminPage# Register your models here.class AdminPageAdmin(admin.ModelAdmin):    search_fields = [&apos;name&apos;]admin.site.register(AdminPage, AdminPageAdmin)\nModelAdmin을 상속받고 기존 admin.site.register(AdminPage)에 AdminPageAdmin을 추가시키면 됩니다.\n\n검색을 해보도록 하겠습니다.\n\n그런데 뭔가 마음에 들지 않습니다. 저는 필드 별로 구분을 하고싶은데 그럴수가 없습니다. 이 문제를 해결하도록 하겠습니다.\nadmin.py를 수정합니다.\n12345678910from django.contrib import adminfrom .models import AdminPage# Register your models here.class AdminPageAdmin(admin.ModelAdmin):    list_display = [&apos;name&apos;, &apos;age&apos;, &apos;address&apos;]    search_fields = [&apos;name&apos;]admin.site.register(AdminPage, AdminPageAdmin)\nlist_display를 추가하였습니다.\n\n","dateCreated":"2019-06-06T15:20:02+09:00","dateModified":"2019-08-12T14:24:55+09:00","datePublished":"2019-06-06T15:20:02+09:00","description":"","headline":"2019-06-06 Django admin page 다루기2","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.sug5806.site/2019/06/06/2019-06-06-Django-admin-page다루기2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://www.sug5806.site/2019/06/06/2019-06-06-Django-admin-page다루기2/","keywords":"Django, admin_page"}</script>
     <meta name="description" content="오늘은 admin page에서 검색 기능을 알아보도록 하겠습니다. 먼저 검색기능을 추가하려면 admin.py에서 수정을 해야합니다 admin.py 12345678910from django.contrib import adminfrom .models import AdminPage# Register your models here.class AdminPageAdm">
 <meta name="keywords" content="Django,admin_page">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-06-06 Django admin page 다루기2">
-<meta property="og:url" content="https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/index.html">
+<meta property="og:url" content="http://www.sug5806.site/2019/06/06/2019-06-06-Django-admin-page다루기2/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="오늘은 admin page에서 검색 기능을 알아보도록 하겠습니다. 먼저 검색기능을 추가하려면 admin.py에서 수정을 해야합니다 admin.py 12345678910from django.contrib import adminfrom .models import AdminPage# Register your models here.class AdminPageAdm">
 <meta property="og:locale" content="ko">
-<meta property="og:image" content="https://sug5806.github.io/image/admin2-1.png">
-<meta property="og:image" content="https://sug5806.github.io/image/admin2-2.png">
-<meta property="og:image" content="https://sug5806.github.io/image/admin2-3.png">
+<meta property="og:image" content="http://www.sug5806.site/image/admin2-1.png">
+<meta property="og:image" content="http://www.sug5806.site/image/admin2-2.png">
+<meta property="og:image" content="http://www.sug5806.site/image/admin2-3.png">
 <meta property="og:updated_time" content="2019-08-12T05:24:55.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-06-06 Django admin page 다루기2">
 <meta name="twitter:description" content="오늘은 admin page에서 검색 기능을 알아보도록 하겠습니다. 먼저 검색기능을 추가하려면 admin.py에서 수정을 해야합니다 admin.py 12345678910from django.contrib import adminfrom .models import AdminPage# Register your models here.class AdminPageAdm">
-<meta name="twitter:image" content="https://sug5806.github.io/image/admin2-1.png">
+<meta name="twitter:image" content="http://www.sug5806.site/image/admin2-1.png">
     
     
         
@@ -269,7 +269,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/06/06/2019-06-06-Django-admin-page다루기2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -277,7 +277,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/06/06/2019-06-06-Django-admin-page다루기2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -285,7 +285,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/06/06/2019-06-06-Django-admin-page다루기2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -365,7 +365,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/06/06/2019-06-06-Django-admin-page다루기2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -373,7 +373,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/06/06/2019-06-06-Django-admin-page다루기2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -381,7 +381,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/06/06/2019-06-06-Django-admin-page다루기2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -415,7 +415,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/06/06/2019-06-06-Django-admin-page다루기2/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -423,7 +423,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/06/06/2019-06-06-Django-admin-page다루기2/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -431,7 +431,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/06/06/2019-06-06-Django-admin-page다루기2/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -495,7 +495,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
                             <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
                         </a>
                         <span class="media-meta">
@@ -514,7 +514,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
                             <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
                         </a>
                         <span class="media-meta">
@@ -533,7 +533,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
                             <h3 class="media-heading">2019-03-22 OOP</h3>
                         </a>
                         <span class="media-meta">
@@ -552,7 +552,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
                             <h3 class="media-heading">2019-03-25 기초 통계</h3>
                         </a>
                         <span class="media-meta">
@@ -571,7 +571,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
                             <h3 class="media-heading">2019-03-29 컴파일러와 인터프리터의 차이점</h3>
                         </a>
                         <span class="media-meta">
@@ -590,7 +590,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
                             <h3 class="media-heading">2019-04-03 Git 특강1 Init</h3>
                         </a>
                         <span class="media-meta">
@@ -609,7 +609,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
                             <h3 class="media-heading">2019-04-03 Classful addressing</h3>
                         </a>
                         <span class="media-meta">
@@ -628,7 +628,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
                             <h3 class="media-heading">2019-04-03 Classful addressing</h3>
                         </a>
                         <span class="media-meta">
@@ -647,7 +647,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
                             <h3 class="media-heading">2019-04-05 HTML 기초태그</h3>
                         </a>
                         <span class="media-meta">
@@ -666,7 +666,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
                             <h3 class="media-heading">2019-04-07 Synchronous와 Asynchronous의 차이점</h3>
                         </a>
                         <span class="media-meta">
@@ -703,7 +703,7 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'https://sug5806.github.io/2019/06/06/2019-06-06-Django-admin-page다루기2/';
+            this.page.url = 'http://www.sug5806.site/2019/06/06/2019-06-06-Django-admin-page다루기2/';
               
             this.page.identifier = '2019/06/06/2019-06-06-Django-admin-page다루기2/';
               

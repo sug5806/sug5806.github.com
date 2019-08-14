@@ -11,12 +11,12 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"관계형 Data base\n집합론에 근거한다.\n\nOracle (대형 기업에서 가장 많이 사용함)\nMySQL (중소기업이 많이씀, PHP랑 정말 잘맞음 Ex) APM)\nMaria DB -&gt; MySQL을 쓰던사람들이 많이 넘어옴\npostgreSQL -&gt; 오픈 소스\n\nDB에서의 세션을 열었다 = TCP connection을 했다\n트랜잭션과 세션의 차이\n\nDDL -&gt; DLL은 자동으로 COMMIT이 반영된다.\n\ncraete\nalter\ndrop\ntruncate -&gt; 통째로 삭제해버리므로 delete보다 빠름\n\nDML -&gt; 자동으로 COMMIT이 되지않는다.\n\ninsert\nselect\nupdate\ndelete -&gt; 튜플을 한줄 한줄 삭제함\n\nDCL\n\ngrant\nrevoke\n\nTCL\n\ncommit\nrollback\n\nauto commit 이 0이라면\nDDL은 자동으로 commit을 수반함\n\n\n객체\ntable(entity, relation)\n\n행 전체 : record, row ,tuple\n열의 처음 : field, attribute, colunm -&gt; 자료형을 가지고 있어야 한다.\n어떤 속성은 중복값을 허용하지 않고 어떤 값은 허용하는 등의 조건 -&gt; 제약조건(constraint)\n\n\nview\nindex\nschema\n\n내부 스키마\n외부 스키마\n물리 스키마\n\n\n\n\nMaria DB\nutf8 mb4\n\nutf8이 한 글자당 최대 3byte 였으나 이모지가 나오면서 4byte로 확장함\n\n@@ -&gt; DB에서 사용하고있는 변수\nSELECT USER, HOST FROM mysql.user;을 하면 모든 유저가 나옴\n’%’ -&gt; 내부, 외부모두 접속 허용\n’localhost’ -&gt; 로컬 호스트로 이용\nGRANT ALL PRIVILEGES ON . TO ‘계정’@'localhost’\nWITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 줄 수 있음\nmysqldump -u sug5806 -p --databases my_db &gt; mydb.sql -&gt; sug5806 계정에 my_db라는 데이터베이스를 mydb.sql이라는 이름으로 덤프를 놓겠다\nprimary key를 지정하지 않아도 unique not null이 있다면 자동으로 이것을 주키로 지정한다\n\n예시로 만들 TABLE\nStudent table\n\nstudent ID -&gt; INT, PRIMARY KEY\nnum_students -&gt; INT NOT NULL\nstudent_name -&gt; VARCHAR, NOT NULL\nheight -&gt; SMALLINT, DEFAULT 200\nscore -&gt; SMALLINT, NULL\nbirthday -&gt; DATE, NOT NULL\nclass ID -&gt; INT, NULL,\n\nTeachers table\n\nteacher ID -&gt; INT, PRIMARY KEY\nsubject -&gt; VARCHAR\nclass ID -&gt; INT, NULL\n\nClasses table\n\nclass ID -&gt; INT, PRIM_ARY KEY\nnum_student -&gt; INT, NOT NULL개\n\n\nSQL Query\n예시\nSELECT student_name, score FROM student_cp Where student_name like ‘Ma%’\n\nstudent_cp라는 테이블에서 student_name과 score의 필드를 student_name 이 Ma로 시작하는 튜플을 가져와라\n\nSELECT student_name, score FROM student_cp WHERE score &gt; 50&amp;&amp; score &lt; 70\n\nstudent_cp라는 테이블에서 student_name과 score필드를 가져오는데 점수가 50점 초과 70점 미만을 가져와라\n\nSession : Connect가 열리고 닫힐때 까지인것.\n","dateCreated":"2019-04-08T18:47:32+09:00","dateModified":"2019-04-10T15:22:57+09:00","datePublished":"2019-04-08T18:47:32+09:00","description":"","headline":"2019-04-08 DataBase","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"https://sug5806.github.io/2019/04/08/DataBase/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"https://sug5806.github.io/2019/04/08/DataBase/","keywords":"SQL, 데이터베이스"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"관계형 Data base\n집합론에 근거한다.\n\nOracle (대형 기업에서 가장 많이 사용함)\nMySQL (중소기업이 많이씀, PHP랑 정말 잘맞음 Ex) APM)\nMaria DB -&gt; MySQL을 쓰던사람들이 많이 넘어옴\npostgreSQL -&gt; 오픈 소스\n\nDB에서의 세션을 열었다 = TCP connection을 했다\n트랜잭션과 세션의 차이\n\nDDL -&gt; DLL은 자동으로 COMMIT이 반영된다.\n\ncraete\nalter\ndrop\ntruncate -&gt; 통째로 삭제해버리므로 delete보다 빠름\n\nDML -&gt; 자동으로 COMMIT이 되지않는다.\n\ninsert\nselect\nupdate\ndelete -&gt; 튜플을 한줄 한줄 삭제함\n\nDCL\n\ngrant\nrevoke\n\nTCL\n\ncommit\nrollback\n\nauto commit 이 0이라면\nDDL은 자동으로 commit을 수반함\n\n\n객체\ntable(entity, relation)\n\n행 전체 : record, row ,tuple\n열의 처음 : field, attribute, colunm -&gt; 자료형을 가지고 있어야 한다.\n어떤 속성은 중복값을 허용하지 않고 어떤 값은 허용하는 등의 조건 -&gt; 제약조건(constraint)\n\n\nview\nindex\nschema\n\n내부 스키마\n외부 스키마\n물리 스키마\n\n\n\n\nMaria DB\nutf8 mb4\n\nutf8이 한 글자당 최대 3byte 였으나 이모지가 나오면서 4byte로 확장함\n\n@@ -&gt; DB에서 사용하고있는 변수\nSELECT USER, HOST FROM mysql.user;을 하면 모든 유저가 나옴\n’%’ -&gt; 내부, 외부모두 접속 허용\n’localhost’ -&gt; 로컬 호스트로 이용\nGRANT ALL PRIVILEGES ON . TO ‘계정’@'localhost’\nWITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 줄 수 있음\nmysqldump -u sug5806 -p --databases my_db &gt; mydb.sql -&gt; sug5806 계정에 my_db라는 데이터베이스를 mydb.sql이라는 이름으로 덤프를 놓겠다\nprimary key를 지정하지 않아도 unique not null이 있다면 자동으로 이것을 주키로 지정한다\n\n예시로 만들 TABLE\nStudent table\n\nstudent ID -&gt; INT, PRIMARY KEY\nnum_students -&gt; INT NOT NULL\nstudent_name -&gt; VARCHAR, NOT NULL\nheight -&gt; SMALLINT, DEFAULT 200\nscore -&gt; SMALLINT, NULL\nbirthday -&gt; DATE, NOT NULL\nclass ID -&gt; INT, NULL,\n\nTeachers table\n\nteacher ID -&gt; INT, PRIMARY KEY\nsubject -&gt; VARCHAR\nclass ID -&gt; INT, NULL\n\nClasses table\n\nclass ID -&gt; INT, PRIM_ARY KEY\nnum_student -&gt; INT, NOT NULL개\n\n\nSQL Query\n예시\nSELECT student_name, score FROM student_cp Where student_name like ‘Ma%’\n\nstudent_cp라는 테이블에서 student_name과 score의 필드를 student_name 이 Ma로 시작하는 튜플을 가져와라\n\nSELECT student_name, score FROM student_cp WHERE score &gt; 50&amp;&amp; score &lt; 70\n\nstudent_cp라는 테이블에서 student_name과 score필드를 가져오는데 점수가 50점 초과 70점 미만을 가져와라\n\nSession : Connect가 열리고 닫힐때 까지인것.\n","dateCreated":"2019-04-08T18:47:32+09:00","dateModified":"2019-04-10T15:22:57+09:00","datePublished":"2019-04-08T18:47:32+09:00","description":"","headline":"2019-04-08 DataBase","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.sug5806.site/2019/04/08/DataBase/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://www.sug5806.site/2019/04/08/DataBase/","keywords":"SQL, 데이터베이스"}</script>
     <meta name="description" content="관계형 Data base 집합론에 근거한다.  Oracle (대형 기업에서 가장 많이 사용함) MySQL (중소기업이 많이씀, PHP랑 정말 잘맞음 Ex) APM) Maria DB -&amp;gt; MySQL을 쓰던사람들이 많이 넘어옴 postgreSQL -&amp;gt; 오픈 소스  DB에서의 세션을 열었다 = TCP connection을 했다 트랜잭션과 세션의 차이">
 <meta name="keywords" content="SQL,데이터베이스">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-04-08 DataBase">
-<meta property="og:url" content="https://sug5806.github.io/2019/04/08/DataBase/index.html">
+<meta property="og:url" content="http://www.sug5806.site/2019/04/08/DataBase/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="관계형 Data base 집합론에 근거한다.  Oracle (대형 기업에서 가장 많이 사용함) MySQL (중소기업이 많이씀, PHP랑 정말 잘맞음 Ex) APM) Maria DB -&amp;gt; MySQL을 쓰던사람들이 많이 넘어옴 postgreSQL -&amp;gt; 오픈 소스  DB에서의 세션을 열었다 = TCP connection을 했다 트랜잭션과 세션의 차이">
 <meta property="og:locale" content="ko">
@@ -358,7 +358,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/04/08/DataBase/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/08/DataBase/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -366,7 +366,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/04/08/DataBase/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/08/DataBase/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -374,7 +374,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/04/08/DataBase/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/08/DataBase/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -454,7 +454,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/04/08/DataBase/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/08/DataBase/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -462,7 +462,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/04/08/DataBase/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/08/DataBase/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -470,7 +470,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/04/08/DataBase/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/08/DataBase/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -504,7 +504,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://sug5806.github.io/2019/04/08/DataBase/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/08/DataBase/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -512,7 +512,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://sug5806.github.io/2019/04/08/DataBase/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/08/DataBase/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -520,7 +520,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://sug5806.github.io/2019/04/08/DataBase/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/08/DataBase/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -584,7 +584,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
                             <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
                         </a>
                         <span class="media-meta">
@@ -603,7 +603,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
                             <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
                         </a>
                         <span class="media-meta">
@@ -622,7 +622,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
                             <h3 class="media-heading">2019-03-22 OOP</h3>
                         </a>
                         <span class="media-meta">
@@ -641,7 +641,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/25/기본통계/" aria-label=": 2019-03-25 기초 통계">
                             <h3 class="media-heading">2019-03-25 기초 통계</h3>
                         </a>
                         <span class="media-meta">
@@ -660,7 +660,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/29/컴파일러언어와인터프리터언어의차이점/" aria-label=": 2019-03-29 컴파일러와 인터프리터의 차이점">
                             <h3 class="media-heading">2019-03-29 컴파일러와 인터프리터의 차이점</h3>
                         </a>
                         <span class="media-meta">
@@ -679,7 +679,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/03/Git 시작하기/" aria-label=": 2019-04-03 Git 특강1 Init">
                             <h3 class="media-heading">2019-04-03 Git 특강1 Init</h3>
                         </a>
                         <span class="media-meta">
@@ -698,7 +698,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/04/2019-04-04-클래스풀-어드레싱/" aria-label=": 2019-04-03 Classful addressing">
                             <h3 class="media-heading">2019-04-03 Classful addressing</h3>
                         </a>
                         <span class="media-meta">
@@ -717,7 +717,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/04/2019-04-04 Classful addressing/" aria-label=": 2019-04-03 Classful addressing">
                             <h3 class="media-heading">2019-04-03 Classful addressing</h3>
                         </a>
                         <span class="media-meta">
@@ -736,7 +736,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/05/2019-04-05-HTML-기초태그/" aria-label=": 2019-04-05 HTML 기초태그">
                             <h3 class="media-heading">2019-04-05 HTML 기초태그</h3>
                         </a>
                         <span class="media-meta">
@@ -755,7 +755,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="https://sug5806.github.io/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
+                        <a class="link-unstyled" href="http://www.sug5806.site/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
                             <h3 class="media-heading">2019-04-07 Synchronous와 Asynchronous의 차이점</h3>
                         </a>
                         <span class="media-meta">
@@ -792,7 +792,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'https://sug5806.github.io/2019/04/08/DataBase/';
+            this.page.url = 'http://www.sug5806.site/2019/04/08/DataBase/';
               
             this.page.identifier = '2019/04/08/DataBase/';
               
