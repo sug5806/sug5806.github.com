@@ -11,24 +11,24 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"네이버 소셜로그인 구현하기\n1. allauth 모듈 설치하기\n\npip install django-allauth\n\n2. settings.py 수정하기\n1234567891011121314151617181920# 맨 마지막에 추가AUTHENTICATION_BACKENDS = (    ...    # Needed to login by username in Django admin, regardless of `allauth`    'django.contrib.auth.backends.ModelBackend',    # `allauth` specific authentication methods, such as login by e-mail    'allauth.account.auth_backends.AuthenticationBackend',    )SITE_ID = 1# INSTALLED_APPS에 추가하기    'django.contrib.sites',    'allauth',    'allauth.account',    'allauth.socialaccount',    # 이 부분은 소셜로그인을 구현하고 싶은 사이트를 입력하면 된다    'allauth.socialaccount.providers.naver',\n3. app의 urls.py에 추가하기\n1path('accounts', include('allauth.urls')),\n4. DB migrate 하기\n* `python manage.py migate`\n\n5. 네이버 개발자 센터방문\n\n\n사용하고자 하는 이름 작성\n권한은 원하는대로\n\n서비스 URL과 Callback URL을 위와 같이 적어준다\n만약 직접 서비스하고 있는 사이트가 있다면 서비스 URL에 자신의 사이트를 적어준다.\n\n6. app의 url.py에 추가하기 2\n1234from django.contrib.auth.views import LoginView, LogoutViewpath('login/', LoginView.as_view(template_name='account/login.html'), name='login'),    path('logout/', LogoutView.as_view(template_name='account/logout.html'), name='logout'),\n7. ./manage.py admin 사이트로 접속\n\n맨 밑의 Social application으로 접속\n8. Social application에서 추가하기\n\n\n위에서 Key와 ID는 네이버 개발자센터에서 발급받은 자신의 ID와 Key를 적으면 된다\n\n","dateCreated":"2019-05-18T18:32:46+09:00","dateModified":"2019-05-30T12:21:07+09:00","datePublished":"2019-05-18T18:32:46+09:00","description":"","headline":"2019-05-18 Django social login(naver)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://www.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/","keywords":"Django, Social login"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"네이버 소셜로그인 구현하기\n1. allauth 모듈 설치하기\n\npip install django-allauth\n\n2. settings.py 수정하기\n1234567891011121314151617181920# 맨 마지막에 추가AUTHENTICATION_BACKENDS = (    ...    # Needed to login by username in Django admin, regardless of `allauth`    'django.contrib.auth.backends.ModelBackend',    # `allauth` specific authentication methods, such as login by e-mail    'allauth.account.auth_backends.AuthenticationBackend',    )SITE_ID = 1# INSTALLED_APPS에 추가하기    'django.contrib.sites',    'allauth',    'allauth.account',    'allauth.socialaccount',    # 이 부분은 소셜로그인을 구현하고 싶은 사이트를 입력하면 된다    'allauth.socialaccount.providers.naver',\n3. app의 urls.py에 추가하기\n1path('accounts', include('allauth.urls')),\n4. DB migrate 하기\n* `python manage.py migate`\n\n5. 네이버 개발자 센터방문\n\n\n사용하고자 하는 이름 작성\n권한은 원하는대로\n\n서비스 URL과 Callback URL을 위와 같이 적어준다\n만약 직접 서비스하고 있는 사이트가 있다면 서비스 URL에 자신의 사이트를 적어준다.\n\n6. app의 url.py에 추가하기 2\n1234from django.contrib.auth.views import LoginView, LogoutViewpath('login/', LoginView.as_view(template_name='account/login.html'), name='login'),    path('logout/', LogoutView.as_view(template_name='account/logout.html'), name='logout'),\n7. ./manage.py admin 사이트로 접속\n\n맨 밑의 Social application으로 접속\n8. Social application에서 추가하기\n\n\n위에서 Key와 ID는 네이버 개발자센터에서 발급받은 자신의 ID와 Key를 적으면 된다\n\n","dateCreated":"2019-05-18T18:32:46+09:00","dateModified":"2019-05-30T12:21:07+09:00","datePublished":"2019-05-18T18:32:46+09:00","description":"","headline":"2019-05-18 Django social login(naver)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/","keywords":"Django, Social login"}</script>
     <meta name="description" content="네이버 소셜로그인 구현하기 1. allauth 모듈 설치하기  pip install django-allauth  2. settings.py 수정하기 1234567891011121314151617181920# 맨 마지막에 추가AUTHENTICATION_BACKENDS = (    ...    # Needed to login by username in Djan">
 <meta name="keywords" content="Django,Social login">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-05-18 Django social login(naver)">
-<meta property="og:url" content="http://www.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/index.html">
+<meta property="og:url" content="http://blog.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="네이버 소셜로그인 구현하기 1. allauth 모듈 설치하기  pip install django-allauth  2. settings.py 수정하기 1234567891011121314151617181920# 맨 마지막에 추가AUTHENTICATION_BACKENDS = (    ...    # Needed to login by username in Djan">
 <meta property="og:locale" content="ko">
-<meta property="og:image" content="http://www.sug5806.site/image/naver1.png">
-<meta property="og:image" content="http://www.sug5806.site/image/naver3.png">
-<meta property="og:image" content="http://www.sug5806.site/image/naver_admin.png">
-<meta property="og:image" content="http://www.sug5806.site/image/naver_admin2.png">
+<meta property="og:image" content="http://blog.sug5806.site/image/naver1.png">
+<meta property="og:image" content="http://blog.sug5806.site/image/naver3.png">
+<meta property="og:image" content="http://blog.sug5806.site/image/naver_admin.png">
+<meta property="og:image" content="http://blog.sug5806.site/image/naver_admin2.png">
 <meta property="og:updated_time" content="2019-05-30T03:21:07.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-05-18 Django social login(naver)">
 <meta name="twitter:description" content="네이버 소셜로그인 구현하기 1. allauth 모듈 설치하기  pip install django-allauth  2. settings.py 수정하기 1234567891011121314151617181920# 맨 마지막에 추가AUTHENTICATION_BACKENDS = (    ...    # Needed to login by username in Djan">
-<meta name="twitter:image" content="http://www.sug5806.site/image/naver1.png">
+<meta name="twitter:image" content="http://blog.sug5806.site/image/naver1.png">
     
     
         
@@ -297,7 +297,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -305,7 +305,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -313,7 +313,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -393,7 +393,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -401,7 +401,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -409,7 +409,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -443,7 +443,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -451,7 +451,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -459,7 +459,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -523,7 +523,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
                             <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
                         </a>
                         <span class="media-meta">
@@ -542,7 +542,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
                             <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
                         </a>
                         <span class="media-meta">
@@ -561,7 +561,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
                             <h3 class="media-heading">2019-03-22 OOP</h3>
                         </a>
                         <span class="media-meta">
@@ -598,7 +598,7 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://www.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/';
+            this.page.url = 'http://blog.sug5806.site/2019/05/18/2019-05-18-소셜로그인구현/';
               
             this.page.identifier = '2019/05/18/2019-05-18-소셜로그인구현/';
               

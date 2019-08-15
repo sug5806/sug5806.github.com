@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: http://sug5806.github.io/sitemap.xml

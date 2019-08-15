@@ -11,23 +11,23 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"N:M 관계\n\nA테이블과 B테이블이 있을때 A테이블의 레코드 1개가 B테이블의 레코드 N개로 대응되고 B테이블의 레코드 1개가 A테이블의 레코드 M개와 대응될때 M:N이라 한다.\n\n\n1:N or N:1관계\n\nA테이블 레코드 하나에 B테이블 레코드가 N개 대응될때 1:N이라 한다.\n  \n\n조인\n\ninner join (MySQL, Maria DB, Oracle은 Where로 묶어도 잘 작동하지만 ANSI 표준으로 하는게 더 좋다)\nouter join\n\nleft outer\n\nA from B를 했을때 A, B의 동일한 필드로 묶었을때 A 테이블을 기준으로 표시하고 B필드값이 NULL이더라도 표시한다\n\n\nright outer\n\nA from B 를 했을때 A와 B가 동일한 필드로 묶었을때 B 테이블을 기준으로 A의 필드값이 NULL이더라도 표시한다\n\n\nfull outer(MySQL, Maria DB 지원 X -&gt; UNION이라는 명령어를 통해 구현)\n\n\n테이블의 데이터를 가로로 연결한다 (레코드대 레코드)\n일반적으로는  join하면 inner join 이다\n\nGroup By\n\nWhere와 Having의 차이\n\nWhere : 그룹핑 이전에 조건을 수행함\nHaving : 이미 Group By로 그룹을 나눈후에 조건을 수행함 -&gt; Group By가 반드시 필요함\n\n\n\nschema :DB의 뼈대\nVIEW\n\n필요할때마다 select문을 계속 작성을 할수 없으므로 view를 하나 설정해 마치 테이블처럼 사용하는 것\nview는 테이블이 새로 만들어 지는것이 아님\n가독성이 높아진다.\n보안성\n\nINDEX\n필드를 기준으로 데이터 검색을 할때 사용한다.\n인덱싱을 제외하고 트리구조( 그 중에서도 BST(log N)가 가장 빠르다\n인덱스는B Tree로 함\nindex를 지우려면 foreign key를 먼저 지우고 index를 지운다\n\nALTER TABLE 테이블명 DROP FOREIGN KEY 외래키명 ;\n\nindex는 필요없어지면 바로 지워주는게 좋다 (성능 하락에 주범)\n\nDROP INDEX 인덱스명\n\n\nCLUSTERED INDEX\n\n한 테이블에 1개씩만 존재함\n\nPrimary Key\nUnique Not NULL\n\n\n데이터 자체를 클러스터 인덱스에 맞춰 정렬을 해 저장을 한다 -&gt; 이것으로 인해 한테이블에 1개씩밖에 존재함\n\n주키를 잡으면 자동으로 클러스터 인덱스로됨(반드시 테이블을 만들때 주키를 잡을것)\nALTER TABLE 명령어를 사용해야\n\n\nDROP INDEX PRIMARY ON students; -&gt; 주키를 제거하면서 인덱스 역시 제거\nALTER TABLE students ADD CONSTRAINT PRIMARY KEY(studentID) -&gt; students 테이블에 studentID속성을 주키로 설정하겠다\n\n\nSECONDARY INDEX\n\n장점\n\n검색속도가 엄청나게 빨라짐\n쿼리에 대한 부담이 줄어든다\n\n\n단점\n\ninsert와 update를 계속된다면 테이블이 계속 갱신이 되어야 하므로 페이지 분할이 일어나 속도가 매우 느려진다.\n메모리를 잡아먹음 약 10%\n\n\n원하는 만큼 얼마든지 가능\nB 트리 라는 자료구조를 만들고 이것이 데이터를 참조하는 형식 (Where 을 할때 인덱스가 있다면 쓰인다) -&gt; Page와 Offset으로 구성되어있음\nWhere를 자주쓰는 상황이면 만드는게 좋다. 만약 사용을 하지않게 된다면 무조건 지워라\nCREATE INDEX -&gt;  secondary index만 만들수 있다.\n\n\n\n","dateCreated":"2019-04-08T21:05:32+09:00","dateModified":"2019-04-09T21:07:00+09:00","datePublished":"2019-04-08T21:05:32+09:00","description":"","headline":"2019-04-08 데이터베이스 관계, 조인, Group, Index","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.sug5806.site/2019/04/08/DB2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://www.sug5806.site/2019/04/08/DB2/","keywords":"SQL, 데이터베이스"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"N:M 관계\n\nA테이블과 B테이블이 있을때 A테이블의 레코드 1개가 B테이블의 레코드 N개로 대응되고 B테이블의 레코드 1개가 A테이블의 레코드 M개와 대응될때 M:N이라 한다.\n\n\n1:N or N:1관계\n\nA테이블 레코드 하나에 B테이블 레코드가 N개 대응될때 1:N이라 한다.\n  \n\n조인\n\ninner join (MySQL, Maria DB, Oracle은 Where로 묶어도 잘 작동하지만 ANSI 표준으로 하는게 더 좋다)\nouter join\n\nleft outer\n\nA from B를 했을때 A, B의 동일한 필드로 묶었을때 A 테이블을 기준으로 표시하고 B필드값이 NULL이더라도 표시한다\n\n\nright outer\n\nA from B 를 했을때 A와 B가 동일한 필드로 묶었을때 B 테이블을 기준으로 A의 필드값이 NULL이더라도 표시한다\n\n\nfull outer(MySQL, Maria DB 지원 X -&gt; UNION이라는 명령어를 통해 구현)\n\n\n테이블의 데이터를 가로로 연결한다 (레코드대 레코드)\n일반적으로는  join하면 inner join 이다\n\nGroup By\n\nWhere와 Having의 차이\n\nWhere : 그룹핑 이전에 조건을 수행함\nHaving : 이미 Group By로 그룹을 나눈후에 조건을 수행함 -&gt; Group By가 반드시 필요함\n\n\n\nschema :DB의 뼈대\nVIEW\n\n필요할때마다 select문을 계속 작성을 할수 없으므로 view를 하나 설정해 마치 테이블처럼 사용하는 것\nview는 테이블이 새로 만들어 지는것이 아님\n가독성이 높아진다.\n보안성\n\nINDEX\n필드를 기준으로 데이터 검색을 할때 사용한다.\n인덱싱을 제외하고 트리구조( 그 중에서도 BST(log N)가 가장 빠르다\n인덱스는B Tree로 함\nindex를 지우려면 foreign key를 먼저 지우고 index를 지운다\n\nALTER TABLE 테이블명 DROP FOREIGN KEY 외래키명 ;\n\nindex는 필요없어지면 바로 지워주는게 좋다 (성능 하락에 주범)\n\nDROP INDEX 인덱스명\n\n\nCLUSTERED INDEX\n\n한 테이블에 1개씩만 존재함\n\nPrimary Key\nUnique Not NULL\n\n\n데이터 자체를 클러스터 인덱스에 맞춰 정렬을 해 저장을 한다 -&gt; 이것으로 인해 한테이블에 1개씩밖에 존재함\n\n주키를 잡으면 자동으로 클러스터 인덱스로됨(반드시 테이블을 만들때 주키를 잡을것)\nALTER TABLE 명령어를 사용해야\n\n\nDROP INDEX PRIMARY ON students; -&gt; 주키를 제거하면서 인덱스 역시 제거\nALTER TABLE students ADD CONSTRAINT PRIMARY KEY(studentID) -&gt; students 테이블에 studentID속성을 주키로 설정하겠다\n\n\nSECONDARY INDEX\n\n장점\n\n검색속도가 엄청나게 빨라짐\n쿼리에 대한 부담이 줄어든다\n\n\n단점\n\ninsert와 update를 계속된다면 테이블이 계속 갱신이 되어야 하므로 페이지 분할이 일어나 속도가 매우 느려진다.\n메모리를 잡아먹음 약 10%\n\n\n원하는 만큼 얼마든지 가능\nB 트리 라는 자료구조를 만들고 이것이 데이터를 참조하는 형식 (Where 을 할때 인덱스가 있다면 쓰인다) -&gt; Page와 Offset으로 구성되어있음\nWhere를 자주쓰는 상황이면 만드는게 좋다. 만약 사용을 하지않게 된다면 무조건 지워라\nCREATE INDEX -&gt;  secondary index만 만들수 있다.\n\n\n\n","dateCreated":"2019-04-08T21:05:32+09:00","dateModified":"2019-04-09T21:07:00+09:00","datePublished":"2019-04-08T21:05:32+09:00","description":"","headline":"2019-04-08 데이터베이스 관계, 조인, Group, Index","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/04/08/DB2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/04/08/DB2/","keywords":"SQL, 데이터베이스"}</script>
     <meta name="description" content="N:M 관계  A테이블과 B테이블이 있을때 A테이블의 레코드 1개가 B테이블의 레코드 N개로 대응되고 B테이블의 레코드 1개가 A테이블의 레코드 M개와 대응될때 M:N이라 한다.   1:N or N:1관계  A테이블 레코드 하나에 B테이블 레코드가 N개 대응될때 1:N이라 한다.     조인  inner join (MySQL, Maria DB, Oracle">
 <meta name="keywords" content="SQL,데이터베이스">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-04-08 데이터베이스 관계, 조인, Group, Index">
-<meta property="og:url" content="http://www.sug5806.site/2019/04/08/DB2/index.html">
+<meta property="og:url" content="http://blog.sug5806.site/2019/04/08/DB2/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="N:M 관계  A테이블과 B테이블이 있을때 A테이블의 레코드 1개가 B테이블의 레코드 N개로 대응되고 B테이블의 레코드 1개가 A테이블의 레코드 M개와 대응될때 M:N이라 한다.   1:N or N:1관계  A테이블 레코드 하나에 B테이블 레코드가 N개 대응될때 1:N이라 한다.     조인  inner join (MySQL, Maria DB, Oracle">
 <meta property="og:locale" content="ko">
-<meta property="og:image" content="http://www.sug5806.site/image/N:M.png">
-<meta property="og:image" content="http://www.sug5806.site/image/1:N.png">
-<meta property="og:image" content="http://www.sug5806.site/image/N:1.png">
+<meta property="og:image" content="http://blog.sug5806.site/image/N:M.png">
+<meta property="og:image" content="http://blog.sug5806.site/image/1:N.png">
+<meta property="og:image" content="http://blog.sug5806.site/image/N:1.png">
 <meta property="og:updated_time" content="2019-04-09T12:07:00.893Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-04-08 데이터베이스 관계, 조인, Group, Index">
 <meta name="twitter:description" content="N:M 관계  A테이블과 B테이블이 있을때 A테이블의 레코드 1개가 B테이블의 레코드 N개로 대응되고 B테이블의 레코드 1개가 A테이블의 레코드 M개와 대응될때 M:N이라 한다.   1:N or N:1관계  A테이블 레코드 하나에 B테이블 레코드가 N개 대응될때 1:N이라 한다.     조인  inner join (MySQL, Maria DB, Oracle">
-<meta name="twitter:image" content="http://www.sug5806.site/image/N:M.png">
+<meta name="twitter:image" content="http://blog.sug5806.site/image/N:M.png">
     
     
         
@@ -365,7 +365,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/08/DB2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/04/08/DB2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -373,7 +373,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/08/DB2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/04/08/DB2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -381,7 +381,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/08/DB2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/04/08/DB2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -461,7 +461,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/08/DB2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/04/08/DB2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -469,7 +469,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/08/DB2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/04/08/DB2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -477,7 +477,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/08/DB2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/04/08/DB2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -511,7 +511,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/08/DB2/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/04/08/DB2/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -519,7 +519,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/08/DB2/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/04/08/DB2/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -527,7 +527,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/08/DB2/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/04/08/DB2/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -591,7 +591,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
                             <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
                         </a>
                         <span class="media-meta">
@@ -610,7 +610,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
                             <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
                         </a>
                         <span class="media-meta">
@@ -629,7 +629,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
                             <h3 class="media-heading">2019-03-22 OOP</h3>
                         </a>
                         <span class="media-meta">
@@ -666,7 +666,7 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://www.sug5806.site/2019/04/08/DB2/';
+            this.page.url = 'http://blog.sug5806.site/2019/04/08/DB2/';
               
             this.page.identifier = '2019/04/08/DB2/';
               

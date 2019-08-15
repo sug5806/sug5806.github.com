@@ -11,12 +11,12 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Init으로 시작하는 방법\n레포 이름과 폴더 이름이랑 같지 않으면 나중에 헷갈릴수 있으므로 똑같이 하는게 좋다\n\n\n본인의 git 저장소로 쓰고싶은 로컬 디렉토리로 이동 한다음 git init을 한다\n\n\ngit config --global user.name &quot;username&quot;을 입력한다\n\n\ngit config --global user.email &quot;email&quot;을 입력한다\n\ngit 설정을 할때 git config --global을 하면 전체에 설정이 되고 global을 빼면 해당 레포?에서만 지정이 된다.\n\n\n\ngit remote\n\nget-url 별명 : 별명이 가지고 있는 주소를 알 수 있다\n별명 주소 : 별명으로 주소의 리모트 레포를 이용 하겠다 반드시 별명이 있어야 함\n\n\n\ngit add\n\ngit add 파일이름을 하여 staing으로 올려준다.\n\n\n\ncommit을 할때는 동작을 하는 코드만 commit을 해야한다\n\n-u를 붙임으로써 같은 브랜치라고 알려준다(브랜치 당  최초 1번만 하면 된다)\n\n(git commit -u 별명 master)\n\n\ncommit을 할때 기능에 따른 말머리를 추가하는것이 좋다\ncommit 메시지를 작성할때는 현재형으로 작성하는것이 좋다\ncommit 메시지를 적을때는 제목으로 무엇을 변경했는지 알아볼수 있게 작성하는게 좋다\ncollection (list, dictionary, tuple 등)을 사용할때는 나열식으로 하는것 보다는 값마다 한줄 한줄씩 하는게 좋다\ncollection을 사용할때는 마지막 원소에 ,(콤마)를 적어주면 깃에서 추가된 내용만 추가가 된다.\ncommit을 할때는 동작하는 최소 단위로 해주는 것이 좋다(function단위도 좋은 방법)\n\n\n\n\nClone으로 시작하는 방법\n\n레포로 사용하고싶은 디렉토리로 이동한다음 git clone &quot;github 주소&quot;를 하면 자동으로 복사를 해서 만들어 준다.\n\n\nprivate은 무료이나 통계기능이 잠겨있다 -&gt; 돈을 내고 사용해야 풀림\ngitignore : 무시하고 싶을때 포함하고 싶은 파일 확장자를 입력하면 push를 할때 깃에 올라가지 않게된다\nindex가 있으므로써 commit을 개별로 할 수 있고 local repo가 있으므로 offline 개발이 가능해진다\n","dateCreated":"2019-04-03T18:32:46+09:00","dateModified":"2019-04-23T11:02:02+09:00","datePublished":"2019-04-03T18:32:46+09:00","description":"","headline":"2019-04-03 Git 특강1 Init","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.sug5806.site/2019/04/03/Git 시작하기/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://www.sug5806.site/2019/04/03/Git 시작하기/","keywords":"Git, Init"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Init으로 시작하는 방법\n레포 이름과 폴더 이름이랑 같지 않으면 나중에 헷갈릴수 있으므로 똑같이 하는게 좋다\n\n\n본인의 git 저장소로 쓰고싶은 로컬 디렉토리로 이동 한다음 git init을 한다\n\n\ngit config --global user.name &quot;username&quot;을 입력한다\n\n\ngit config --global user.email &quot;email&quot;을 입력한다\n\ngit 설정을 할때 git config --global을 하면 전체에 설정이 되고 global을 빼면 해당 레포?에서만 지정이 된다.\n\n\n\ngit remote\n\nget-url 별명 : 별명이 가지고 있는 주소를 알 수 있다\n별명 주소 : 별명으로 주소의 리모트 레포를 이용 하겠다 반드시 별명이 있어야 함\n\n\n\ngit add\n\ngit add 파일이름을 하여 staing으로 올려준다.\n\n\n\ncommit을 할때는 동작을 하는 코드만 commit을 해야한다\n\n-u를 붙임으로써 같은 브랜치라고 알려준다(브랜치 당  최초 1번만 하면 된다)\n\n(git commit -u 별명 master)\n\n\ncommit을 할때 기능에 따른 말머리를 추가하는것이 좋다\ncommit 메시지를 작성할때는 현재형으로 작성하는것이 좋다\ncommit 메시지를 적을때는 제목으로 무엇을 변경했는지 알아볼수 있게 작성하는게 좋다\ncollection (list, dictionary, tuple 등)을 사용할때는 나열식으로 하는것 보다는 값마다 한줄 한줄씩 하는게 좋다\ncollection을 사용할때는 마지막 원소에 ,(콤마)를 적어주면 깃에서 추가된 내용만 추가가 된다.\ncommit을 할때는 동작하는 최소 단위로 해주는 것이 좋다(function단위도 좋은 방법)\n\n\n\n\nClone으로 시작하는 방법\n\n레포로 사용하고싶은 디렉토리로 이동한다음 git clone &quot;github 주소&quot;를 하면 자동으로 복사를 해서 만들어 준다.\n\n\nprivate은 무료이나 통계기능이 잠겨있다 -&gt; 돈을 내고 사용해야 풀림\ngitignore : 무시하고 싶을때 포함하고 싶은 파일 확장자를 입력하면 push를 할때 깃에 올라가지 않게된다\nindex가 있으므로써 commit을 개별로 할 수 있고 local repo가 있으므로 offline 개발이 가능해진다\n","dateCreated":"2019-04-03T18:32:46+09:00","dateModified":"2019-04-23T11:02:02+09:00","datePublished":"2019-04-03T18:32:46+09:00","description":"","headline":"2019-04-03 Git 특강1 Init","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/04/03/Git 시작하기/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/04/03/Git 시작하기/","keywords":"Git, Init"}</script>
     <meta name="description" content="Init으로 시작하는 방법 레포 이름과 폴더 이름이랑 같지 않으면 나중에 헷갈릴수 있으므로 똑같이 하는게 좋다   본인의 git 저장소로 쓰고싶은 로컬 디렉토리로 이동 한다음 git init을 한다   git config --global user.name &amp;quot;username&amp;quot;을 입력한다   git config --global user.ema">
 <meta name="keywords" content="Git,Init">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-04-03 Git 특강1 Init">
-<meta property="og:url" content="http://www.sug5806.site/2019/04/03/Git 시작하기/index.html">
+<meta property="og:url" content="http://blog.sug5806.site/2019/04/03/Git 시작하기/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="Init으로 시작하는 방법 레포 이름과 폴더 이름이랑 같지 않으면 나중에 헷갈릴수 있으므로 똑같이 하는게 좋다   본인의 git 저장소로 쓰고싶은 로컬 디렉토리로 이동 한다음 git init을 한다   git config --global user.name &amp;quot;username&amp;quot;을 입력한다   git config --global user.ema">
 <meta property="og:locale" content="ko">
@@ -315,7 +315,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/03/Git 시작하기/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/04/03/Git 시작하기/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -323,7 +323,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/03/Git 시작하기/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/04/03/Git 시작하기/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -331,7 +331,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/03/Git 시작하기/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/04/03/Git 시작하기/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -411,7 +411,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/03/Git 시작하기/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/04/03/Git 시작하기/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -419,7 +419,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/03/Git 시작하기/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/04/03/Git 시작하기/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -427,7 +427,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/03/Git 시작하기/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/04/03/Git 시작하기/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -461,7 +461,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.sug5806.site/2019/04/03/Git 시작하기/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/04/03/Git 시작하기/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -469,7 +469,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.sug5806.site/2019/04/03/Git 시작하기/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/04/03/Git 시작하기/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -477,7 +477,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.sug5806.site/2019/04/03/Git 시작하기/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/04/03/Git 시작하기/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -541,7 +541,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
                             <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
                         </a>
                         <span class="media-meta">
@@ -560,7 +560,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
                             <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
                         </a>
                         <span class="media-meta">
@@ -579,7 +579,7 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://www.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
                             <h3 class="media-heading">2019-03-22 OOP</h3>
                         </a>
                         <span class="media-meta">
@@ -616,7 +616,7 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://www.sug5806.site/2019/04/03/Git 시작하기/';
+            this.page.url = 'http://blog.sug5806.site/2019/04/03/Git 시작하기/';
               
             this.page.identifier = '2019/04/03/Git 시작하기/';
               
