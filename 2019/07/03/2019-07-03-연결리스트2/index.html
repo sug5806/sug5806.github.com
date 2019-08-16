@@ -11,20 +11,20 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 것을 정리하였습니다.\n단일 연결 리스트(Singly Linked List)\n일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.\n\n리스트의 기본 동작\n\n리스트 탐색\n리스트 내 아이템 삽입\n리스트에서 아이템을 삭제\n\n단일 연결 리스트의 코드\n123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293class Node:    def __init__(self, data=None):        self.__data = data        self.__link = None    # 소멸자    # 객체가 사라지기 전에    # 반드시 한번 호출 하는것을 보장한다    def __del__(self):        print(f\"node[&#123;self.__data&#125;] deleted!! \")    @property    def data(self):        return self.__data    @data.setter    def data(self, data):        self.__data = data    @property    def link(self):        return self.__link    @link.setter    def link(self, link):        self.__link = linkclass SLinkedList:    def __init__(self):        self.head = None        self.d_size = 0    def empty(self):        if self.d_size == 0:            return True        else:            return False    def size(self):        return self.d_size    def add(self, data):        new_node = Node(data)        new_node.link = self.head        self.head = new_node        self.d_size += 1    def search(self, target):        temp = self.head        while temp:            if temp.data == target:                return temp.data            else:                temp = temp.link        return temp    def delete(self):        if self.head is None:            return        else:            self.head = self.head.link            self.d_size -= 1def show_list(sll):    cur = sll.head    for _ in range(sll.size()):        print(cur.data, end=\"  \")        cur = cur.linkif __name__ == \"__main__\":    SLL = SLinkedList()    SLL.add(1)    SLL.add(3)    SLL.add(4)    SLL.add(5)    SLL.add(8)    show_list(SLL)    print()    print('*' * 100)    target = 4    result = SLL.search(target)    if result:        print(f'target = &#123;target&#125;')        print(f'searched data : &#123;result&#125;')    else:        print(f'there is no such data')    print()","dateCreated":"2019-07-03T19:04:46+09:00","dateModified":"2019-08-14T17:12:16+09:00","datePublished":"2019-07-03T19:04:46+09:00","description":"","headline":"2019-07-03 연결 리스트(Linked List)2","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/07/03/2019-07-03-연결리스트2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/07/03/2019-07-03-연결리스트2/","keywords":"자료구조, 연결 리스트, 링크드 리스트"}</script>
-    <meta name="description" content="개인적으로 공부한 것을 정리하였습니다. 단일 연결 리스트(Singly Linked List) 일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.  리스트의 기본 동작  리스트 탐색 리스트 내 아이템 삽입 리스트에서 아이템을 삭제  단일 연결 리스트의 코드 1234567891011121314">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 것을 정리하였습니다.\n단일 연결 리스트(Single Linked List)\n일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.\n\n리스트의 기본 동작\n\n리스트 탐색\n리스트 내 아이템 삽입\n리스트에서 아이템을 삭제\n\n단일 연결 리스트의 코드\n123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293class Node:    def __init__(self, data=None):        self.__data = data        self.__link = None    # 소멸자    # 객체가 사라지기 전에    # 반드시 한번 호출 하는것을 보장한다    def __del__(self):        print(f\"node[&#123;self.__data&#125;] deleted!! \")    @property    def data(self):        return self.__data    @data.setter    def data(self, data):        self.__data = data    @property    def link(self):        return self.__link    @link.setter    def link(self, link):        self.__link = linkclass SLinkedList:    def __init__(self):        self.head = None        self.d_size = 0    def empty(self):        if self.d_size == 0:            return True        else:            return False    def size(self):        return self.d_size    def add(self, data):        new_node = Node(data)        new_node.link = self.head        self.head = new_node        self.d_size += 1    def search(self, target):        temp = self.head        while temp:            if temp.data == target:                return temp.data            else:                temp = temp.link        return temp    def delete(self):        if self.head is None:            return        else:            self.head = self.head.link            self.d_size -= 1def show_list(sll):    cur = sll.head    for _ in range(sll.size()):        print(cur.data, end=\"  \")        cur = cur.linkif __name__ == \"__main__\":    SLL = SLinkedList()    SLL.add(1)    SLL.add(3)    SLL.add(4)    SLL.add(5)    SLL.add(8)    show_list(SLL)    print()    print('*' * 100)    target = 4    result = SLL.search(target)    if result:        print(f'target = &#123;target&#125;')        print(f'searched data : &#123;result&#125;')    else:        print(f'there is no such data')    print()","dateCreated":"2019-07-03T19:04:46+09:00","dateModified":"2019-08-16T11:21:06+09:00","datePublished":"2019-07-03T19:04:46+09:00","description":"","headline":"2019-07-03 연결 리스트(Linked List)2","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/07/03/2019-07-03-연결리스트2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/07/03/2019-07-03-연결리스트2/","keywords":"자료구조, 연결 리스트, 링크드 리스트"}</script>
+    <meta name="description" content="개인적으로 공부한 것을 정리하였습니다. 단일 연결 리스트(Single Linked List) 일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.  리스트의 기본 동작  리스트 탐색 리스트 내 아이템 삽입 리스트에서 아이템을 삭제  단일 연결 리스트의 코드 1234567891011121314">
 <meta name="keywords" content="자료구조,연결 리스트,링크드 리스트">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-07-03 연결 리스트(Linked List)2">
 <meta property="og:url" content="http://blog.sug5806.site/2019/07/03/2019-07-03-연결리스트2/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
-<meta property="og:description" content="개인적으로 공부한 것을 정리하였습니다. 단일 연결 리스트(Singly Linked List) 일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.  리스트의 기본 동작  리스트 탐색 리스트 내 아이템 삽입 리스트에서 아이템을 삭제  단일 연결 리스트의 코드 1234567891011121314">
+<meta property="og:description" content="개인적으로 공부한 것을 정리하였습니다. 단일 연결 리스트(Single Linked List) 일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.  리스트의 기본 동작  리스트 탐색 리스트 내 아이템 삽입 리스트에서 아이템을 삭제  단일 연결 리스트의 코드 1234567891011121314">
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="http://blog.sug5806.site/image/ll1-1.png">
-<meta property="og:updated_time" content="2019-08-14T08:12:16.139Z">
+<meta property="og:updated_time" content="2019-08-16T02:21:06.119Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-07-03 연결 리스트(Linked List)2">
-<meta name="twitter:description" content="개인적으로 공부한 것을 정리하였습니다. 단일 연결 리스트(Singly Linked List) 일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.  리스트의 기본 동작  리스트 탐색 리스트 내 아이템 삽입 리스트에서 아이템을 삭제  단일 연결 리스트의 코드 1234567891011121314">
+<meta name="twitter:description" content="개인적으로 공부한 것을 정리하였습니다. 단일 연결 리스트(Single Linked List) 일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.  리스트의 기본 동작  리스트 탐색 리스트 내 아이템 삽입 리스트에서 아이템을 삭제  단일 연결 리스트의 코드 1234567891011121314">
 <meta name="twitter:image" content="http://blog.sug5806.site/image/ll1-1.png">
     
     
@@ -215,7 +215,7 @@
     <div class="post-content markdown">
         <div class="main-content-wrap">
             <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h2>단일 연결 리스트(Singly Linked List)</h2>
+<h2>단일 연결 리스트(Single Linked List)</h2>
 <p>일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.</p>
 <p><img src="/image/ll1-1.png" alt="img"></p>
 <h5>리스트의 기본 동작</h5>
@@ -246,8 +246,9 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled" aria-hidden="true">
-                        
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/07/05/2019-07-05-연결리스트3/" data-tooltip="2019-07-05 연결 리스트(Linked List)3" aria-label="이전: 2019-07-05 연결 리스트(Linked List)3">
+                    
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">이전</span>
                     </a>
@@ -341,8 +342,9 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled" aria-hidden="true">
-                        
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/07/05/2019-07-05-연결리스트3/" data-tooltip="2019-07-05 연결 리스트(Linked List)3" aria-label="이전: 2019-07-05 연결 리스트(Linked List)3">
+                    
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">이전</span>
                     </a>
@@ -556,7 +558,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                68 개의 포스트가 있습니다.
+                71 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

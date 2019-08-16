@@ -185,6 +185,195 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/07/11/2019-07-11-큐(Queue)/" aria-label=": 2019-07-11 큐(Queue)">
+                            2019-07-11 큐(Queue)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-07-11T19:04:46+09:00">
+	
+		    2019/07/11
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/자료구조/">자료구조</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<h2>큐(Queue)란?</h2>
+<p>큐는(연결 리스트와 스택과 같이)데이터를 저장하는데 사용되는 자료 구조입니다. 큐에서는 데이터가 도착하는 순서가 중요합니다. 일반적으로 큐는 시작 부분부터 순차적으로 기다리고 있는 사람이나 사물의 줄입니다.</p>
+<ul>
+<li>정의: 큐란 끝에 삽입되고 열의 처음이 삭제되는 순서를 가진 열입니다. 먼저 삽입된 요소가 먼저 삭제됩니다. 따라서 선입선출(First In Fisrt Out) 또는 후입 후출(Last In Last Out)이라 불립니다.</li>
+</ul>
+<p>큐에서 수행할 수 있는 연산에도 특별한 이름이 정해져있습니다. 요소가 큐에 삽입되는 것을 인큐(enqueue), 요소가 큐에서 제거되는 것을 디큐(dequeue)라 부릅니다.</p>
+<p><img src="/image/queue1-1.png" alt="img"></p>
+<h2>큐의 추상 자료형(ADT)</h2>
+<p>큐의 삽입과 삭제는 FIFO(First In First Out) 방식을 따라야 합니다.</p>
+<p>큐의 주요 연산들</p>
+<ul>
+<li>Enqueue(data): 큐의 끝에 요소를 삽입합니다</li>
+<li>Dequeue() : 큐의 맨 앞에서 요소를 제거하고 반환합니다.</li>
+</ul>
+<p>큐의 보조 연산들</p>
+<ul>
+<li>Front(): 요소를 제거하지 않고 큐의 제일 앞에 있는 요소를 반환 합니다.</li>
+<li>QueueSize(): 큐에 저장된 요소의 수를 반환합니다.</li>
+<li>IsEmptyQueue(): 큐에 요소가 저장되어있는지 여부를 알려줍니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 내부 구현체</span></span><br><span class="line">        self.container = list()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.container:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># wrapping function</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.container.append(data)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.container.pop(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">front</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.container[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">queue_size</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self.container)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    Q = Queue()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">6</span>):</span><br><span class="line">        print(<span class="string">"&#123;&#125;번째 원소 삽입"</span>.format(i))</span><br><span class="line">        Q.enqueue(i)</span><br><span class="line">        print(<span class="string">"&#123;&#125;번째 원소 :  &#123;&#125;"</span>.format(i, Q.peek()))</span><br><span class="line"></span><br><span class="line">    print(<span class="string">'*'</span> * <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> Q.empty():</span><br><span class="line">        print(<span class="string">f'Q.dequeue() 실행: <span class="subst">&#123;Q.dequeue()&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/07/11/2019-07-11-큐(Queue)/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/07/08/2019-07-08-스택/" aria-label=": 2019-07-08 스택(Stack)">
+                            2019-07-08 스택(Stack)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-07-08T19:04:46+09:00">
+	
+		    2019/07/08
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/자료구조/">자료구조</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<h2>스택(Stack)이란?</h2>
+<p>스택은 데이터를 저장하는데 사용되는(연결 리스트와 유사한) 간단한 자료 구조입니다. 스택은 데이터가 위치하는 순서가 매우 중요합니다. 식당에 쌓여있는 접시들이 좋은 예입니다. 설거지가 끝난 접시가 순서대로 쌓이는 것이 스택과 같습니다(First In Last Out). 이때 제일 처음 설거지를 했던 접시는 제일 마지막에 사용됩니다. 스택에서 데이터 변경은 특별 이름이 정해져 있습니다. 스택에 요소가 삽입되는 것을 구체적으로 push라 하고 스택에서 요소를 제거하는 것을 pop이라 합니다. 비어있는 스택에서 pop을 시도하는 것을 언더플로우(underflow), 꽉 찬 스택에 요소를 삽입하고자 하는 것을 오버플로우(overflow)라고 합니다.</p>
+<p><img src="/image/stack1-1.png" alt="img"></p>
+<h2>스택의 추상 자료형(ADT)</h2>
+<p>스택은 아래 연산들로 추상화할 수 있습니다.</p>
+<p>스택의 주요 연산</p>
+<ul>
+<li>push(data) : 데이터를 스택에 삽입합니다</li>
+<li>pop() : 스택에서 top이 가리키는 데이터를 제거하고 반환합니다.</li>
+</ul>
+<p>스택의 보조 연산</p>
+<ul>
+<li>top() : 스택에 top이 가리키는 요소를 반환합니다.</li>
+<li>size() : 스택의 저장된 데이터의 수를 반환합니다.</li>
+<li>is_empty(): 스택이 비어있는지 여부를 반환합니다</li>
+<li>is_full(): 스택이 꽉 찼는지 여부를 반환합니다</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.container = list()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.container:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.container.append(data)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.container.pop()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">top</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.container[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    s = Stack()</span><br><span class="line"></span><br><span class="line">    s.push(<span class="number">1</span>)</span><br><span class="line">    s.push(<span class="number">2</span>)</span><br><span class="line">    s.push(<span class="number">3</span>)</span><br><span class="line">    s.push(<span class="number">4</span>)</span><br><span class="line">    s.push(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> s.empty():</span><br><span class="line">        print(s.pop(), end=<span class="string">'  '</span>)</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/07/08/2019-07-08-스택/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/07/05/2019-07-05-연결리스트3/" aria-label=": 2019-07-05 연결 리스트(Linked List)3">
+                            2019-07-05 연결 리스트(Linked List)3
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-07-05T19:04:46+09:00">
+	
+		    2019/07/05
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/자료구조/">자료구조</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<h2>이중 연결 리스트(Double Linked List)</h2>
+<p>이중 연결 리스트(양방향 연결 리스트)의 장점은 리스트 내의 주어진 노드를 양방향으로 탐색할수 있다는 것입니다. 단일 연결 리스트에 있는 노드는 이전 노드의 포인터를 획득해야 삭제할 수 있습니다. 하지만 이중 연결 리스트에서는 이전 노드의 주소를 몰라도 삭제할 수 있습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data=None)</span>:</span></span><br><span class="line">        self.__data = data</span><br><span class="line">        self.__previous = <span class="literal">None</span></span><br><span class="line">        self.__next = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">f"deleted data : [<span class="subst">&#123;self.__data&#125;</span>]"</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">data</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__data</span><br><span class="line"></span><br><span class="line"><span class="meta">    @data.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">data</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.__data = data</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">previous</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__previous</span><br><span class="line"></span><br><span class="line"><span class="meta">    @previous.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">previous</span><span class="params">(self, link)</span>:</span></span><br><span class="line">        self.__previous = link</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">next</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__next</span><br><span class="line"></span><br><span class="line"><span class="meta">    @next.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">next</span><span class="params">(self, link)</span>:</span></span><br><span class="line">        self.__next = link</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DoubleLinkedList</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 더미의 생성시점은 DLL이 만들어 질때</span></span><br><span class="line">        <span class="comment"># head, tail, d_size</span></span><br><span class="line">        self.head = Node()</span><br><span class="line">        self.tail = Node()</span><br><span class="line">        self.d_size = <span class="number">0</span></span><br><span class="line">        self.head.next = self.tail</span><br><span class="line">        self.tail.previous = self.head</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.d_size</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.d_size == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># insert 계열</span></span><br><span class="line">    <span class="comment"># 리스트의 맨 앞(HEAD의 오른쪽)에 데이터 추가</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_first</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        new_node = Node(data)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># new_node를 연결</span></span><br><span class="line">        new_node.next = self.head.next</span><br><span class="line">        new_node.previous = self.head</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 기존 node에 new_node를 연결</span></span><br><span class="line">        self.head.next.previous = new_node</span><br><span class="line">        self.head.next = new_node</span><br><span class="line"></span><br><span class="line">        self.d_size += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 리스트의 맨 뒤(TAIL의 왼쪽)에 데이터 추가</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_last</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        new_node = Node(data)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># new_node를 연결</span></span><br><span class="line">        new_node.next = self.tail</span><br><span class="line">        new_node.previous = self.tail.previous</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 기존 node에 new_node를 연결</span></span><br><span class="line">        self.tail.previous.next = new_node</span><br><span class="line">        self.tail.previous = new_node</span><br><span class="line"></span><br><span class="line">        self.d_size += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 특정 리스트의 오른쪽에 데이터 추가</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert_after</span><span class="params">(self, data, node)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> node == <span class="literal">None</span>:</span><br><span class="line">            print(<span class="string">"노드가 존재안함"</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        new_node = Node(data)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># new_node를 연결</span></span><br><span class="line">        new_node.previous = node</span><br><span class="line">        new_node.next = node.next</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 기존 node에 new_node 연결</span></span><br><span class="line">        node.next.previous = new_node</span><br><span class="line">        node.next = new_node</span><br><span class="line"></span><br><span class="line">        print(<span class="string">f"<span class="subst">&#123;data&#125;</span> 추가 완료"</span>)</span><br><span class="line"></span><br><span class="line">        self.d_size += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 특정 리스트의 왼쪽에 데이터 추가</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert_before</span><span class="params">(self, data, node)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> node == <span class="literal">None</span>:</span><br><span class="line">            print(<span class="string">"노드가 존재안함"</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        new_node = Node(data)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># new_node를 연결</span></span><br><span class="line">        new_node.next = node</span><br><span class="line">        new_node.previous = node.previous</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 기존 node에 new_node 연결</span></span><br><span class="line">        node.previous.next = new_node</span><br><span class="line">        node.previous = new_node</span><br><span class="line">        print(<span class="string">f"<span class="subst">&#123;data&#125;</span> 추가 완료"</span>)</span><br><span class="line"></span><br><span class="line">        self.d_size += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Search 계열</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search_forward</span><span class="params">(self, target)</span>:</span></span><br><span class="line">        temp = self.head.next</span><br><span class="line">        <span class="keyword">while</span> temp <span class="keyword">is</span> <span class="keyword">not</span> self.tail:</span><br><span class="line">            <span class="keyword">if</span> temp.data == target:</span><br><span class="line">                <span class="keyword">return</span> temp</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                temp = temp.next</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search_backward</span><span class="params">(self, target)</span>:</span></span><br><span class="line">        temp = self.tail.previous</span><br><span class="line">        <span class="keyword">while</span> temp <span class="keyword">is</span> <span class="keyword">not</span> self.tail:</span><br><span class="line">            <span class="keyword">if</span> temp.data == target:</span><br><span class="line">                <span class="keyword">return</span> temp</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                temp = temp.previous</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Delete 계열</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete_first</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.empty():</span><br><span class="line">            print(<span class="string">"connected Node is nothing"</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        self.head.next = self.head.next.next</span><br><span class="line">        self.head.next.previous = self.head</span><br><span class="line"></span><br><span class="line">        self.d_size -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete_last</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.empty():</span><br><span class="line">            print(<span class="string">"nothing connected Node"</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        self.tail.previous = self.tail.previous.previous</span><br><span class="line">        self.tail.previous.next = self.tail</span><br><span class="line"></span><br><span class="line">        self.d_size -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete_node</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.empty():</span><br><span class="line">            print(<span class="string">"nothing connected Node"</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        node.previous.next = node.next</span><br><span class="line">        node.next.previous = node.previous</span><br><span class="line"></span><br><span class="line">        self.d_size -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 편의 함수 - gennerator</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">traverse</span><span class="params">(self, start=True)</span>:</span></span><br><span class="line">        <span class="comment"># 리스트의 첫 데이터부터 순회</span></span><br><span class="line">        <span class="keyword">if</span> start:</span><br><span class="line">            temp = self.head.next</span><br><span class="line">            <span class="keyword">while</span> temp <span class="keyword">is</span> <span class="keyword">not</span> self.tail:</span><br><span class="line">                <span class="keyword">yield</span> temp</span><br><span class="line">                temp = temp.next</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="comment"># 리스트의 마지막 데이터부터 순회</span></span><br><span class="line">            temp = self.tail.previous</span><br><span class="line">            <span class="keyword">while</span> temp <span class="keyword">is</span> <span class="keyword">not</span> self.head:</span><br><span class="line">                <span class="keyword">yield</span> temp</span><br><span class="line">                temp = temp.previous</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_list</span><span class="params">(d_list)</span>:</span></span><br><span class="line">    g = d_list.traverse()</span><br><span class="line">    <span class="keyword">for</span> node <span class="keyword">in</span> g:</span><br><span class="line">        print(node.data, end=<span class="string">" "</span>)</span><br><span class="line">    print()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    dll1 = DoubleLinkedList()</span><br><span class="line"></span><br><span class="line">    dll1.add_last(<span class="number">1</span>)</span><br><span class="line">    dll1.add_last(<span class="number">3</span>)</span><br><span class="line">    dll1.add_last(<span class="number">5</span>)</span><br><span class="line">    dll1.add_last(<span class="number">7</span>)</span><br><span class="line">    dll1.add_last(<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">    dll1.insert_after(<span class="number">4</span>, dll1.search_forward(<span class="number">3</span>))</span><br><span class="line">    dll1.insert_before(<span class="number">2</span>, dll1.search_forward(<span class="number">3</span>))</span><br><span class="line">    dll1.insert_before(<span class="number">10</span>, dll1.search_forward(<span class="number">4</span>))</span><br><span class="line"></span><br><span class="line">    show_list(dll1)</span><br><span class="line">    <span class="comment"># searched_data가 4를 가리키고 있으므로 None으로 해주지 않으면 delete 메시지가 뜨지 않음</span></span><br><span class="line">    searched_data = dll1.search_forward(<span class="number">4</span>)</span><br><span class="line">    <span class="keyword">if</span> searched_data:</span><br><span class="line">        print(<span class="string">f"searched data : <span class="subst">&#123;searched_data.data&#125;</span>"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"there is no data"</span>)</span><br><span class="line"></span><br><span class="line">    dll1.delete_first()</span><br><span class="line">    dll1.delete_last()</span><br><span class="line">    dll1.delete_last()</span><br><span class="line">    dll1.delete_last()</span><br><span class="line">    dll1.delete_node(searched_data)</span><br><span class="line">    searched_data = <span class="literal">None</span></span><br><span class="line">    show_list(dll1)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"*"</span> * <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/07/05/2019-07-05-연결리스트3/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/07/03/2019-07-03-연결리스트2/" aria-label=": 2019-07-03 연결 리스트(Linked List)2">
                             2019-07-03 연결 리스트(Linked List)2
                         </a>
@@ -209,7 +398,7 @@
             
                 <div class="postShorten-content">
                     <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h2>단일 연결 리스트(Singly Linked List)</h2>
+<h2>단일 연결 리스트(Single Linked List)</h2>
 <p>일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.</p>
 <p><img src="/image/ll1-1.png" alt="img"></p>
 <h5>리스트의 기본 동작</h5>
@@ -269,7 +458,7 @@
             
                 <div class="postShorten-content">
                     <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h2>연결 리스트란 무엇인가요?</h2>
+<h2>연결 리스트란?</h2>
 <p>연결 리스트(Linked list)는 데이터 집합을 저장할 때 사용되는 자료 구조입니다. 연결 리스트는 다음과 같은 속성을 가집니다.</p>
 <ul>
 <li>연속된 요소들은 포인터로 연결됩니다.</li>
@@ -641,215 +830,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/06/20/2019-06-20-Django-ajax적용하기1/" aria-label=": 2019-06-20 Django에 Ajax 적용하기1">
-                            2019-06-20 Django에 Ajax 적용하기1
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-06-20T17:45:01+09:00">
-	
-		    2019/06/20
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/Django/">Django</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>이번 포스팅에서는 Django에 Ajax를 적용하도록 하겠습니다.</p>
-<p>앱을 만들어주시고 html파일을 하나 만들어 주세요</p>
-<p><code>index.html</code></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- ajax를 사용하려면 필요합니다! --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// button을 클릭하면 작동합니다.</span></span></span><br><span class="line"><span class="javascript">  $(<span class="string">"button"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// id=div1인 태그 끝에 누를때 마다 추가가 됩니다.</span></span></span><br><span class="line"><span class="javascript">    $(<span class="string">"#div1"</span>).append(</span></span><br><span class="line"><span class="xml">    	"<span class="tag">&lt;<span class="name">p</span>&gt;</span>ajax가 적용되었습니다!<span class="tag">&lt;/<span class="name">p</span>&gt;</span>"</span></span><br><span class="line"><span class="undefined">    );</span></span><br><span class="line"><span class="undefined">  &#125;);</span></span><br><span class="line"><span class="undefined">&#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Ajax 적용 실습입니다!<span class="tag">&lt;/<span class="name">h2</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>Ajax 해보기<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>위와같이 작성 하신후 <code>./manage.py runserver</code>를 실행해주세요</p>
-<p><img src="/image/ajax1-1.png" alt="img"></p>
-<p>실행한 뒤 버튼을 눌러주세요</p>
-<p><img src="/image/ajax1-2.png" alt="img"></p>
-<p>몇번 더 눌러보도록 하겠습니다</p>
-<p><img src="/image/ajax1-3.png" alt="img"></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/06/20/2019-06-20-Django-ajax적용하기1/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/06/18/2019-06-18-ajax란/" aria-label=": 2019-06-18 Ajax란?">
-                            2019-06-18 Ajax란?
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-06-18T17:45:01+09:00">
-	
-		    2019/06/18
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/기타/">기타</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>Ajax란?</h1>
-<p>Ajax는 JavaScript의 라이브러리중 하나이며 Asynchronous Javascript And Xml(비동기식 자바스크립트와 xml)의 약자입니다. 브라우저가 가지고있는 XMLHttpRequest 객체를 이용해서 전체 페이지를 새로 고치지 않고도 페이지의 일부만을 위한 데이터를 로드하는 기법이며 <strong>Ajax를 한마디로 정의하자면 JavaScript를 사용한 비동기 통신, 클라이언트와 서버간에 XML데이터를 주고받는 기술이라고 할 수 있습니다.</strong></p>
-<blockquote>
-<p>출처: <a href="https://coding-factory.tistory.com/143" target="_blank" rel="noopener">코딩팩토리</a></p>
-</blockquote>
-<p>실생활에서 사용하는 앱중에서 예를들면 인스타그램이나 페이스북의 좋아요를 눌렀을시 새로고침 없이 작동하거나 무한스크롤 기능이 있습니다.</p>
-<hr>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    <span class="comment">// url은 반드시 필요한 필수 요소 입니다.</span></span><br><span class="line">    url   : <span class="string">"url"</span>, <span class="comment">// 요청이 전송될 URL 주소</span></span><br><span class="line">    type  : <span class="string">"GET"</span>, <span class="comment">// http 요청 방식 (default = GET)</span></span><br><span class="line">    <span class="keyword">async</span> : <span class="literal">true</span>, <span class="comment">// 동기 or 비동기 여부 (default = true)</span></span><br><span class="line">    cache : <span class="literal">true</span>, <span class="comment">// 캐시 여부</span></span><br><span class="line">    timeout : <span class="number">3000</span>, <span class="comment">// 요청 제한 시간안에 완료되지 않으면 요청을 취소하거나 error 콜백을 호출 (단위 : ms)</span></span><br><span class="line">    data  : &#123;<span class="attr">key</span> : value&#125;, <span class="comment">// 요청 시 포함될 데이터</span></span><br><span class="line">    processData : <span class="literal">true</span>, <span class="comment">// 데이터를 컨텐트 타입에 맞게 변환 여부</span></span><br><span class="line">    contentType : <span class="string">"application/json"</span>, <span class="comment">// 요청 컨텐트 타입</span></span><br><span class="line">    dataType    : <span class="string">"json"</span>, <span class="comment">// 응답 데이터 형식(명시하지 않으면 자동으로 추측)</span></span><br><span class="line">    beforeSend  : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// XHR Header를 포함해서 HTTP Request를 하기전에 호출됩니다.</span></span><br><span class="line">    &#125;,</span><br><span class="line">    success : <span class="function"><span class="keyword">function</span>(<span class="params">data, status xhr</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// 정상적으로 응답 받았을 경우에는 success 콜백이 호출됩니다.</span></span><br><span class="line">        <span class="comment">// 이 콜백 함수의 파라미터에서는 응답 바디, 응답 코드 그리고 XHR 헤더를 확인 할 수 있습니다.</span></span><br><span class="line">    &#125;,</span><br><span class="line">    error : <span class="function"><span class="keyword">function</span>(<span class="params">xhr, status, error</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// 응답을 받지 못하였거나 정상적인 응답이지만 데이터 형식을 확인할 수 없기 때문에</span></span><br><span class="line">        <span class="comment">// error 콜백이 호출될 수 있습니다.</span></span><br><span class="line">        <span class="comment">// 예를 들어, dataType을 지정해서 응답 받을 데이터 형식을 지정하였지만,</span></span><br><span class="line">        <span class="comment">// 서버에서는 다른 데이터형식으로 응답하면 error 콜백이 호출되게 됩니다.</span></span><br><span class="line">    &#125;,</span><br><span class="line">    complete : <span class="function"><span class="keyword">function</span>(<span class="params">xhr, status</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// success와 error콜백이 호출된 후에 반드시 호출됩니다.</span></span><br><span class="line">        <span class="comment">// tyy - catch - finally의 finally 구문과 동일합니다.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>다음 시간에는 Django에 Ajax를 적용하도록 하겠습니다.</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/06/18/2019-06-18-ajax란/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/06/16/2019-06-16-함수형뷰(FBV)/" aria-label=": 2019-06-16 함수형 뷰(FBV)">
-                            2019-06-16 함수형 뷰(FBV)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-06-16T17:45:01+09:00">
-	
-		    2019/06/16
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/Django/">Django</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>오늘은 함수형 뷰에 대해 알아보도록 하겠습니다.</p>
-<h1>함수형 뷰(FBV)</h1>
-<p>함수형 뷰은 다음과 같은 특징이 있습니다.</p>
-<h3>장점</h3>
-<pre><code>- 코드의 흐름이 명확하다
-- 읽기가 쉽다
-- 작성이 간단하다
-- 데코레이터의 사용이 간단하다
-</code></pre>
-<h3>단점</h3>
-<pre><code>- 확장과 재사용이 힘들다
-</code></pre>
-<p>그럼 이제 작성을 하도록 하겠습니다.</p>
-<p>먼저 html파일을 작성하도록 하겠습니다.</p>
-<h3><code>index.html</code></h3>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>안녕하세요 함수형 뷰 입니다<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">        &#123;% csrf_token %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"data"</span> <span class="attr">placeholder</span>=<span class="string">"이름을 입력해주세요"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    &#123;% if name %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>안녕하세요 &#123;&#123; name &#125;&#125; 입니다<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>그 다음 view를 작성하도록 하겠습니다</p>
-<h3><code>views.py</code></h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fbv_post</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment"># GET 요청일 경우</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">"GET"</span>:</span><br><span class="line">        <span class="keyword">return</span> render(request, template_name=<span class="string">'fbv/index.html'</span>)</span><br><span class="line">    <span class="comment"># POST 요청일 경우</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">        data = request.POST.get(<span class="string">'data'</span>)</span><br><span class="line">        context = &#123;</span><br><span class="line">            <span class="string">'name'</span>: data,</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> render(request, template_name=<span class="string">'fbv/index.html'</span>, context=context)</span><br></pre></td></tr></table></figure>
-<p>이제 <code>./manage.py runserver</code>명령을 통해 실행해보도록 하겠습니다.</p>
-<p><img src="/image/fbv1.png" alt="img"></p>
-<p>맨처음 접속하게되면 GET요청을 수행하도록 되어있습니다.<br>
-<code>views.py</code>의 코드를 보면</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> reuqest.method == <span class="string">"GET"</span></span><br></pre></td></tr></table></figure>
-<p>이 부분에서 GET요청을 수행하도록 되어있습니다.<br>
-render함수를 통해 index.html로 렌더링을 하게됩니다.</p>
-<p>그 다음 페이지의 text필드에 데이터를 입력해보도록 하겠습니다.</p>
-<p><img src="/image/fbv2.png" alt="img"></p>
-<p>입력을하고 submit을 입력한 뒤의 화면입니다.</p>
-<p>어떻게 작동하는지 알아보겠습니다.</p>
-<p><code>views.py</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> request.method == <span class="string">'POST'</span>:</span><br><span class="line">    data = request.POST.get(<span class="string">'data'</span>)</span><br><span class="line">    context = &#123;</span><br><span class="line">        <span class="string">'name'</span>: data,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> render(request, template_name=<span class="string">'fbv/index.html'</span>, context=context)</span><br></pre></td></tr></table></figure>
-<p>POST 요청이 들어올시 <code>if request.method == &quot;POST&quot;</code>를 통하여 구분합니다. 그 다음 텍스트박스로 넘겨진 데이터를 <code>request.POST.get('data')</code>으로 받습니다.</p>
-<ul>
-<li>어떻게 name 데이터를 받았나요?
-<ul>
-<li>index.html을 보면 text의 name=data. 이것을 POST로 전송하게 되면 Django는 request에 모든 정보를 담아 보내게 됩니다. 이로인해 request.POST를 통해 POST로 넘어온 정보를 알 수 있으며 request.POST.get(‘data’)을 통해 data를 읽을 수 있습니다</li>
-</ul>
-</li>
-</ul>
-<p>그 다음 context로 { ‘name’: data } 형식으로 render를 통해 다시 index.html에 돌려주게 됩니다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">if</span> name %&#125;</span><br><span class="line">    &lt;p&gt;안녕하세요 &#123;&#123; name &#125;&#125; 입니다&lt;/p&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<p>render를 통해 넘겨준 name을 if문으로 확인한 다음 존재한다면 <code>안녕하세요 (넘어온데이터) 입니다</code>를 출력하게 됩니다.</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/06/16/2019-06-16-함수형뷰(FBV)/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -861,7 +841,7 @@ render함수를 통해 index.html로 렌더링을 하게됩니다.</p>
             </a>
           </li>
         
-        <li class="pagination-number">page 1 of 7</li>
+        <li class="pagination-number">page 1 of 8</li>
     </ul>
 </div>
 
@@ -988,7 +968,7 @@ render함수를 통해 index.html로 렌더링을 하게됩니다.</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                68 개의 포스트가 있습니다.
+                71 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
