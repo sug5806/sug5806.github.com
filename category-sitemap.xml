@@ -8,8 +8,15 @@
     </url>
 
     <url>
+        <loc>http://blog.sug5806.site/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</loc>
+        <lastmod>2019-08-17T06:13:50.840Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://blog.sug5806.site/categories/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/</loc>
-        <lastmod>2019-08-16T12:17:51.077Z</lastmod>
+        <lastmod>2019-08-17T05:24:25.890Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -17,13 +24,6 @@
     <url>
         <loc>http://blog.sug5806.site/categories/Django/</loc>
         <lastmod>2019-08-14T15:43:13.896Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.sug5806.site/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</loc>
-        <lastmod>2019-08-14T08:07:16.451Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

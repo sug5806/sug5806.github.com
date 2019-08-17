@@ -186,15 +186,15 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/05/23/2019-05-23-장고 템플릿문법3/" aria-label=": 2019-05-23 장고 템플릿 문법 3">
-                            2019-05-23 장고 템플릿 문법 3
+                        <a class="link-unstyled" href="/2019/06/04/2019-06-04-Django-admin-page다루기1/" aria-label=": 2019-06-04 Django admin page 다루기1">
+                            2019-06-04 Django admin page 다루기1
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-05-23T19:23:50+09:00">
+    <time datetime="2019-06-04T15:20:02+09:00">
 	
-		    2019/05/23
+		    2019/06/04
     	
     </time>
     
@@ -209,33 +209,30 @@
             </div>
             
                 <div class="postShorten-content">
-                    <h1>장고 템플릿 문법 3</h1>
-<p>장고에서 화면을 렌더링 하기 위해서는 템플릿 엔진을 사용한다. 템플릿 엔진은 각자 자기만의 템플릿 문법을 제공하는데 여러가지 기본 문법과 태그 필터를 살펴본다</p>
-<ol start="6">
-<li>
-<p>템플릿 확장<br>
-특정 템플릿을 상속받아 확장하고 싶을 때는 extends를 사용한다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends <span class="string">'base.html'</span>&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>블록<br>
-템플릿을 확장해 사용할 경우 부모 템플릿과 자식 템플릿 모두 block을 만들어서 사용한다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% block test %&#125; 껴넣을 내용 &#123;% endblock %&#125;</span><br><span class="line">&#123;% block test %&#125; &#123;&#123; block.super &#125;&#125; 부모 블록과 같이 껴넣을 내용 &#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>템플릿 불러오기<br>
-별도 파일에 작성되어 있는 템플릿을 불러와 사용하려면 include를 사용한다</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include <span class="string">'list.html'</span> %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>static 파일 불러오기<br>
-정적 파일을 서버ㅔ서 불러와 사용하고 싶은 경우 경로를 자동으로 찾아서 출력되게 만드는 것이 좋다.</p>
- <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    &#123;% load static %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&#123;</span> <span class="attr">static</span> '<span class="attr">js</span>/<span class="attr">underscore.js</span>' %&#125;&gt;</span><span class="undefined"> </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    &#123;% load staticfiles %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&#123;%</span> <span class="attr">static</span> '<span class="attr">js</span>/<span class="attr">underscore.js</span>' %&#125;&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">10. url 출력하기  </span><br><span class="line">    템플릿에 주소를 하드 코딩하지 않고 나타내기 위해서 사용한다.</span><br><span class="line">    ```html</span><br><span class="line">    &#123;% url 'URL패턴이름' %&#125;</span><br><span class="line">    &#123;% url 'URL패턴이름' object.id %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>주석만들기</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;# 한줄 주석 #&#125;</span><br><span class="line">&#123;% comment &apos;여러줄 주석&apos; %</span><br><span class="line">    사이에 있는 모든 태그는 무시된다.</span><br><span class="line">&#123;% endcomment %&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
+                    <p>오늘은 장고 어드민 페이지에 대해서 다뤄보도록 하겠습니다</p>
+<h3><code>Models.py</code></h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from django.db import models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Create your models here.</span><br><span class="line"></span><br><span class="line">class AdminPage(models.Model):</span><br><span class="line">    name = models.CharField(max_length=20)</span><br><span class="line">    age = models.PositiveSmallIntegerField()</span><br><span class="line">    address = models.CharField(max_length=30)</span><br></pre></td></tr></table></figure>
+<p>기본적인 모델입니다. 이름, 나이, 주소가 있습니다</p>
+<p><code>settings.py</code>, <code>admin.py</code>에서 방금 만든 앱을 등록하도록 하겠습니다. 앱이름은 <code>admin_page</code>입니다<br>
+<img src="/image/admin3.png" alt="img"><br>
+<img src="/image/admin4.png" alt="img"></p>
+<p><code>./manage.py migrate</code> 명령어를 실행하여 DB반영 합니다.</p>
+<p><code>./manage.py createsuperuser</code> 명령어를 통해 관리자 계정을 생성해 줍니다.</p>
+<p><img src="/image/admin1.png" alt="img"><br>
+비밀번호가 너무 짧고 단조로워 오류가 뜨네요.<br>
+관리자 계정을 만들때는 어렵게 만들도록 합시다</p>
+<p>이제 <code>./manage.py runserver</code>를 통해 서버를 실행시킨후 <code>http://127.0.0.1:8000/admin/</code>로 접속해 관리자 페이지로 들어가도록 하겠습니다</p>
+<p><img src="/image/admin2.png" alt="img"></p>
+<hr>
+<p><img src="/image/admin5.png" alt></p>
+<p>보시면 만든 Admin page가 있습니다 들어가 봅니다.<br>
+들어가면 아무것도 없을텐데 하나 만들어 줍니다.</p>
+<p><img src="/image/admin6.png" alt></p>
+<p>만들었는데 AdminPage object(1)이라고 뜹니다. 이렇게되면 구분을 할수 없습니다. <code>models.py</code>를 수정하여 제대로 출력해보도록 하겠습니다</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from django.db import models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Create your models here.</span><br><span class="line"></span><br><span class="line">class AdminPage(models.Model):</span><br><span class="line">    name = models.CharField(max_length=20)</span><br><span class="line">    age = models.PositiveSmallIntegerField()</span><br><span class="line">    address = models.CharField(max_length=30)</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return f&apos;&#123;self.name&#125; &#123;self.age&#125; &#123;self.address&#125;&apos;</span><br></pre></td></tr></table></figure>
+<p><img src="/image/admin7.png" alt="img"></p>
+<p>수정 후 화면입니다 이름, 나이, 주소가 같이 출력되는 것을 확인 할 수 있습니다.</p>
+<p>다음번엔 admin page에서 검색기능을 추가를 알아보겠습니다</p>
 
                     
                         
@@ -244,7 +241,7 @@
                     
                     
                         <p>
-                            <a href="/2019/05/23/2019-05-23-장고 템플릿문법3/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/06/04/2019-06-04-Django-admin-page다루기1/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -262,15 +259,15 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/05/22/2019-05-22-장고 템플릿문법2/" aria-label=": 2019-05-22 장고 템플릿 문법 2">
-                            2019-05-22 장고 템플릿 문법 2
+                        <a class="link-unstyled" href="/2019/06/02/2019-06-02-장고 외래키 필터링/" aria-label=": 2019-06-02 Django Foriegn Key 필터링">
+                            2019-06-02 Django Foriegn Key 필터링
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-05-22T19:23:50+09:00">
+    <time datetime="2019-06-02T18:32:46+09:00">
 	
-		    2019/05/22
+		    2019/06/02
     	
     </time>
     
@@ -285,32 +282,20 @@
             </div>
             
                 <div class="postShorten-content">
-                    <h1>장고 템플릿 문법 2</h1>
-<p>장고에서 화면을 렌더링 하기 위해서는 템플릿 엔진을 사용한다. 템플릿 엔진은 각자 자기만의 템플릿 문법을 제공하는데 여러가지 기본 문법과 태그 필터를 살펴본다</p>
-<ol start="3">
-<li>판별문<br>
-값이 존재하는지 확인하기 위해서 if문을 사용한다 파이썬의 if문과 마찬가지로 비교연산자를 사용할 수 있고, and, or, not is, in을 사용할 수 있다. 그러나 and, or 사용시 괄호를 사용할수 없고 괄호가 필요한 경우 중첩비교구문을 만들어야 한다.</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if 변수 %&#125;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>판별문 2<br>
-값을 비교하기 위해서 ifequal과 ifnotequal을 사용한다</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;% ifequal 변수 값 %&#125;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">&#123;% endifequal %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% ifnotequal 변수 값 %&#125;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">&#123;% endifnotequal %&#125;</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>반복문<br>
-본수 객체가 들어가는 변수를 반복하여 출력하고 싶을 때는 for문을 사용한다.</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> object <span class="keyword">in</span> object_list % &#125;</span><br><span class="line">  &#123;&#123; object &#125;&#125;</span><br><span class="line">  &#123;% cycle <span class="string">'1'</span> <span class="string">'0'</span> %&#125;</span><br><span class="line">&#123;% empty %&#125;</span><br><span class="line">  반복할 객체가 비어있다면 출력될 영역</span><br><span class="line"></span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
-<p>반복문에는 특별한 추가기능이 있다. 리스트를 출력할때 아래 기능을 활용하면 편리하다</p>
-<p>|||   	|   	|   	|<br>
-|—	|—	|—	|—	|—	|<br>
-|  forloop.counter 	|  1부터 시작되는 반복횟수<br>
-|  forloop.counter() 	| 0부터 시작되는 반복 횟수<br>
-| forloop.revcounter	| 반복횟수 역순<br>
-| forloop.revcounter() | 반복횟수 역순 0부터 시작<br>
-| forloop.first | 첫번째 반복회차인지 여부<br>
-| forloop.last | 마지막 반복회차인지 여부</p>
+                    <h1>Django Foriegn Key Filterig 하기</h1>
+<h3>모델</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your models here.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Blog</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    name = models.CharField(max_length=<span class="number">100</span>)</span><br><span class="line">    tagline = models.TextField()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Entry</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    blog = models.ForeignKey(Blog, related_name=<span class="string">'entrys'</span>, on_delete=models.CASCADE)</span><br><span class="line">    headline = models.CharField(max_length=<span class="number">100</span>)</span><br><span class="line">    pub_date = models.DateField(auto_now_add=<span class="literal">True</span>)</span><br><span class="line">    mod_date = models.DateField(auto_now=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.headline</span><br></pre></td></tr></table></figure>
+<h3>Blog의 QuerySet</h3>
+<p><img src="/../image/For1.png" alt="1234"></p>
+<h3>Entry의 QuerySet</h3>
+<p><img src="/../image/For2.png" alt="1234"></p>
+<hr>
+<p>Entry와 Blog는 1:M(일대다) 관계이다. 여기서 특정 블로그에 속해있는 모든 글을 가지고 오고싶다면 어떻게 해야할까?(1-&gt;M을 참조하여 가져오기)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Entry.objects.filter(blog__name=<span class="string">'특정블로그'</span>)</span><br><span class="line"><span class="comment"># blog는 Entry모델의 Foriegn Key 필드이며 name은 Blog모델의 필드이다.</span></span><br></pre></td></tr></table></figure>
+<p><img src="/../image/For3.png" alt="1234"></p>
+<p>그렇다면 역으로 특정 글의 headline을 가지고 있는 블로그는 어떻게 가지고 올 수 있을까?(M-&gt;1을 참조하여 가져오기)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Blog.objects.filter(entrys__headline=<span class="string">'주스'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Blog 모델과 Entry모델이 Foriegn Key로 연결되어 있으므로 related_name을 통해 역참조가 가능하다</span></span><br></pre></td></tr></table></figure>
+<p><img src="/../image/For4.png" alt="1234"></p>
 
                     
                         
@@ -319,7 +304,7 @@
                     
                     
                         <p>
-                            <a href="/2019/05/22/2019-05-22-장고 템플릿문법2/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/06/02/2019-06-02-장고 외래키 필터링/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -337,21 +322,21 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/05/21/2019-05-21-장고 템플릿문법1/" aria-label=": 2019-05-21 장고 템플릿 문법 1">
-                            2019-05-21 장고 템플릿 문법 1
+                        <a class="link-unstyled" href="/2019/05/31/2019-05-31-AWS-IAM/" aria-label=": 2019-05-31 Amazon CLI 설정하기">
+                            2019-05-31 Amazon CLI 설정하기
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-05-21T19:23:50+09:00">
+    <time datetime="2019-05-31T13:20:02+09:00">
 	
-		    2019/05/21
+		    2019/05/31
     	
     </time>
     
         <span>카테고리 </span>
         
-    <a class="category-link" href="/categories/Django/">Django</a>
+    <a class="category-link" href="/categories/기타/">기타</a>
 
 
     
@@ -360,21 +345,67 @@
             </div>
             
                 <div class="postShorten-content">
-                    <h1>장고 템플릿 문법 1</h1>
-<p>장고에서 화면을 렌더링 하기 위해서는 템플릿 엔진을 사용한다. 템플릿 엔진은 각자 자기만의 템플릿 문법을 제공하는데 여러가지 기본 문법과 태그 필터를 살펴본다</p>
+                    <h1>Amazon CLI를 사용하여 사용자 등록하기</h1>
+<p>Django로 Amazon 서비스를 연동하다 보면 settings.py에 아마존 aws_access_key_id와 aws_secret_access_key를 입력해야 하는데 github 같은 곳에 실수로 올리게 되면 해커들이 도용을 하게됩니다. 이것 방지하기위해 AWS CLI를 통해 등록하면 settings.py에 더이상 access_key를 적지 않아도 됩니다.</p>
 <ol>
-<li>컨텍스트 변수 출력하기
-<ul>
-<li>뷰에서 컨텍스트 변수로 값을 전달해준다면 해당 변수 이름을 가지고 출력할 수 있다</li>
-</ul>
+<li>
+<p>먼저 아마존에 가입을하고 IAM항목으로 들어갑니다.<br>
+<img src="/image/Amazon01.png" alt></p>
+</li>
+<li>
+<p>그룹을 누르고 새로운 그룹생성을 합니다.<br>
+<img src="/image/Amazon02.png" alt></p>
+</li>
+<li>
+<p>그룹이름을 적고 우측하단에 다음단계를 누릅니다<br>
+<img src="/image/Amazon03.png" alt></p>
 </li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 해당 변수 값 출력</span></span><br><span class="line">&#123;&#123; 변수명 &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 변수에 html이 들어 있는 경우 html 없애고 출력</span></span><br><span class="line">&#123;&#123; 변수명|safe &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 대문자로 변환하여 출력</span></span><br><span class="line">&#123;&#123; 변수명|upper &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 소문자로 변환하여 출력</span></span><br><span class="line">&#123;&#123; 변수명|lower &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 일부만 끊어서 출력</span></span><br><span class="line">&#123;&#123; 변수명|truncatedwords:<span class="string">'30'</span> &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 날짜일 경우 형식 지정하여 출력</span></span><br><span class="line">&#123;&#123; 변수명|date:<span class="string">"Y m d"</span> &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 기본값 지정하기</span></span><br><span class="line">&#123;&#123; 변수명|default:<span class="string">"없음"</span> &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 변수 길이 출력</span></span><br><span class="line">&#123;&#123; 변수명|length &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 제목 형식 출력</span></span><br><span class="line">&#123;&#123; 변수명|title &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 줄바꿈 태그 출력</span></span><br><span class="line">&#123;&#123; 변수명:linebreaks &#125;&#125; <span class="comment"># p태그로 감싸서 출력</span></span><br><span class="line"></span><br><span class="line">&#123;&#123; 변수명:linebreakbr &#125;&#125; <span class="comment"># &lt;br&gt; 태그만 넣어줌</span></span><br><span class="line"></span><br><span class="line">`</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>폼 출력하기<br>
-Create, Update 뷰 같은 경우 폼을 출력한다. 폼 태그들을 출력할 때 p, li, table 등의 태그로 감싸진 형식으로 출력되게 만들 수 있다. 또 입력 폼에서는 csrf_token은 필수 이다.</li>
+<ol start="4">
+<li>본인이 이용하실 서비스에 대한 정책을 선택하고 우측 하단에 다음단계로 진행합니다. 저는 S3를 이용할것이므로 S3FullAccess를 선택하였습니다.<br>
+<img src="/image/Amazon04.png" alt></li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">methd</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">&#123;% csrf_token %&#125;</span><br><span class="line">&#123;&#123;form.as_p&#125;&#125; 각 폼 태그를 p로 감싸 출력</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span> &#123;&#123;form.as_table&#125;&#125; <span class="tag">&lt;/<span class="name">table</span>&gt;</span> 각 폼태그를 tr로 감싸 출력 (table태그로 감싸는것이 아님)</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span> &#123;&#123; form.as_ul &#125;&#125; <span class="tag">&lt;/<span class="name">ul</span>&gt;</span> 각 폼 대그를 li로 감싸 출력</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>선택하신것을 확인하시고 우측 하단에 그룹선택을 눌러줍니다.<br>
+<img src="/image/Amazon05.png" alt></li>
+</ol>
+<ol start="6">
+<li>이제 그룹에 사용자를 추가시켜줘야 합니다. 사용자 탭을눌러 사용자 추가를 해줍니다.<br>
+<img src="/image/Amazon06.png" alt></li>
+</ol>
+<ol start="7">
+<li>사용자 이름을 적어주시고 우리는 CLI를 통해 등록을 할것이므로 프로그래밍 방식 액세스에 체크하도록 합니다. 그리고 우측 하단의 다음으로 넘어갑니다<br>
+<img src="/image/Amazon07.png" alt></li>
+</ol>
+<ol start="8">
+<li>방금 만든 그룹이 보이실텐데 추가하고 싶은 그룹을 체크박스 하신뒤 우측 하단의 다음버튼을 눌러줍니다<br>
+<img src="/image/Amazon08.png" alt></li>
+</ol>
+<ol start="9">
+<li>태그 추가는 지금당장 할일이 없으므로 생략하도록 합니다<br>
+<img src="/image/Amazon09.png" alt></li>
+</ol>
+<ol start="10">
+<li>이제 그동안 설정한 값들을 확인할 수 있는 화면입니다. 확인후 사용자 만들기를 누릅니다.<br>
+<img src="/image/Amazon10.png" alt></li>
+</ol>
+<ol start="11">
+<li>제일 중요한 화면입니다. 이 화면을 벗어나게되면 확인할 수가 없습니다. 그러므로 .csv 다운로드를 통해 등록한 사용자의 ID와 시크릿키를 다운받습니다. <strong>절대 다른사람에게 노출이 되면 안됩니다.</strong><br>
+<img src="/image/Amazon11.png" alt></li>
+</ol>
+<ol start="12">
+<li>이제 django에서 사용자를 등록하도록 하겠습니다.<br>
+<code>pip install awscli</code>를 입력하여 설치해줍니다<br>
+<img src="/image/Amazon12.png" alt></li>
+</ol>
+<ol start="13">
+<li>설치가 다 되면 <code>aws configure</code>을 통해 다운받으신 csv파일의 ID와 Key를 입력하시면 됩니다. region은 서울이니 <code>ap-northeast-2</code>, output format은 <code>json, text, table</code>중 하나를 입력해주면 됩니다.<br>
+<img src="/image/Amazon13.png" alt></li>
+</ol>
+<ol start="14">
+<li>등록을 마치면 더이상 settings.py에 ID와 Key를 입력하지 않아도 자동으로 본인 root디렉토리에 .aws디렉토리 내부의 파일을 읽어 사용할 수 있습니다.<br>
+<img src="/image/Amazon14.png" alt></li>
+</ol>
 
                     
                         
@@ -383,7 +414,7 @@ Create, Update 뷰 같은 경우 폼을 출력한다. 폼 태그들을 출력할
                     
                     
                         <p>
-                            <a href="/2019/05/21/2019-05-21-장고 템플릿문법1/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/05/31/2019-05-31-AWS-IAM/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -412,7 +443,7 @@ Create, Update 뷰 같은 경우 폼을 출력한다. 폼 태그들을 출력할
             </a>
           </li>
         
-        <li class="pagination-number">page 9 of 24</li>
+        <li class="pagination-number">page 9 of 26</li>
     </ul>
 </div>
 
@@ -540,7 +571,7 @@ Create, Update 뷰 같은 경우 폼을 출력한다. 폼 태그들을 출력할
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                71 개의 포스트가 있습니다.
+                77 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

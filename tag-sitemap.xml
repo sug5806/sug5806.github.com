@@ -3,15 +3,57 @@
 
 
     <url>
-        <loc>http://blog.sug5806.site/tags/%ED%81%90/</loc>
-        <lastmod>2019-08-16T12:17:51.077Z</lastmod>
+        <loc>http://blog.sug5806.site/tags/%EC%82%BD%EC%9E%85-%EC%A0%95%EB%A0%AC/</loc>
+        <lastmod>2019-08-17T06:13:50.840Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.sug5806.site/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</loc>
+        <lastmod>2019-08-17T06:13:50.840Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.sug5806.site/tags/%EC%84%A0%ED%83%9D-%EC%A0%95%EB%A0%AC/</loc>
+        <lastmod>2019-08-17T05:59:05.200Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.sug5806.site/tags/%EB%B2%84%EB%B8%94-%EC%A0%95%EB%A0%AC/</loc>
+        <lastmod>2019-08-17T05:46:26.087Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.sug5806.site/tags/%EC%A0%95%EB%A0%AC/</loc>
+        <lastmod>2019-08-17T05:39:04.537Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.sug5806.site/tags/%ED%9E%99/</loc>
+        <lastmod>2019-08-17T05:24:25.890Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://blog.sug5806.site/tags/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/</loc>
-        <lastmod>2019-08-16T12:17:51.077Z</lastmod>
+        <lastmod>2019-08-17T05:24:25.890Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.sug5806.site/tags/%ED%81%90/</loc>
+        <lastmod>2019-08-17T05:04:34.793Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -53,13 +95,6 @@
 
     <url>
         <loc>http://blog.sug5806.site/tags/%EC%9E%AC%EA%B7%80/</loc>
-        <lastmod>2019-08-14T08:07:16.451Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.sug5806.site/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</loc>
         <lastmod>2019-08-14T08:07:16.451Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
