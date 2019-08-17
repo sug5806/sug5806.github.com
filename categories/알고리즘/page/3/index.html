@@ -186,15 +186,15 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/04/15/알고리즘이론/" aria-label=": 2019-04-15 알고리즘이란?">
-                            2019-04-15 알고리즘이란?
+                        <a class="link-unstyled" href="/2019/07/23/2019-07-23-버블정렬/" aria-label=": 2019-07-23 버블정렬">
+                            2019-07-23 버블정렬
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-04-15T19:39:46+09:00">
+    <time datetime="2019-07-23T19:04:46+09:00">
 	
-		    2019/04/15
+		    2019/07/23
     	
     </time>
     
@@ -209,56 +209,12 @@
             </div>
             
                 <div class="postShorten-content">
-                    <h2>알고리즘이란?</h2>
-<ul>
-<li>유한한 단계를 통해 문제를 해결하기 위한 절차나 방법</li>
-</ul>
-<h4>알고리즘 표현방법</h4>
-<ul>
-<li>슈도코드 : 특정 프로그래밍 언어의 문법을 따라 쓰여진 것이 아니라, 일반적인 언어로 코드를 흉내내어 알고리즘을 써 놓은 코드
-<ul>
-<li>의사 코드로 흉내낸 코드</li>
-<li>실제적인 프로그래밍 언어로 작성된 코드처럼 컴퓨터에서 실행할 수 없음</li>
-<li>특정 언어로 프로그램을  작성하기 전에 알고리즘을 대략적으로 모델링하는데 쓰임</li>
-</ul>
-</li>
-<li>순서도 : 프로그램이나 작업의 진행 흐름을 순서에 따라 여러 가지 기호나 문자로 나타낸 도표</li>
-</ul>
-<h4>무엇이 좋은 알고리즘인가?</h4>
-<ul>
-<li>정확성 : 얼마나 정확하게 동작하는가?</li>
-<li>작업량 : 얼마나 적은 연산으로 원하는 결과를 얻어내는가?</li>
-<li>메모리 사용량 : 얼마나 적은 메모리를 사용하는가?</li>
-<li>단순성 : 얼마나 단순한가?</li>
-<li>최적성 : 더 이상 개선할 여지 없이 최적화 되어있는가?</li>
-</ul>
-<h4>알고리즘의 성능 분석</h4>
-<ul>
-<li>많은 문제에서 알고리즘의 성능 분석기준으로 알고리즘의 작업량을 비교
-<ul>
-<li>Ex) 1~100까지의 합을 구하는 문제</li>
-</ul>
-</li>
-<li>
-<ol>
-<li>실제 걸리는 시간을측정</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li>실행되는 명령문의 개수를 계산 -&gt; 일반적으로 많이 사용됨</li>
-</ol>
-</li>
-<li>
-<ol start="3">
-<li>Big-O 표기법 : 시간 복잡도 함수 중에서 가장 큰 영향력을 주는 n에 대한 항만을 표시, 계수는 생략하여 표시</li>
-</ol>
-<ul>
-<li>요소 수가 증가함에 따라 각기 다른 시간 복잡도의 알고리즘은 아래와 같은 연산 수를 보임</li>
-</ul>
-</li>
-</ul>
-<p><img src="../image/algorithm.png" alt></p>
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<h2>버블 정렬(Bubble Sorting)이란?</h2>
+<p>버블 정렬은 간단한 정렬 알고리즘입니다. 버블 정렬은 입력 배열의 i번째 요소와 i+1번째 요소를 비교하여 i번째 요소가 i+1 번째 요소보다 클 경우 두 요소의 위치를 바꾸는 작업을 입력 배열의 첫번째부터 마지막까지 반복하비다. 더 이상 교체가 필요없을 때 까지 이 과정을 반복합니다. 일반적으로 버블 정렬보다 삽입 정렬의 복잡도가 더 좋습니다.</p>
+<h3>성능</h3>
+<p>최악의 경우 복잡도 : O(n<sup>2</sup>)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span><span class="params">(arr)</span>:</span></span><br><span class="line">    n = len(arr)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n<span class="number">-1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n-i<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> arr[j] &gt; arr[j+<span class="number">1</span>]:</span><br><span class="line">                arr[j], arr[j+<span class="number">1</span>] = arr[j+<span class="number">1</span>], arr[j]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    arr = [<span class="number">7</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">10</span>]</span><br><span class="line">    bubble_sort(arr)</span><br><span class="line">    print(arr)</span><br></pre></td></tr></table></figure>
 
                     
                         
@@ -267,7 +223,7 @@
                     
                     
                         <p>
-                            <a href="/2019/04/15/알고리즘이론/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/07/23/2019-07-23-버블정렬/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -285,15 +241,15 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/04/13/greedy/" aria-label=": 2019-04-13 Greedy Algorithm">
-                            2019-04-13 Greedy Algorithm
+                        <a class="link-unstyled" href="/2019/07/22/2019-07-22-정렬/" aria-label=": 2019-07-22 정렬">
+                            2019-07-22 정렬
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-04-13T19:39:46+09:00">
+    <time datetime="2019-07-22T19:04:46+09:00">
 	
-		    2019/04/13
+		    2019/07/22
     	
     </time>
     
@@ -308,27 +264,25 @@
             </div>
             
                 <div class="postShorten-content">
-                    <h2>greedy algorithm</h2>
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<h2>정렬(Sorting)이란?</h2>
+<p>정렬이란 어떤 순서에 따라 목록의 요소들을 배열하는 알고리즘입니다. 출력으로는 입력에 대한 경우의 수(순열) 또는 입력을 알고리즘에 따라 다시 배열한 값입니다.</p>
+<h2>정렬의 분류</h2>
+<p>비교 횟수에 따른 분류</p>
 <ul>
-<li>각 단계마다 지금 당장 가장 좋은 방법만을 선택</li>
-<li>많은 경우 최적해를 찾지 못한다</li>
-<li>항상 최적해를 구할 수 있는 문제에 적용하고 수행 시간이 다른 알고리즘에 비해 훨씬 빠르다</li>
-<li>시간이나 공간적 제약으로 인해 다른 방법으로 최적해를 찾기 너무 어려운 경우 최적해 대신 근사해로 대체한다</li>
+<li>비교에 기반한 알고리즘들은 최선의 경우 O(nlogn), 최악의 경우 O(n<sup>2</sup>)의 복잡도를 가집니다.</li>
 </ul>
-<h3>예시</h3>
+<p>값을 교환하는 횟수에 따른 분류</p>
 <ul>
-<li>동전 거스르기
-<ul>
-<li>가장 큰 동전으로 거스르면 최적해이다</li>
+<li>값을 교환하는 횟수로 분류됩니다.</li>
 </ul>
-</li>
-<li>회의실 배정</li>
-<li>최단경로</li>
-</ul>
-<h4>다익스트라 알고리즘</h4>
+<p>메모리 사용에 따른 분류</p>
 <ul>
-<li>아직 방문하지 않은 정점들 중 가장 거리가 짧은 정점을 방문</li>
-<li>정점에서 인접하고 아직 방문하지 않은 정점들의 거리 갱신</li>
+<li>몇몇 정렬 알고리즘들은 제자리 정렬을 수행하고 정렬을 수행하기 위한 임시적인 확장 공간으로 충분히 무시할 만큼 O(1) 또는 O(logn)의 메모리만을 필요로 합니다.</li>
+</ul>
+<p>반복에 따른 분류</p>
+<ul>
+<li>정렬 알고리즘은 반복을 사용하거나 사용하지 않거나 두 가지로 분류됩니다. 병합정렬의 경우 두 방법을 모두 사용합니다.</li>
 </ul>
 
                     
@@ -338,7 +292,72 @@
                     
                     
                         <p>
-                            <a href="/2019/04/13/greedy/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/07/22/2019-07-22-정렬/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/06/30/2019-06-30-재귀알고리즘이란/" aria-label=": 2019-06-30 재귀 알고리즘이란?">
+                            2019-06-30 재귀 알고리즘이란?
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-06-30T19:04:46+09:00">
+	
+		    2019/06/30
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/알고리즘/">알고리즘</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<h2>재귀(Recursion)란?</h2>
+<p>자기 자신을 반복해서 호출하는 모든 함수를 재귀적(recursive)라 합니다. 재귀적 방법은 보다 작은 문제로 작업하기 위해서 자기 자신의 복사본을 호출함으로써 문제를 해결합니다. 이것을 재귀 단계라 합니다. 재귀 단계에서는 더 많은 동일한 재귀 호출이 발생할 수 있습니다. 재귀 호출은 종료되도록 하는 것이 중요합니다. 자기 자신을 호출할 때마다 원래 문제의 범위는 조금씩 줄어듭니다. 이 일련의 작은 문제들은 결국 base case에 도달합니다 <sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p>
+<h2>왜 재귀방식을 사용할까?</h2>
+<p>일반적으로 재귀 코드는 반복 코드보다 짧고 쉽습니다. 재귀는 보다 작은 하위 작업으로 정의될 수 있는 작업에 가장 유용합니다. 예를 들어 정렬, 검색 그리고 탐색 문제는 간단한 재귀 방식을 가지고 해결합니다.</p>
+<h1>재귀함수의 예시</h1>
+<p>팩토리얼(factorial)을 예시로 들어보겠습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fact</span><span class="params">(value)</span>:</span></span><br><span class="line">    <span class="comment"># base case</span></span><br><span class="line">    <span class="keyword">if</span> value == <span class="number">1</span> <span class="keyword">or</span> value == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> value * fact(value<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+<p>위에서 설명한 것과같이 첫번째 함수를 호출 후 다음 함수를 호출할때는 value값이 1씩 줄어드는 것을 확인 할 수 있습니다.</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>재귀가 끝나는 조건을 말합니다 <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/06/30/2019-06-30-재귀알고리즘이란/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -360,7 +379,14 @@
           </li>
         
         
-        <li class="pagination-number">page 3 of 3</li>
+          <li class="pagination-next">
+            <a class="btn btn--default btn--small" href="/categories/알고리즘/page/4/" aria-label="이전 포스트">
+              <span>이전 포스트</span>
+              <i class="fa fa-angle-right text-base icon-ml"></i>
+            </a>
+          </li>
+        
+        <li class="pagination-number">page 3 of 4</li>
     </ul>
 </div>
 
@@ -488,7 +514,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                77 개의 포스트가 있습니다.
+                84 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

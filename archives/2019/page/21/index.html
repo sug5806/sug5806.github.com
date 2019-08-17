@@ -186,21 +186,21 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/04/11/2019-04-11-data_structure/" aria-label=": 2019-04-11 List와 Array의 차이점">
-                            2019-04-11 List와 Array의 차이점
+                        <a class="link-unstyled" href="/2019/04/19/2019-04-19-Django시작하기/" aria-label=": 2019-04-19 Django 기본">
+                            2019-04-19 Django 기본
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-04-11T19:04:46+09:00">
+    <time datetime="2019-04-19T14:30:50+09:00">
 	
-		    2019/04/11
+		    2019/04/19
     	
     </time>
     
         <span>카테고리 </span>
         
-    <a class="category-link" href="/categories/자료구조/">자료구조</a>
+    <a class="category-link" href="/categories/Django/">Django</a>
 
 
     
@@ -209,71 +209,62 @@
             </div>
             
                 <div class="postShorten-content">
-                    <h3>리스트(List)와 배열(Array)의 차이점</h3>
-<!-- 1. 배열(Array)
-    * 같은 자료형의 변수를 모아놓은 것
-    * **인덱싱을 통해 검색을 함**
-    * **데이터가 군집화 되어있음** -> 이로인해 지역성이 적용되어 **캐시히트 확률이 매우높다**
-    * 장점 : 
-        * 검색으로는 그 어떤 자료구조보다 빠름
-        * 기본적으로 스택에 할당된다
-    * 단점 :
-        * 데이터의 삽입과 삭제가 매우 느림
-
-2. Linked List(연결 리스트)
-    * 장점
-        * 데이터의 삽입과 삭제가 매우 빠름 O(1)
-    * 단점
-        * 검색속도가 매우느림 O(n)
-        * 데이터가 흩어져있음 -> 이로인해 지역성 적용이 떨어져 **캐시미스 확률이 높음**  -->
+                    <h1>Django 기본</h1>
+<h3>Django 프로젝트 구조 살펴보기</h3>
+<p><img src="/image/Django1.png" alt></p>
 <ol>
-<li>동적배열(Dynamic Array) vs 연결리스트(Linked List)의 차이
-<ul>
 <li>
-<p>DynamicArray</p>
+<p>second_django 폴더 : 프로젝트 설정 파일과 웹 서비스 실행을 위한 파일들이 들어있다.</p>
 <ul>
-<li>장점:
-<ul>
-<li>search : O(1) -&gt; Indexing을 사용하기 때문
-<ul>
-<li>메모리에 가져올때 지역성이 적용되어 <strong>캐시히트</strong>가 일어나기 때문</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>단점:
-<ul>
-<li>Insert : O(n) -&gt; 삽입을 하기위해 기존의 n개의 데이터를 뒤로 밀어야 한다</li>
-<li>Delete : O(n) -&gt; 삭제를 한 뒤 남아있는 데이터를 앞으로 당겨야 한다.</li>
-</ul>
-</li>
+<li><strong>init</strong>.py : 파이썬 2.x대 버전과의 호환을 위해 만들어진 비어있는 파일이다. 지워도 무방하다</li>
+<li>settings.py : 프로젝트 설정에 관한 다양한 내용이 들어있다.</li>
+<li>urls.py : 특정 기능을 수행하기 위해 접속하는 주소를 url이라 하고 이를 설정해주는데, 그 설정을 이 파일에 기록함</li>
+<li>wsgi.py : 웹 서비스를 실행하기 위한 wsgi 관련 내용이 들어있음</li>
 </ul>
 </li>
 <li>
-<p>LinkedList</p>
-<ul>
-<li>장점: 데이터의 삽입, 삭제가 매우 빠르다
-<ul>
-<li>Insert : O(1)</li>
-<li>Delete : O(1)</li>
-</ul>
+<p>venv 폴더 : 프로젝트 구동에 필요한 가상환경이 들어있음</p>
 </li>
-<li>단점:
-<ul>
-<li>Search : O(n)
-<ul>
-<li>지역성이 적용될 확률이 낮기때문에 <strong>캐시히트</strong>가 일어나기 힘들다</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<li>
+<p>db.sqlite3 : SQLite3 DB 파일이다. 다른 DB를 이용할시 필요없다</p>
 </li>
 </ol>
-<p>Search를 많이하면 배열을, Insert, Delete를 할때는 연결리스트를 주로 사용한다</p>
-<p>다이나믹 힙(Dynamic Heap)기법으로 메모리 할당을 한쪽으로 몰아도 되도록이면 배열을 사용한다</p>
+<h3>장고 기본 명령들</h3>
+<ol>
+<li>django-admin startproject : 장고 프로젝트를 만드는 명령이다. 웹 서비스를 만들 때 마다 한번 실행한다.</li>
+<li>startapp : 프로젝트에 기능 단위인 앱을 새로 만들때 사용</li>
+<li>makemigrations : 어플리케이션에 변경 사항을 추적해 DB에 적용할 내용을 정리함. 보통 앱 안에 있는 모델(model)의 변경 사항이 있을 때 주로 사용함.</li>
+<li>sqlmigrate: 실행할 SQL 명령문을 출력한다</li>
+<li>migrate : 실제 변경사항을 DB에 반영한다.</li>
+<li>showmigrations : 프로젝트의 DB 변경사항 목록과 상태를 출력한다.</li>
+<li>runserver : 테스트 서버를 실행한다.</li>
+<li>dumpdata : 현재 DB의 내용을 백업할 때 사용한다.</li>
+<li>loaddata : 백업 파일에서 DB로 내용을 복구 할 때 사용한다</li>
+<li>flush : DB 테이블은 그대로 두고 테이블의 내용만 전부 삭제한다</li>
+<li>shell : 장고 쉘(Shell)을 실행한다</li>
+<li>dbshell : DB에 직접 접근 할 수 있는 쉘을 실행한다</li>
+<li>createsuperuser : 관리자 계정을 생성한다</li>
+<li>changepassword : 계정의 비밀번호를 변경할 수 있다</li>
+</ol>
+<hr>
+<h2>디자인 패턴</h2>
+<h4>MVC와 MTV</h4>
+<ul>
+<li>
+<p>웹 프로그래밍에서 자주 쓰이는 디자인 패턴은 MVC이다 : Model-View-Controller</p>
+<ol>
+<li>Model : DB의 구조를 결정한다.</li>
+<li>View : 사용자에게 보여지는 UI부분이다</li>
+<li>Controller : 기능, 로직부분이다</li>
+</ol>
+</li>
+<li>
+<p>장고에서는 MTV라고 하나 <strong>이름만 다르고 동일한 패턴이다</strong> : Model-Template-View</p>
+<ul>
+<li>양쪽모두 View가 있지만 기능이 서로 다르다 각각 연결해보면 (Model:Model)-(View:Template)-(Controller:View)이다</li>
+</ul>
+</li>
+</ul>
 
                     
                         
@@ -282,7 +273,7 @@
                     
                     
                         <p>
-                            <a href="/2019/04/11/2019-04-11-data_structure/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/04/19/2019-04-19-Django시작하기/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -300,21 +291,21 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/04/10/Git 특강2_git_branch/" aria-label=": 2019-04-10 Git 특강2 branch">
-                            2019-04-10 Git 특강2 branch
+                        <a class="link-unstyled" href="/2019/04/18/쓰레드와프로세스/" aria-label=": 2019-04-18 프로세스와 쓰레드">
+                            2019-04-18 프로세스와 쓰레드
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-04-10T18:32:46+09:00">
+    <time datetime="2019-04-18T21:30:32+09:00">
 	
-		    2019/04/10
+		    2019/04/18
     	
     </time>
     
         <span>카테고리 </span>
         
-    <a class="category-link" href="/categories/기타/">기타</a>
+    <a class="category-link" href="/categories/운영체제/">운영체제</a>
 
 
     
@@ -323,217 +314,192 @@
             </div>
             
                 <div class="postShorten-content">
-                    <h1>Git</h1>
-<h3>브랜치란?</h3>
+                    <h1>Program, Process</h1>
+<p>Program =&gt; HDD안의 이미지를 말함 Ex) Python.exe</p>
+<p>Process =&gt; 실행중인 프로그램(이미 RAM에 올라가있음)</p>
+<p>PID로 구분을 한다 (Process ID) -&gt; 윈도우는 랜덤으로, 리눅스는 순차적으로 배분</p>
+<h3>pre-emptive OS</h3>
 <ul>
-<li>
-<p>분기점을 생성하고 독립적으로 코드를 변경할 수 있도록 도와주는 모델</p>
-</li>
-<li>
-<p>Ex)</p>
-<ul>
-<li>
-<p>matser branch</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"hellow python!"</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>another branch</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span>  range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    print(<span class="string">'hello world for the %s times!" % i)</span></span><br></pre></td></tr></table></figure>
-</li>
+<li>multitasking OS</li>
+<li>suspend currently running process</li>
+<li>determine which process should execute next</li>
 </ul>
-</li>
-<li>
-<p>로컬의 branch와 리모트의 branch는 따로 존재한다</p>
-</li>
-<li>
-<p>git branch -r : 리모트의 브랜치를 조회한다</p>
-</li>
-<li>
-<p>git branch : 로컬의 브랜치를 조회한다</p>
-</li>
+<h3>process scheduling</h3>
+<ul>
+<li>priority algorithm : 높은 우선순위의 프로세스가 먼저 실행된다.</li>
+<li>round-robin algorithm : 프로세스들 사이에 우선순위를 두지 않고 time slice로 CPU를 할당하는 방법이다.</li>
 </ul>
-<h4>브랜치 생성</h4>
+<h2>scheduler</h2>
 <ul>
-<li>git branch feat/loop -&gt; feat/loop라는 새로운 브랜치를 만든다
+<li>When?
 <ul>
-<li><strong>현재 브랜치</strong>의 현재 상태 그대로 복제하여 만든다</li>
+<li>every time slice</li>
+<li>a process created or a process ended</li>
+<li>a running process blocked (I/O, system call)</li>
 </ul>
 </li>
 </ul>
-<h4>브랜치 이동</h4>
+<p><img src="/image/schduler.png" alt="스케줄링"></p>
+<p>Block으로 빠지는 경우</p>
 <ul>
-<li>git checkout feat/loop -&gt; feat/loop 브랜치로 이동한다.</li>
+<li>IO</li>
+<li>System call(운영체제에서 사용하는 함수중 사용자에게 인터페이스를 열어놓은 함수 Ex) sleep)</li>
 </ul>
-<h4>리모트 레포와 동기화</h4>
+<h2>Waiting 과 Running 사이에서 일어나는 일 : context switching</h2>
+<p>context switching</p>
 <ul>
-<li>git push -u origin feat/loop : 리모트 레포에 feat/loop라는 새로운 브랜치 생성
-<ul>
-<li>-u : upstream의 약자 -&gt; 리모트 레포에 feat/loop가 없으므로 해주어야 한다.</li>
-</ul>
-</li>
-</ul>
-<p>브랜치를 해도 deletion이 없으면 평행으로 되고 있으면 밑으로 추가되고, 우리가 논리적으로 생각하는 것으로 그림을 그린다.</p>
-<h4>브랜치 병합하기</h4>
-<ol>
-<li>우선 병합하고자 하는 브랜치로 이동한다 -&gt; git checkout feat/loop</li>
-<li>git merge feat/con-state : feat/loop를 feat/con-state의 내용과 동기화시킨다(feat/con-state와 같아진다)</li>
-<li>자동으로 commit이 생긴다.</li>
-</ol>
-<h4>브랜치 삭제하기</h4>
-<ul>
-<li>git branch -D/d 브랜치명
-<ul>
-<li>D는 강제로 삭제한다</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Master 브랜치는 사용자에게 보여지기 때문에  개발자는 develop이라는 브랜치를 따로 만든다.</span><br></pre></td></tr></table></figure>
-<h4>브랜치및 머지를 보다 쉽게 하기</h4>
-<ul>
-<li>
-<p>git flow 전략 : <a href="https://danielkummer.github.io/git-flow-cheatsheet/index.ko_KR.html" target="_blank" rel="noopener">다운로드 링크</a></p>
-<ul>
-<li>master는 항상 개발이 끝난 것만 보여야한다<br>
-<img src="https://camo.githubusercontent.com/075a231fca71d6a23491041230f3a265671e3a36/68747470733a2f2f64616e69656c6b756d6d65722e6769746875622e696f2f6769742d666c6f772d636865617473686565742f696d672f6769742d666c6f772d636f6d6d616e64732e706e67" alt></li>
-</ul>
-</li>
-<li>
-<p>git init -&gt; git flow init : git init을 하면서 flow까지 한꺼번에 함</p>
-</li>
-<li>
-<p>develop 브랜치를 만들어도 기능 개발을 할때는 브랜치를 또 만들어서 해야한다</p>
-</li>
-<li>
-<p>git flow feature start Name : Name의 브랜치를 생성하고 checkout 한다</p>
-<ul>
-<li>자식 브랜치를 만들고나서 파일을 수정하고 꼭 commit을 해야 가지가 쳐진다.</li>
-</ul>
-</li>
-<li>
-<p>git flow feature finish Name : Name의 브랜치를 상위 브랜치와 merge하고 Name의 브랜치는 삭제 한다(<strong>remote와 local에서 같이 지운다</strong>)</p>
-</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/10/Git 특강2_git_branch/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/10/regular_expression/" aria-label=": 2019-04-10 reguler-expression">
-                            2019-04-10 reguler-expression
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-10T15:23:46+09:00">
-	
-		    2019/04/10
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/기타/">기타</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>정규 표현식</h1>
-<ul>
-<li>r`[] -&gt; row string(파이썬에서만 쓰임)
-<ul>
-<li>[a-z] : a~z까지</li>
-</ul>
-</li>
-</ul>
-<p>Match -&gt; 문자열의 처음부터 찾고 안맞으면 False<br>
-Search -&gt; 문자열 중에서 하나라도 있으면 return</p>
-<ul>
-<li>
-<p>반복</p>
-<ol>
-<li>* : 0 ~ 무한대 -&gt; {0, 무한대}</li>
-<li>+ : 1 ~ 무한대 -&gt; {1, 무한대}</li>
-<li>? : 0 ~ 1 -&gt; {0, 1}</li>
-<li>{m} : m개</li>
-<li>{m,n} : m개부터 n개까지</li>
-</ol>
-</li>
-<li>
-<p>^</p>
-<ol>
-<li>일반적인 경우 문자열의 시작</li>
-<li>[^abc] : a,b,c가 모두 아닌 모든 문자열</li>
-</ol>
-</li>
-<li>
-<p>$</p>
-<ol>
-<li>일반적인 경우 문자열의 끝</li>
-</ol>
-</li>
-<li>
-<p>.</p>
-<ul>
-<li>일반적으로는 모든 문자들 나타냄</li>
-</ul>
-</li>
-<li>
-<p>r</p>
-<ul>
-<li>r’ '안에 있으면 모든 특수문자들이 효력을 잃음</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>특수문자
-<ul>
-<li>\ : \</li>
-<li>\d : [0-9]</li>
-<li>\D : [^0-9]</li>
-<li>\s(white space) : \t, \n, space, \r</li>
-<li>\S : not white space</li>
-<li>\w : [a-zA-Z0-9]</li>
-<li>\W : [^a-zA-Z0-9]</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Group
-<ul>
-<li>pattern = r’([0-9]{3})[-./ ]<em>(\d{3,4})[-./ ]</em>(\d{4})’</li>
-<li>그룹을 3개로 나눔</li>
-</ul>
-</li>
+<li>메모리안에 블록을 하나만듬(Process Control block) 이곳(PCB)에 어디까지 실행하였는지(CPU안의 레지스터들의 상태정보)를 저장함</li>
+<li>context = 지금 현재 실행되고있는 CPU안의 레지스터들의 상태정보를 하나로 모은것</li>
+<li>자주일어날경우 메모리접근 시간이 너무 커짐 -&gt; time slice를 잘 정해야함</li>
+<li>PCB를 내리고 새로운 PCB를 올리는 작업을 context switching이라 함</li>
 </ul>
 <hr>
-<p>Ex) 변수할당 구분하기</p>
+<p>Process와 Thread -&gt; 인스트럭션의 나열 -&gt; 실행의 흐름일 뿐이다</p>
+<p>Process = 1개 이상의 쓰레드를 갖는다, 쓰레드가 1개일경우 (single thread라 한다)</p>
+<p>Concurrency programming (동시성 프로그래밍) -&gt; 속도를 위해 하는것이 아님(싱글 코어일 경우)</p>
+<ol>
+<li>
+<p>multi - processing</p>
 <ul>
-<li>r’([a-zA-Z_]\w*)\s*=\s*([0-9]+)’</li>
+<li>각기 다른 프로세스에서 똑같은 데이터를 가지고 있어야함</li>
+<li>IPC(Inter Process Communication) -&gt; 최악의 효율성</li>
+<li><img src="/image/process.png" alt="프로세스"></li>
+</ul>
+</li>
+<li>
+<p>multi - threading</p>
+<ul>
+<li>프로세스안에 스레드가 포함이 됨(스택만 나눠지고 나머지는 공유함)</li>
+<li>스택 영역만 스레드마다 따로잡힘(지금 현재 실행하는 인스트럭션(함수)이 다르므로 스택만 나누고 나머지 공간은 공유가능)</li>
+<li>쓰레드 또한 PCB처럼 TCB가 있고 context switching이 똑같이 일어남</li>
+<li><img src="/image/thread.png" alt="쓰레드"></li>
+</ul>
+</li>
+<li>
+<p>I/O-bound -&gt; asynchronus I/O(비동기 I/O)</p>
+<ul>
+<li>한개의 스레드로 동시성으로 만듬</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>GIL -&gt; Global Interpreter Lock</p>
+<ul>
+<li>멀티코어라도 바이트 코드의 실행을 한번에 하나 스레드로 막는다 (없애려고 했으나 해결을 하지 못함) -&gt; Cpython은 아직 해결 못함</li>
+</ul>
+<p><strong>race-condition</strong></p>
+<ul>
+<li>공유자원에 대해 너도나도 쓰겠다고 달려들어 결과값을 보장하지 못한다.</li>
+</ul>
+<p>임계 구역(critical section) -&gt; 접근하는것 까지는 괜찮으나 수정하는건 안됨</p>
+<p>mutual exclution(상호배제)</p>
+<ul>
+<li>세마포어 : 한번에 임계구역에 접근할 수 있는 스레드의 숫자를 조정함</li>
+<li>mutex : 임계구역에 단 하나밖에 접근 못함</li>
+</ul>
+<p>코어가 1개 일 경우 시간 단축은 거의 없지만(concurrecy programming)<br>
+코어가 4개 일경우 시간단축 + 멀티코어 프로그래밍이 같이됨<br>
+concurecncy programming과 pararrelism programming은 다른 개념이다</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/04/18/쓰레드와프로세스/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/04/17/CSS 기초/" aria-label=": 2019-04-17 CSS 기초1">
+                            2019-04-17 CSS 기초1
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-04-17T21:18:32+09:00">
+	
+		    2019/04/17
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/CSS/">CSS</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>CSS 기초1 (Syntax ~ background)</h1>
+<h2>CSS Syntax</h2>
+<h4>element Selector</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>:blue;<span class="attribute">font-size</span>:<span class="number">12px</span>;&#125;</span><br><span class="line"><span class="comment">/*h1 element의 색깔은 blue</span></span><br><span class="line"><span class="comment">폰트 사이즈는 12px</span></span><br></pre></td></tr></table></figure>
+<h4>id Selector</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#para1</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*id가 para1인 element의 텍스트 정렬은 중앙,색깔은 red</span></span><br></pre></td></tr></table></figure>
+<h4>class Selector</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.center</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*center 클래스의 텍스트 정렬은 중앙, 색깔은 red</span></span><br></pre></td></tr></table></figure>
+<h4>class + element</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-class">.center</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line"><span class="comment">/* p태그 이면서 center클래스의 텍스트 정렬은 중앙, 색깔은 red</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
+<h4>클래스 부여하기</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p class="center large"&gt;This paragraph refers to two classed.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<h4>Grouping Selectors</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* h1, h2, p 태그의 텍스트 정렬은 중앙, 색깔은 red</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2>CSS를 삽입하는 3가지 방법</h2>
+<h4>1. External style sheet</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">head</span>&gt;</span><br><span class="line">&lt;link rel="stylesheet" type="text/css" href="mystyle.css"&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+<h4>2. Internal stryle sheet</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">head</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>:linen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: maroon;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+<h4>3. Inline style</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 style="color:blue; margin-left:30px;"&gt;This is a heading&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2>Backgrounds</h2>
+<h4>Background color</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: lightblue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4>Background Image</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">"paper.gif"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>이미지를 X좌표로만 반복하기</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"gradient_bg.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: repeat-x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>y좌표로만 반복하려면 repteat -y를 해주면 된다.</p>
+</li>
+<li>
+<p>반복없이 하기</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"gradient_bg.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>이미지를 오른쪽 상단에 위치시키기</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"img_tree.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="attribute">background-position</span>: right top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>스크롤해도 이미지 이동하지 않게 하기</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"img_tree.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>:no-repeat;</span><br><span class="line">    <span class="attribute">background-position</span>:right top;</span><br><span class="line">    <span class="attribute">background-attachment</span>: fixed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Background - Shorthand roperty</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">bacground</span>: red <span class="built_in">url</span>(<span class="string">"img_tree.png"</span>) no-repeat right top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 
                     
@@ -543,7 +509,7 @@ Search -&gt; 문자열 중에서 하나라도 있으면 return</p>
                     
                     
                         <p>
-                            <a href="/2019/04/10/regular_expression/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/04/17/CSS 기초/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -572,7 +538,7 @@ Search -&gt; 문자열 중에서 하나라도 있으면 return</p>
             </a>
           </li>
         
-        <li class="pagination-number">page 21 of 26</li>
+        <li class="pagination-number">page 21 of 28</li>
     </ul>
 </div>
 
@@ -700,7 +666,7 @@ Search -&gt; 문자열 중에서 하나라도 있으면 return</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                77 개의 포스트가 있습니다.
+                84 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

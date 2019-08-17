@@ -186,15 +186,15 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/07/26/2019-07-26-삽입정렬/" aria-label=": 2019-07-26 삽입정렬">
-                            2019-07-26 삽입정렬
+                        <a class="link-unstyled" href="/2019/08/05/2019-08-05-하노이의탑/" aria-label=": 2019-08-05 하노이의 탑">
+                            2019-08-05 하노이의 탑
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-07-26T19:04:46+09:00">
+    <time datetime="2019-08-05T19:04:46+09:00">
 	
-		    2019/07/26
+		    2019/08/05
     	
     </time>
     
@@ -210,83 +210,14 @@
             
                 <div class="postShorten-content">
                     <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h2>삽입 정렬(Insertion Sort)이란?</h2>
-<p>삽입 정렬은 간단하면서도 효과적인 비교 정렬법입니다. 이 알고리즘은 반복마다 뒤쪽의 정렬되지 않은 요소들의 목록에서 요소를 삭제하고 삭제한 요소를 앞쪽의 이미 정렬된 목록 내 알맞은 자리에 삽입합니다. 입력 데이터에서 삭제될 요소는 정렬되지 않은 목록에서 무작위로 선택하고(일반적으로 앞에서 차례로 선택합니다) 입력 데이터 내 모든 요소를 처리할 때까지 반복합니다.</p>
-<h2>장점</h2>
-<ul>
-<li>간단합니다.</li>
-<li>적은 데이터 양에 효과적입니다.</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ins_sort</span><span class="params">(a)</span>:</span></span><br><span class="line">    n = len(a)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):</span><br><span class="line">        key = a[i]</span><br><span class="line">        j = i - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> j &gt;= <span class="number">0</span> <span class="keyword">and</span> a[j] &gt; key:</span><br><span class="line">            a[j + <span class="number">1</span>] = a[j]</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">        a[j + <span class="number">1</span>] = key</span><br><span class="line">        print(a)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">d = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">3</span>]</span><br><span class="line">ins_sort(d)</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/07/26/2019-07-26-삽입정렬/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/07/24/2019-07-24-선택-정렬/" aria-label=": 2019-07-24 선택정렬">
-                            2019-07-24 선택정렬
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-07-24T19:04:46+09:00">
-	
-		    2019/07/24
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/알고리즘/">알고리즘</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h2>선택 정렬(Selection Sort)이란?</h2>
-<p>선택 정렬은 제자리 정렬 알고리즘입니다. 선택 정렬은 작은 양의 데이터에 유용합니다. 이 알고리즘은 키는 작고 값은 큰 데이터에 사용됩니다. 키를 기반으로 선택이 이루어지고 치환이 필요하다고 판단되면 치환이 이루어지기 때문입니다.</p>
-<h4>장점</h4>
-<ul>
-<li>구현이 쉽습니다.</li>
-<li>제자리 정렬(추가 저장 공간이 필요없음) 알고리즘입니다.</li>
-</ul>
-<h4>단점</h4>
-<ul>
-<li>데이터의 양에 유연하지 않습니다.</li>
-</ul>
-<h4>알고리즘</h4>
+<h2>하노이의 탑이란?</h2>
+<p>하노이의 탑은 퍼즐의 일종입니다. 세 개의 기둥과 이 기둥에 꽂을 수 있는 크기가 다양한 원판들이 있고, 퍼즐을 시작하기 전에는 한 기둥에 원판들이 작은 것이 위에 있도록 순서대로 쌓여 있습니다.<br>
+게임의 목적은 다음 두 가지 조건을 만족하게 하면서, 한 기둥에 꽂힌 원판들을 그 순서 그대로 다른 기둥으로 옮겨서 다시 쌓는 것입니다.</p>
 <ol>
-<li>목록에서 최소값을 찾습니다.</li>
-<li>찾은 최소값을 맨 앞의 값(혹은 현재 위치의 값)과 교체합니다.</li>
-<li>배열의 전체 요소가 정렬될 때까지 이 과정을 반복합니다.</li>
+<li>한 번에 하나의 원판만 옮길 수 있습니다.</li>
+<li>큰 원판이 작은 원판 위에 있어서는 안 됩니다.</li>
 </ol>
-<p>지속적으로 최소값을 선택하는 과정을 수행하기 때문에 이 알고리즘을 선택 정렬이라고 부릅니다.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selection_sort</span><span class="params">(li)</span>:</span></span><br><span class="line">    n = len(li)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n - <span class="number">1</span>):</span><br><span class="line">        min_idx = i</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>, n):</span><br><span class="line">            <span class="keyword">if</span> li[min_idx] &gt; li[j]:</span><br><span class="line">                min_idx = j</span><br><span class="line">        li[i], li[min_idx] = li[min_idx], li[i]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        num_data = int(input(<span class="string">'데이터 개수(종료:0):'</span>))</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> num_data:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        start = time.time()</span><br><span class="line">        data = [random.randint(<span class="number">1</span>, <span class="number">100</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(num_data)]</span><br><span class="line">        print(data)</span><br><span class="line">        selection_sort(data)</span><br><span class="line">        print(data)</span><br><span class="line">        end = time.time()</span><br><span class="line">        elips = end-start</span><br><span class="line">        <span class="comment"># print(data)</span></span><br><span class="line">        print(<span class="string">"&#123;:0.2f&#125;"</span>.format(elips))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="number">0</span></span><br><span class="line">a = <span class="string">"A"</span>  <span class="comment"># 출발</span></span><br><span class="line">b = <span class="string">"B"</span>  <span class="comment"># 중간</span></span><br><span class="line">c = <span class="string">"C"</span>  <span class="comment"># 도착</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hanoi</span><span class="params">(n, a, b, c)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        print(<span class="string">"&#123;&#125;번째 원반을 &#123;&#125;로 이동"</span>.format(n, c))</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    hanoi(n - <span class="number">1</span>, a, c, b)</span><br><span class="line">    print(<span class="string">"&#123;&#125;번째 원반을 &#123;&#125;로 이동"</span>.format(n, c))</span><br><span class="line">    hanoi(n - <span class="number">1</span>, b, a, c)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    hanoi(<span class="number">3</span>, a, b, c)</span><br></pre></td></tr></table></figure>
                     
                         
 
@@ -294,7 +225,7 @@
                     
                     
                         <p>
-                            <a href="/2019/07/24/2019-07-24-선택-정렬/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/08/05/2019-08-05-하노이의탑/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -312,15 +243,15 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/07/23/2019-07-23-버블정렬/" aria-label=": 2019-07-23 버블정렬">
-                            2019-07-23 버블정렬
+                        <a class="link-unstyled" href="/2019/08/01/2019-08-01-검색/" aria-label=": 2019-08-01 검색">
+                            2019-08-01 검색
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-07-23T19:04:46+09:00">
+    <time datetime="2019-08-01T19:04:46+09:00">
 	
-		    2019/07/23
+		    2019/08/01
     	
     </time>
     
@@ -336,12 +267,23 @@
             
                 <div class="postShorten-content">
                     <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h2>버블 정렬(Bubble Sorting)이란?</h2>
-<p>버블 정렬은 간단한 정렬 알고리즘입니다. 버블 정렬은 입력 배열의 i번째 요소와 i+1번째 요소를 비교하여 i번째 요소가 i+1 번째 요소보다 클 경우 두 요소의 위치를 바꾸는 작업을 입력 배열의 첫번째부터 마지막까지 반복하비다. 더 이상 교체가 필요없을 때 까지 이 과정을 반복합니다. 일반적으로 버블 정렬보다 삽입 정렬의 복잡도가 더 좋습니다.</p>
-<h3>성능</h3>
-<p>최악의 경우 복잡도 : O(n<sup>2</sup>)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span><span class="params">(arr)</span>:</span></span><br><span class="line">    n = len(arr)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n<span class="number">-1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n-i<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> arr[j] &gt; arr[j+<span class="number">1</span>]:</span><br><span class="line">                arr[j], arr[j+<span class="number">1</span>] = arr[j+<span class="number">1</span>], arr[j]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    arr = [<span class="number">7</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">10</span>]</span><br><span class="line">    bubble_sort(arr)</span><br><span class="line">    print(arr)</span><br></pre></td></tr></table></figure>
-
+<h2>검색이란?</h2>
+<p>컴퓨터 공학에서 말하는 검색이란 어떤 요소들의 집합에서 특정 속성을 가지는 요소를 찾는 과정을 말합니다. 요소들은 데이터베이스의 레코드, 배열의 요소, 파일의 텍스트, 트리의 노드, 그래프의 정점 혹은 간선이거나 또는 다른 검색 공간의 기타 요소들일 수 있습니다.</p>
+<h2>검색의 종류</h2>
+<ul>
+<li>불규칙 선형 검색</li>
+<li>정렬/규칙 선형검색</li>
+<li>이진 검색</li>
+</ul>
+<h4>불규칙 선형 검색</h4>
+<p>배열의 요소들이 정렬되어 있지 않으면 어떤 요소를 찾고 싶다면 주어신 배열에 해당 요소가 있는지를 모든 요소에 대해 검사해야 합니다.</p>
+<p>시간 복잡도 : 최악의 경우 배열의 모든 요소를 검사해야 하기 때문에 O(n)</p>
+<h4>정렬/규칙 선형 검색</h4>
+<p>배열이 정렬되었을 경우 해당 배열이 찾고자 하는 요소를 가지고 있는지 여부를 알기 위해 배열의 모든 요소를 조사할 필요가 없습니다.</p>
+<p>시간 복잡도 : 최악의 경우 배열의 모든 요소를 검사해야 하기 때문에 O(n)</p>
+<h4>이진 검색</h4>
+<p>사전에서 어떤 단어를 찾는다고 생각해보면, 일반적으로 인접한 페이지를 펴서 거기서부터 찾기 시작합니다. 그리고 우리가 찾는 단어를 찾으면 검색은 끝이 납니다. 펼친 페이지가 찾고자 하는 단어 이전이면, 나머지 페이지들을 가지고 처음 과정을 반복하고 그렇지 않으면 앞 페이지에 처음 과정을 반복합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_serarch</span><span class="params">(a, n, data)</span>:</span></span><br><span class="line">    low = <span class="number">0</span></span><br><span class="line">    high = n - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> low &lt;= high:</span><br><span class="line">        mid = low + (high - low) // <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> a[mid] == data:</span><br><span class="line">            <span class="keyword">return</span> mid</span><br><span class="line">        <span class="keyword">elif</span> a[mid] &lt; data:</span><br><span class="line">            low = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            high = mid - <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line">    n = len(a)</span><br><span class="line">    search = <span class="number">7</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">f'<span class="subst">&#123;search&#125;</span>의 index는: <span class="subst">&#123;binary_serarch(a, n, <span class="number">7</span>)&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
                     
                         
 
@@ -349,7 +291,67 @@
                     
                     
                         <p>
-                            <a href="/2019/07/23/2019-07-23-버블정렬/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/08/01/2019-08-01-검색/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/07/30/2019-07-30-퀵정렬/" aria-label=": 2019-07-30 퀵정렬">
+                            2019-07-30 퀵정렬
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-07-30T19:04:46+09:00">
+	
+		    2019/07/30
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/알고리즘/">알고리즘</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<h2>퀵 정렬(Quick) Sort)이란?</h2>
+<p>퀵 정렬 또한 분할 정복 알고리즘 기술의 좋은 예입니다. 퀵 정렬은 분할 교한 정렬이라고도 하며 요소들을 정렬하기 위해 재귀 호출을 사용합니다.</p>
+<h2>알고리즘</h2>
+<p>재귀 호출 알고리즘은 4단계로 구성됩니다.</p>
+<ol>
+<li>배열에 정렬될 요소가 하나 이하일 때 return 합니다.</li>
+<li>피봇(pivot) 지점 역할을 하는 요소를 배열에서 선택합니다</li>
+<li>배열을 두개의 부분으로 분할합니다. 하나는 피봇 값 보다 큰 요소들이고 다른 하나는 피봇 값 보다 작은 요소들이 됩니다.</li>
+<li>원래 배열을 양분한 두 배열에 대해 재귀적으로 알고리즘을 반복합니다.</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random <span class="keyword">as</span> rd</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_pivot_index</span><span class="params">(li, start, mid, end)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    get_pivot_index(li, start, mid, end) -&gt; index</span></span><br><span class="line"><span class="string">    리스트의 맨 처음 값, 가운데 값, 마지막 값 중에서</span></span><br><span class="line"><span class="string">    중간 값을 가진 인덱스를 반환한다</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    idx_li = [start, mid, end]</span><br><span class="line">    <span class="keyword">if</span> li[idx_li[<span class="number">0</span>]] &gt; li[idx_li[<span class="number">1</span>]]:</span><br><span class="line">        idx_li[<span class="number">0</span>], idx_li[<span class="number">1</span>] = idx_li[<span class="number">1</span>], idx_li[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> li[idx_li[<span class="number">1</span>]] &gt; li[idx_li[<span class="number">2</span>]]:</span><br><span class="line">        idx_li[<span class="number">1</span>], idx_li[<span class="number">2</span>] = idx_li[<span class="number">2</span>], idx_li[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">if</span> li[idx_li[<span class="number">0</span>]] &gt; li[idx_li[<span class="number">1</span>]]:</span><br><span class="line">        idx_li[<span class="number">0</span>], idx_li[<span class="number">1</span>] = idx_li[<span class="number">1</span>], idx_li[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> idx_li[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort_sub</span><span class="params">(li, start, end)</span>:</span></span><br><span class="line">    <span class="comment"># base case</span></span><br><span class="line">    <span class="keyword">if</span> start &gt;= end:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    left = start</span><br><span class="line">    right = end</span><br><span class="line">    mid = (start + end) // <span class="number">2</span></span><br><span class="line">    pivot_idx = get_pivot_index(li, left, mid, right)</span><br><span class="line">    li[pivot_idx], li[mid] = li[mid], li[pivot_idx]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">        <span class="keyword">while</span> li[left] &lt; li[pivot_idx]:</span><br><span class="line">            left += <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> li[right] &gt; li[pivot_idx]:</span><br><span class="line">            right -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> left &lt;= right:</span><br><span class="line">            li[left], li[right] = li[right], li[left]</span><br><span class="line">            left += <span class="number">1</span></span><br><span class="line">            right -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    quick_sort_sub(li, start, right)</span><br><span class="line">    quick_sort_sub(li, left, end)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        num_data = int(input(<span class="string">"데이터 개수(종료:0) : "</span>))</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> num_data:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        data = [rd.randint(<span class="number">1</span>, <span class="number">100</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(num_data)]</span><br><span class="line">        print(data)</span><br><span class="line">        quick_sort_sub(data, <span class="number">0</span>, len(data) - <span class="number">1</span>)</span><br><span class="line">        print(data)</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/07/30/2019-07-30-퀵정렬/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -371,7 +373,7 @@
             </a>
           </li>
         
-        <li class="pagination-number">page 1 of 3</li>
+        <li class="pagination-number">page 1 of 4</li>
     </ul>
 </div>
 
@@ -498,7 +500,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                77 개의 포스트가 있습니다.
+                84 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

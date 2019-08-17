@@ -186,6 +186,92 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/05/19/2019-05-19-아마존인증서/" aria-label=": 2019-05-19 아마존 인증서 발급받기">
+                            2019-05-19 아마존 인증서 발급받기
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-05-19T17:37:32+09:00">
+	
+		    2019/05/19
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/기타/">기타</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>아마존 인증서 발급 받기</h1>
+<p>Domain</p>
+<ul>
+<li>naver.com</li>
+</ul>
+<p>sub Domain</p>
+<ul>
+<li>blog.naver.com</li>
+<li>static.web.nvaer.com</li>
+</ul>
+<hr>
+<p>이메일 검증이 편하긴 하다(1년마다 갱신 해야함)<br>
+DNS검증을 하게되면 자동으로 갱신이 된다.</p>
+<hr>
+<p><img src="/image/amazon0.png" alt></p>
+<p>Certificate Manager로 들어간다</p>
+<hr>
+<p><img src="/image/amazon1.png" alt></p>
+<p>[인증서 요청]을 클릭하게되면 위와 같은 화면이 나온다<br>
+*(와일드카드)로 발급받게되면 서브도메인 전체에 대한 적용이 가능하다</p>
+<hr>
+<p><img src="/image/amazon2.png" alt></p>
+<p>검증방법에서는 DNS 검증을 선택하고 [검토]버튼을 누른다</p>
+<hr>
+<p><img src="/image/amazon3.png" alt></p>
+<p>검증 방법과 신청 내용을 확인하고 [확인 및 요청]버튼을 클릭한다</p>
+<hr>
+<p><img src="/image/amazon4.png" alt></p>
+<p>도메인 옆의 삼각형을 누르면 상세적보가 나오는데 [Route 53에서 레코드 생성] 버튼을 클릭한다<br>
+레코드 내용을 확인하고 [생성] 버튼을 클릭한다</p>
+<hr>
+<p><img src="/image/amazon6.png" alt></p>
+<p>생성 성공 메시지를 확인하고 [계속]버튼을 클릭한다</p>
+<hr>
+<p><img src="/image/amazon7.png" alt></p>
+<p>다시 인증서 목록으로 돌아오면 검증 미완료 상태를 확인할 수 있고<br>
+시간이 지나면 검증 완료가 되고 인증서가 발급된다</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/05/19/2019-05-19-아마존인증서/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/05/01/2019-05-01-Web-framwork/" aria-label=": 2019-05-01 웹프레임워크와 라이브러리의 차이">
                             2019-05-01 웹프레임워크와 라이브러리의 차이
                         </a>
@@ -388,128 +474,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/10/regular_expression/" aria-label=": 2019-04-10 reguler-expression">
-                            2019-04-10 reguler-expression
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-10T15:23:46+09:00">
-	
-		    2019/04/10
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/기타/">기타</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>정규 표현식</h1>
-<ul>
-<li>r`[] -&gt; row string(파이썬에서만 쓰임)
-<ul>
-<li>[a-z] : a~z까지</li>
-</ul>
-</li>
-</ul>
-<p>Match -&gt; 문자열의 처음부터 찾고 안맞으면 False<br>
-Search -&gt; 문자열 중에서 하나라도 있으면 return</p>
-<ul>
-<li>
-<p>반복</p>
-<ol>
-<li>* : 0 ~ 무한대 -&gt; {0, 무한대}</li>
-<li>+ : 1 ~ 무한대 -&gt; {1, 무한대}</li>
-<li>? : 0 ~ 1 -&gt; {0, 1}</li>
-<li>{m} : m개</li>
-<li>{m,n} : m개부터 n개까지</li>
-</ol>
-</li>
-<li>
-<p>^</p>
-<ol>
-<li>일반적인 경우 문자열의 시작</li>
-<li>[^abc] : a,b,c가 모두 아닌 모든 문자열</li>
-</ol>
-</li>
-<li>
-<p>$</p>
-<ol>
-<li>일반적인 경우 문자열의 끝</li>
-</ol>
-</li>
-<li>
-<p>.</p>
-<ul>
-<li>일반적으로는 모든 문자들 나타냄</li>
-</ul>
-</li>
-<li>
-<p>r</p>
-<ul>
-<li>r’ '안에 있으면 모든 특수문자들이 효력을 잃음</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>특수문자
-<ul>
-<li>\ : \</li>
-<li>\d : [0-9]</li>
-<li>\D : [^0-9]</li>
-<li>\s(white space) : \t, \n, space, \r</li>
-<li>\S : not white space</li>
-<li>\w : [a-zA-Z0-9]</li>
-<li>\W : [^a-zA-Z0-9]</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Group
-<ul>
-<li>pattern = r’([0-9]{3})[-./ ]<em>(\d{3,4})[-./ ]</em>(\d{4})’</li>
-<li>그룹을 3개로 나눔</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>Ex) 변수할당 구분하기</p>
-<ul>
-<li>r’([a-zA-Z_]\w*)\s*=\s*([0-9]+)’</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/10/regular_expression/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -656,7 +620,7 @@ Search -&gt; 문자열 중에서 하나라도 있으면 return</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                77 개의 포스트가 있습니다.
+                84 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
