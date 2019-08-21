@@ -186,6 +186,144 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/08/17/2019-08-17-이진트리/" aria-label=": 2019-08-17 이진 트리(Binary Tree)">
+                            2019-08-17 이진 트리(Binary Tree)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-08-17T19:04:46+09:00">
+	
+		    2019/08/17
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/자료구조/">자료구조</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<h2>이진 트리(Binary Tree)란 무엇인가?</h2>
+<p>모든 노드들이 최대 2개의 자식을 가질 때 이를 이진 트리라고 합니다. root에서부터 오른쪽과 왼쪽의 하위 트리들로 분리하여 아래와 같이 나타낼 수 있습니다</p>
+<p><img src="/image/binarytree1-1.png" alt="img"></p>
+<h2>이진트리의 유형</h2>
+<h4>포화 이진트리(Full Binary Tree)</h4>
+<p>모든 leaf 노드들이 동일한 레벨인 트리를 포화 이진트리라 합니다.</p>
+<p><img src="/image/binarytree1-2.png" alt="img"></p>
+<h4>완전 이진 트리(Complete Binary Tree)</h4>
+<p>마지막 레벨을 제외한 각 레벨이 빠짐없이 채워져 있고, 마지막 레벨은 중간에 빈칸 없이 왼쪽부터 노드들로 채워져 있어야 합니다.</p>
+<p><img src="/image/binarytree1-3.png" alt="img"></p>
+<h2>트리의 연산</h2>
+<p>기본 연산</p>
+<ul>
+<li>트리에 요소를 삽입</li>
+<li>트리에서 요소를 제거</li>
+<li>요소 검색(Searching)</li>
+<li>트리 운행(Traversing)</li>
+</ul>
+<p>보조 연산</p>
+<ul>
+<li>트리의 크기 찾기</li>
+<li>트리의 높이 찾기</li>
+<li>최대 합을 가진 레벨 찾기</li>
+<li>주어진 둘 이상의 노드에 대한 최소 공통 조상(LCA) 찾기</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/08/17/2019-08-17-이진트리/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/08/16/2019-08-16-트리/" aria-label=": 2019-08-16 트리(Tree)">
+                            2019-08-16 트리(Tree)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-08-16T19:04:46+09:00">
+	
+		    2019/08/16
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/자료구조/">자료구조</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<h2>트리란 무엇인가?</h2>
+<p>트리란 연결 리스트와 유사한 자료 구조지만 연결 리스트가 단순히 다음 노드를 가리키는 선형이라면 트리느 각 노드가 여러 개의 노드를 가리키는 비선형입니다. 트리는 비선형 자료 구조의 대표적인 예이면서, 그래픽 형태로 계층적 구조의 특성을 표현하는 방법입니다. 트리의 추상 자료형(ADT)에서는 요소들의 순서가 중요하지 않습니다. 만일 순서가 중요하다면 연결 리스트, 스택, 큐와 같은 선형 자료 구조를 사용해야 합니다.</p>
+<h2>용어 정의</h2>
+<p><img src="/image/tree1-1.png" alt="img"></p>
+<ul>
+<li>트리의 root는 부모를 가지지 않습니다. 트리에는 최대 하나의 root노드가 있을 수 있습니다.</li>
+<li>edge는 부모와 자식을 잇는 연결 선입니다(그림에서의 모든 연결 선).</li>
+<li>자식이 없는 노드를 leaf 노드라고 부릅니다(E, J, K, H, I).</li>
+<li>같은 부모의 자식을 siblings라고 부릅니다(E, J, K, H, I).</li>
+<li>노드의 depth는 root에서 해당 노드까지 경로(path)의 길이입니다.(G의 depth는 2(A-C-G)입니다)</li>
+<li>트리의 height는 트리 내 모든 노드들 중 높이가 가장 큰 값이고 트리의 depth는 모든 노드들 중에서 depth가 가장 큰 값입니다.</li>
+<li>지정된 depth에 위치한 모든 노드들을 트리의 레벨(level)이라 부릅니다. (예에서 B, C 그리고 D는 같은 레벨입니다). Root 노드의 레벨은 0입니다.</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/08/16/2019-08-16-트리/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/07/18/2019-07-18-힙/" aria-label=": 2019-07-18 힙(Heap)">
                             2019-07-18 힙(Heap)
                         </a>
@@ -243,142 +381,6 @@
                     
                         <p>
                             <a href="/2019/07/18/2019-07-18-힙/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/07/15/2019-07-15-우선순위큐/" aria-label=": 2019-07-15 우선순위 큐(Priority Queue)">
-                            2019-07-15 우선순위 큐(Priority Queue)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-07-15T19:04:46+09:00">
-	
-		    2019/07/15
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/자료구조/">자료구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h2>우선순위 큐(Priority Queue)란?</h2>
-<p>요소들의 집합 내에서 최대 또는 최솟값을 가진 요소를 찾아야 할 때가 있는데, 우선순위 큐 추상 데이터 형(AD이T)이 이런 연산을 제공합니다. 우선순위 큐 추상 데이터형은 Insert, Delete Min 또는 Delete Max와 같은 기능을 제공하는 데이터 구조입니다. 우선순위 큐의 차이점은 큐에 입력되는 순서가 처리되는 순서와 같지 않을 수 있다는 것입니다. 작업 스케줄링이 바로 이런 우선순위 큐를 활용하는 예입니다.</p>
-<p><img src="/image/pqueue1-1.png" alt="img"></p>
-<p>우선순위 큐에서 더 작은 키를 가진 아이템이 높은 우선순위를 가지는 것(가장 작은 요소가 삭제됨)을 오름차순 큐라고 하고 더 높은 키를 가진 아이템이 높은 우선순위를 가지는 것(가장 큰 요소가 삭제됨)을 내림차순 큐라고 부릅니다.</p>
-<h2>우선 순위 큐의 추상화(Priority Queue ADT)</h2>
-<p>우선 순위 큐의 주요 연산들</p>
-<ul>
-<li>Insert(key, value) : 우선 순위 큐에 키와 함께 데이터를 삽입합니다. 삽입된 요소들은 키를 기준으로 정렬됩니다.</li>
-<li>DeleteMin/DeleteMax: 최소/최대 키를 가진 요소를 삭제하고 삭제된 요소를 반환합니다.</li>
-<li>GetMinimum/GetMaximum: 최소/최대 키를 가진 요소를 반환합니다.</li>
-</ul>
-<p>우선 순위 큐의 보조 연산들</p>
-<ul>
-<li>Size: 우선순위 큐 내의 요소들의 수를 반환합니다.</li>
-<li>Heap Sort: 우선 순위(키)에 따라 우선 순위 큐 내의 요소들을 정렬합니다.</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/07/15/2019-07-15-우선순위큐/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/07/11/2019-07-11-큐(Queue)/" aria-label=": 2019-07-11 큐(Queue)">
-                            2019-07-11 큐(Queue)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-07-11T19:04:46+09:00">
-	
-		    2019/07/11
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/자료구조/">자료구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h2>큐(Queue)란?</h2>
-<p>큐는(연결 리스트와 스택과 같이)데이터를 저장하는데 사용되는 자료 구조입니다. 큐에서는 데이터가 도착하는 순서가 중요합니다. 일반적으로 큐는 시작 부분부터 순차적으로 기다리고 있는 사람이나 사물의 줄입니다.</p>
-<ul>
-<li>정의: 큐란 끝에 삽입되고 열의 처음이 삭제되는 순서를 가진 열입니다. 먼저 삽입된 요소가 먼저 삭제됩니다. 따라서 선입선출(First In Fisrt Out) 또는 후입 후출(Last In Last Out)이라 불립니다.</li>
-</ul>
-<p>큐에서 수행할 수 있는 연산에도 특별한 이름이 정해져있습니다. 요소가 큐에 삽입되는 것을 인큐(enqueue), 요소가 큐에서 제거되는 것을 디큐(dequeue)라 부릅니다.</p>
-<p><img src="/image/queue1-1.png" alt="img"></p>
-<h2>큐의 추상 자료형(ADT)</h2>
-<p>큐의 삽입과 삭제는 FIFO(First In First Out) 방식을 따라야 합니다.</p>
-<p>큐의 주요 연산들</p>
-<ul>
-<li>Enqueue(data): 큐의 끝에 요소를 삽입합니다</li>
-<li>Dequeue() : 큐의 맨 앞에서 요소를 제거하고 반환합니다.</li>
-</ul>
-<p>큐의 보조 연산들</p>
-<ul>
-<li>Front(): 요소를 제거하지 않고 큐의 제일 앞에 있는 요소를 반환 합니다.</li>
-<li>QueueSize(): 큐에 저장된 요소의 수를 반환합니다.</li>
-<li>IsEmptyQueue(): 큐에 요소가 저장되어있는지 여부를 알려줍니다.</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 내부 구현체</span></span><br><span class="line">        self.container = list()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.container:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># wrapping function</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.container.append(data)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.container.pop(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">front</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.container[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">queue_size</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self.container)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    Q = Queue()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">6</span>):</span><br><span class="line">        print(<span class="string">"&#123;&#125;번째 원소 삽입"</span>.format(i))</span><br><span class="line">        Q.enqueue(i)</span><br><span class="line">        print(<span class="string">"&#123;&#125;번째 원소 :  &#123;&#125;"</span>.format(i, Q.peek()))</span><br><span class="line"></span><br><span class="line">    print(<span class="string">'*'</span> * <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> Q.empty():</span><br><span class="line">        print(<span class="string">f'Q.dequeue() 실행: <span class="subst">&#123;Q.dequeue()&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/07/11/2019-07-11-큐(Queue)/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -528,7 +530,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                84 개의 포스트가 있습니다.
+                86 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

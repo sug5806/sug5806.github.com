@@ -186,6 +186,143 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/07/11/2019-07-11-큐(Queue)/" aria-label=": 2019-07-11 큐(Queue)">
+                            2019-07-11 큐(Queue)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-07-11T19:04:46+09:00">
+	
+		    2019/07/11
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/자료구조/">자료구조</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<h2>큐(Queue)란?</h2>
+<p>큐는(연결 리스트와 스택과 같이)데이터를 저장하는데 사용되는 자료 구조입니다. 큐에서는 데이터가 도착하는 순서가 중요합니다. 일반적으로 큐는 시작 부분부터 순차적으로 기다리고 있는 사람이나 사물의 줄입니다.</p>
+<ul>
+<li>정의: 큐란 끝에 삽입되고 열의 처음이 삭제되는 순서를 가진 열입니다. 먼저 삽입된 요소가 먼저 삭제됩니다. 따라서 선입선출(First In Fisrt Out) 또는 후입 후출(Last In Last Out)이라 불립니다.</li>
+</ul>
+<p>큐에서 수행할 수 있는 연산에도 특별한 이름이 정해져있습니다. 요소가 큐에 삽입되는 것을 인큐(enqueue), 요소가 큐에서 제거되는 것을 디큐(dequeue)라 부릅니다.</p>
+<p><img src="/image/queue1-1.png" alt="img"></p>
+<h2>큐의 추상 자료형(ADT)</h2>
+<p>큐의 삽입과 삭제는 FIFO(First In First Out) 방식을 따라야 합니다.</p>
+<p>큐의 주요 연산들</p>
+<ul>
+<li>Enqueue(data): 큐의 끝에 요소를 삽입합니다</li>
+<li>Dequeue() : 큐의 맨 앞에서 요소를 제거하고 반환합니다.</li>
+</ul>
+<p>큐의 보조 연산들</p>
+<ul>
+<li>Front(): 요소를 제거하지 않고 큐의 제일 앞에 있는 요소를 반환 합니다.</li>
+<li>QueueSize(): 큐에 저장된 요소의 수를 반환합니다.</li>
+<li>IsEmptyQueue(): 큐에 요소가 저장되어있는지 여부를 알려줍니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 내부 구현체</span></span><br><span class="line">        self.container = list()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.container:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># wrapping function</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.container.append(data)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.container.pop(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">front</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.container[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">queue_size</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self.container)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    Q = Queue()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">6</span>):</span><br><span class="line">        print(<span class="string">"&#123;&#125;번째 원소 삽입"</span>.format(i))</span><br><span class="line">        Q.enqueue(i)</span><br><span class="line">        print(<span class="string">"&#123;&#125;번째 원소 :  &#123;&#125;"</span>.format(i, Q.peek()))</span><br><span class="line"></span><br><span class="line">    print(<span class="string">'*'</span> * <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> Q.empty():</span><br><span class="line">        print(<span class="string">f'Q.dequeue() 실행: <span class="subst">&#123;Q.dequeue()&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/07/11/2019-07-11-큐(Queue)/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/07/08/2019-07-08-스택/" aria-label=": 2019-07-08 스택(Stack)">
+                            2019-07-08 스택(Stack)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-07-08T19:04:46+09:00">
+	
+		    2019/07/08
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/자료구조/">자료구조</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<h2>스택(Stack)이란?</h2>
+<p>스택은 데이터를 저장하는데 사용되는(연결 리스트와 유사한) 간단한 자료 구조입니다. 스택은 데이터가 위치하는 순서가 매우 중요합니다. 식당에 쌓여있는 접시들이 좋은 예입니다. 설거지가 끝난 접시가 순서대로 쌓이는 것이 스택과 같습니다(First In Last Out). 이때 제일 처음 설거지를 했던 접시는 제일 마지막에 사용됩니다. 스택에서 데이터 변경은 특별 이름이 정해져 있습니다. 스택에 요소가 삽입되는 것을 구체적으로 push라 하고 스택에서 요소를 제거하는 것을 pop이라 합니다. 비어있는 스택에서 pop을 시도하는 것을 언더플로우(underflow), 꽉 찬 스택에 요소를 삽입하고자 하는 것을 오버플로우(overflow)라고 합니다.</p>
+<p><img src="/image/stack1-1.png" alt="img"></p>
+<h2>스택의 추상 자료형(ADT)</h2>
+<p>스택은 아래 연산들로 추상화할 수 있습니다.</p>
+<p>스택의 주요 연산</p>
+<ul>
+<li>push(data) : 데이터를 스택에 삽입합니다</li>
+<li>pop() : 스택에서 top이 가리키는 데이터를 제거하고 반환합니다.</li>
+</ul>
+<p>스택의 보조 연산</p>
+<ul>
+<li>top() : 스택에 top이 가리키는 요소를 반환합니다.</li>
+<li>size() : 스택의 저장된 데이터의 수를 반환합니다.</li>
+<li>is_empty(): 스택이 비어있는지 여부를 반환합니다</li>
+<li>is_full(): 스택이 꽉 찼는지 여부를 반환합니다</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.container = list()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.container:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.container.append(data)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.container.pop()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">top</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.container[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    s = Stack()</span><br><span class="line"></span><br><span class="line">    s.push(<span class="number">1</span>)</span><br><span class="line">    s.push(<span class="number">2</span>)</span><br><span class="line">    s.push(<span class="number">3</span>)</span><br><span class="line">    s.push(<span class="number">4</span>)</span><br><span class="line">    s.push(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> s.empty():</span><br><span class="line">        print(s.pop(), end=<span class="string">'  '</span>)</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/07/08/2019-07-08-스택/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/07/05/2019-07-05-연결리스트3/" aria-label=": 2019-07-05 연결 리스트(Linked List)3">
                             2019-07-05 연결 리스트(Linked List)3
                         </a>
@@ -231,147 +368,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/07/03/2019-07-03-연결리스트2/" aria-label=": 2019-07-03 연결 리스트(Linked List)2">
-                            2019-07-03 연결 리스트(Linked List)2
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-07-03T19:04:46+09:00">
-	
-		    2019/07/03
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/자료구조/">자료구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h2>단일 연결 리스트(Single Linked List)</h2>
-<p>일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.</p>
-<p><img src="/image/ll1-1.png" alt="img"></p>
-<h5>리스트의 기본 동작</h5>
-<ul>
-<li>리스트 탐색</li>
-<li>리스트 내 아이템 삽입</li>
-<li>리스트에서 아이템을 삭제</li>
-</ul>
-<h5>단일 연결 리스트의 코드</h5>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data=None)</span>:</span></span><br><span class="line">        self.__data = data</span><br><span class="line">        self.__link = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 소멸자</span></span><br><span class="line">    <span class="comment"># 객체가 사라지기 전에</span></span><br><span class="line">    <span class="comment"># 반드시 한번 호출 하는것을 보장한다</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">f"node[<span class="subst">&#123;self.__data&#125;</span>] deleted!! "</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">data</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__data</span><br><span class="line"></span><br><span class="line"><span class="meta">    @data.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">data</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.__data = data</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">link</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__link</span><br><span class="line"></span><br><span class="line"><span class="meta">    @link.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">link</span><span class="params">(self, link)</span>:</span></span><br><span class="line">        self.__link = link</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SLinkedList</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.head = <span class="literal">None</span></span><br><span class="line">        self.d_size = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.d_size == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.d_size</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        new_node = Node(data)</span><br><span class="line">        new_node.link = self.head</span><br><span class="line">        self.head = new_node</span><br><span class="line">        self.d_size += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, target)</span>:</span></span><br><span class="line">        temp = self.head</span><br><span class="line">        <span class="keyword">while</span> temp:</span><br><span class="line">            <span class="keyword">if</span> temp.data == target:</span><br><span class="line">                <span class="keyword">return</span> temp.data</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                temp = temp.link</span><br><span class="line">        <span class="keyword">return</span> temp</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.head <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.head = self.head.link</span><br><span class="line">            self.d_size -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_list</span><span class="params">(sll)</span>:</span></span><br><span class="line">    cur = sll.head</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(sll.size()):</span><br><span class="line">        print(cur.data, end=<span class="string">"  "</span>)</span><br><span class="line">        cur = cur.link</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    SLL = SLinkedList()</span><br><span class="line">    SLL.add(<span class="number">1</span>)</span><br><span class="line">    SLL.add(<span class="number">3</span>)</span><br><span class="line">    SLL.add(<span class="number">4</span>)</span><br><span class="line">    SLL.add(<span class="number">5</span>)</span><br><span class="line">    SLL.add(<span class="number">8</span>)</span><br><span class="line">    show_list(SLL)</span><br><span class="line">    print()</span><br><span class="line">    print(<span class="string">'*'</span> * <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">    target = <span class="number">4</span></span><br><span class="line">    result = SLL.search(target)</span><br><span class="line">    <span class="keyword">if</span> result:</span><br><span class="line">        print(<span class="string">f'target = <span class="subst">&#123;target&#125;</span>'</span>)</span><br><span class="line">        print(<span class="string">f'searched data : <span class="subst">&#123;result&#125;</span>'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">f'there is no such data'</span>)</span><br><span class="line"></span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/07/03/2019-07-03-연결리스트2/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/07/01/2019-07-01-연결리스트1/" aria-label=": 2019-07-01 연결 리스트(Linked List)1">
-                            2019-07-01 연결 리스트(Linked List)1
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-07-01T19:04:46+09:00">
-	
-		    2019/07/01
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/자료구조/">자료구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h2>연결 리스트란?</h2>
-<p>연결 리스트(Linked list)는 데이터 집합을 저장할 때 사용되는 자료 구조입니다. 연결 리스트는 다음과 같은 속성을 가집니다.</p>
-<ul>
-<li>연속된 요소들은 포인터로 연결됩니다.</li>
-<li>마지막 요소는 NULL을 가리킵니다.</li>
-<li>프로그램 실행 중에 크기가 늘거나 줄 수 있습니다.</li>
-<li>필요한 만큼 만들 수 있습니다.(시스템 메모리를 다 쓸 때까지).</li>
-<li>메모리 공간을 낭비하지 않습니다.</li>
-</ul>
-<h5>기본 구조</h5>
-<p><img src="/image/ll1-1.png" alt="img"></p>
-<h2>연결 리스트의 추상 데이터 형(ADT)</h2>
-<p>연결 리스트의 추상 함수는 다음과 같습니다.</p>
-<ul>
-<li>연결 리스트 주요 함수
-<ul>
-<li>Insert : 리스트에 요소를 추가합니다.</li>
-<li>Delete : 리스트의 지정된 위치의 요소를 제거하고 반환합니다.</li>
-</ul>
-</li>
-<li>연결 리스트의 보조 함수
-<ul>
-<li>Delete List : 리스트의 모든 요소들을 제거합니다.</li>
-<li>Count : 리스트 내 모든 요소의 수를 반환합니다.</li>
-</ul>
-</li>
-</ul>
-<h2>연결 리스트의 장점</h2>
-<p>연결 리스트는 장단점을 가지고 있습니다. 연결 리스트의 장점은 일정 시간(고정된 시간) 내에 확장될 수 있다는 것입니다. 배열의 경우 생성할 때 요소들의 수 만큼 메모리를 할당해야 합니다. 배열에 새로운 요소를 추가하기 위해서는 새로운 배열을 생성하고 기존의 배열의 요소들을 새로운 배열로 복사해야 하기 때문에 시간을 많이 소모 합니다. 연결리스트는 이러한 문제 없이 쉽게 새로운 요소를 추가할 수 있습니다.</p>
-<h2>연결 리스트의 단점</h2>
-<p>연결 리스트는 리스트 내 요소에 접근하는데 최악의 경우 O(n)을 가집니다. 비록 연결 리스트의 동적인 저장 공간의 할당이 큰 장점이라 하더라도 데이터의 정렬과 탐색의 오버헤드는 다른 상황을 만들 수 있습니다.</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/07/01/2019-07-01-연결리스트1/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -390,7 +386,7 @@
             </a>
           </li>
         
-        <li class="pagination-number">page 6 of 28</li>
+        <li class="pagination-number">page 6 of 29</li>
     </ul>
 </div>
 
@@ -518,7 +514,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                84 개의 포스트가 있습니다.
+                86 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
