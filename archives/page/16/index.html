@@ -186,6 +186,86 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/05/18/2019-05-18-소셜로그인구현/" aria-label=": 2019-05-18 Django social login(naver)">
+                            2019-05-18 Django social login(naver)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-05-18T18:32:46+09:00">
+	
+		    2019/05/18
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>네이버 소셜로그인 구현하기</h1>
+<h3>1. allauth 모듈 설치하기</h3>
+<ul>
+<li><code>pip install django-allauth</code></li>
+</ul>
+<h3>2. <code>settings.py</code> 수정하기</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 맨 마지막에 추가</span></span><br><span class="line">AUTHENTICATION_BACKENDS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment"># Needed to login by username in Django admin, regardless of `allauth`</span></span><br><span class="line">    <span class="string">'django.contrib.auth.backends.ModelBackend'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># `allauth` specific authentication methods, such as login by e-mail</span></span><br><span class="line">    <span class="string">'allauth.account.auth_backends.AuthenticationBackend'</span>,</span><br><span class="line">    </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">SITE_ID = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># INSTALLED_APPS에 추가하기</span></span><br><span class="line">    <span class="string">'django.contrib.sites'</span>,</span><br><span class="line">    <span class="string">'allauth'</span>,</span><br><span class="line">    <span class="string">'allauth.account'</span>,</span><br><span class="line">    <span class="string">'allauth.socialaccount'</span>,</span><br><span class="line">    <span class="comment"># 이 부분은 소셜로그인을 구현하고 싶은 사이트를 입력하면 된다</span></span><br><span class="line">    <span class="string">'allauth.socialaccount.providers.naver'</span>,</span><br></pre></td></tr></table></figure>
+<h3>3. app의 <code>urls.py</code>에 추가하기</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">'accounts'</span>, include(<span class="string">'allauth.urls'</span>)),</span><br></pre></td></tr></table></figure>
+<h3>4. DB migrate 하기</h3>
+<pre><code>* `python manage.py migate`
+</code></pre>
+<h3>5. 네이버 개발자 센터방문</h3>
+<p><img src="/image/naver1.png" alt></p>
+<ul>
+<li>사용하고자 하는 이름 작성</li>
+<li>권한은 원하는대로<br>
+<img src="/image/naver3.png" alt></li>
+<li>서비스 URL과 Callback URL을 위와 같이 적어준다</li>
+<li>만약 직접 서비스하고 있는 사이트가 있다면 서비스 URL에 자신의 사이트를 적어준다.</li>
+</ul>
+<h3>6. app의 <code>url.py</code>에 추가하기 2</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth.views <span class="keyword">import</span> LoginView, LogoutView</span><br><span class="line"></span><br><span class="line">path(<span class="string">'login/'</span>, LoginView.as_view(template_name=<span class="string">'account/login.html'</span>), name=<span class="string">'login'</span>),</span><br><span class="line">    path(<span class="string">'logout/'</span>, LogoutView.as_view(template_name=<span class="string">'account/logout.html'</span>), name=<span class="string">'logout'</span>),</span><br></pre></td></tr></table></figure>
+<h3>7. <code>./manage.py</code> admin 사이트로 접속</h3>
+<p><img src="/image/naver_admin.png" alt><br>
+맨 밑의 Social application으로 접속</p>
+<h3>8. Social application에서 추가하기</h3>
+<p><img src="/image/naver_admin2.png" alt></p>
+<ul>
+<li>위에서 Key와 ID는 네이버 개발자센터에서 발급받은 자신의 ID와 Key를 적으면 된다</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/05/18/2019-05-18-소셜로그인구현/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/05/17/2019-04-30-Bootstrap/" aria-label=": 2019-05-17 Django에 Bootstrap 적용하기">
                             2019-05-17 Django에 Bootstrap 적용하기
                         </a>
@@ -374,156 +454,6 @@ Q(title__incontains=‘1’)</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" aria-label=": 2019-05-15 Django 필터링 F, QuerySet 캐싱">
-                            2019-05-15 Django 필터링 F, QuerySet 캐싱
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-05-15T18:32:46+09:00">
-	
-		    2019/05/15
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/Django/">Django</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>F로 DB 속성 자체를 비교하여 추출할 수 있다</h1>
-<p>from django.db.models import F</p>
-<p>Ex) title이 text에 포함이 되어있느냐?</p>
-<p>Q로는 내 DB의 필드를 참조할 수 없어 한계치가 존재한다</p>
-<p>filter를 걸고 그 결과에 대해 또 filter를 걸 수 있다</p>
-<ul>
-<li>filter는 filter를 걸어도 실제로 값이 필요할때 실행을 하고 그 전에는 실행하지 않는다 -&gt; lazy-evaluation</li>
-</ul>
-<p>Ex) q = Document.objects.filter author__username=‘sangki’)</p>
-<p>from django.db.models import F<br>
-F : 컬럼 참조 -&gt; DB내의 필드를 직접 참조한다<br>
-Document.objects.filter(text__icontains=‘11’)</p>
-<p>select_related -&gt; DB에 부담을 줄 것이냐? 아니면 서버에 부담을 줄것이냐?<br>
-Document.objects.select_related(‘author’).all()</p>
-<ol>
-<li>select_related -&gt; Join Query를 만들어서 한큐에 데이터를 불러온다.
-<ul>
-<li>ForeingnKey까지만 묶을 수 있다.</li>
-<li>Join
-<ul>
-<li>author를 가져오는데 inner_join을 통해 DB access를 줄인다.</li>
-<li>inner_join : 서로 가지고 있는 데이터만 합쳐서 보여준다 -&gt; 교집합</li>
-<li>outer_join : 서로 가지고 있는 데이터와 함께 어떤 테이블을 기준으로 레코드를 가져오는데 없으면 null로 가져온다</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>prefetch_related -&gt; Join을 사용하지 않음
-<ul>
-<li>Document.objects.prefetch_related(‘author’).all()</li>
-<li>Document를 부르고, Category를 부러서 DB내에서 붙여서 하지않고 파이썬 코드에서 병합한다.</li>
-<li>ManyToMany 이런것도 지원함</li>
-<li>selete_related로 할수 없는 것은 prefetch_related를 사용한다.</li>
-</ul>
-</li>
-</ol>
-<p>select_related, prefetch_related를 사용하지 않는 경우<br>
-참조 테이블에 대한 데이터 질의를 항상 실행한다. = DB에 대해 access를 항상하여 부담 증가</p>
-<h1>QuerySet 캐시</h1>
-<p>장고 내에도 캐시가 있어 한번 질의를 실행하면 캐시에 저장한다.</p>
-<ul>
-<li>object_list = Document.objects.all()  :  쿼리가 실행되지 않음</li>
-<li>object_list[:4] : 4번까지 꺼내온다
-<ul>
-<li>LIMIT을 걸어 slicing을 하게되면 캐싱이 되지않는다</li>
-<li>한번 전체가 돌고 난뒤에 slicing을 하면 캐싱이 된다</li>
-<li>한번 다 돌고 평가가 되어야 캐싱이 일어난다</li>
-</ul>
-</li>
-</ul>
-<p>object_list = Document.objects.all() -&gt; 캐싱 아님<br>
-[object.title for object in object_list] -&gt; 캐싱</p>
-<p>object_list = Document.objects.all()<br>
-object_list[4] -&gt; 캐싱 아님<br>
-object_list[5] -&gt; 캐싱 아님</p>
-<p>object_list = Document.objects.all()<br>
-[object.title for object in object_list]<br>
-object_list[4] -&gt; 캐싱<br>
-object_list[5] -&gt; 캐싱</p>
-<h1>~을 제외하여 가져오기</h1>
-<p>Document.objects.exclude(title__incontains=‘1’) : 타이틀중에 1이 포함된 것을 제외하고 가져오기</p>
-<ul>
-<li>필터를 이용했을때는 필드를 나열하면 자동으로 and연산이 되었지만 <strong>exclude는 안된다.</strong></li>
-</ul>
-<p>제외하고 싶은 카테고리를 먼저 추출하고 거기서 전체 카테고리에 제외하고싶은 카테고리가 있으면 exclude를 한다<br>
-Document.objects.exclude(category__in=Category.objects.filter(name__icontains=‘question’))</p>
-<p>블로그에 속한 글들이 있는경우</p>
-<ol>
-<li>블로그 제목에 제외 키워드가 있는경우
-<ul>
-<li>Ex) 블로그에 특정 키워드가 있는경우</li>
-</ul>
-</li>
-<li>블로그 생성일이 한달 이내인 경우</li>
-<li>나머지 글들만</li>
-</ol>
-<p>Document.objects.exclude(blog__in=Blog.objects.filter(title__icontains=‘key’, create__gt=dateime.now()-timedelta(months=1)))</p>
-<h1>추출한 QuerySet의 기본 정렬값</h1>
-<ol>
-<li>모델에서 설정한 값이다</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Model:</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        ordering = [<span class="string">'field name'</span>]</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>
-<p>정렬값이 없다면 PK를 기준으로 한다</p>
-</li>
-<li>
-<p>내가 원하는 정렬값이 있다.</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Document.objects.all().order_by(<span class="string">'title'</span>) <span class="comment"># 오름차순</span></span><br><span class="line">Document.objects.all().order_by(<span class="string">'-title'</span>) <span class="comment"># 내림차순</span></span><br></pre></td></tr></table></figure>
-<h1>삭제</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Document.objects.get(pk=<span class="number">1</span>).delete()</span><br></pre></td></tr></table></figure>
-<p>#갱신</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Document.objects.get(pk=<span class="number">1</span>).update(title=<span class="string">'afasdf'</span>)</span><br><span class="line"><span class="comment"># pk=1인 레코드의 title을 afasdf로 변경</span></span><br></pre></td></tr></table></figure>
-<h1>전체 레코드에 대해서 갱신</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Document.objects.all().update(title=<span class="string">'afasdf'</span>)</span><br><span class="line">Document.objects.filter(title__icontains=<span class="string">'word'</span>).update(title=<span class="string">'afasdf'</span>)</span><br></pre></td></tr></table></figure>
-<hr>
-<h1>소셜로그인</h1>
-<p>기존에는 우리가 구분을 하였으나 소셜로그인을 하면 유저가 맞는지의 구분이 소셜에 대리로 맡긴다.</p>
-<p>allauth로 구현가능</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -670,7 +600,7 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                86 개의 포스트가 있습니다.
+                87 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
