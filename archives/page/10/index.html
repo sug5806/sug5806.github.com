@@ -186,6 +186,65 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/06/20/2019-06-20-Django-ajax적용하기1/" aria-label=": 2019-06-20 Django에 Ajax 적용하기1">
+                            2019-06-20 Django에 Ajax 적용하기1
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-06-20T17:45:01+09:00">
+	
+		    2019/06/20
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>이번 포스팅에서는 Django에 Ajax를 적용하도록 하겠습니다.</p>
+<p>앱을 만들어주시고 html파일을 하나 만들어 주세요</p>
+<p><code>index.html</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- ajax를 사용하려면 필요합니다! --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// button을 클릭하면 작동합니다.</span></span></span><br><span class="line"><span class="javascript">  $(<span class="string">"button"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// id=div1인 태그 끝에 누를때 마다 추가가 됩니다.</span></span></span><br><span class="line"><span class="javascript">    $(<span class="string">"#div1"</span>).append(</span></span><br><span class="line"><span class="xml">    	"<span class="tag">&lt;<span class="name">p</span>&gt;</span>ajax가 적용되었습니다!<span class="tag">&lt;/<span class="name">p</span>&gt;</span>"</span></span><br><span class="line"><span class="undefined">    );</span></span><br><span class="line"><span class="undefined">  &#125;);</span></span><br><span class="line"><span class="undefined">&#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Ajax 적용 실습입니다!<span class="tag">&lt;/<span class="name">h2</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>Ajax 해보기<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>위와같이 작성 하신후 <code>./manage.py runserver</code>를 실행해주세요</p>
+<p><img src="/image/ajax1-1.png" alt="img"></p>
+<p>실행한 뒤 버튼을 눌러주세요</p>
+<p><img src="/image/ajax1-2.png" alt="img"></p>
+<p>몇번 더 눌러보도록 하겠습니다</p>
+<p><img src="/image/ajax1-3.png" alt="img"></p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/06/20/2019-06-20-Django-ajax적용하기1/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/06/18/2019-06-18-ajax란/" aria-label=": 2019-06-18 Ajax란?">
                             2019-06-18 Ajax란?
                         </a>
@@ -329,74 +388,6 @@ render함수를 통해 index.html로 렌더링을 하게됩니다.</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/06/14/2019-06-14-URL-만들기/" aria-label=": 2019-06-14 URL 만들기">
-                            2019-06-14 URL 만들기
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-06-14T20:15:12+09:00">
-	
-		    2019/06/14
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/Django/">Django</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>URL 만들기</h1>
-<p>이번 시간에는 Django URL을 만드는 법을 알아보겠습니다</p>
-<p>URLConf에 URL 패턴을 설정하고 이를 이용해 뷰가 동작되도록 설정하고 있습니다. 이 때 name 매개변수를 지정하면 해당 값으로 URL을 불러와 사용할 수 있습니다. 템플릿이나 뷰에서 URL을 하드코딩 한다면 URL 구조가 바뀌었을 경우 소스코드를 직접 수정해야 하는 불편함이 있기 때문에 동적으로 URL으 만들어주는 함수를 사용해야 합니다.</p>
-<h2>URL 만들기 함수들</h2>
-<pre><code>- A. reverse
-    가장 일반적으로 활용하는 메서드 입니다. URLConf에 있는 패턴 이름과 URL에 들어갈 매개변수를 전달합니다.
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shorcuts <span class="keyword">import</span> reverse</span><br><span class="line">reverse(<span class="string">'blog:list'</span>)</span><br><span class="line">reverse(<span class="string">'blog:update'</span>, args=[<span class="number">1</span>])</span><br><span class="line">reverse(<span class="string">'blog:update'</span>, kwargs=&#123;<span class="string">'pk'</span>:<span class="number">1</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-- B. reverse_lazy
-    reverse의 lazy버전입니다. 클래스형 뷰의 success_url 등을 설정할 때 reverse를 사용하면 URLConf가 로드되기 전에 동작하기 때문에 오류가 발생합니다. 이런 경우
-    reverse_lazy를 사용할 수 있습니다.
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.url <span class="keyword">import</span> reverse_lazy</span><br><span class="line">reverse_lazy(<span class="string">'blog:list'</span>)</span><br><span class="line">reverse_lazy(<span class="string">'blog:update'</span>, args=[<span class="number">1</span>])</span><br><span class="line">reverse_lazy(<span class="string">'blog:update'</span>, kwargs=&#123;<span class="string">'pk'</span>:<span class="number">1</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-- C. resolve_url
-    reverse의 간략화 버전입니다
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shorcuts <span class="keyword">import</span> resolve_url</span><br><span class="line">resolve_url(<span class="string">'blog:list'</span>)</span><br><span class="line">resolve_url(<span class="string">'blog:update'</span>, <span class="number">1</span>)</span><br><span class="line">resolve_url(<span class="string">'blog:update'</span>, pk=<span class="number">1</span>)</span><br><span class="line"><span class="comment"># object의 get_absolute_url을 호출</span></span><br><span class="line">resolve url(object)</span><br></pre></td></tr></table></figure></code></pre>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/06/14/2019-06-14-URL-만들기/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -415,7 +406,7 @@ render함수를 통해 index.html로 렌더링을 하게됩니다.</p>
             </a>
           </li>
         
-        <li class="pagination-number">page 10 of 29</li>
+        <li class="pagination-number">page 10 of 30</li>
     </ul>
 </div>
 
@@ -543,7 +534,7 @@ render함수를 통해 index.html로 렌더링을 하게됩니다.</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                87 개의 포스트가 있습니다.
+                88 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

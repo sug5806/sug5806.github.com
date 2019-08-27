@@ -185,6 +185,101 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/05/25/2019-05-25-커스텀템플릿태그/" aria-label=": 2019-05-25 장고 커스텀 템플릿 태그">
+                            2019-05-25 장고 커스텀 템플릿 태그
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-05-25T18:32:46+09:00">
+	
+		    2019/05/25
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>커스텀 템플릿 태그 만들기</h1>
+<p>템플릿 문법을 사용하다보면 필요한 기능이 없는 경우가 있습니다. 이럴 때는 직접 만들어서 사용할 수 있습니다.<br>
+커스텀 템플릿 태그와 템플릿 필터를 만들 수 있습니다.</p>
+<ol>
+<li>
+<p>커스텀 기능을 만들기 위해서는 앱 안에 templatetags라는 폴더를 만들어야 합니다.</p>
+<p><img src="/image/custom_template_tags01.png" alt></p>
+</li>
+<li>
+<p>원하는 기능을 작성할 파일을 작성합니다. 템플릿 파일에서 이 파일명으로 기능을 불러 옵니다.<br>
+<img src="../image/custom_template_tags02.png" alt></p>
+</li>
+<li>
+<p>템플릿 라이브러리 변수를 만듭니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> template</span><br><span class="line">register = template.Library()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="4">
+<li>
+<p>필터를 등록할 때는 다음과 같이 코드를 합니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@register.filter</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_two</span><span class="params">(value)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> value+<span class="number">2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>등록된 필터는 다음과 같이 사용합니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load example %&#125;</span><br><span class="line">&#123;&#123;변수|add_two&#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>태그를 등록할 때는 다음과 같이 코드를 작성합니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@register_simple_tag</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_template</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_to_string(<span class="string">'blog/test.html'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>등록한 태그는 다음과 같이 사용합니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load example %&#125;</span><br><span class="line">&#123;% print_template %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>태그를 실행한 결과를 변수로 지정하려면 as 키워드를 사용합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load %&#125;</span><br><span class="line">&#123;% print_template <span class="keyword">as</span> test %&#125;</span><br><span class="line">&#123;&#123;test&#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>추가 인자가 있는 필터는 다음과 같이 코드를 작성합니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@register.filter</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">string_append</span><span class="params">(left, right)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> left+<span class="string">"-"</span>+right</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>해당 필터는 다음과 같이 사용합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load blog %&#125;</span><br><span class="line">&#123;&#123;<span class="string">'string1'</span>|string_append:<span class="string">'string2'</span>&#125;&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/05/25/2019-05-25-커스텀템플릿태그/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/05/23/2019-05-23-장고 템플릿문법3/" aria-label=": 2019-05-23 장고 템플릿 문법 3">
                             2019-05-23 장고 템플릿 문법 3
                         </a>
@@ -986,130 +1081,6 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/05/10/2019-05-10-수업-signal-amazon(s3, RDS)/" aria-label=": 2019-05-10 TIL(Django signals, Amazon S3, RDS)">
-                            2019-05-10 TIL(Django signals, Amazon S3, RDS)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-05-10T15:46:50+09:00">
-	
-		    2019/05/10
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/Django/">Django</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>글 삭제를 할때는 DB를 먼저 지우고 사진을 지운다.</p>
-<ul>
-<li>레코드를 먼저 삭제해도 메모리상에는 정보가 그대로 있으므로 레코드를 지우고 사진을 지운다. 역순으로 하면 레코드가 안지워지는 경우가 있다</li>
-</ul>
-<p>save함수를 오버라이드하여 행동한다</p>
-<ul>
-<li>save를 실행하기 전에 무언가를 하고싶다
-<ul>
-<li>부모 save를 실행하기전에 행동을하고 부모 save를 호출한다</li>
-</ul>
-</li>
-<li>save를 하고나서 무언가를 하고싶다
-<ul>
-<li>부모 save를 실행한 다음 무언가를 실행한다.</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save</span><span class="params">(self, force_insert=False, force_update=False, using=None, update_fields=None)</span>:</span></span><br><span class="line">    <span class="comment"># before</span></span><br><span class="line">    super(Photo, self).save(...)</span><br><span class="line">    <span class="comment"># after</span></span><br></pre></td></tr></table></figure>
-<p>models.Model : ORM 관련 기능을 모두 가지고있다(delete, update, create 등등)</p>
-<h3>signal</h3>
-<p>django에서는 어떠한 일이 일어나면 signal이 발생한다<br>
-다른 프레임워크에서도 존재하는 개념이다(Hook, Signal, Injection)<br>
-기본적인 개념은 override로도 충분히 가능하지만 signal로도 할 수 있다</p>
-<p>siganl이 좀더 효율적인 방법이다</p>
-<p>signal의 종류</p>
-<ul>
-<li>pre_save : 저장 전</li>
-<li>post_save : 저장 후</li>
-<li>pre_delete : 삭제 전</li>
-<li>post_delete : 삭제 후</li>
-</ul>
-<h4>시그널 만드는 법</h4>
-<h4>시그널 받아 처리하는 법</h4>
-<ol>
-<li>
-<p>어떤 시그널이 발생했을 때 반응할 것이냐?</p>
-</li>
-<li>
-<p>그 시널이 발생한걸 어떻게 알아?</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db.models.signals <span class="keyword">import</span> post_delete</span><br><span class="line"><span class="keyword">from</span> django.dispatch <span class="keyword">import</span> receiver <span class="comment"># 시그널이 발생한 것을 받을 수 있다</span></span><br><span class="line"><span class="keyword">import</span> boto3</span><br><span class="line"><span class="keyword">from</span> django.conf <span class="keyword">import</span> settings</span><br><span class="line"></span><br><span class="line"><span class="comment"># @receiver(어떤 시그널이 발생했느냐?, 누가 발생시켰느냐?)</span></span><br><span class="line"><span class="comment"># receiver를 통하여 import한 post_delete의 신호를 받을 수 있다</span></span><br><span class="line"><span class="meta">@receiver(post_delete, sender=Photo)</span></span><br><span class="line">    <span class="comment"># 데코레이터로 붙여놨기 때문에 함수명은 상관이 없다</span></span><br><span class="line">    <span class="comment"># instance : 실제로 삭제되는 1개의 DB 레코드</span></span><br><span class="line">    <span class="comment"># post_delete를 진행한 후의 행동을 지정할 수 있다</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">post_delete</span><span class="params">(sender, instance, **kwargs)</span>:</span></span><br><span class="line">    session = boto3.Session(</span><br><span class="line">        aws_access_key_id = settings.AWS_ACCESS_KEY_ID,</span><br><span class="line">        aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY,</span><br><span class="line">        region_name = settings.AWS_REGION</span><br><span class="line">    )</span><br><span class="line">    s3 = session.resource(<span class="string">'s3'</span>)</span><br><span class="line">    <span class="comment"># instance가 전달 받은 객체</span></span><br><span class="line">    <span class="comment"># s3.Object는 s3에 업로드된 파일 객체를 얻어오는 클래스</span></span><br><span class="line">    <span class="comment"># arg1 = 버킷네임</span></span><br><span class="line">    <span class="comment"># arg2 = 파일 경로 - Key</span></span><br><span class="line">    </span><br><span class="line">    image = s3.Object(settings.AWS_STORAGE_BUCKET_NAME, <span class="string">"media/"</span> + str(instance.image))</span><br><span class="line">    image.delete()</span><br></pre></td></tr></table></figure>
-<p>S3에서는 파일경로가 폴더가 아니라 Key의 형태로 저장이되므로 실제 존재하지 않는다?<br>
-원격지에서는 네트워크주소로 접근하기때문에 절대경로가 유효하지 않다</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@receiver(post_delete, sender=Photo)</span></span><br><span class="line">    <span class="comment"># 데코레이터로 붙여놨기 때문에 함수명은 상관이 없다</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">post_delete</span><span class="params">(sender, instance, **kwargs)</span>:</span></span><br><span class="line">    storage = instance.image.storage</span><br><span class="line">    <span class="keyword">if</span> storage.exists(<span class="string">'media/'</span> + str(instance.image)):</span><br><span class="line">        storage.delete(str(instance.image))</span><br></pre></td></tr></table></figure>
-<hr>
-<p>“”&quot;<br>
-board 프로젝트<br>
-게시판</p>
-<ol>
-<li>장고 프로젝트 생성</li>
-<li>db는 AWS RDS - postgreSQL로 세팅 -&gt; 10.x 버전
-<ul>
-<li>VPC보안 그룹만들기</li>
-</ul>
-</li>
-<li>S3 까지 세팅 - URL있는 형태로
-<ul>
-<li>정적 웹사이트 호스팅 옵션을 켜야한다</li>
-</ul>
-</li>
-<li>앱 board</li>
-<li>모델 Document - author, category, title, slug, text, image, created, updated</li>
-<li>모델 Category - slug, name</li>
-</ol>
-<p>“”&quot;</p>
-<hr>
-<p>AWS 서비스의 종류</p>
-<ol>
-<li>EC2 : 리눅스 서버</li>
-<li>RDS - DB</li>
-<li>S3 - file</li>
-<li>IAM - API Key</li>
-</ol>
-<hr>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/05/10/2019-05-10-수업-signal-amazon(s3, RDS)/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -1255,7 +1226,7 @@ board 프로젝트<br>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                87 개의 포스트가 있습니다.
+                88 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
