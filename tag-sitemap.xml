@@ -3,14 +3,21 @@
 
 
     <url>
-        <loc>http://blog.sug5806.site/tags/%EC%8A%A4%ED%83%9D/</loc>
-        <lastmod>2019-08-27T15:19:39.113Z</lastmod>
+        <loc>http://blog.sug5806.site/tags/%ED%81%90/</loc>
+        <lastmod>2019-08-28T04:12:27.517Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://blog.sug5806.site/tags/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/</loc>
+        <lastmod>2019-08-28T04:12:27.517Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://blog.sug5806.site/tags/%EC%8A%A4%ED%83%9D/</loc>
         <lastmod>2019-08-27T15:19:39.113Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -124,13 +131,6 @@
     <url>
         <loc>http://blog.sug5806.site/tags/%ED%9E%99/</loc>
         <lastmod>2019-08-17T05:24:25.890Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.sug5806.site/tags/%ED%81%90/</loc>
-        <lastmod>2019-08-17T05:04:34.793Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

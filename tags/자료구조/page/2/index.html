@@ -186,6 +186,81 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/08/17/2019-08-17-이진트리1/" aria-label=": 2019-08-17 이진 트리1(Binary Tree)">
+                            2019-08-17 이진 트리1(Binary Tree)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-08-17T19:04:46+09:00">
+	
+		    2019/08/17
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/자료구조/">자료구조</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<h2>이진 트리(Binary Tree)란 무엇인가?</h2>
+<p>모든 노드들이 최대 2개의 자식을 가질 때 이를 이진 트리라고 합니다. root에서부터 오른쪽과 왼쪽의 하위 트리들로 분리하여 아래와 같이 나타낼 수 있습니다</p>
+<p><img src="/image/binarytree1-1.png" alt="img"></p>
+<h2>이진트리의 유형</h2>
+<h4>포화 이진트리(Full Binary Tree)</h4>
+<p>모든 leaf 노드들이 동일한 레벨인 트리를 포화 이진트리라 합니다.</p>
+<p><img src="/image/binarytree1-2.png" alt="img"></p>
+<h4>완전 이진 트리(Complete Binary Tree)</h4>
+<p>마지막 레벨을 제외한 각 레벨이 빠짐없이 채워져 있고, 마지막 레벨은 중간에 빈칸 없이 왼쪽부터 노드들로 채워져 있어야 합니다.</p>
+<p><img src="/image/binarytree1-3.png" alt="img"></p>
+<h2>트리의 연산</h2>
+<p>기본 연산</p>
+<ul>
+<li>트리에 요소를 삽입</li>
+<li>트리에서 요소를 제거</li>
+<li>요소 검색(Searching)</li>
+<li>트리 운행(Traversing)</li>
+</ul>
+<p>보조 연산</p>
+<ul>
+<li>트리의 크기 찾기</li>
+<li>트리의 높이 찾기</li>
+<li>최대 합을 가진 레벨 찾기</li>
+<li>주어진 둘 이상의 노드에 대한 최소 공통 조상(LCA) 찾기</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/08/17/2019-08-17-이진트리1/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/08/16/2019-08-16-트리/" aria-label=": 2019-08-16 트리(Tree)">
                             2019-08-16 트리(Tree)
                         </a>
@@ -316,72 +391,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/07/15/2019-07-15-우선순위큐/" aria-label=": 2019-07-15 우선순위 큐(Priority Queue)">
-                            2019-07-15 우선순위 큐(Priority Queue)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-07-15T19:04:46+09:00">
-	
-		    2019/07/15
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/자료구조/">자료구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h2>우선순위 큐(Priority Queue)란?</h2>
-<p>요소들의 집합 내에서 최대 또는 최솟값을 가진 요소를 찾아야 할 때가 있는데, 우선순위 큐 추상 데이터 형(AD이T)이 이런 연산을 제공합니다. 우선순위 큐 추상 데이터형은 Insert, Delete Min 또는 Delete Max와 같은 기능을 제공하는 데이터 구조입니다. 우선순위 큐의 차이점은 큐에 입력되는 순서가 처리되는 순서와 같지 않을 수 있다는 것입니다. 작업 스케줄링이 바로 이런 우선순위 큐를 활용하는 예입니다.</p>
-<p><img src="/image/pqueue1-1.png" alt="img"></p>
-<p>우선순위 큐에서 더 작은 키를 가진 아이템이 높은 우선순위를 가지는 것(가장 작은 요소가 삭제됨)을 오름차순 큐라고 하고 더 높은 키를 가진 아이템이 높은 우선순위를 가지는 것(가장 큰 요소가 삭제됨)을 내림차순 큐라고 부릅니다.</p>
-<h2>우선 순위 큐의 추상화(Priority Queue ADT)</h2>
-<p>우선 순위 큐의 주요 연산들</p>
-<ul>
-<li>Insert(key, value) : 우선 순위 큐에 키와 함께 데이터를 삽입합니다. 삽입된 요소들은 키를 기준으로 정렬됩니다.</li>
-<li>DeleteMin/DeleteMax: 최소/최대 키를 가진 요소를 삭제하고 삭제된 요소를 반환합니다.</li>
-<li>GetMinimum/GetMaximum: 최소/최대 키를 가진 요소를 반환합니다.</li>
-</ul>
-<p>우선 순위 큐의 보조 연산들</p>
-<ul>
-<li>Size: 우선순위 큐 내의 요소들의 수를 반환합니다.</li>
-<li>Heap Sort: 우선 순위(키)에 따라 우선 순위 큐 내의 요소들을 정렬합니다.</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/07/15/2019-07-15-우선순위큐/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -400,7 +409,7 @@
             </a>
           </li>
         
-        <li class="pagination-number">page 2 of 4</li>
+        <li class="pagination-number">page 2 of 5</li>
     </ul>
 </div>
 
@@ -527,7 +536,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                88 개의 포스트가 있습니다.
+                89 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
