@@ -11,12 +11,12 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 것을 정리하였습니다.\n지난번에는 이진트리에 대해 알아보았습니다.\n이번시간에는 재귀를 통한 트리의 운행 코드를 알아보겠습니다.\n운행 방법(Traversal Possibilities)\n운행 방법을 아래와 같이 3가지로 나타낼 수 있습니다.\n\n전위 운행법(Preorder)\n중위 운행법(Inorder)\n후위 운행법(Postorder)\n\n기본 트리는 아래와 같은 모양입니다\n\n전위 순회(pre_order)\n12345678910111213141516171819202122232425262728293031323334class TreeNode:    def __init__(self, data):        self.data = data        self.left_child = None        self.right_child = None# 전위 순회def pre_order(tree_node):    if tree_node is None:        return    print(tree_node.data, end=\" \")    pre_order(tree_node.left_child)    pre_order(tree_node.right_child)if __name__ == '__main__':    n1 = TreeNode(1)    n2 = TreeNode(2)    n3 = TreeNode(3)    n4 = TreeNode(4)    n5 = TreeNode(5)    n6 = TreeNode(6)    n7 = TreeNode(7)    n1.left_child = n2    n1.right_child = n3    n2.left_child = n4    n2.right_child = n5    n3.left_child = n6    n3.right_child = n7    print(f'전위 순회 재귀: ', end=\"\")    pre_order(n1)    print()\n\n중위 순회(in_order)\n12345678910111213141516171819202122232425262728293031323334class TreeNode:    def __init__(self, data):        self.data = data        self.left_child = None        self.right_child = None# 중위 순회def in_order(tree_node):    if tree_node is None:        return    in_order(tree_node.left_child)    print(tree_node.data, end=\" \")    in_order(tree_node.right_child)if __name__ == '__main__':    n1 = TreeNode(1)    n2 = TreeNode(2)    n3 = TreeNode(3)    n4 = TreeNode(4)    n5 = TreeNode(5)    n6 = TreeNode(6)    n7 = TreeNode(7)    n1.left_child = n2    n1.right_child = n3    n2.left_child = n4    n2.right_child = n5    n3.left_child = n6    n3.right_child = n7    print(f'중위 순회 재귀: ', end='')    in_order(n1)    print()\n\n후위 순회(post_order)\n12345678910111213141516171819202122232425262728293031323334class TreeNode:    def __init__(self, data):        self.data = data        self.left_child = None        self.right_child = None# 후위 순회def post_order(tree_node):    if tree_node is None:        return    post_order(tree_node.left_child)    post_order(tree_node.right_child)    print(tree_node.data, end=\" \")if __name__ == '__main__':    n1 = TreeNode(1)    n2 = TreeNode(2)    n3 = TreeNode(3)    n4 = TreeNode(4)    n5 = TreeNode(5)    n6 = TreeNode(6)    n7 = TreeNode(7)    n1.left_child = n2    n1.right_child = n3    n2.left_child = n4    n2.right_child = n5    n3.left_child = n6    n3.right_child = n7    print(f'후위 순회 재귀: ', end='')    post_order(n1)    print()\n\n","dateCreated":"2019-08-27T19:04:46+09:00","dateModified":"2019-09-01T13:07:22+09:00","datePublished":"2019-08-27T19:04:46+09:00","description":"","headline":"2019-08-27 트리의 운행1(Python_recursive)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive) copy/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive) copy/","keywords":"자료구조, 이진 트리"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 것을 정리하였습니다.\n지난번에는 이진트리에 대해 알아보았습니다.\n이번시간에는 재귀를 통한 트리의 운행 코드를 알아보겠습니다.\n운행 방법(Traversal Possibilities)\n운행 방법을 아래와 같이 3가지로 나타낼 수 있습니다.\n\n전위 운행법(Preorder)\n중위 운행법(Inorder)\n후위 운행법(Postorder)\n\n기본 트리는 아래와 같은 모양입니다\n\n전위 순회(pre_order)\n12345678910111213141516171819202122232425262728293031323334class TreeNode:    def __init__(self, data):        self.data = data        self.left_child = None        self.right_child = None# 전위 순회def pre_order(tree_node):    if tree_node is None:        return    print(tree_node.data, end=\" \")    pre_order(tree_node.left_child)    pre_order(tree_node.right_child)if __name__ == '__main__':    n1 = TreeNode(1)    n2 = TreeNode(2)    n3 = TreeNode(3)    n4 = TreeNode(4)    n5 = TreeNode(5)    n6 = TreeNode(6)    n7 = TreeNode(7)    n1.left_child = n2    n1.right_child = n3    n2.left_child = n4    n2.right_child = n5    n3.left_child = n6    n3.right_child = n7    print(f'전위 순회 재귀: ', end=\"\")    pre_order(n1)    print()\n\n중위 순회(in_order)\n12345678910111213141516171819202122232425262728293031323334class TreeNode:    def __init__(self, data):        self.data = data        self.left_child = None        self.right_child = None# 중위 순회def in_order(tree_node):    if tree_node is None:        return    in_order(tree_node.left_child)    print(tree_node.data, end=\" \")    in_order(tree_node.right_child)if __name__ == '__main__':    n1 = TreeNode(1)    n2 = TreeNode(2)    n3 = TreeNode(3)    n4 = TreeNode(4)    n5 = TreeNode(5)    n6 = TreeNode(6)    n7 = TreeNode(7)    n1.left_child = n2    n1.right_child = n3    n2.left_child = n4    n2.right_child = n5    n3.left_child = n6    n3.right_child = n7    print(f'중위 순회 재귀: ', end='')    in_order(n1)    print()\n\n후위 순회(post_order)\n12345678910111213141516171819202122232425262728293031323334class TreeNode:    def __init__(self, data):        self.data = data        self.left_child = None        self.right_child = None# 후위 순회def post_order(tree_node):    if tree_node is None:        return    post_order(tree_node.left_child)    post_order(tree_node.right_child)    print(tree_node.data, end=\" \")if __name__ == '__main__':    n1 = TreeNode(1)    n2 = TreeNode(2)    n3 = TreeNode(3)    n4 = TreeNode(4)    n5 = TreeNode(5)    n6 = TreeNode(6)    n7 = TreeNode(7)    n1.left_child = n2    n1.right_child = n3    n2.left_child = n4    n2.right_child = n5    n3.left_child = n6    n3.right_child = n7    print(f'후위 순회 재귀: ', end='')    post_order(n1)    print()\n\n","dateCreated":"2019-08-27T19:04:46+09:00","dateModified":"2019-09-01T13:18:20+09:00","datePublished":"2019-08-27T19:04:46+09:00","description":"","headline":"2019-08-27 트리의 운행1(Python_recursive)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive)/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive)/","keywords":"자료구조, 이진 트리"}</script>
     <meta name="description" content="개인적으로 공부한 것을 정리하였습니다. 지난번에는 이진트리에 대해 알아보았습니다. 이번시간에는 재귀를 통한 트리의 운행 코드를 알아보겠습니다. 운행 방법(Traversal Possibilities) 운행 방법을 아래와 같이 3가지로 나타낼 수 있습니다.  전위 운행법(Preorder) 중위 운행법(Inorder) 후위 운행법(Postorder)  기본 트리">
 <meta name="keywords" content="자료구조,이진 트리">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-08-27 트리의 운행1(Python_recursive)">
-<meta property="og:url" content="http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive) copy/index.html">
+<meta property="og:url" content="http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive)/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="개인적으로 공부한 것을 정리하였습니다. 지난번에는 이진트리에 대해 알아보았습니다. 이번시간에는 재귀를 통한 트리의 운행 코드를 알아보겠습니다. 운행 방법(Traversal Possibilities) 운행 방법을 아래와 같이 3가지로 나타낼 수 있습니다.  전위 운행법(Preorder) 중위 운행법(Inorder) 후위 운행법(Postorder)  기본 트리">
 <meta property="og:locale" content="ko">
@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://blog.sug5806.site/image/tree3_pre.png">
 <meta property="og:image" content="http://blog.sug5806.site/image/tree3_in.png">
 <meta property="og:image" content="http://blog.sug5806.site/image/tree3_post.png">
-<meta property="og:updated_time" content="2019-09-01T04:07:22.299Z">
+<meta property="og:updated_time" content="2019-09-01T04:18:20.444Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-08-27 트리의 운행1(Python_recursive)">
 <meta name="twitter:description" content="개인적으로 공부한 것을 정리하였습니다. 지난번에는 이진트리에 대해 알아보았습니다. 이번시간에는 재귀를 통한 트리의 운행 코드를 알아보겠습니다. 운행 방법(Traversal Possibilities) 운행 방법을 아래와 같이 3가지로 나타낼 수 있습니다.  전위 운행법(Preorder) 중위 운행법(Inorder) 후위 운행법(Postorder)  기본 트리">
@@ -260,7 +260,7 @@
             <li class="post-action">
                 
                     
-                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/08/30/2019-08-27-트리의운행2(python_recursive)/" data-tooltip="2019-08-30 트리의 운행2(Python_recursive)" aria-label="이전: 2019-08-30 트리의 운행2(Python_recursive)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/08/30/2019-08-27-트리의운행2(python_recursive)/" data-tooltip="2019-08-30 트리의 운행2(Python_Loop)" aria-label="이전: 2019-08-30 트리의 운행2(Python_Loop)">
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">이전</span>
@@ -287,7 +287,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive) copy/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive)/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -295,7 +295,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive) copy/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive)/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -303,7 +303,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive) copy/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive)/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -356,7 +356,7 @@
             <li class="post-action">
                 
                     
-                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/08/30/2019-08-27-트리의운행2(python_recursive)/" data-tooltip="2019-08-30 트리의 운행2(Python_recursive)" aria-label="이전: 2019-08-30 트리의 운행2(Python_recursive)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/08/30/2019-08-27-트리의운행2(python_recursive)/" data-tooltip="2019-08-30 트리의 운행2(Python_Loop)" aria-label="이전: 2019-08-30 트리의 운행2(Python_Loop)">
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">이전</span>
@@ -383,7 +383,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive) copy/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive)/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -391,7 +391,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive) copy/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive)/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -399,7 +399,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive) copy/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive)/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -433,7 +433,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive) copy/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive)/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -441,7 +441,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive) copy/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive)/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -449,7 +449,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive) copy/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive)/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -588,9 +588,9 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive) copy/';
+            this.page.url = 'http://blog.sug5806.site/2019/08/27/2019-08-27-트리의운행1(python_recursive)/';
               
-            this.page.identifier = '2019/08/27/2019-08-27-트리의운행1(python_recursive) copy/';
+            this.page.identifier = '2019/08/27/2019-08-27-트리의운행1(python_recursive)/';
               
           };
           (function() {
