@@ -186,6 +186,170 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/04/21/2019-04-21-127.0.0.1과-localhost의-차이점/" aria-label=": 2019-04-21 localhost와 127.0.0.1의 차이점">
+                            2019-04-21 localhost와 127.0.0.1의 차이점
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-04-21T20:11:12+09:00">
+	
+		    2019/04/21
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/네트워크/">네트워크</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>127.0.0.1은 무엇인가?</h1>
+<p>127.0.0.1은 IPv4 및 IPv6에서 자기 자신을 가리키기 위한 목적으로 쓰기 위해 예약된 IP이다. 모든 컴퓨터는 이 주소를 자신의 주소로 사용하지만 실제 IP 주소처럼 다른 장치와 통신 할 수는 없다.</p>
+<ul>
+<li>Ex) 컴퓨터에서 실행중인 웹 서버는 127.0.0.1을 가리킬 수 있으므로 페이지를 배포하기 전에 로컬에서 실행하고 테스트 할 수 있다.</li>
+</ul>
+<h1>LocalHost는 무엇인가?</h1>
+<p>localhost은 자기 자신을 가리키는 IP의 도메인 네임으로써 알기 쉽게 해놓은 것이다. 그러므로 localhost로 접속을 하게되면 DNS의 테이블과 비교를 해야하는 번거로움이 있다 그로 인하여 127.0.0.1로 직접 접속하는것 보다 느리지만 기억하기는 쉽다.<br>
+그리고 localhost는 hosts 파일을 통해 변경될 수 있다</p>
+<h1>루프백</h1>
+<p>호스트 자신을 가리키는 주소이다 127.0.0.1을 사용한다. 루프백 주소로 네트워크에 직접 연결하지 않은 상태에서 빠르게 프로그램의 테스트를 할 수 있다. 또한 루프백 IP를 갖는 패킷은 외부 네트워크로 전송할수 없다</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/04/21/2019-04-21-127.0.0.1과-localhost의-차이점/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/04/19/2019-04-19-Django시작하기/" aria-label=": 2019-04-19 Django 기본">
+                            2019-04-19 Django 기본
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-04-19T14:30:50+09:00">
+	
+		    2019/04/19
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>Django 기본</h1>
+<h3>Django 프로젝트 구조 살펴보기</h3>
+<p><img src="/image/Django1.png" alt></p>
+<ol>
+<li>
+<p>second_django 폴더 : 프로젝트 설정 파일과 웹 서비스 실행을 위한 파일들이 들어있다.</p>
+<ul>
+<li><strong>init</strong>.py : 파이썬 2.x대 버전과의 호환을 위해 만들어진 비어있는 파일이다. 지워도 무방하다</li>
+<li>settings.py : 프로젝트 설정에 관한 다양한 내용이 들어있다.</li>
+<li>urls.py : 특정 기능을 수행하기 위해 접속하는 주소를 url이라 하고 이를 설정해주는데, 그 설정을 이 파일에 기록함</li>
+<li>wsgi.py : 웹 서비스를 실행하기 위한 wsgi 관련 내용이 들어있음</li>
+</ul>
+</li>
+<li>
+<p>venv 폴더 : 프로젝트 구동에 필요한 가상환경이 들어있음</p>
+</li>
+<li>
+<p>db.sqlite3 : SQLite3 DB 파일이다. 다른 DB를 이용할시 필요없다</p>
+</li>
+</ol>
+<h3>장고 기본 명령들</h3>
+<ol>
+<li>django-admin startproject : 장고 프로젝트를 만드는 명령이다. 웹 서비스를 만들 때 마다 한번 실행한다.</li>
+<li>startapp : 프로젝트에 기능 단위인 앱을 새로 만들때 사용</li>
+<li>makemigrations : 어플리케이션에 변경 사항을 추적해 DB에 적용할 내용을 정리함. 보통 앱 안에 있는 모델(model)의 변경 사항이 있을 때 주로 사용함.</li>
+<li>sqlmigrate: 실행할 SQL 명령문을 출력한다</li>
+<li>migrate : 실제 변경사항을 DB에 반영한다.</li>
+<li>showmigrations : 프로젝트의 DB 변경사항 목록과 상태를 출력한다.</li>
+<li>runserver : 테스트 서버를 실행한다.</li>
+<li>dumpdata : 현재 DB의 내용을 백업할 때 사용한다.</li>
+<li>loaddata : 백업 파일에서 DB로 내용을 복구 할 때 사용한다</li>
+<li>flush : DB 테이블은 그대로 두고 테이블의 내용만 전부 삭제한다</li>
+<li>shell : 장고 쉘(Shell)을 실행한다</li>
+<li>dbshell : DB에 직접 접근 할 수 있는 쉘을 실행한다</li>
+<li>createsuperuser : 관리자 계정을 생성한다</li>
+<li>changepassword : 계정의 비밀번호를 변경할 수 있다</li>
+</ol>
+<hr>
+<h2>디자인 패턴</h2>
+<h4>MVC와 MTV</h4>
+<ul>
+<li>
+<p>웹 프로그래밍에서 자주 쓰이는 디자인 패턴은 MVC이다 : Model-View-Controller</p>
+<ol>
+<li>Model : DB의 구조를 결정한다.</li>
+<li>View : 사용자에게 보여지는 UI부분이다</li>
+<li>Controller : 기능, 로직부분이다</li>
+</ol>
+</li>
+<li>
+<p>장고에서는 MTV라고 하나 <strong>이름만 다르고 동일한 패턴이다</strong> : Model-Template-View</p>
+<ul>
+<li>양쪽모두 View가 있지만 기능이 서로 다르다 각각 연결해보면 (Model:Model)-(View:Template)-(Controller:View)이다</li>
+</ul>
+</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/04/19/2019-04-19-Django시작하기/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/04/18/쓰레드와프로세스/" aria-label=": 2019-04-18 프로세스와 쓰레드">
                             2019-04-18 프로세스와 쓰레드
                         </a>
@@ -314,207 +478,6 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/17/CSS 기초/" aria-label=": 2019-04-17 CSS 기초1">
-                            2019-04-17 CSS 기초1
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-17T21:18:32+09:00">
-	
-		    2019/04/17
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/CSS/">CSS</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>CSS 기초1 (Syntax ~ background)</h1>
-<h2>CSS Syntax</h2>
-<h4>element Selector</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>:blue;<span class="attribute">font-size</span>:<span class="number">12px</span>;&#125;</span><br><span class="line"><span class="comment">/*h1 element의 색깔은 blue</span></span><br><span class="line"><span class="comment">폰트 사이즈는 12px</span></span><br></pre></td></tr></table></figure>
-<h4>id Selector</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#para1</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*id가 para1인 element의 텍스트 정렬은 중앙,색깔은 red</span></span><br></pre></td></tr></table></figure>
-<h4>class Selector</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.center</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*center 클래스의 텍스트 정렬은 중앙, 색깔은 red</span></span><br></pre></td></tr></table></figure>
-<h4>class + element</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-class">.center</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line"><span class="comment">/* p태그 이면서 center클래스의 텍스트 정렬은 중앙, 색깔은 red</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
-<h4>클래스 부여하기</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p class="center large"&gt;This paragraph refers to two classed.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-<h4>Grouping Selectors</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* h1, h2, p 태그의 텍스트 정렬은 중앙, 색깔은 red</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h2>CSS를 삽입하는 3가지 방법</h2>
-<h4>1. External style sheet</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">head</span>&gt;</span><br><span class="line">&lt;link rel="stylesheet" type="text/css" href="mystyle.css"&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
-<h4>2. Internal stryle sheet</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">head</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>:linen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: maroon;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
-<h4>3. Inline style</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 style="color:blue; margin-left:30px;"&gt;This is a heading&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2>Backgrounds</h2>
-<h4>Background color</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: lightblue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4>Background Image</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">"paper.gif"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>
-<p>이미지를 X좌표로만 반복하기</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"gradient_bg.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: repeat-x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>y좌표로만 반복하려면 repteat -y를 해주면 된다.</p>
-</li>
-<li>
-<p>반복없이 하기</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"gradient_bg.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>이미지를 오른쪽 상단에 위치시키기</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"img_tree.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="attribute">background-position</span>: right top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>스크롤해도 이미지 이동하지 않게 하기</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"img_tree.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>:no-repeat;</span><br><span class="line">    <span class="attribute">background-position</span>:right top;</span><br><span class="line">    <span class="attribute">background-attachment</span>: fixed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>Background - Shorthand roperty</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">bacground</span>: red <span class="built_in">url</span>(<span class="string">"img_tree.png"</span>) no-repeat right top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/17/CSS 기초/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/16/실수의표현/" aria-label=": 2019-04-16 실수의 표현">
-                            2019-04-16 실수의 표현
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-16T21:48:32+09:00">
-	
-		    2019/04/16
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/컴퓨터구조/">컴퓨터구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h3>실수의 표현 (epsilon comparison을 위해 반드시 알아두어야함)</h3>
-<ol>
-<li>
-<p>고정 소수점 -&gt; 표현숫자를 줄이면 정밀도가 높아아지고 늘리면 정밀도가 낮아짐, 표현범위가 좁음  #현재 잘 사용하지 않음</p>
-</li>
-<li>
-<p>부동 소수점 -&gt; 정밀도 매우낮음, 표현범위 넓음</p>
-<ol>
-<li>단정도 (single precision)
-<ol>
-<li>32bit (4 byte)</li>
-<li>부호(sign) (1 bit) + 지수(exponent) (8 bit) + 가수(mentissa) (23 bit)
-<ol>
-<li>지수부 : 표현범위 담당 (클수록 범위)</li>
-<li>가수부 : 정밀도를 담당 (클수록 정확)</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>배정도 (double precision)
-<ol>
-<li>64bit (8 byte)</li>
-<li>부호 (1 bit) + 지수 (11 bit) + 가수 (52 bit)</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>
-<p>10.23 * 102 -&gt; 1.023(가수부) 10(밑수) 3(지수 = exponent real)</p>
-</li>
-<li>
-<p><img src="../image/real.png" alt> 에서 1도 수학적으로는 mentissa이나 컴퓨터 메모리 저장 X --&gt; 0이 아닌 자연수 1자리로 정규화를 하기위해 한자리는 무조건 남겨둠 /// bias = 2<sup>n-1</sup> -1 /// Ere = Emem - bias  /// float의 bias는 127 --&gt; 지수에도 ±기호가 있으므로 맨앞자리 비트는 제외하고 나머지 1일때 127 // bias + exponent real 한 값을 이진수로 바꿔서 exponent에 저장</p>
-<ul>
-<li>정규화 : 가수 부분을 밑수보다 작은 자연수가 되도록 만드는것</li>
-</ul>
-</li>
-<li>
-<p>실수의 정밀도 보장 : float는 6자리, double 15자리의 의미 : 10진수 1자리를 다 표현하려면 2진수 4자리(0~15), 10진수 2자리를 다 표현하려면 2진수 7자리(0~127), 10진수 3자리 -&gt; 2진수 10자리</p>
-<ol>
-<li>float는 가수부가 23+1자리이므로 이진수 23+1자리라고 생각가능 -&gt; 십진수 6자리표현을 보장함(정밀도)</li>
-<li>double은 가수부가 52+1 자리 이므로 이진수 52+1자리라고 생각 가능 -&gt; 십진수 15자리 표현을 보장함</li>
-</ol>
-</li>
-<li>
-<p>1.0과 1.0다음으로 나타낼수 있는 수의 차이를 epsilon이라 함<br>
-<img src="../image/real2.png" alt></p>
-<ul>
-<li>어떠한 수의 지수부분과 엡실론을 곱하면 그 수의 다음수가 나옴</li>
-</ul>
-</li>
-</ol>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/16/실수의표현/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -533,7 +496,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
             </a>
           </li>
         
-        <li class="pagination-number">page 23 of 30</li>
+        <li class="pagination-number">page 23 of 31</li>
     </ul>
 </div>
 
@@ -661,7 +624,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                89 개의 포스트가 있습니다.
+                91 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
