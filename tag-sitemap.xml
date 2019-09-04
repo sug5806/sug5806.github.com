@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>http://blog.sug5806.site/tags/OOP/</loc>
+        <lastmod>2019-09-04T01:49:37.023Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://blog.sug5806.site/tags/%EC%9D%B4%EC%A7%84-%ED%8A%B8%EB%A6%AC/</loc>
         <lastmod>2019-09-01T09:16:28.223Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -523,13 +530,6 @@
     <url>
         <loc>http://blog.sug5806.site/tags/branch/</loc>
         <lastmod>2019-04-23T02:02:00.579Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://blog.sug5806.site/tags/OOP/</loc>
-        <lastmod>2019-04-23T02:01:55.907Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
