@@ -186,6 +186,88 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/05/20/2019-05-20-이메일서버/" aria-label=": 2019-05-20 Django Email서버 세팅하기">
+                            2019-05-20 Django Email서버 세팅하기
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-05-20T18:32:46+09:00">
+	
+		    2019/05/20
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>이메일 서버 세팅하기</h1>
+<p><img src="/image/amazon8.png" alt></p>
+<ol>
+<li>외부에서 메일 보내기 서버를 사용하려면 gmail의 설정을 변경해야 한다. gmail에 로그인해서 화면 우측 상단에 있는 설정 버튼을 클릭한다</li>
+</ol>
+<hr>
+<p><img src="/image/amazon9.png" alt></p>
+<ol start="2">
+<li>[전달 및 POP/IMAP] 탭으로 이동해 IMAP 사용에 체크하고 [변경사항 저장]버튼을 누른다.</li>
+</ol>
+<hr>
+<p><img src="/image/amazon10.png" alt></p>
+<ol start="3">
+<li>보안수준이 낮은 앱의 액세스 허용을 위해 계정 -&gt; Google 계정을 클릭해 계정 설정으로 이동한다.</li>
+</ol>
+<hr>
+<p><img src="/image/amazon11.png" alt></p>
+<ol start="4">
+<li>계정 설정 화면에서 [보안] 탭을 클릭한다. 해당 탭에서 [보안 수준이 낮은 앱의 액세스] 부분을 찾아 [액세스 사용 설정] 버튼을 클릭한다.</li>
+</ol>
+<hr>
+<p><img src="/image/amazon12.png" alt></p>
+<ol start="5">
+<li>[보안 수준이 낮은 앱 허용]을 활성화 한다.</li>
+</ol>
+<hr>
+<ol start="6">
+<li>장고 프로젝트의 settings.py에 메일 서버를 설정한다.</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">EMAIL_BACKEND = <span class="string">'django.core.mail.backends.smtp.EmailBackend'</span></span><br><span class="line">EMAIL_HOST = <span class="string">"smtp.gmail.com"</span></span><br><span class="line">EMAIL_HOST_USER = <span class="string">'이메일 계정'</span></span><br><span class="line">EMAIL_HOST_PASSWORD = <span class="string">'계정 비밀번호'</span></span><br><span class="line">EMAIL_PORT = <span class="number">587</span></span><br><span class="line">EMAIL_USE_TLS = <span class="literal">True</span></span><br><span class="line">DEFAULT_FROM_EMAIL = EMAIL_HOST_USER</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>메일 보내기를 테스트 해본다</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 쉘 스크립트를 연다</span></span><br><span class="line">./manage.py shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 일반메일 보내기</span></span><br><span class="line"><span class="keyword">from</span> django.core.mail <span class="keyword">import</span> EmailMessage</span><br><span class="line">email = EmailMessage(<span class="string">'제목'</span>, <span class="string">'본문'</span>, to=[<span class="string">'받는사람 이메일주소'</span>])</span><br><span class="line">email.send()</span><br><span class="line"></span><br><span class="line"><span class="comment"># HTML이 포함된 메일 보내기</span></span><br><span class="line"><span class="keyword">from</span> django.core.mail <span class="keyword">import</span> EmailMessage</span><br><span class="line">email = EmailMessage(<span class="string">'제목'</span>, <span class="string">'본문'</span>, to=[<span class="string">'받는사람 이메일주소'</span>])</span><br><span class="line">email.attach_alternative(<span class="string">"html이 포함된 본문"</span>, <span class="string">"text/html"</span>)</span><br><span class="line">email.send()</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/05/20/2019-05-20-이메일서버/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/05/19/2019-05-19-아마존인증서/" aria-label=": 2019-05-19 아마존 인증서 발급받기">
                             2019-05-19 아마존 인증서 발급받기
                         </a>
@@ -345,99 +427,6 @@ DNS검증을 하게되면 자동으로 갱신이 된다.</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/05/17/2019-04-30-Bootstrap/" aria-label=": 2019-05-17 Django에 Bootstrap 적용하기">
-                            2019-05-17 Django에 Bootstrap 적용하기
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-05-17T18:32:46+09:00">
-	
-		    2019/05/17
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/Django/">Django</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>bootstrap 적용하기</h1>
-<ol>
-<li>base.html에 bootstrap 설치하기
-<ul>
-<li>
-<p>CDN 스크립트로 설치하기 : 리소스 절감효과, 최신버전을 자동 유지, CDN을 사용하면 접속 속도가 증가</p>
-</li>
-<li>
-<p>다운로드해서 설치하기 : 커스터마이징 가능, 도메인을 넘나들지 않아도 된다.(특정 위치에서는 더 빠를 수 있다)</p>
-</li>
-<li>
-<p><strong>jQuery Slim 버전은 ajax 기능이 빠져있다.</strong></p>
-<ul>
-<li>min 버전 : 용량을 최소화한 버전 -&gt; 띄어쓰기 생략, 엔터 생략</li>
-<li>beautify : min 버전은 소스코드를 알아보기 힘들기 때문에 beautify해서 다시 보기 좋게 만든다.</li>
-</ul>
-</li>
-<li>
-<p>모든 static 리소스들은 캐시가 걸린다. -&gt; 수정사항 바로 반영되지 않음</p>
-<ol>
-<li>웹 서버에서 캐시타임 조절 -&gt; 자주 수정되는 경우 캐시 타임을 확 줄인다.(보통 1~2일 유지)</li>
-<li>이미 받은것은 만료가 될때까지 갱신이 안됨 -&gt; static 리소스의 파일명을 변경한다.(가장 쉬운 방법이지만 장고의 소스코드를 바꿔야하므로 귀찮은 방법)</li>
-<li>static 리소스 뒤에 Query String을 붙인다. -&gt; 아예 캐싱이 안되도록 한다.(뒤에 Query string을 붙이면 다른 파일이라고 인식하여 다운받음)</li>
-</ol>
-</li>
-<li>
-<p>HTML 파일에 적용하기<br>
-<img src="/image/Boot.png" alt></p>
-<ul>
-<li>CSS 파일은 헤더 바로밑에</li>
-<li>JS파일은 /body태그 바로위에 위치시킨다 - jQuery, popper, bootstrap 순으로 위치시킨다</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<hr>
-<p>기존에는 user-agent로 모바일, 데스크탑, 태블릿으로 구분을 했으나 현재에는 반응형 웹을통해 화면의 너비를 통해 기종 구분없이 화면이 달라진다</p>
-<hr>
-<p>Grid system : Bootstrap에서 지원하는 내장 반응형웹</p>
-<ul>
-<li>col-로 쪼갠 나머지를 다른 애들이 먹는다</li>
-<li>여백을 col로 지정만 해주고 내용 부분만 조절하면 된다.</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/05/17/2019-04-30-Bootstrap/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -584,7 +573,7 @@ DNS검증을 하게되면 자동으로 갱신이 된다.</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                91 개의 포스트가 있습니다.
+                92 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

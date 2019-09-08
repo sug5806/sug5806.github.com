@@ -185,6 +185,107 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/04/17/CSS 기초/" aria-label=": 2019-04-17 CSS 기초1">
+                            2019-04-17 CSS 기초1
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-04-17T21:18:32+09:00">
+	
+		    2019/04/17
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/CSS/">CSS</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>CSS 기초1 (Syntax ~ background)</h1>
+<h2>CSS Syntax</h2>
+<h4>element Selector</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>:blue;<span class="attribute">font-size</span>:<span class="number">12px</span>;&#125;</span><br><span class="line"><span class="comment">/*h1 element의 색깔은 blue</span></span><br><span class="line"><span class="comment">폰트 사이즈는 12px</span></span><br></pre></td></tr></table></figure>
+<h4>id Selector</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#para1</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*id가 para1인 element의 텍스트 정렬은 중앙,색깔은 red</span></span><br></pre></td></tr></table></figure>
+<h4>class Selector</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.center</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*center 클래스의 텍스트 정렬은 중앙, 색깔은 red</span></span><br></pre></td></tr></table></figure>
+<h4>class + element</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-class">.center</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line"><span class="comment">/* p태그 이면서 center클래스의 텍스트 정렬은 중앙, 색깔은 red</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
+<h4>클래스 부여하기</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p class="center large"&gt;This paragraph refers to two classed.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<h4>Grouping Selectors</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* h1, h2, p 태그의 텍스트 정렬은 중앙, 색깔은 red</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2>CSS를 삽입하는 3가지 방법</h2>
+<h4>1. External style sheet</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">head</span>&gt;</span><br><span class="line">&lt;link rel="stylesheet" type="text/css" href="mystyle.css"&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+<h4>2. Internal stryle sheet</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">head</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>:linen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: maroon;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+<h4>3. Inline style</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 style="color:blue; margin-left:30px;"&gt;This is a heading&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2>Backgrounds</h2>
+<h4>Background color</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: lightblue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4>Background Image</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">"paper.gif"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>이미지를 X좌표로만 반복하기</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"gradient_bg.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: repeat-x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>y좌표로만 반복하려면 repteat -y를 해주면 된다.</p>
+</li>
+<li>
+<p>반복없이 하기</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"gradient_bg.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>이미지를 오른쪽 상단에 위치시키기</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"img_tree.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="attribute">background-position</span>: right top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>스크롤해도 이미지 이동하지 않게 하기</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"img_tree.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>:no-repeat;</span><br><span class="line">    <span class="attribute">background-position</span>:right top;</span><br><span class="line">    <span class="attribute">background-attachment</span>: fixed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Background - Shorthand roperty</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">bacground</span>: red <span class="built_in">url</span>(<span class="string">"img_tree.png"</span>) no-repeat right top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/04/17/CSS 기초/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/04/16/실수의표현/" aria-label=": 2019-04-16 실수의 표현">
                             2019-04-16 실수의 표현
                         </a>
@@ -1207,161 +1308,6 @@ my_account(3000)을 하게되면 change_money(3000)을 하게된것과 똑같다
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/08/DataBase/" aria-label=": 2019-04-08 DataBase">
-                            2019-04-08 DataBase
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-08T18:47:32+09:00">
-	
-		    2019/04/08
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/데이터베이스/">데이터베이스</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>관계형 Data base</h1>
-<h3>집합론에 근거한다.</h3>
-<ol>
-<li>Oracle (대형 기업에서 가장 많이 사용함)</li>
-<li>MySQL (중소기업이 많이씀, PHP랑 정말 잘맞음 Ex) APM)</li>
-<li>Maria DB -&gt; MySQL을 쓰던사람들이 많이 넘어옴</li>
-<li>postgreSQL -&gt; 오픈 소스</li>
-</ol>
-<p>DB에서의 세션을 열었다 = TCP connection을 했다</p>
-<h3>트랜잭션과 세션의 차이</h3>
-<hr>
-<h3>DDL -&gt; DLL은 자동으로 COMMIT이 반영된다.</h3>
-<ul>
-<li>craete</li>
-<li>alter</li>
-<li>drop</li>
-<li>truncate -&gt; 통째로 삭제해버리므로 delete보다 빠름</li>
-</ul>
-<h3>DML -&gt; 자동으로 COMMIT이 되지않는다.</h3>
-<ul>
-<li>insert</li>
-<li>select</li>
-<li>update</li>
-<li>delete -&gt; 튜플을 한줄 한줄 삭제함</li>
-</ul>
-<h3>DCL</h3>
-<ul>
-<li>grant</li>
-<li>revoke</li>
-</ul>
-<h3>TCL</h3>
-<ul>
-<li>commit</li>
-<li>rollback</li>
-</ul>
-<p>auto commit 이 0이라면<br>
-DDL은 자동으로 commit을 수반함</p>
-<hr>
-<ul>
-<li>객체</li>
-<li><strong>table(entity, relation)</strong>
-<ul>
-<li>행 전체 : record, row ,tuple</li>
-<li>열의 처음 : field, attribute, colunm -&gt; 자료형을 가지고 있어야 한다.</li>
-<li>어떤 속성은 중복값을 허용하지 않고 어떤 값은 허용하는 등의 조건 -&gt; 제약조건(constraint)</li>
-</ul>
-</li>
-<li><strong>view</strong></li>
-<li><strong>index</strong></li>
-<li><strong>schema</strong>
-<ul>
-<li>내부 스키마</li>
-<li>외부 스키마</li>
-<li>물리 스키마</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3>Maria DB</h3>
-<p>utf8 mb4</p>
-<ul>
-<li>utf8이 한 글자당 최대 3byte 였으나 이모지가 나오면서 4byte로 확장함</li>
-</ul>
-<p>@@ -&gt; DB에서 사용하고있는 변수</p>
-<p>SELECT USER, HOST FROM mysql.user;을 하면 모든 유저가 나옴<br>
-’%’ -&gt; 내부, 외부모두 접속 허용<br>
-’localhost’ -&gt; 로컬 호스트로 이용</p>
-<p>GRANT ALL PRIVILEGES ON <em>.</em> TO ‘계정’@'localhost’<br>
-WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 줄 수 있음</p>
-<p>mysqldump -u sug5806 -p --databases my_db &gt; mydb.sql -&gt; sug5806 계정에 my_db라는 데이터베이스를 mydb.sql이라는 이름으로 덤프를 놓겠다</p>
-<p>primary key를 지정하지 않아도 unique not null이 있다면 자동으로 이것을 주키로 지정한다</p>
-<hr>
-<h3>예시로 만들 TABLE</h3>
-<p>Student table</p>
-<ul>
-<li>student ID -&gt; INT, <strong>PRIMARY KEY</strong></li>
-<li>num_students -&gt; INT NOT NULL</li>
-<li>student_name -&gt; VARCHAR, NOT NULL</li>
-<li>height -&gt; SMALLINT, DEFAULT 200</li>
-<li>score -&gt; SMALLINT, NULL</li>
-<li>birthday -&gt; DATE, NOT NULL</li>
-<li>class ID -&gt; INT, NULL,</li>
-</ul>
-<p>Teachers table</p>
-<ul>
-<li>teacher ID -&gt; INT, <strong>PRIMARY KEY</strong></li>
-<li>subject -&gt; VARCHAR</li>
-<li>class ID -&gt; INT, NULL</li>
-</ul>
-<p>Classes table</p>
-<ul>
-<li>class ID -&gt; INT, <strong>PRIM_ARY KEY</strong></li>
-<li>num_student -&gt; INT, NOT NULL개</li>
-</ul>
-<hr>
-<h3>SQL Query</h3>
-<h4>예시</h4>
-<p>SELECT student_name, score FROM student_cp Where student_name like ‘Ma%’</p>
-<ul>
-<li>student_cp라는 테이블에서 student_name과 score의 필드를 student_name 이 Ma로 시작하는 튜플을 가져와라</li>
-</ul>
-<p>SELECT student_name, score FROM student_cp WHERE score &gt; 50&amp;&amp; score &lt; 70</p>
-<ul>
-<li>student_cp라는 테이블에서 student_name과 score필드를 가져오는데 점수가 50점 초과 70점 미만을 가져와라</li>
-</ul>
-<p>Session : Connect가 열리고 닫힐때 까지인것.</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/08/DataBase/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -1507,7 +1453,7 @@ WITH GRANT OPTION; -&gt; 모든 권한을 받고 다른사람에게 권한을 �
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                91 개의 포스트가 있습니다.
+                92 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

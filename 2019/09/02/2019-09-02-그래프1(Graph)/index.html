@@ -1,0 +1,643 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="sug5806의 블로그">
+    <title>2019-09-02 그래프1(Graph) - sug5806의 블로그</title>
+    <meta name="author" content="sug5806">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 것을 정리하였습니다.\n그래프\n현실에서 많은 문제들은 객체와 객체 사이의 관계로 표현됩니다. 항공기 운항 경로를 예로 들면 &quot;서울에서 뉴욕까지 가는 가장 빠른 노선은 어떻게 됩니까?&quot;와 같은 질문이 있습니다. 이 질문에 답하기위해 도시 간의 관계에 대한 정보가 필요합니다. 이런 문제를 풀기 위해 사용되는 자료 구조가 그래프(Graph)입니다.\n용어 설명\n그래프(Graph): 그래프는 정점(vertices)라고 불리는 노드들의 집합 V와 간선(edge)이라고 불리는 정점의 쌍들의 집합 E를 사용하여(V,E)로 나타냅니다.\n\n정점과 간선은 위치 및 저장 요소입니다.\n그래프에서 사용하는 정의:\n\n방향을 가진 간선(Directed edge):\n\n순서를 가진 정점의 쌍(u,v)으로\n첫 번째 정점 u는 출발점을 의미합니다.\n두 번째 정점 v는 도착점을 의미합니다.\n예 : 편도 운행\n\n\n\n\n\n\n\n방향을 가지지 않은 간선(Undirected edge)\n\n순서를 가지지 않는 정점의 쌍 (u,v)\n예 : 기찻길\n\n\n\n\n\n방향을 가지는 그래프(Directed graph)\n\n그래프 내의 모든 간선들이 방향을 가집니다.\n예 - 네트워크의 라우트\n\n\n\n\n\n방향을 가지지 않는 그래프(Undirected graph)\n\n그래프 내의 모든 간선이 방향을 가지지 않습니다.\n예 : 비행노선\n\n\n\n\n","dateCreated":"2019-09-02T19:04:46+09:00","dateModified":"2019-09-08T20:46:27+09:00","datePublished":"2019-09-02T19:04:46+09:00","description":"","headline":"2019-09-02 그래프1(Graph)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/09/02/2019-09-02-그래프1(Graph)/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/09/02/2019-09-02-그래프1(Graph)/","keywords":"자료구조, 그래프"}</script>
+    <meta name="description" content="개인적으로 공부한 것을 정리하였습니다. 그래프 현실에서 많은 문제들은 객체와 객체 사이의 관계로 표현됩니다. 항공기 운항 경로를 예로 들면 &amp;quot;서울에서 뉴욕까지 가는 가장 빠른 노선은 어떻게 됩니까?&amp;quot;와 같은 질문이 있습니다. 이 질문에 답하기위해 도시 간의 관계에 대한 정보가 필요합니다. 이런 문제를 풀기 위해 사용되는 자료 구조가 그래프">
+<meta name="keywords" content="자료구조,그래프">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="2019-09-02 그래프1(Graph)">
+<meta property="og:url" content="http://blog.sug5806.site/2019/09/02/2019-09-02-그래프1(Graph)/index.html">
+<meta property="og:site_name" content="sug5806의 블로그">
+<meta property="og:description" content="개인적으로 공부한 것을 정리하였습니다. 그래프 현실에서 많은 문제들은 객체와 객체 사이의 관계로 표현됩니다. 항공기 운항 경로를 예로 들면 &amp;quot;서울에서 뉴욕까지 가는 가장 빠른 노선은 어떻게 됩니까?&amp;quot;와 같은 질문이 있습니다. 이 질문에 답하기위해 도시 간의 관계에 대한 정보가 필요합니다. 이런 문제를 풀기 위해 사용되는 자료 구조가 그래프">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="http://blog.sug5806.site/image/Graph1-1.png">
+<meta property="og:image" content="http://blog.sug5806.site/image/Graph1-2.png">
+<meta property="og:image" content="http://blog.sug5806.site/2019/09/02/2019-09-02-그래프1(Graph)/image/Graph1-3.png">
+<meta property="og:image" content="http://blog.sug5806.site/image/Graph1-4.png">
+<meta property="og:updated_time" content="2019-09-08T11:46:27.969Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019-09-02 그래프1(Graph)">
+<meta name="twitter:description" content="개인적으로 공부한 것을 정리하였습니다. 그래프 현실에서 많은 문제들은 객체와 객체 사이의 관계로 표현됩니다. 항공기 운항 경로를 예로 들면 &amp;quot;서울에서 뉴욕까지 가는 가장 빠른 노선은 어떻게 됩니까?&amp;quot;와 같은 질문이 있습니다. 이 질문에 답하기위해 도시 간의 관계에 대한 정보가 필요합니다. 이런 문제를 풀기 위해 사용되는 자료 구조가 그래프">
+<meta name="twitter:image" content="http://blog.sug5806.site/image/Graph1-1.png">
+    
+    
+        
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-xmwjmaw63fz9loualz1qmrwgsqz40hdvx3wm88nlmrq0pgtqesn7rfguwvks.min.css">
+    <!--STYLES END-->
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145695222-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-145695222-1');
+    </script>
+
+
+    
+
+    
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ " aria-label>
+            sug5806의 블로그
+        </a>
+    </div>
+    
+        
+            <a class="header-right-picture " href="#about" aria-label="링크 열기: /#about">
+        
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/ " title="Home">
+                    
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-categories" title="카테고리">
+                    
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-tags" title="태그">
+                    
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-archives" title="아카이브">
+                    
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">아카이브</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link open-algolia-search" href="#search" title="검색">
+                    
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">검색</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="#about" title="About">
+                    
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="http://portfolio.sug5806.site/" target="_blank" rel="noopener" title="포트폴리오">
+                    
+                        <i class="sidebar-button-icon fas fa-user-tie" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">포트폴리오</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/mailto" title="Mail">
+                    
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            2019-09-02 그래프1(Graph)
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2019-09-02T19:04:46+09:00">
+	
+		    2019/09/02
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/자료구조/">자료구조</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<h1>그래프</h1>
+<p>현실에서 많은 문제들은 객체와 객체 사이의 관계로 표현됩니다. 항공기 운항 경로를 예로 들면 &quot;서울에서 뉴욕까지 가는 가장 빠른 노선은 어떻게 됩니까?&quot;와 같은 질문이 있습니다. 이 질문에 답하기위해 도시 간의 관계에 대한 정보가 필요합니다. 이런 문제를 풀기 위해 사용되는 자료 구조가 그래프(Graph)입니다.</p>
+<h1>용어 설명</h1>
+<p>그래프(Graph): 그래프는 정점(vertices)라고 불리는 노드들의 집합 V와 간선(edge)이라고 불리는 정점의 쌍들의 집합 E를 사용하여(V,E)로 나타냅니다.</p>
+<ul>
+<li>정점과 간선은 위치 및 저장 요소입니다.</li>
+<li>그래프에서 사용하는 정의:
+<ul>
+<li>방향을 가진 간선(Directed edge):
+<ul>
+<li>순서를 가진 정점의 쌍(u,v)으로</li>
+<li>첫 번째 정점 u는 출발점을 의미합니다.</li>
+<li>두 번째 정점 v는 도착점을 의미합니다.</li>
+<li>예 : 편도 운행</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/image/Graph1-1.png" alt="img"></p>
+<ul>
+<li>방향을 가지지 않은 간선(Undirected edge)
+<ul>
+<li>순서를 가지지 않는 정점의 쌍 (u,v)</li>
+<li>예 : 기찻길</li>
+</ul>
+</li>
+</ul>
+<p><img src="/image/Graph1-2.png" alt="img"></p>
+<ul>
+<li>방향을 가지는 그래프(Directed graph)
+<ul>
+<li>그래프 내의 모든 간선들이 방향을 가집니다.</li>
+<li>예 - 네트워크의 라우트</li>
+</ul>
+</li>
+</ul>
+<p><img src="image/Graph1-3.png" alt="img"></p>
+<ul>
+<li>방향을 가지지 않는 그래프(Undirected graph)
+<ul>
+<li>그래프 내의 모든 간선이 방향을 가지지 않습니다.</li>
+<li>예 : 비행노선</li>
+</ul>
+</li>
+</ul>
+<p><img src="/image/Graph1-4.png" alt="img"></p>
+
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">태그</span><br>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/그래프/">그래프</a> <a class="tag tag--primary tag--small t-link" href="/tags/자료구조/">자료구조</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled" aria-hidden="true">
+                        
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">이전</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/08/30/2019-08-30-트리의운행2(python_loop)/" data-tooltip="2019-08-30 트리의 운행2(Python_Loop)" aria-label="다음: 2019-08-30 트리의 운행2(Python_Loop)">
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">다음</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="이 포스트 공유하기">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/02/2019-09-02-그래프1(Graph)/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/02/2019-09-02-그래프1(Graph)/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/02/2019-09-02-그래프1(Graph)/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="댓글을 남겨주세요">
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="맨 위로">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 sug5806. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled" aria-hidden="true">
+                        
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">이전</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/08/30/2019-08-30-트리의운행2(python_loop)/" data-tooltip="2019-08-30 트리의 운행2(Python_Loop)" aria-label="다음: 2019-08-30 트리의 운행2(Python_Loop)">
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">다음</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="이 포스트 공유하기">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/02/2019-09-02-그래프1(Graph)/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/02/2019-09-02-그래프1(Graph)/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/02/2019-09-02-그래프1(Graph)/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="댓글을 남겨주세요">
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="맨 위로">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/02/2019-09-02-그래프1(Graph)/" aria-label="Facebook에 공유하기">
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/02/2019-09-02-그래프1(Graph)/" aria-label="Twitter에 공유하기">
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/02/2019-09-02-그래프1(Graph)/" aria-label="Google+에 공유하기">
+                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <h4 id="about-card-name">sug5806</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br>
+                <p>author.job</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-times"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="/assets/images/logo-algolia-nebula-blue-full.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search" class="form-control input--large search-input" placeholder="Search ">
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">포스트가 없습니다.</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                            <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 12일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                            <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 15일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                            <h3 class="media-heading">2019-03-22 OOP</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 22일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
+                92 개의 포스트가 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-igy6higovbbudnz2huqqnzan9tbi5p5qzgpza7ddmnsvw8o9l5otrbk5cg9n.min.js"></script>
+<!--SCRIPTS END-->
+
+
+    
+        <script>
+          var disqus_config = function() {
+            this.page.url = 'http://blog.sug5806.site/2019/09/02/2019-09-02-그래프1(Graph)/';
+              
+            this.page.identifier = '2019/09/02/2019-09-02-그래프1(Graph)/';
+              
+          };
+          (function() {
+            var d = document, s = d.createElement('script');
+            var disqus_shortname = 'sug5806';
+            s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+    
+
+
+
+    <script src="/assets/js/moment-with-locales.js"></script>
+    <script src="/assets/js/algoliasearch.js"></script>
+    <script>
+      var algoliaClient = algoliasearch('2LOSRWVGZX', '3846f641c03e28f7c9ece942801b6d95');
+      var algoliaIndex = algoliaClient.initIndex('search');
+    </script>
+
+
+    </body>
+</html>

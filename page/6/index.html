@@ -185,6 +185,86 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/05/18/2019-05-18-소셜로그인구현/" aria-label=": 2019-05-18 Django social login(naver)">
+                            2019-05-18 Django social login(naver)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-05-18T18:32:46+09:00">
+	
+		    2019/05/18
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>네이버 소셜로그인 구현하기</h1>
+<h3>1. allauth 모듈 설치하기</h3>
+<ul>
+<li><code>pip install django-allauth</code></li>
+</ul>
+<h3>2. <code>settings.py</code> 수정하기</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 맨 마지막에 추가</span></span><br><span class="line">AUTHENTICATION_BACKENDS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment"># Needed to login by username in Django admin, regardless of `allauth`</span></span><br><span class="line">    <span class="string">'django.contrib.auth.backends.ModelBackend'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># `allauth` specific authentication methods, such as login by e-mail</span></span><br><span class="line">    <span class="string">'allauth.account.auth_backends.AuthenticationBackend'</span>,</span><br><span class="line">    </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">SITE_ID = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># INSTALLED_APPS에 추가하기</span></span><br><span class="line">    <span class="string">'django.contrib.sites'</span>,</span><br><span class="line">    <span class="string">'allauth'</span>,</span><br><span class="line">    <span class="string">'allauth.account'</span>,</span><br><span class="line">    <span class="string">'allauth.socialaccount'</span>,</span><br><span class="line">    <span class="comment"># 이 부분은 소셜로그인을 구현하고 싶은 사이트를 입력하면 된다</span></span><br><span class="line">    <span class="string">'allauth.socialaccount.providers.naver'</span>,</span><br></pre></td></tr></table></figure>
+<h3>3. app의 <code>urls.py</code>에 추가하기</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">'accounts'</span>, include(<span class="string">'allauth.urls'</span>)),</span><br></pre></td></tr></table></figure>
+<h3>4. DB migrate 하기</h3>
+<pre><code>* `python manage.py migate`
+</code></pre>
+<h3>5. 네이버 개발자 센터방문</h3>
+<p><img src="/image/naver1.png" alt></p>
+<ul>
+<li>사용하고자 하는 이름 작성</li>
+<li>권한은 원하는대로<br>
+<img src="/image/naver3.png" alt></li>
+<li>서비스 URL과 Callback URL을 위와 같이 적어준다</li>
+<li>만약 직접 서비스하고 있는 사이트가 있다면 서비스 URL에 자신의 사이트를 적어준다.</li>
+</ul>
+<h3>6. app의 <code>url.py</code>에 추가하기 2</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth.views <span class="keyword">import</span> LoginView, LogoutView</span><br><span class="line"></span><br><span class="line">path(<span class="string">'login/'</span>, LoginView.as_view(template_name=<span class="string">'account/login.html'</span>), name=<span class="string">'login'</span>),</span><br><span class="line">    path(<span class="string">'logout/'</span>, LogoutView.as_view(template_name=<span class="string">'account/logout.html'</span>), name=<span class="string">'logout'</span>),</span><br></pre></td></tr></table></figure>
+<h3>7. <code>./manage.py</code> admin 사이트로 접속</h3>
+<p><img src="/image/naver_admin.png" alt><br>
+맨 밑의 Social application으로 접속</p>
+<h3>8. Social application에서 추가하기</h3>
+<p><img src="/image/naver_admin2.png" alt></p>
+<ul>
+<li>위에서 Key와 ID는 네이버 개발자센터에서 발급받은 자신의 ID와 Key를 적으면 된다</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/05/18/2019-05-18-소셜로그인구현/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/05/17/2019-04-30-Bootstrap/" aria-label=": 2019-05-17 Django에 Bootstrap 적용하기">
                             2019-05-17 Django에 Bootstrap 적용하기
                         </a>
@@ -1269,64 +1349,6 @@ DB에 변경사항이 반영돼야할 항목들만 migrate를 한다</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/29/2019-04-25-Pyhon으로-파일저장하기/" aria-label=": 2019-04-29 Python으로 파일(Excel, text, CSV) 저장하기">
-                            2019-04-29 Python으로 파일(Excel, text, CSV) 저장하기
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-29T10:31:23+09:00">
-	
-		    2019/04/29
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/python/">python</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>Python으로 Excel에 자료 저장하기</h1>
-<p>파이썬 모듈인 openpyxl을 설치해줍니다</p>
-<ol>
-<li>pip3 install openpyxl</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 메모리 상에 임시 엑셀파일을 하나 만든다</span></span><br><span class="line">wb = workbook()</span><br><span class="line"><span class="comment"># 현재 선택되어 있는 시트(sheet1)을 선택한다.</span></span><br><span class="line">ws = wb.active</span><br><span class="line"><span class="comment"># 2가지 방법으로 셀에 정보를 입력할 수 있다</span></span><br><span class="line">ws1.cell(row=<span class="number">1</span>, column=<span class="number">1</span>, value=<span class="string">"test"</span>) <span class="comment"># A1</span></span><br><span class="line">ws1[<span class="string">'A1'</span>] = <span class="string">"aaa"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 엑셀시트 만들기 -&gt; second sheet라는 이름으로 새 시트를 만든다</span></span><br><span class="line">ws2 = wb.create_sheet(title=<span class="string">"second sheet"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 메모리에 있는 임시 엑셀파일을 현재 디렉토리에 test.xlsx라는 파일로 저장한다.</span></span><br><span class="line">wb.save(<span class="string">"test.xlsx"</span>)</span><br><span class="line"><span class="comment"># 메모리에 있는 Workbook을 메모리에서 해제시킨다</span></span><br><span class="line">wb.close()</span><br></pre></td></tr></table></figure>
-<h1>Python으로 Text에 자료 저장하기</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># f라는 이름으로 'lotto.txt'을 쓰기형식으로 열어준다(파일이 없다면 생성된다.)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># w : 쓰기모드</span></span><br><span class="line"><span class="comment"># r : 읽기모드</span></span><br><span class="line"><span class="comment"># a : 추가모드</span></span><br><span class="line">f = open(<span class="string">"lotto.txt"</span>, <span class="string">'w'</span>)</span><br><span class="line">f.write(내용)</span><br><span class="line">f.writelines(내용)</span><br><span class="line"><span class="comment"># write와 writelines의 차이점은 </span></span><br><span class="line">f.close</span><br></pre></td></tr></table></figure>
-<h1>Python 으로 CSV에 자료 저장하기</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lotto.csv를 쓰기모드로 연다 만약 파일이 없으면 만든다.</span></span><br><span class="line"><span class="comment"># lotto.csv를 csv.writer에 넣어준다.</span></span><br><span class="line"><span class="comment"># newline을 지정해 주지 않는경우 각 라인뒤에 빈 라인이 추가되는 경우가 있다</span></span><br><span class="line">csvfile = open(<span class="string">'lotto.csv'</span>, <span class="string">'w'</span>, newline=<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># delimiter 옵션으로 문자 간격? 당 구분자를 지어준다</span></span><br><span class="line"><span class="comment"># 이것을 ,으로 해주거나 옵션을 주지 않으면 각 열에 따로따로 들어가지만</span></span><br><span class="line"><span class="comment"># 이외의 것을 하게되면 한 열에 전부다 들어가게 된다.</span></span><br><span class="line">writer = csv.writer(csvfile, delimiter=<span class="string">','</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 한 행을 기준으로 데이터가 들어가게 된다</span></span><br><span class="line">writer.writerow(내용)</span><br><span class="line">wr.writerow([<span class="number">1</span>, <span class="string">"김기동"</span>, <span class="literal">False</span>])</span><br><span class="line">wr.writerow([<span class="number">2</span>, <span class="string">"박춘삼"</span>, <span class="literal">True</span>])</span><br></pre></td></tr></table></figure>
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/29/2019-04-25-Pyhon으로-파일저장하기/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -1472,7 +1494,7 @@ DB에 변경사항이 반영돼야할 항목들만 migrate를 한다</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                91 개의 포스트가 있습니다.
+                92 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
