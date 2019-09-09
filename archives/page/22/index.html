@@ -186,6 +186,60 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/04/25/2019-04-25-크롤러만들기2/" aria-label=": 2019-04-25 크롤러로 쇼핑몰 목록 가져오기(웹 크롤러 만들기2)">
+                            2019-04-25 크롤러로 쇼핑몰 목록 가져오기(웹 크롤러 만들기2)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-04-25T10:31:23+09:00">
+	
+		    2019/04/25
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/python/">python</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>네이버 쇼핑에서 주요 쇼핑몰 목록 가져오기</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="comment"># 네이버 쇼핑몰의 url</span></span><br><span class="line">url = <span class="string">"https://shopping.naver.com/"</span></span><br><span class="line"></span><br><span class="line">req = requests.get(url)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> req.status_code == requests.codes.ok:</span><br><span class="line">    print(<span class="string">"접속성공"</span>)</span><br><span class="line">    html = BeautifulSoup(req.text, <span class="string">"html.parser"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 각 리스트 원소마다 태그가 여러개 중첩되어 있음</span></span><br><span class="line">    s_list1 = html.select(<span class="string">'ul#mallListPage1 li'</span>)</span><br><span class="line">    <span class="comment"># print(s_list1)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 각 리스트 원소마다 태그가 1개밖에 없음</span></span><br><span class="line">    s_list2 = html.select(<span class="string">'ul#mallListPage1 li img'</span>)</span><br><span class="line">    <span class="comment"># print(s_list2)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> s_list1:</span><br><span class="line">        <span class="comment"># 중첩되어 있는 태그를 하나씩 분리함</span></span><br><span class="line">        mall_url = i.select_one(<span class="string">'a'</span>)</span><br><span class="line">        mall_name = i.select_one(<span class="string">'img'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># print(mall_name.get('alt'), mall_url.get('href'))</span></span><br><span class="line">        <span class="comment"># print(mall_name['alt'], mall_url['href'])</span></span><br></pre></td></tr></table></figure>
+<p><img src="/image/multitag_display.png" alt></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment"># s_list2는 애초에 태그가 1개밖에 없으므로 분리 안해도 무방</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> s_list2:</span><br><span class="line">    print(i[<span class="string">'alt'</span>])</span><br><span class="line">    print(i.get(<span class="string">'alt'</span>))</span><br></pre></td></tr></table></figure>
+<p><img src="/image/solotag_display.png" alt></p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/04/25/2019-04-25-크롤러만들기2/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/04/25/2019-04-25-DataBase기초/" aria-label=": 2019-04-25 데이터 베이스 기초">
                             2019-04-25 데이터 베이스 기초
                         </a>
@@ -474,88 +528,6 @@ span.ah_k.anroll</li>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/23/2019-04-23-Exhaustive-Search/" aria-label=": 2019-04-23 Exhaustive Search(과도한 검색)">
-                            2019-04-23 Exhaustive Search(과도한 검색)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-23T21:11:12+09:00">
-	
-		    2019/04/23
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/알고리즘/">알고리즘</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h3>완전 검색 방법</h3>
-<ul>
-<li>문제의 해법으로 생각할 수 있는 모든 경우의 수를 나열해보고 확인하는 기법, 다시말해 처음부터 끝까지 하나하나 대입해서 푸는 방법이다
-<ul>
-<li>Brute-force 혹은 Henerate-and-Test 기법이라고 불림</li>
-<li>모든 경우의 수를 테스트한 후, 최종 해법을 도출함</li>
-<li>일반적으로 경우의 수가 상대적으로 작을 때 유용함</li>
-<li>모든 경우의 수를 생성하고 테스트하기 때문에 수행 속도는 느리지만, 해답을 찾아내지 못할 확률이 적음</li>
-<li>주어진 문제를 풀 때, 우선 완전 검색으로 접근하여 해답을 도출한 후, 성능 개선을 위해 다른 알고리즘을 사용하고 해답을 확인하는 것이 바람직하다</li>
-</ul>
-</li>
-<li>Ex) Baby-gin 게임
-<ul>
-<li>
-<ol>
-<li>6개의 숫자로 만들 수 있는 모든 숫자 나열(중복 포함)</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li>앞의 3자리와 뒤의 3자리를 잘라, run과 triplete 여부를 테스트하고 최종적으로 Baby-gin을 판단함</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>Ex) 순열 : 서로 다른 것들 중 몇 개를 뽑아서 한 줄로 나열하는 것
-<ul>
-<li>서로 다른 n개 중 r개를 택하는 순열은 nPr</li>
-<li>nPr은 다음과 같은 식이 성립 : nPr = n*(n-1)<em>(n-2)</em> … * (n-r+1)</li>
-<li>nPn = n! 이라고 표기하며 Factorial이라 부른다</li>
-</ul>
-</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/23/2019-04-23-Exhaustive-Search/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -702,7 +674,7 @@ span.ah_k.anroll</li>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                92 개의 포스트가 있습니다.
+                93 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

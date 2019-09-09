@@ -186,6 +186,88 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/04/23/2019-04-23-Exhaustive-Search/" aria-label=": 2019-04-23 Exhaustive Search(과도한 검색)">
+                            2019-04-23 Exhaustive Search(과도한 검색)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-04-23T21:11:12+09:00">
+	
+		    2019/04/23
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/알고리즘/">알고리즘</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h3>완전 검색 방법</h3>
+<ul>
+<li>문제의 해법으로 생각할 수 있는 모든 경우의 수를 나열해보고 확인하는 기법, 다시말해 처음부터 끝까지 하나하나 대입해서 푸는 방법이다
+<ul>
+<li>Brute-force 혹은 Henerate-and-Test 기법이라고 불림</li>
+<li>모든 경우의 수를 테스트한 후, 최종 해법을 도출함</li>
+<li>일반적으로 경우의 수가 상대적으로 작을 때 유용함</li>
+<li>모든 경우의 수를 생성하고 테스트하기 때문에 수행 속도는 느리지만, 해답을 찾아내지 못할 확률이 적음</li>
+<li>주어진 문제를 풀 때, 우선 완전 검색으로 접근하여 해답을 도출한 후, 성능 개선을 위해 다른 알고리즘을 사용하고 해답을 확인하는 것이 바람직하다</li>
+</ul>
+</li>
+<li>Ex) Baby-gin 게임
+<ul>
+<li>
+<ol>
+<li>6개의 숫자로 만들 수 있는 모든 숫자 나열(중복 포함)</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>앞의 3자리와 뒤의 3자리를 잘라, run과 triplete 여부를 테스트하고 최종적으로 Baby-gin을 판단함</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Ex) 순열 : 서로 다른 것들 중 몇 개를 뽑아서 한 줄로 나열하는 것
+<ul>
+<li>서로 다른 n개 중 r개를 택하는 순열은 nPr</li>
+<li>nPr은 다음과 같은 식이 성립 : nPr = n*(n-1)<em>(n-2)</em> … * (n-r+1)</li>
+<li>nPn = n! 이라고 표기하며 Factorial이라 부른다</li>
+</ul>
+</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/04/23/2019-04-23-Exhaustive-Search/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/04/22/2019-04-22-가상환경/" aria-label=": 2019-04-22 Python 가상환경 구축하기">
                             2019-04-22 Python 가상환경 구축하기
                         </a>
@@ -316,111 +398,6 @@ IDE는 Pycham을 기준으로 작성하였습니다.</p>
                     
                         <p>
                             <a href="/2019/04/21/2019-04-21-127.0.0.1과-localhost의-차이점/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/19/2019-04-19-Django시작하기/" aria-label=": 2019-04-19 Django 기본">
-                            2019-04-19 Django 기본
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-19T14:30:50+09:00">
-	
-		    2019/04/19
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/Django/">Django</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>Django 기본</h1>
-<h3>Django 프로젝트 구조 살펴보기</h3>
-<p><img src="/image/Django1.png" alt></p>
-<ol>
-<li>
-<p>second_django 폴더 : 프로젝트 설정 파일과 웹 서비스 실행을 위한 파일들이 들어있다.</p>
-<ul>
-<li><strong>init</strong>.py : 파이썬 2.x대 버전과의 호환을 위해 만들어진 비어있는 파일이다. 지워도 무방하다</li>
-<li>settings.py : 프로젝트 설정에 관한 다양한 내용이 들어있다.</li>
-<li>urls.py : 특정 기능을 수행하기 위해 접속하는 주소를 url이라 하고 이를 설정해주는데, 그 설정을 이 파일에 기록함</li>
-<li>wsgi.py : 웹 서비스를 실행하기 위한 wsgi 관련 내용이 들어있음</li>
-</ul>
-</li>
-<li>
-<p>venv 폴더 : 프로젝트 구동에 필요한 가상환경이 들어있음</p>
-</li>
-<li>
-<p>db.sqlite3 : SQLite3 DB 파일이다. 다른 DB를 이용할시 필요없다</p>
-</li>
-</ol>
-<h3>장고 기본 명령들</h3>
-<ol>
-<li>django-admin startproject : 장고 프로젝트를 만드는 명령이다. 웹 서비스를 만들 때 마다 한번 실행한다.</li>
-<li>startapp : 프로젝트에 기능 단위인 앱을 새로 만들때 사용</li>
-<li>makemigrations : 어플리케이션에 변경 사항을 추적해 DB에 적용할 내용을 정리함. 보통 앱 안에 있는 모델(model)의 변경 사항이 있을 때 주로 사용함.</li>
-<li>sqlmigrate: 실행할 SQL 명령문을 출력한다</li>
-<li>migrate : 실제 변경사항을 DB에 반영한다.</li>
-<li>showmigrations : 프로젝트의 DB 변경사항 목록과 상태를 출력한다.</li>
-<li>runserver : 테스트 서버를 실행한다.</li>
-<li>dumpdata : 현재 DB의 내용을 백업할 때 사용한다.</li>
-<li>loaddata : 백업 파일에서 DB로 내용을 복구 할 때 사용한다</li>
-<li>flush : DB 테이블은 그대로 두고 테이블의 내용만 전부 삭제한다</li>
-<li>shell : 장고 쉘(Shell)을 실행한다</li>
-<li>dbshell : DB에 직접 접근 할 수 있는 쉘을 실행한다</li>
-<li>createsuperuser : 관리자 계정을 생성한다</li>
-<li>changepassword : 계정의 비밀번호를 변경할 수 있다</li>
-</ol>
-<hr>
-<h2>디자인 패턴</h2>
-<h4>MVC와 MTV</h4>
-<ul>
-<li>
-<p>웹 프로그래밍에서 자주 쓰이는 디자인 패턴은 MVC이다 : Model-View-Controller</p>
-<ol>
-<li>Model : DB의 구조를 결정한다.</li>
-<li>View : 사용자에게 보여지는 UI부분이다</li>
-<li>Controller : 기능, 로직부분이다</li>
-</ol>
-</li>
-<li>
-<p>장고에서는 MTV라고 하나 <strong>이름만 다르고 동일한 패턴이다</strong> : Model-Template-View</p>
-<ul>
-<li>양쪽모두 View가 있지만 기능이 서로 다르다 각각 연결해보면 (Model:Model)-(View:Template)-(Controller:View)이다</li>
-</ul>
-</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/19/2019-04-19-Django시작하기/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -577,7 +554,7 @@ IDE는 Pycham을 기준으로 작성하였습니다.</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                92 개의 포스트가 있습니다.
+                93 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

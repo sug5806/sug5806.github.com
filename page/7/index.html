@@ -185,6 +185,263 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/04/30/2019-04-27-bookmark/" aria-label=": 2019-04-30 Django bookmark">
+                            2019-04-30 Django bookmark
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-04-30T16:59:20+09:00">
+	
+		    2019/04/30
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <ol>
+<li>파이썬 프로젝트 만들기 :</li>
+<li>장고 설치 : <code>pip install django==2.1</code></li>
+<li>장고 프로젝트 만들기 : <code>django-admin startproject config .</code></li>
+<li>DB 초기화 : <code>python manage.py migrate</code></li>
+<li>관리자 계정 생성 : <code>python manage.py createsuperuser</code></li>
+<li>기본 앱 만들기 : <code>python manage.py startapp bookmark</code></li>
+<li>INSTALLED_APPS 에 추가 : bookmark<br>
+— 템플릿 폴더 검색, DB 변경사항 추가</li>
+</ol>
+<hr>
+<p>앱<br>
+(custom field)</p>
+<ol>
+<li>
+<p><code>models.py</code> 작성</p>
+<ul>
+<li>필드 =&gt; DB에 컬럼 -&gt; 컬럼의 데이터 타입, 제약조건(<code>form.py</code> 작성)
+<ul>
+<li>Bookmark site_name, url, created 이런 정보들만 입력받아서 저장한다 하면 form이 필요없음<br>
+User, username, paaword, first_name, last_name, create이외에<br>
+DB에 저장되지 않는 항목들(비밀번호 확인과 같은 것, 전화번호 인증)이 추가로 필요하면 form이 필요함</li>
+</ul>
+</li>
+<li>models.Model을 상속받는 이유
+<ul>
+<li>models.Model이 가지고 있는 메서드나 속성값을 사용하기 위해서</li>
+<li>models.Model : ORM 관련 기능들
+<ul>
+<li>ORM관련기능 : DB를 추상화해서 코드로 조작할 수 있게 하는 기능 -&gt; 데이터를 추가, 수정, 검색, 삭제</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>created :<br>
+작성자 -&gt; 로그인한 유저 정보를 찾아서 추가
+<ul>
+<li>작성자 != 로그인한 유저<br>
+-&gt; 모델 저장 직전에 직접 코드로 처리<br>
+작성일 -&gt; 서버시간을 읽어서 timestamp값을 만들어 추가</li>
+</ul>
+</li>
+<li>자동 옵션 auto_now, auto_now_add
+<ul>
+<li>auto_now : 저장, 갱신 이런것을 할때의 시간을 기준</li>
+<li>auto_now_add : 생성할때의 시간</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>views.py</code> 작성<br>
+(context_processor 작성) 모든 페이지(템플릿 파일 전체)에 출력될 내용</p>
+<ul>
+<li>장바구니, user<br>
+(custom template tag)</li>
+<li>템플릿 엔진에서 지원하는 태그 외에, 개발자가 추가로 필요한 기능</li>
+<li>뷰 종류 -&gt; 클래스형, 함수형, 서로 상호 기능 제약이 거의 없다.(둘중 아무거나로 해도 생산 없다)
+<ul>
+<li>함수형 : def 뷰이름(request,[추가 인수]) :
+<ul>
+<li>CRUDL에 특별한 처리를 추가해야 하는 경우<br>
+함수형뷰는 클래스형 뷰에 비해서 자유도가 높다(커스터마이징)<br>
+처리할 코드를 직접 다 개발자가 작성</li>
+</ul>
+</li>
+<li>클래스형 : class 뷰이름(제네릭뷰):
+<ul>
+<li>CRUDL에 관련 기능은 자주 사용하기 떄문에 장고에서 만들어 놓음<br>
+클래스형뷰가 함수형뷰 보다 생산성이 좋다<br>
+제네릭 기능외에 추가적인 기능을 개발자가 작성<br>
+메서드 방식- 커스터마이징에 관련된 메서드를 찾아야 한다.<br>
+<code>from django.views.generic</code>에 다 있음
+<ul>
+<li>메타 클래스는 옵션 클래스 -&gt; 내가 상속을 받았는데, 속성값에 변경이 필요하다면 사용</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li>
+<p><code>urls.py</code> 작성</p>
+<ul>
+<li>namespace = 이름 공간<br>
+다른 앱들과 url pattern 이름이 겹치는 것을 방지하기 위해서 사용<br>
+2.x버전 이전에는 namespace라는 인수가 존재<br>
+함수형 뷰 : 이름만 쓴다<br>
+클래스형 뷰 : 이름.as_view()
+<ul>
+<li>Ex) <code>path('', BookmarkList.as_view(), name='index')</code></li>
+<li>그 글을 특정하기 위해서는 path방식이나 query string을 작성해야한다.(create제외 detail, delete, update)
+<ul>
+<li>
+<p>localhost/bookmark/1 : 글보기, 수정, 삭제<br>
+localhost/bookmark/create : 글쓰기<br>
+<code>&lt;value&gt;/</code> 이렇게 설정을 하면 위에 2개 모두 해당된다.<br>
+<code>&lt;int:value&gt;/</code> 이렇게 설정하면 위에것만 해당된다.</p>
+</li>
+<li>
+<p>converter가 없으면 무조건 str이 기본값</p>
+</li>
+<li>
+<p>int : 정수<br>
+str : 문자열<br>
+slug : 여러 단어들을 뭉쳐서 주소로 만드는것(주소도 SEO에 들어간다) =&gt; SEO 때문에 사용<br>
+uuid : 많이 쓰이지는 않는다, 어플리케이션 호출</p>
+<ul>
+<li>Ex) 웹서핑을 하다가 어플을 실행할때<br>
+path : <code>bookmark/&lt;path:value/&gt;</code> =&gt; bookmark/19/04/29<br>
+위의 기본 converter를 제외한 형태가 필요하다면 custom converter를 만든다.</li>
+</ul>
+</li>
+<li>
+<p><code>path('delete/&lt;int:pk&gt;/', BookmarkDelete.as_view(), name='delete')</code></p>
+<ul>
+<li>pk = primary key<br>
+int = converter -&gt; 여기에 들어 오는 값을 int로 변환하겠다</li>
+</ul>
+</li>
+<li>
+<p>어떤 사람이 detail/abc/로 접속을 하게되면 여기에 접속할 수 없다.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>template 만들기</p>
+</li>
+<li>
+<p><code>admin.py</code> 추가</p>
+<ul>
+<li>
+<p>관리자 페이지 목록에 표시될 내용<br>
+확인 메시지에 출력되는 내용을 만들기 위함</p>
+</li>
+<li>
+<p><code>__str__(self)</code>을 이용</p>
+   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Site name : "</span> + self.site_name + <span class="string">", URL : "</span> + self.url</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>모델 클래스가 수정됐다고 해서 항상 migrate를 해야하는것은 아니.<br>
+DB에 변경사항이 반영돼야할 항목들만 migrate를 한다</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>SEO - Search Engin OPtimization</p>
+<ul>
+<li>HTML 표준에 맞춰 Meta Tag, OpenGraph -&gt; 프론트가 하는일</li>
+<li>최신글을 계속 보고 태그를 익히는게 좋음 -&gt; 계속 바뀌기 때문</li>
+</ul>
+<p>CSS Framework</p>
+<ol>
+<li>Bootstrap</li>
+<li>Falt UI</li>
+<li>Material Design Lite : Google - Android랑 디자인이 비슷하다</li>
+</ol>
+<hr>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    &#123;% csrf_token %&#125;</span><br><span class="line">    </span><br><span class="line">    &#123;&#123;form.as_p&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Create"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>추가, 수정, 삭제의 경우 해당 기능을 완료한 후에 이동할 페이지가 필요하다.</p>
+<ol>
+<li>view 클래스에 success_url 이라는 속성값을 지정</li>
+<li>model에 get_absolute_url이라는 메서드를 만든다.</li>
+</ol>
+<p>공통으로 들어갈 부분을 template파일 하나로 분리한다.</p>
+<ul>
+<li>확장 : 상속을 받아 공통된 부분을 껴놓는것
+<ol>
+<li>
+<p>프로젝트에다 폴더를 하나 만들고 base.html파일을 만든다.<br>
+블록에 상속할 내용을 넣는다.</p>
+</li>
+<li>
+<p>자식파일에는 부모와 중복되는 내용은 다 지워준다.</p>
+</li>
+<li>
+<p>자식에서 블록을 만들면 부모의것을 덮어쓰고 없으면 부모것을 쓴다.</p>
+</li>
+</ol>
+</li>
+<li>루트에 있는 common_template를 인식시키려면 settings로 가서 DIR을 수정해준다.</li>
+</ul>
+<hr>
+<p>배포 Deploy : 서버에 올린다.</p>
+<ol>
+<li>Pyhonanywhere /w Github
+<ol>
+<li>github에 소스코드 업로드, requirements도 같이
+<ul>
+<li>pip3 freeze &gt; requirements.txt</li>
+</ul>
+</li>
+<li>pythonanywhere.com에 가입</li>
+</ol>
+</li>
+<li>Heroku</li>
+<li>AWS Linux FTP</li>
+<li>AWS EB</li>
+</ol>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/04/30/2019-04-27-bookmark/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/04/29/2019-04-25-Pyhon으로-파일저장하기/" aria-label=": 2019-04-29 Python으로 파일(Excel, text, CSV) 저장하기">
                             2019-04-29 Python으로 파일(Excel, text, CSV) 저장하기
                         </a>
@@ -1001,141 +1258,6 @@ IDE는 Pycham을 기준으로 작성하였습니다.</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/18/쓰레드와프로세스/" aria-label=": 2019-04-18 프로세스와 쓰레드">
-                            2019-04-18 프로세스와 쓰레드
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-18T21:30:32+09:00">
-	
-		    2019/04/18
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/운영체제/">운영체제</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>Program, Process</h1>
-<p>Program =&gt; HDD안의 이미지를 말함 Ex) Python.exe</p>
-<p>Process =&gt; 실행중인 프로그램(이미 RAM에 올라가있음)</p>
-<p>PID로 구분을 한다 (Process ID) -&gt; 윈도우는 랜덤으로, 리눅스는 순차적으로 배분</p>
-<h3>pre-emptive OS</h3>
-<ul>
-<li>multitasking OS</li>
-<li>suspend currently running process</li>
-<li>determine which process should execute next</li>
-</ul>
-<h3>process scheduling</h3>
-<ul>
-<li>priority algorithm : 높은 우선순위의 프로세스가 먼저 실행된다.</li>
-<li>round-robin algorithm : 프로세스들 사이에 우선순위를 두지 않고 time slice로 CPU를 할당하는 방법이다.</li>
-</ul>
-<h2>scheduler</h2>
-<ul>
-<li>When?
-<ul>
-<li>every time slice</li>
-<li>a process created or a process ended</li>
-<li>a running process blocked (I/O, system call)</li>
-</ul>
-</li>
-</ul>
-<p><img src="/image/schduler.png" alt="스케줄링"></p>
-<p>Block으로 빠지는 경우</p>
-<ul>
-<li>IO</li>
-<li>System call(운영체제에서 사용하는 함수중 사용자에게 인터페이스를 열어놓은 함수 Ex) sleep)</li>
-</ul>
-<h2>Waiting 과 Running 사이에서 일어나는 일 : context switching</h2>
-<p>context switching</p>
-<ul>
-<li>메모리안에 블록을 하나만듬(Process Control block) 이곳(PCB)에 어디까지 실행하였는지(CPU안의 레지스터들의 상태정보)를 저장함</li>
-<li>context = 지금 현재 실행되고있는 CPU안의 레지스터들의 상태정보를 하나로 모은것</li>
-<li>자주일어날경우 메모리접근 시간이 너무 커짐 -&gt; time slice를 잘 정해야함</li>
-<li>PCB를 내리고 새로운 PCB를 올리는 작업을 context switching이라 함</li>
-</ul>
-<hr>
-<p>Process와 Thread -&gt; 인스트럭션의 나열 -&gt; 실행의 흐름일 뿐이다</p>
-<p>Process = 1개 이상의 쓰레드를 갖는다, 쓰레드가 1개일경우 (single thread라 한다)</p>
-<p>Concurrency programming (동시성 프로그래밍) -&gt; 속도를 위해 하는것이 아님(싱글 코어일 경우)</p>
-<ol>
-<li>
-<p>multi - processing</p>
-<ul>
-<li>각기 다른 프로세스에서 똑같은 데이터를 가지고 있어야함</li>
-<li>IPC(Inter Process Communication) -&gt; 최악의 효율성</li>
-<li><img src="/image/process.png" alt="프로세스"></li>
-</ul>
-</li>
-<li>
-<p>multi - threading</p>
-<ul>
-<li>프로세스안에 스레드가 포함이 됨(스택만 나눠지고 나머지는 공유함)</li>
-<li>스택 영역만 스레드마다 따로잡힘(지금 현재 실행하는 인스트럭션(함수)이 다르므로 스택만 나누고 나머지 공간은 공유가능)</li>
-<li>쓰레드 또한 PCB처럼 TCB가 있고 context switching이 똑같이 일어남</li>
-<li><img src="/image/thread.png" alt="쓰레드"></li>
-</ul>
-</li>
-<li>
-<p>I/O-bound -&gt; asynchronus I/O(비동기 I/O)</p>
-<ul>
-<li>한개의 스레드로 동시성으로 만듬</li>
-</ul>
-</li>
-</ol>
-<hr>
-<p>GIL -&gt; Global Interpreter Lock</p>
-<ul>
-<li>멀티코어라도 바이트 코드의 실행을 한번에 하나 스레드로 막는다 (없애려고 했으나 해결을 하지 못함) -&gt; Cpython은 아직 해결 못함</li>
-</ul>
-<p><strong>race-condition</strong></p>
-<ul>
-<li>공유자원에 대해 너도나도 쓰겠다고 달려들어 결과값을 보장하지 못한다.</li>
-</ul>
-<p>임계 구역(critical section) -&gt; 접근하는것 까지는 괜찮으나 수정하는건 안됨</p>
-<p>mutual exclution(상호배제)</p>
-<ul>
-<li>세마포어 : 한번에 임계구역에 접근할 수 있는 스레드의 숫자를 조정함</li>
-<li>mutex : 임계구역에 단 하나밖에 접근 못함</li>
-</ul>
-<p>코어가 1개 일 경우 시간 단축은 거의 없지만(concurrecy programming)<br>
-코어가 4개 일경우 시간단축 + 멀티코어 프로그래밍이 같이됨<br>
-concurecncy programming과 pararrelism programming은 다른 개념이다</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/18/쓰레드와프로세스/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -1281,7 +1403,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                92 개의 포스트가 있습니다.
+                93 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

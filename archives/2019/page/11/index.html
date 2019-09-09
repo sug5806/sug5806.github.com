@@ -186,6 +186,69 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/06/26/2019-06-24-Django-Form/" aria-label=": 2019-06-26 Django Form 사용하기">
+                            2019-06-26 Django Form 사용하기
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-06-26T17:45:01+09:00">
+	
+		    2019/06/26
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>이번 포스팅에서는 Django의 Form 사용법을 알아보도록 하겠습니다.</p>
+<h3><code>models.py</code></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your models here.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    name = models.CharField(max_length=<span class="number">20</span>)</span><br><span class="line">    price = models.PositiveSmallIntegerField()</span><br><span class="line">    seller = models.CharField(max_length=<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+<h3><code>forms.py</code></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> forms</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ContactForm</span><span class="params">(forms.Form)</span>:</span></span><br><span class="line">    <span class="comment"># 모델의 필드명과 동일하게 만들어 줍니다</span></span><br><span class="line">    name = forms.CharField(max_length=<span class="number">20</span>)</span><br><span class="line">    price = forms.IntegerField()</span><br><span class="line">    seller = forms.CharField(max_length=<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+<h3><code>views.py</code></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, redirect</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> form.models <span class="keyword">import</span> Product</span><br><span class="line"><span class="keyword">from</span> .forms <span class="keyword">import</span> ProductForm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">list_create_product</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment"># 먼저 빈 폼을 만들어 줍니다</span></span><br><span class="line">    form = ProductForm()</span><br><span class="line">    <span class="comment"># 등록 버튼을 누른 요청이면</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">"POST"</span>:</span><br><span class="line">        <span class="comment"># 입력 정보를 기반으로 폼을 채웁니다</span></span><br><span class="line">        form = ProductForm(request.POST)</span><br><span class="line">        <span class="comment"># 입력 정보가 유효 하다면</span></span><br><span class="line">        <span class="keyword">if</span> form.is_valid():</span><br><span class="line">            <span class="comment"># Product 데이터를 생성합니다.</span></span><br><span class="line">            Product.objects.create(**form.cleaned_data)</span><br><span class="line">            <span class="comment"># 생성이 완료되면 홈으로 돌아갑니다</span></span><br><span class="line">            <span class="keyword">return</span> redirect(<span class="string">'/'</span>)</span><br><span class="line">    <span class="comment"># POST 요청이 아니면</span></span><br><span class="line">    <span class="comment"># Product의 모든 데이터를 가져옵니다</span></span><br><span class="line">    objects_list = Product.objects.all()</span><br><span class="line">    <span class="comment"># context 변수에 담아줍니다.</span></span><br><span class="line">    context = &#123;</span><br><span class="line">        <span class="string">'objects_list'</span>: objects_list,</span><br><span class="line">        <span class="string">'form'</span>: form,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># product_list_create.html로 렌더링을 합니다</span></span><br><span class="line">    <span class="keyword">return</span> render(request, template_name=<span class="string">'form/product_list_create.html'</span>, context=context)</span><br></pre></td></tr></table></figure>
+<h3><code>product_list_create.html</code></h3>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 뷰에서 넘어온 objects_list를 받습니다 --&gt;</span></span><br><span class="line">    &#123;% for obj in objects_list %&#125;</span><br><span class="line">        <span class="comment">&lt;!-- 모든 정보를 출력합니다 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; obj.name &#125;&#125;  &#123;&#123; obj.price &#125;&#125; &#123;&#123; obj.seller &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line">    <span class="comment">&lt;!-- 뷰에서 넘어온 form으로 from을 만듭니다 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">        &#123;% csrf_token %&#125;</span><br><span class="line">        <span class="comment">&lt;!-- foRm을 &lt;p&gt;태그로 만듭니다 --&gt;</span></span><br><span class="line">        &#123;&#123; form.as_p &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"등록하기"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>이제 <code>./manage.py runserver</code>를 통해 접속하도록 하겠습니다.</p>
+<p><img src="/image/form1-1.png" alt="img"></p>
+<p>내용을 채워넣고 등록버튼을 눌러줍니다.</p>
+<p><img src="/image/form1-2.png" alt="img"></p>
+<p>생성이 완료되면 데이터를 보여줍니다.</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/06/26/2019-06-24-Django-Form/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/06/22/2019-06-22-Django-ajax적용하기2/" aria-label=": 2019-06-22 Django에 Ajax 적용하기2">
                             2019-06-22 Django에 Ajax 적용하기2
                         </a>
@@ -298,64 +361,6 @@
                     
                         <p>
                             <a href="/2019/06/20/2019-06-20-Django-ajax적용하기1/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/06/18/2019-06-18-ajax란/" aria-label=": 2019-06-18 Ajax란?">
-                            2019-06-18 Ajax란?
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-06-18T17:45:01+09:00">
-	
-		    2019/06/18
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/기타/">기타</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>Ajax란?</h1>
-<p>Ajax는 JavaScript의 라이브러리중 하나이며 Asynchronous Javascript And Xml(비동기식 자바스크립트와 xml)의 약자입니다. 브라우저가 가지고있는 XMLHttpRequest 객체를 이용해서 전체 페이지를 새로 고치지 않고도 페이지의 일부만을 위한 데이터를 로드하는 기법이며 <strong>Ajax를 한마디로 정의하자면 JavaScript를 사용한 비동기 통신, 클라이언트와 서버간에 XML데이터를 주고받는 기술이라고 할 수 있습니다.</strong></p>
-<blockquote>
-<p>출처: <a href="https://coding-factory.tistory.com/143" target="_blank" rel="noopener">코딩팩토리</a></p>
-</blockquote>
-<p>실생활에서 사용하는 앱중에서 예를들면 인스타그램이나 페이스북의 좋아요를 눌렀을시 새로고침 없이 작동하거나 무한스크롤 기능이 있습니다.</p>
-<hr>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    <span class="comment">// url은 반드시 필요한 필수 요소 입니다.</span></span><br><span class="line">    url   : <span class="string">"url"</span>, <span class="comment">// 요청이 전송될 URL 주소</span></span><br><span class="line">    type  : <span class="string">"GET"</span>, <span class="comment">// http 요청 방식 (default = GET)</span></span><br><span class="line">    <span class="keyword">async</span> : <span class="literal">true</span>, <span class="comment">// 동기 or 비동기 여부 (default = true)</span></span><br><span class="line">    cache : <span class="literal">true</span>, <span class="comment">// 캐시 여부</span></span><br><span class="line">    timeout : <span class="number">3000</span>, <span class="comment">// 요청 제한 시간안에 완료되지 않으면 요청을 취소하거나 error 콜백을 호출 (단위 : ms)</span></span><br><span class="line">    data  : &#123;<span class="attr">key</span> : value&#125;, <span class="comment">// 요청 시 포함될 데이터</span></span><br><span class="line">    processData : <span class="literal">true</span>, <span class="comment">// 데이터를 컨텐트 타입에 맞게 변환 여부</span></span><br><span class="line">    contentType : <span class="string">"application/json"</span>, <span class="comment">// 요청 컨텐트 타입</span></span><br><span class="line">    dataType    : <span class="string">"json"</span>, <span class="comment">// 응답 데이터 형식(명시하지 않으면 자동으로 추측)</span></span><br><span class="line">    beforeSend  : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// XHR Header를 포함해서 HTTP Request를 하기전에 호출됩니다.</span></span><br><span class="line">    &#125;,</span><br><span class="line">    success : <span class="function"><span class="keyword">function</span>(<span class="params">data, status xhr</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// 정상적으로 응답 받았을 경우에는 success 콜백이 호출됩니다.</span></span><br><span class="line">        <span class="comment">// 이 콜백 함수의 파라미터에서는 응답 바디, 응답 코드 그리고 XHR 헤더를 확인 할 수 있습니다.</span></span><br><span class="line">    &#125;,</span><br><span class="line">    error : <span class="function"><span class="keyword">function</span>(<span class="params">xhr, status, error</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// 응답을 받지 못하였거나 정상적인 응답이지만 데이터 형식을 확인할 수 없기 때문에</span></span><br><span class="line">        <span class="comment">// error 콜백이 호출될 수 있습니다.</span></span><br><span class="line">        <span class="comment">// 예를 들어, dataType을 지정해서 응답 받을 데이터 형식을 지정하였지만,</span></span><br><span class="line">        <span class="comment">// 서버에서는 다른 데이터형식으로 응답하면 error 콜백이 호출되게 됩니다.</span></span><br><span class="line">    &#125;,</span><br><span class="line">    complete : <span class="function"><span class="keyword">function</span>(<span class="params">xhr, status</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// success와 error콜백이 호출된 후에 반드시 호출됩니다.</span></span><br><span class="line">        <span class="comment">// tyy - catch - finally의 finally 구문과 동일합니다.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>다음 시간에는 Django에 Ajax를 적용하도록 하겠습니다.</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/06/18/2019-06-18-ajax란/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -512,7 +517,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                92 개의 포스트가 있습니다.
+                93 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

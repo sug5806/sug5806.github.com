@@ -1,0 +1,689 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="sug5806의 블로그">
+    <title>2019-09-04 운영체제1 - sug5806의 블로그</title>
+    <meta name="author" content="sug5806">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Operating System Concepts의 요약본 입니다.\n1. 소개\n\n운영체제란?\n\n컴퓨터 하드웨어를 관리하는 프로그램\n응용프로그램의 토대를 제공해주는 프로그램\n컴퓨터의 사용자와 컴퓨터 하드웨어 사이에 중간 매개체 역할을 해주는 프로그램\n\n\n\n1.1 운영체제란?\n\n컴퓨터 시스템의 구성요소\n\n하드웨어\n운영체제\n응용프로그램\n사용자\n\n\n운영체제 범위에 대한 정의\n\n정의 1. 운영체제를 구입하였을 때 포함되어 있는 모든 것\n정의 2. 항상 수행되고 있는 유일한 프로그램만 운영체제이다. 보통 다른 말로 커널(kernel)이라 한다.\n\n\n\n1.2 메인프레임 시스템\n\n한 사용자가 하나의 프로그램만을 수행하면 운행체제의 일은 그만큼 쉽다. 반면에 한 사용자가 여러 프로그램을 동시에 수행하거나 여러 사용자가 동시에 사용하는 시스템에서는 운영체제의 일은 간단하지 않다.\n\n1.2.1 일괄처리 시스템\n\n\n한번에 하나의 프로그램만이 수행되므로 운영체제의 주 임무는 하나의 작업에서 다음 작업으로 제어를 자동적으로 옮기는 것이었다.\n\n\n운영체제는 항상 메모리에 상주하였다.\n\n\n처리속도를 향상하기 위해 유사한 요구를 필요로 하는 작업을 함께 모아서 일괄처리하였다.\n\n\n문제점\n\n기계적 입출력 장치가 전자적 장치의 속도보다 상대적으로 느려 CPU가 종종 쉬는 경우가 많았다.\n\n\n\n직접 접근(direct access)이 가능한 디스크의 도입\n\n작업 스케줄링(jop scheduling) 과 다중 프로그래밍(multiprogramming) 이 가능하게됨.\n\n\n\n1.2.2 다중프로그램 시스템\n\n\n다중 프로그래밍이란 여러 개의 프로그램을 동시에 메모리에 적재하여 하나의 프로그램이 대기 상태가되면 그 동안 다른 프로그램을 실행하는 방식을 말한다.\n\n\n장점\n\n입출력과 프로그램의 실행을 병행으로 수행할 수 있어 CPU의 사용 효율이 증가함\n\n\n\n다중 프로그래밍에서 운영체제는 사용자를 대신하여 의사결정을 하여야 한다.\n\n디스크에 있는 작업 저장소에서 작업을 선택하여 메모리로 옮기는 것을 작업 스케줄링이라 한다.\n실행중인 작업이 대기 상태가 되었을 때 메모리에 있는 작업 중 하나를 선택하여 CPU에 항당하는 것은 CPU 스케줄링이라 한다.\n\n\n\n여러 프로그램이 동시에 메모리에 상주하므로 메모리 관리가 복잡하다.\n\n\n1.2.3 시분할 시스템\n\n\n다중 프로그래밍을 제공하는 일괄처리 시스템은 CPU의 사용 효율은 높였지만 사용자와 컴퓨터 간에 상호작용은 제공하지 못하였다.\n\n\n시분할(time sharing)또는 멀티태스킹은 다중 프로그래밍과 달리 정해진 시간이 되면 무조건 다음 순서의 작업을 실행하는 방식으로, 교대하는 시간이 매우 짧아 프로그램이 실행되는 동안 사용자는 컴퓨터와 상호작용이 가능하다.\n\n\n이처럼 사용자와 시스템 간에 직접 상호작용이 가능한 시스템을 대화식 컴퓨터 시스템이라 한다. 이런 시스템에서는 응답시간(response time)이 짧아야 한다.\n\n\n시분할 시스템은 여러 사용자가 동시에 컴퓨터를 사용할 수 있게 해준다.\n\n\n메모리에 적재되어 실행중인 프로그램을 프로세스(process) 라 한다.\n\n\n많은 사용자의 프로그램을 동시에 수행하기 위해서는 주기억장치의 용량으로는 부족하다. 이 문제를 해결하기 위해 디스크를 주기억장치의 보조 저장장치로 활용하며, 현재 가장 널리 사용되는 기법은 가상 메모리(virtual memory)이다.\n\n\n","dateCreated":"2019-09-04T19:04:46+09:00","dateModified":"2019-09-09T22:31:31+09:00","datePublished":"2019-09-04T19:04:46+09:00","description":"","headline":"2019-09-04 운영체제1","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/09/04/2019-09-04-운영체제1/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/09/04/2019-09-04-운영체제1/","keywords":"운영체제"}</script>
+    <meta name="description" content="Operating System Concepts의 요약본 입니다. 1. 소개  운영체제란?  컴퓨터 하드웨어를 관리하는 프로그램 응용프로그램의 토대를 제공해주는 프로그램 컴퓨터의 사용자와 컴퓨터 하드웨어 사이에 중간 매개체 역할을 해주는 프로그램    1.1 운영체제란?  컴퓨터 시스템의 구성요소  하드웨어 운영체제 응용프로그램 사용자   운영체제 범위에 대">
+<meta name="keywords" content="운영체제">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="2019-09-04 운영체제1">
+<meta property="og:url" content="http://blog.sug5806.site/2019/09/04/2019-09-04-운영체제1/index.html">
+<meta property="og:site_name" content="sug5806의 블로그">
+<meta property="og:description" content="Operating System Concepts의 요약본 입니다. 1. 소개  운영체제란?  컴퓨터 하드웨어를 관리하는 프로그램 응용프로그램의 토대를 제공해주는 프로그램 컴퓨터의 사용자와 컴퓨터 하드웨어 사이에 중간 매개체 역할을 해주는 프로그램    1.1 운영체제란?  컴퓨터 시스템의 구성요소  하드웨어 운영체제 응용프로그램 사용자   운영체제 범위에 대">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-09-09T13:31:31.542Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019-09-04 운영체제1">
+<meta name="twitter:description" content="Operating System Concepts의 요약본 입니다. 1. 소개  운영체제란?  컴퓨터 하드웨어를 관리하는 프로그램 응용프로그램의 토대를 제공해주는 프로그램 컴퓨터의 사용자와 컴퓨터 하드웨어 사이에 중간 매개체 역할을 해주는 프로그램    1.1 운영체제란?  컴퓨터 시스템의 구성요소  하드웨어 운영체제 응용프로그램 사용자   운영체제 범위에 대">
+    
+    
+        
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-xmwjmaw63fz9loualz1qmrwgsqz40hdvx3wm88nlmrq0pgtqesn7rfguwvks.min.css">
+    <!--STYLES END-->
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145695222-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-145695222-1');
+    </script>
+
+
+    
+
+    
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ " aria-label>
+            sug5806의 블로그
+        </a>
+    </div>
+    
+        
+            <a class="header-right-picture " href="#about" aria-label="링크 열기: /#about">
+        
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/ " title="Home">
+                    
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-categories" title="카테고리">
+                    
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-tags" title="태그">
+                    
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-archives" title="아카이브">
+                    
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">아카이브</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link open-algolia-search" href="#search" title="검색">
+                    
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">검색</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="#about" title="About">
+                    
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="http://portfolio.sug5806.site/" target="_blank" rel="noopener" title="포트폴리오">
+                    
+                        <i class="sidebar-button-icon fas fa-user-tie" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">포트폴리오</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/mailto" title="Mail">
+                    
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            2019-09-04 운영체제1
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2019-09-04T19:04:46+09:00">
+	
+		    2019/09/04
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/운영체제/">운영체제</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <p>Operating System Concepts의 요약본 입니다.</p>
+<h1>1. 소개</h1>
+<ul>
+<li>운영체제란?
+<ul>
+<li>컴퓨터 하드웨어를 관리하는 프로그램</li>
+<li>응용프로그램의 토대를 제공해주는 프로그램</li>
+<li>컴퓨터의 사용자와 컴퓨터 하드웨어 사이에 중간 매개체 역할을 해주는 프로그램</li>
+</ul>
+</li>
+</ul>
+<h2>1.1 운영체제란?</h2>
+<ul>
+<li>컴퓨터 시스템의 구성요소
+<ul>
+<li>하드웨어</li>
+<li>운영체제</li>
+<li>응용프로그램</li>
+<li>사용자</li>
+</ul>
+</li>
+<li>운영체제 범위에 대한 정의
+<ul>
+<li>정의 1. 운영체제를 구입하였을 때 포함되어 있는 모든 것</li>
+<li>정의 2. 항상 수행되고 있는 유일한 프로그램만 운영체제이다. 보통 다른 말로 커널(kernel)이라 한다.</li>
+</ul>
+</li>
+</ul>
+<h2>1.2 메인프레임 시스템</h2>
+<ul>
+<li>한 사용자가 하나의 프로그램만을 수행하면 운행체제의 일은 그만큼 쉽다. 반면에 한 사용자가 여러 프로그램을 동시에 수행하거나 여러 사용자가 동시에 사용하는 시스템에서는 운영체제의 일은 간단하지 않다.</li>
+</ul>
+<h3>1.2.1 일괄처리 시스템</h3>
+<ul>
+<li>
+<p>한번에 하나의 프로그램만이 수행되므로 운영체제의 주 임무는 하나의 작업에서 다음 작업으로 제어를 자동적으로 옮기는 것이었다.</p>
+</li>
+<li>
+<p>운영체제는 항상 메모리에 상주하였다.</p>
+</li>
+<li>
+<p>처리속도를 향상하기 위해 유사한 요구를 필요로 하는 작업을 함께 모아서 일괄처리하였다.</p>
+</li>
+<li>
+<p>문제점</p>
+<ul>
+<li>기계적 입출력 장치가 전자적 장치의 속도보다 상대적으로 느려 CPU가 종종 쉬는 경우가 많았다.</li>
+</ul>
+</li>
+<li>
+<p>직접 접근(direct access)이 가능한 디스크의 도입</p>
+<ul>
+<li><strong>작업 스케줄링(jop scheduling)</strong> 과 <strong>다중 프로그래밍(multiprogramming)</strong> 이 가능하게됨.</li>
+</ul>
+</li>
+</ul>
+<h3>1.2.2 다중프로그램 시스템</h3>
+<ul>
+<li>
+<p>다중 프로그래밍이란 여러 개의 프로그램을 동시에 메모리에 적재하여 하나의 프로그램이 대기 상태가되면 그 동안 다른 프로그램을 실행하는 방식을 말한다.</p>
+</li>
+<li>
+<p>장점</p>
+<ul>
+<li>입출력과 프로그램의 실행을 병행으로 수행할 수 있어 CPU의 사용 효율이 증가함</li>
+</ul>
+</li>
+<li>
+<p>다중 프로그래밍에서 운영체제는 사용자를 대신하여 의사결정을 하여야 한다.</p>
+<ul>
+<li>디스크에 있는 작업 저장소에서 작업을 선택하여 메모리로 옮기는 것을 작업 스케줄링이라 한다.</li>
+<li>실행중인 작업이 대기 상태가 되었을 때 메모리에 있는 작업 중 하나를 선택하여 CPU에 항당하는 것은 CPU 스케줄링이라 한다.</li>
+</ul>
+</li>
+<li>
+<p>여러 프로그램이 동시에 메모리에 상주하므로 메모리 관리가 복잡하다.</p>
+</li>
+</ul>
+<h3>1.2.3 시분할 시스템</h3>
+<ul>
+<li>
+<p>다중 프로그래밍을 제공하는 일괄처리 시스템은 CPU의 사용 효율은 높였지만 사용자와 컴퓨터 간에 상호작용은 제공하지 못하였다.</p>
+</li>
+<li>
+<p>시분할(time sharing)또는 멀티태스킹은 다중 프로그래밍과 달리 정해진 시간이 되면 무조건 다음 순서의 작업을 실행하는 방식으로, 교대하는 시간이 매우 짧아 프로그램이 실행되는 동안 사용자는 컴퓨터와 상호작용이 가능하다.</p>
+</li>
+<li>
+<p>이처럼 사용자와 시스템 간에 직접 상호작용이 가능한 시스템을 대화식 컴퓨터 시스템이라 한다. 이런 시스템에서는 응답시간(response time)이 짧아야 한다.</p>
+</li>
+<li>
+<p>시분할 시스템은 여러 사용자가 동시에 컴퓨터를 사용할 수 있게 해준다.</p>
+</li>
+<li>
+<p>메모리에 적재되어 실행중인 프로그램을 <strong>프로세스(process)</strong> 라 한다.</p>
+</li>
+<li>
+<p>많은 사용자의 프로그램을 동시에 수행하기 위해서는 주기억장치의 용량으로는 부족하다. 이 문제를 해결하기 위해 디스크를 주기억장치의 보조 저장장치로 활용하며, 현재 가장 널리 사용되는 기법은 가상 메모리(virtual memory)이다.</p>
+</li>
+</ul>
+
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">태그</span><br>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/운영체제/">운영체제</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled" aria-hidden="true">
+                        
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">이전</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/02/2019-09-02-그래프1(Graph)/" data-tooltip="2019-09-02 그래프1(Graph)" aria-label="다음: 2019-09-02 그래프1(Graph)">
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">다음</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="이 포스트 공유하기">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/04/2019-09-04-운영체제1/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/04/2019-09-04-운영체제1/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/04/2019-09-04-운영체제1/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="댓글을 남겨주세요">
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="맨 위로">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 sug5806. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled" aria-hidden="true">
+                        
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">이전</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/02/2019-09-02-그래프1(Graph)/" data-tooltip="2019-09-02 그래프1(Graph)" aria-label="다음: 2019-09-02 그래프1(Graph)">
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">다음</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="이 포스트 공유하기">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/04/2019-09-04-운영체제1/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/04/2019-09-04-운영체제1/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/04/2019-09-04-운영체제1/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="댓글을 남겨주세요">
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="맨 위로">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/04/2019-09-04-운영체제1/" aria-label="Facebook에 공유하기">
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/04/2019-09-04-운영체제1/" aria-label="Twitter에 공유하기">
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/04/2019-09-04-운영체제1/" aria-label="Google+에 공유하기">
+                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <h4 id="about-card-name">sug5806</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br>
+                <p>author.job</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-times"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="/assets/images/logo-algolia-nebula-blue-full.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search" class="form-control input--large search-input" placeholder="Search ">
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">포스트가 없습니다.</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                            <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 12일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                            <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 15일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                            <h3 class="media-heading">2019-03-22 OOP</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 22일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
+                93 개의 포스트가 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-igy6higovbbudnz2huqqnzan9tbi5p5qzgpza7ddmnsvw8o9l5otrbk5cg9n.min.js"></script>
+<!--SCRIPTS END-->
+
+
+    
+        <script>
+          var disqus_config = function() {
+            this.page.url = 'http://blog.sug5806.site/2019/09/04/2019-09-04-운영체제1/';
+              
+            this.page.identifier = '2019/09/04/2019-09-04-운영체제1/';
+              
+          };
+          (function() {
+            var d = document, s = d.createElement('script');
+            var disqus_shortname = 'sug5806';
+            s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+    
+
+
+
+    <script src="/assets/js/moment-with-locales.js"></script>
+    <script src="/assets/js/algoliasearch.js"></script>
+    <script>
+      var algoliaClient = algoliasearch('2LOSRWVGZX', '3846f641c03e28f7c9ece942801b6d95');
+      var algoliaIndex = algoliaClient.initIndex('search');
+    </script>
+
+
+    </body>
+</html>

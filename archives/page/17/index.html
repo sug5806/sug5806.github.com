@@ -186,6 +186,70 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/05/21/2019-05-21-장고 템플릿문법1/" aria-label=": 2019-05-21 장고 템플릿 문법 1">
+                            2019-05-21 장고 템플릿 문법 1
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-05-21T19:23:50+09:00">
+	
+		    2019/05/21
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>장고 템플릿 문법 1</h1>
+<p>장고에서 화면을 렌더링 하기 위해서는 템플릿 엔진을 사용한다. 템플릿 엔진은 각자 자기만의 템플릿 문법을 제공하는데 여러가지 기본 문법과 태그 필터를 살펴본다</p>
+<ol>
+<li>컨텍스트 변수 출력하기
+<ul>
+<li>뷰에서 컨텍스트 변수로 값을 전달해준다면 해당 변수 이름을 가지고 출력할 수 있다</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 해당 변수 값 출력</span></span><br><span class="line">&#123;&#123; 변수명 &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 변수에 html이 들어 있는 경우 html 없애고 출력</span></span><br><span class="line">&#123;&#123; 변수명|safe &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 대문자로 변환하여 출력</span></span><br><span class="line">&#123;&#123; 변수명|upper &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 소문자로 변환하여 출력</span></span><br><span class="line">&#123;&#123; 변수명|lower &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 일부만 끊어서 출력</span></span><br><span class="line">&#123;&#123; 변수명|truncatedwords:<span class="string">'30'</span> &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 날짜일 경우 형식 지정하여 출력</span></span><br><span class="line">&#123;&#123; 변수명|date:<span class="string">"Y m d"</span> &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 기본값 지정하기</span></span><br><span class="line">&#123;&#123; 변수명|default:<span class="string">"없음"</span> &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 변수 길이 출력</span></span><br><span class="line">&#123;&#123; 변수명|length &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 제목 형식 출력</span></span><br><span class="line">&#123;&#123; 변수명|title &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 줄바꿈 태그 출력</span></span><br><span class="line">&#123;&#123; 변수명:linebreaks &#125;&#125; <span class="comment"># p태그로 감싸서 출력</span></span><br><span class="line"></span><br><span class="line">&#123;&#123; 변수명:linebreakbr &#125;&#125; <span class="comment"># &lt;br&gt; 태그만 넣어줌</span></span><br><span class="line"></span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>폼 출력하기<br>
+Create, Update 뷰 같은 경우 폼을 출력한다. 폼 태그들을 출력할 때 p, li, table 등의 태그로 감싸진 형식으로 출력되게 만들 수 있다. 또 입력 폼에서는 csrf_token은 필수 이다.</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">methd</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">&#123;% csrf_token %&#125;</span><br><span class="line">&#123;&#123;form.as_p&#125;&#125; 각 폼 태그를 p로 감싸 출력</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span> &#123;&#123;form.as_table&#125;&#125; <span class="tag">&lt;/<span class="name">table</span>&gt;</span> 각 폼태그를 tr로 감싸 출력 (table태그로 감싸는것이 아님)</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span> &#123;&#123; form.as_ul &#125;&#125; <span class="tag">&lt;/<span class="name">ul</span>&gt;</span> 각 폼 대그를 li로 감싸 출력</span><br></pre></td></tr></table></figure>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/05/21/2019-05-21-장고 템플릿문법1/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/05/20/2019-05-20-이메일서버/" aria-label=": 2019-05-20 Django Email서버 세팅하기">
                             2019-05-20 Django Email서버 세팅하기
                         </a>
@@ -347,86 +411,6 @@ DNS검증을 하게되면 자동으로 갱신이 된다.</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/05/18/2019-05-18-소셜로그인구현/" aria-label=": 2019-05-18 Django social login(naver)">
-                            2019-05-18 Django social login(naver)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-05-18T18:32:46+09:00">
-	
-		    2019/05/18
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/Django/">Django</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>네이버 소셜로그인 구현하기</h1>
-<h3>1. allauth 모듈 설치하기</h3>
-<ul>
-<li><code>pip install django-allauth</code></li>
-</ul>
-<h3>2. <code>settings.py</code> 수정하기</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 맨 마지막에 추가</span></span><br><span class="line">AUTHENTICATION_BACKENDS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment"># Needed to login by username in Django admin, regardless of `allauth`</span></span><br><span class="line">    <span class="string">'django.contrib.auth.backends.ModelBackend'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># `allauth` specific authentication methods, such as login by e-mail</span></span><br><span class="line">    <span class="string">'allauth.account.auth_backends.AuthenticationBackend'</span>,</span><br><span class="line">    </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">SITE_ID = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># INSTALLED_APPS에 추가하기</span></span><br><span class="line">    <span class="string">'django.contrib.sites'</span>,</span><br><span class="line">    <span class="string">'allauth'</span>,</span><br><span class="line">    <span class="string">'allauth.account'</span>,</span><br><span class="line">    <span class="string">'allauth.socialaccount'</span>,</span><br><span class="line">    <span class="comment"># 이 부분은 소셜로그인을 구현하고 싶은 사이트를 입력하면 된다</span></span><br><span class="line">    <span class="string">'allauth.socialaccount.providers.naver'</span>,</span><br></pre></td></tr></table></figure>
-<h3>3. app의 <code>urls.py</code>에 추가하기</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">'accounts'</span>, include(<span class="string">'allauth.urls'</span>)),</span><br></pre></td></tr></table></figure>
-<h3>4. DB migrate 하기</h3>
-<pre><code>* `python manage.py migate`
-</code></pre>
-<h3>5. 네이버 개발자 센터방문</h3>
-<p><img src="/image/naver1.png" alt></p>
-<ul>
-<li>사용하고자 하는 이름 작성</li>
-<li>권한은 원하는대로<br>
-<img src="/image/naver3.png" alt></li>
-<li>서비스 URL과 Callback URL을 위와 같이 적어준다</li>
-<li>만약 직접 서비스하고 있는 사이트가 있다면 서비스 URL에 자신의 사이트를 적어준다.</li>
-</ul>
-<h3>6. app의 <code>url.py</code>에 추가하기 2</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth.views <span class="keyword">import</span> LoginView, LogoutView</span><br><span class="line"></span><br><span class="line">path(<span class="string">'login/'</span>, LoginView.as_view(template_name=<span class="string">'account/login.html'</span>), name=<span class="string">'login'</span>),</span><br><span class="line">    path(<span class="string">'logout/'</span>, LogoutView.as_view(template_name=<span class="string">'account/logout.html'</span>), name=<span class="string">'logout'</span>),</span><br></pre></td></tr></table></figure>
-<h3>7. <code>./manage.py</code> admin 사이트로 접속</h3>
-<p><img src="/image/naver_admin.png" alt><br>
-맨 밑의 Social application으로 접속</p>
-<h3>8. Social application에서 추가하기</h3>
-<p><img src="/image/naver_admin2.png" alt></p>
-<ul>
-<li>위에서 Key와 ID는 네이버 개발자센터에서 발급받은 자신의 ID와 Key를 적으면 된다</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/05/18/2019-05-18-소셜로그인구현/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -573,7 +557,7 @@ DNS검증을 하게되면 자동으로 갱신이 된다.</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                92 개의 포스트가 있습니다.
+                93 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

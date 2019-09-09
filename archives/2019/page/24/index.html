@@ -186,6 +186,111 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/04/19/2019-04-19-Django시작하기/" aria-label=": 2019-04-19 Django 기본">
+                            2019-04-19 Django 기본
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-04-19T14:30:50+09:00">
+	
+		    2019/04/19
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>Django 기본</h1>
+<h3>Django 프로젝트 구조 살펴보기</h3>
+<p><img src="/image/Django1.png" alt></p>
+<ol>
+<li>
+<p>second_django 폴더 : 프로젝트 설정 파일과 웹 서비스 실행을 위한 파일들이 들어있다.</p>
+<ul>
+<li><strong>init</strong>.py : 파이썬 2.x대 버전과의 호환을 위해 만들어진 비어있는 파일이다. 지워도 무방하다</li>
+<li>settings.py : 프로젝트 설정에 관한 다양한 내용이 들어있다.</li>
+<li>urls.py : 특정 기능을 수행하기 위해 접속하는 주소를 url이라 하고 이를 설정해주는데, 그 설정을 이 파일에 기록함</li>
+<li>wsgi.py : 웹 서비스를 실행하기 위한 wsgi 관련 내용이 들어있음</li>
+</ul>
+</li>
+<li>
+<p>venv 폴더 : 프로젝트 구동에 필요한 가상환경이 들어있음</p>
+</li>
+<li>
+<p>db.sqlite3 : SQLite3 DB 파일이다. 다른 DB를 이용할시 필요없다</p>
+</li>
+</ol>
+<h3>장고 기본 명령들</h3>
+<ol>
+<li>django-admin startproject : 장고 프로젝트를 만드는 명령이다. 웹 서비스를 만들 때 마다 한번 실행한다.</li>
+<li>startapp : 프로젝트에 기능 단위인 앱을 새로 만들때 사용</li>
+<li>makemigrations : 어플리케이션에 변경 사항을 추적해 DB에 적용할 내용을 정리함. 보통 앱 안에 있는 모델(model)의 변경 사항이 있을 때 주로 사용함.</li>
+<li>sqlmigrate: 실행할 SQL 명령문을 출력한다</li>
+<li>migrate : 실제 변경사항을 DB에 반영한다.</li>
+<li>showmigrations : 프로젝트의 DB 변경사항 목록과 상태를 출력한다.</li>
+<li>runserver : 테스트 서버를 실행한다.</li>
+<li>dumpdata : 현재 DB의 내용을 백업할 때 사용한다.</li>
+<li>loaddata : 백업 파일에서 DB로 내용을 복구 할 때 사용한다</li>
+<li>flush : DB 테이블은 그대로 두고 테이블의 내용만 전부 삭제한다</li>
+<li>shell : 장고 쉘(Shell)을 실행한다</li>
+<li>dbshell : DB에 직접 접근 할 수 있는 쉘을 실행한다</li>
+<li>createsuperuser : 관리자 계정을 생성한다</li>
+<li>changepassword : 계정의 비밀번호를 변경할 수 있다</li>
+</ol>
+<hr>
+<h2>디자인 패턴</h2>
+<h4>MVC와 MTV</h4>
+<ul>
+<li>
+<p>웹 프로그래밍에서 자주 쓰이는 디자인 패턴은 MVC이다 : Model-View-Controller</p>
+<ol>
+<li>Model : DB의 구조를 결정한다.</li>
+<li>View : 사용자에게 보여지는 UI부분이다</li>
+<li>Controller : 기능, 로직부분이다</li>
+</ol>
+</li>
+<li>
+<p>장고에서는 MTV라고 하나 <strong>이름만 다르고 동일한 패턴이다</strong> : Model-Template-View</p>
+<ul>
+<li>양쪽모두 View가 있지만 기능이 서로 다르다 각각 연결해보면 (Model:Model)-(View:Template)-(Controller:View)이다</li>
+</ul>
+</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/04/19/2019-04-19-Django시작하기/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/04/18/쓰레드와프로세스/" aria-label=": 2019-04-18 프로세스와 쓰레드">
                             2019-04-18 프로세스와 쓰레드
                         </a>
@@ -415,106 +520,6 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/16/실수의표현/" aria-label=": 2019-04-16 실수의 표현">
-                            2019-04-16 실수의 표현
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-16T21:48:32+09:00">
-	
-		    2019/04/16
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/컴퓨터구조/">컴퓨터구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h3>실수의 표현 (epsilon comparison을 위해 반드시 알아두어야함)</h3>
-<ol>
-<li>
-<p>고정 소수점 -&gt; 표현숫자를 줄이면 정밀도가 높아아지고 늘리면 정밀도가 낮아짐, 표현범위가 좁음  #현재 잘 사용하지 않음</p>
-</li>
-<li>
-<p>부동 소수점 -&gt; 정밀도 매우낮음, 표현범위 넓음</p>
-<ol>
-<li>단정도 (single precision)
-<ol>
-<li>32bit (4 byte)</li>
-<li>부호(sign) (1 bit) + 지수(exponent) (8 bit) + 가수(mentissa) (23 bit)
-<ol>
-<li>지수부 : 표현범위 담당 (클수록 범위)</li>
-<li>가수부 : 정밀도를 담당 (클수록 정확)</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>배정도 (double precision)
-<ol>
-<li>64bit (8 byte)</li>
-<li>부호 (1 bit) + 지수 (11 bit) + 가수 (52 bit)</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>
-<p>10.23 * 102 -&gt; 1.023(가수부) 10(밑수) 3(지수 = exponent real)</p>
-</li>
-<li>
-<p><img src="../image/real.png" alt> 에서 1도 수학적으로는 mentissa이나 컴퓨터 메모리 저장 X --&gt; 0이 아닌 자연수 1자리로 정규화를 하기위해 한자리는 무조건 남겨둠 /// bias = 2<sup>n-1</sup> -1 /// Ere = Emem - bias  /// float의 bias는 127 --&gt; 지수에도 ±기호가 있으므로 맨앞자리 비트는 제외하고 나머지 1일때 127 // bias + exponent real 한 값을 이진수로 바꿔서 exponent에 저장</p>
-<ul>
-<li>정규화 : 가수 부분을 밑수보다 작은 자연수가 되도록 만드는것</li>
-</ul>
-</li>
-<li>
-<p>실수의 정밀도 보장 : float는 6자리, double 15자리의 의미 : 10진수 1자리를 다 표현하려면 2진수 4자리(0~15), 10진수 2자리를 다 표현하려면 2진수 7자리(0~127), 10진수 3자리 -&gt; 2진수 10자리</p>
-<ol>
-<li>float는 가수부가 23+1자리이므로 이진수 23+1자리라고 생각가능 -&gt; 십진수 6자리표현을 보장함(정밀도)</li>
-<li>double은 가수부가 52+1 자리 이므로 이진수 52+1자리라고 생각 가능 -&gt; 십진수 15자리 표현을 보장함</li>
-</ol>
-</li>
-<li>
-<p>1.0과 1.0다음으로 나타낼수 있는 수의 차이를 epsilon이라 함<br>
-<img src="../image/real2.png" alt></p>
-<ul>
-<li>어떠한 수의 지수부분과 엡실론을 곱하면 그 수의 다음수가 나옴</li>
-</ul>
-</li>
-</ol>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/16/실수의표현/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -661,7 +666,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                92 개의 포스트가 있습니다.
+                93 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
