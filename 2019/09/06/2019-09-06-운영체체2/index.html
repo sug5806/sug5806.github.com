@@ -1,0 +1,650 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="sug5806의 블로그">
+    <title>2019-09-06 운영체제2 - sug5806의 블로그</title>
+    <meta name="author" content="sug5806">
+    
+    
+    
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"Operating System Concepts의 요약본 입니다.\n2. 컴퓨터 시스템 구조\n2.1 컴퓨터 시스템의 동작\n\n\n현대의 범용 컴퓨터는 공유된 주기억장치에 접근을 제공하는 공통 버스에 의해 연결된 CPU와 여러 개의 장치 제어기(device controller)로 구성되어 있다.\n\n장치 제어기 : 각 장치(디스크, 오디오 장치, 비디오 디스플레이)를 관리한다.\n장치 제어기와 CPU는 병행으로 수행되므로 이들은 주기억장치 접근에 대해 경쟁한다. 주기억장치 제어기는 이들의 접근을 동기화해준다.\n\n\n\n컴퓨터가 처음 구동되면 초기에 실행될 프로그램이 필요하다. 이 프로그램을 부트스트랩 프로그램(bootstrap program)\n이라 한다. 이 프로그램은 보통 컴퓨터 하드웨어 내에 ROM에 저장되어 있다.\n\n부트스트랩 프로그램은 모든 하드웨어를 초기화하고 운영체제 커널을 주기억장치에 적재한 후에 커널을 실행한다.\n\n\n\n컴퓨터에서 사건의 발생은  인터럽트(interrupt)신호 또는\n트랩(trap) 을 통해 운영체제에 통보된다. 트랩은 다른 말로 예외(exception)라 한다.\n\n인터럽트는 하드웨어가 시스템의 수행 흐름을 바꾸기 위해 발생하는 것이고, 트랩은 소프트웨어가 발생하는 인터럽트이다.\n하드웨어는 CPU에 특정 신호를 보내어 인터럽트의 발생을 알린다.\n소프트웨어는 시스템 호출(system call)이라는 특정 연산을 실행하여 일부로 발생시키거나 오류(0 나누기, 부적합한 주기억장치 접근) 때문에 자발적으로 발생된다.\n인터럽트가 발생되면 CPU는 현재 수행중인 작업을 멈추고, 운영체제 내에 있는 특정코드를 실행한다. 이 실행이 끝나면 다시 멈춘 작업을 재개한다.\n기본적인 인터럽트 동작원리\n\n현재 작업을 멈추고, 현재 상태를 보관\n인터럽트의 종류 분석\n특정 인터럽트 수행(인터럽트 벡터 활용)\n보관된 상태를 원상복귀하고 멈춘 작업을 재개\n\n\n\n\n\n2.2 I/O 구조\n\n장치 제어기에 따라 하나 이상의 장치가 제어기에 연결될 수 있다.\n장치 제어기는 지역 버퍼와 몇 개의 특수 목적 레지스터를 유지한다.\n장치 제어기는 연결된 주변장치와 지역 버퍼간에 데이터 이동을 책임진다. 이 버퍼의 크기는 주변장치에 따라 다르다.\n\n2.2.1 I/O 인터럽트\n\nI/O를 시작하기 위해 CPU는 장치 제어기 내에 있는 레지스터에 적절한 데이터를 적재한다. 제어기는 이것을 검사하여 어떤 행동을 취할지 결정한다. 입출력의 수행이 끝나면 보통 인터럽트를 통해 CPU에 그 사실을 통보한다.\n입출력의 두 가지 형태\n\n동기식 입출력(synchronous I/O): 입출력이 시작되면 요청한 프로세서는 입출력이 완료될 때까지 기다린다.\n비동기식 입출력(asynchronous I/O): 요청한 프로세서는 입출력이 완료될 때까지 기다리지 않고 계속 다른 작업을 수행한다.\n\n\n입출력의 완료를 기다리는 방법\n\n특수한 명령어 사용\n대기 루프 사용\n\n\n만약 CPU가 입출력 완료를 항상 기다리면 한번에 한 입출력만 가능하다. 이것은 바람직하지 않다. 여러 입출력을 병행으로 수행할 수 있고, 입출력과 계산을 병행할 수 있어야 시스템의 효울을 높일 수 있다.\n\n","dateCreated":"2019-09-06T19:04:46+09:00","dateModified":"2019-09-10T21:57:11+09:00","datePublished":"2019-09-06T19:04:46+09:00","description":"","headline":"2019-09-06 운영체제2","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/09/06/2019-09-06-운영체체2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/09/06/2019-09-06-운영체체2/","keywords":"운영체제"}</script>
+    <meta name="description" content="Operating System Concepts의 요약본 입니다. 2. 컴퓨터 시스템 구조 2.1 컴퓨터 시스템의 동작   현대의 범용 컴퓨터는 공유된 주기억장치에 접근을 제공하는 공통 버스에 의해 연결된 CPU와 여러 개의 장치 제어기(device controller)로 구성되어 있다.  장치 제어기 : 각 장치(디스크, 오디오 장치, 비디오 디스플레이)를">
+<meta name="keywords" content="운영체제">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="2019-09-06 운영체제2">
+<meta property="og:url" content="http://blog.sug5806.site/2019/09/06/2019-09-06-운영체체2/index.html">
+<meta property="og:site_name" content="sug5806의 블로그">
+<meta property="og:description" content="Operating System Concepts의 요약본 입니다. 2. 컴퓨터 시스템 구조 2.1 컴퓨터 시스템의 동작   현대의 범용 컴퓨터는 공유된 주기억장치에 접근을 제공하는 공통 버스에 의해 연결된 CPU와 여러 개의 장치 제어기(device controller)로 구성되어 있다.  장치 제어기 : 각 장치(디스크, 오디오 장치, 비디오 디스플레이)를">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-09-10T12:57:11.388Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019-09-06 운영체제2">
+<meta name="twitter:description" content="Operating System Concepts의 요약본 입니다. 2. 컴퓨터 시스템 구조 2.1 컴퓨터 시스템의 동작   현대의 범용 컴퓨터는 공유된 주기억장치에 접근을 제공하는 공통 버스에 의해 연결된 CPU와 여러 개의 장치 제어기(device controller)로 구성되어 있다.  장치 제어기 : 각 장치(디스크, 오디오 장치, 비디오 디스플레이)를">
+    
+    
+        
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-xmwjmaw63fz9loualz1qmrwgsqz40hdvx3wm88nlmrq0pgtqesn7rfguwvks.min.css">
+    <!--STYLES END-->
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145695222-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-145695222-1');
+    </script>
+
+
+    
+
+    
+        
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+
+<header id="header" data-behavior="5">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ " aria-label>
+            sug5806의 블로그
+        </a>
+    </div>
+    
+        
+            <a class="header-right-picture " href="#about" aria-label="링크 열기: /#about">
+        
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+<nav id="sidebar" data-behavior="5">
+    <div class="sidebar-container">
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/ " title="Home">
+                    
+                        <i class="sidebar-button-icon fa fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-categories" title="카테고리">
+                    
+                        <i class="sidebar-button-icon fa fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">카테고리</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-tags" title="태그">
+                    
+                        <i class="sidebar-button-icon fa fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">태그</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/all-archives" title="아카이브">
+                    
+                        <i class="sidebar-button-icon fa fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">아카이브</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link open-algolia-search" href="#search" title="검색">
+                    
+                        <i class="sidebar-button-icon fa fa-search" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">검색</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="#about" title="About">
+                    
+                        <i class="sidebar-button-icon fa fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="https://github.com/sug5806" target="_blank" rel="noopener" title="GitHub">
+                    
+                        <i class="sidebar-button-icon fab fa-github" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="http://portfolio.sug5806.site/" target="_blank" rel="noopener" title="포트폴리오">
+                    
+                        <i class="sidebar-button-icon fas fa-user-tie" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">포트폴리오</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a class="sidebar-button-link " href="/mailto" title="Mail">
+                    
+                        <i class="sidebar-button-icon fa fa-envelope" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="5"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title">
+            2019-09-06 운영체제2
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time datetime="2019-09-06T19:04:46+09:00">
+	
+		    2019/09/06
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/운영체제/">운영체제</a>
+
+
+    
+</div>
+
+    
+</div>
+
+    
+    <div class="post-content markdown">
+        <div class="main-content-wrap">
+            <p>Operating System Concepts의 요약본 입니다.</p>
+<h1>2. 컴퓨터 시스템 구조</h1>
+<h2>2.1 컴퓨터 시스템의 동작</h2>
+<ul>
+<li>
+<p>현대의 범용 컴퓨터는 공유된 주기억장치에 접근을 제공하는 공통 버스에 의해 연결된 CPU와 여러 개의 장치 제어기(device controller)로 구성되어 있다.</p>
+<ul>
+<li>장치 제어기 : 각 장치(디스크, 오디오 장치, 비디오 디스플레이)를 관리한다.</li>
+<li>장치 제어기와 CPU는 병행으로 수행되므로 이들은 주기억장치 접근에 대해 경쟁한다. 주기억장치 제어기는 이들의 접근을 동기화해준다.</li>
+</ul>
+</li>
+<li>
+<p>컴퓨터가 처음 구동되면 초기에 실행될 프로그램이 필요하다. 이 프로그램을 <strong>부트스트랩 프로그램(bootstrap program)</strong><br>
+이라 한다. 이 프로그램은 보통 컴퓨터 하드웨어 내에 ROM에 저장되어 있다.</p>
+<ul>
+<li>부트스트랩 프로그램은 모든 하드웨어를 초기화하고 운영체제 커널을 주기억장치에 적재한 후에 커널을 실행한다.</li>
+</ul>
+</li>
+<li>
+<p>컴퓨터에서 사건의 발생은  <strong>인터럽트(interrupt)신호</strong> 또는<br>
+<strong>트랩(trap)</strong> 을 통해 운영체제에 통보된다. 트랩은 다른 말로 예외(exception)라 한다.</p>
+<ul>
+<li>인터럽트는 하드웨어가 시스템의 수행 흐름을 바꾸기 위해 발생하는 것이고, 트랩은 소프트웨어가 발생하는 인터럽트이다.</li>
+<li>하드웨어는 CPU에 특정 신호를 보내어 인터럽트의 발생을 알린다.</li>
+<li>소프트웨어는 시스템 호출(system call)이라는 특정 연산을 실행하여 일부로 발생시키거나 오류(0 나누기, 부적합한 주기억장치 접근) 때문에 자발적으로 발생된다.</li>
+<li>인터럽트가 발생되면 CPU는 현재 수행중인 작업을 멈추고, 운영체제 내에 있는 특정코드를 실행한다. 이 실행이 끝나면 다시 멈춘 작업을 재개한다.</li>
+<li>기본적인 인터럽트 동작원리
+<ol>
+<li>현재 작업을 멈추고, 현재 상태를 보관</li>
+<li>인터럽트의 종류 분석</li>
+<li>특정 인터럽트 수행(인터럽트 벡터 활용)</li>
+<li>보관된 상태를 원상복귀하고 멈춘 작업을 재개</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2>2.2 I/O 구조</h2>
+<ul>
+<li>장치 제어기에 따라 하나 이상의 장치가 제어기에 연결될 수 있다.</li>
+<li>장치 제어기는 지역 버퍼와 몇 개의 특수 목적 레지스터를 유지한다.</li>
+<li>장치 제어기는 연결된 주변장치와 지역 버퍼간에 데이터 이동을 책임진다. 이 버퍼의 크기는 주변장치에 따라 다르다.</li>
+</ul>
+<h3>2.2.1 I/O 인터럽트</h3>
+<ul>
+<li>I/O를 시작하기 위해 CPU는 장치 제어기 내에 있는 레지스터에 적절한 데이터를 적재한다. 제어기는 이것을 검사하여 어떤 행동을 취할지 결정한다. 입출력의 수행이 끝나면 보통 인터럽트를 통해 CPU에 그 사실을 통보한다.</li>
+<li>입출력의 두 가지 형태
+<ul>
+<li>동기식 입출력(synchronous I/O): 입출력이 시작되면 요청한 프로세서는 입출력이 완료될 때까지 기다린다.</li>
+<li>비동기식 입출력(asynchronous I/O): 요청한 프로세서는 입출력이 완료될 때까지 기다리지 않고 계속 다른 작업을 수행한다.</li>
+</ul>
+</li>
+<li>입출력의 완료를 기다리는 방법
+<ul>
+<li>특수한 명령어 사용</li>
+<li>대기 루프 사용</li>
+</ul>
+</li>
+<li>만약 CPU가 입출력 완료를 항상 기다리면 한번에 한 입출력만 가능하다. 이것은 바람직하지 않다. 여러 입출력을 병행으로 수행할 수 있고, 입출력과 계산을 병행할 수 있어야 시스템의 효울을 높일 수 있다.</li>
+</ul>
+
+            
+
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">태그</span><br>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/운영체제/">운영체제</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled" aria-hidden="true">
+                        
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">이전</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/04/2019-09-04-운영체제1/" data-tooltip="2019-09-04 운영체제1" aria-label="다음: 2019-09-04 운영체제1">
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">다음</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="이 포스트 공유하기">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/06/2019-09-06-운영체체2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/06/2019-09-06-운영체체2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/06/2019-09-06-운영체체2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="댓글을 남겨주세요">
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="맨 위로">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2019 sug5806. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled" aria-hidden="true">
+                        
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="hide-xs hide-sm text-small icon-ml">이전</span>
+                    </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/04/2019-09-04-운영체제1/" data-tooltip="2019-09-04 운영체제1" aria-label="다음: 2019-09-04 운영체제1">
+                    
+                        <span class="hide-xs hide-sm text-small icon-mr">다음</span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="이 포스트 공유하기">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/06/2019-09-06-운영체체2/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/06/2019-09-06-운영체체2/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/06/2019-09-06-운영체체2/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                    <i class="fab fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+                <li class="post-action">
+                    <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="댓글을 남겨주세요">
+                        <i class="fa fa-comment"></i>
+                    </a>
+                </li>
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="맨 위로">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+        <i id="btn-close-shareoptions" class="fa fa-times"></i>
+        <ul class="share-options">
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/06/2019-09-06-운영체체2/" aria-label="Facebook에 공유하기">
+                        <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/06/2019-09-06-운영체체2/" aria-label="Twitter에 공유하기">
+                        <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
+                    </a>
+                </li>
+            
+                
+                
+                <li class="share-option">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/06/2019-09-06-운영체체2/" aria-label="Google+에 공유하기">
+                        <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
+                    </a>
+                </li>
+            
+        </ul>
+    </div>
+
+
+            
+        </div>
+        
+
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-times"></i>
+        </div>
+        
+            <h4 id="about-card-name">sug5806</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br>
+                <p>author.job</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker-alt"></i>
+                <br>
+                서울시 성북구
+            </div>
+        
+    </div>
+</div>
+
+        
+            <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-times"></i></span>
+            <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="/assets/images/logo-algolia-nebula-blue-full.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search" class="form-control input--large search-input" placeholder="Search ">
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">포스트가 없습니다.</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/12/2019-03-12-문자와문자열-함수전달방식/" aria-label=": 2019-03-12 문자와 문자열, 함수전달 방식">
+                            <h3 class="media-heading">2019-03-12 문자와 문자열, 함수전달 방식</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 12일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/15/2019-03-14-15-CPU와-메모리/" aria-label=": 2019-03-14~15 CPU와 메모리">
+                            <h3 class="media-heading">2019-03-14~15 CPU와 메모리</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 15일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.sug5806.site/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
+                            <h3 class="media-heading">2019-03-22 OOP</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2019년 3월 22일
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
+                94 개의 포스트가 있습니다.
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-igy6higovbbudnz2huqqnzan9tbi5p5qzgpza7ddmnsvw8o9l5otrbk5cg9n.min.js"></script>
+<!--SCRIPTS END-->
+
+
+    
+        <script>
+          var disqus_config = function() {
+            this.page.url = 'http://blog.sug5806.site/2019/09/06/2019-09-06-운영체체2/';
+              
+            this.page.identifier = '2019/09/06/2019-09-06-운영체체2/';
+              
+          };
+          (function() {
+            var d = document, s = d.createElement('script');
+            var disqus_shortname = 'sug5806';
+            s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+    
+
+
+
+    <script src="/assets/js/moment-with-locales.js"></script>
+    <script src="/assets/js/algoliasearch.js"></script>
+    <script>
+      var algoliaClient = algoliasearch('2LOSRWVGZX', '3846f641c03e28f7c9ece942801b6d95');
+      var algoliaIndex = algoliaClient.initIndex('search');
+    </script>
+
+
+    </body>
+</html>

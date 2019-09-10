@@ -185,6 +185,76 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/05/01/2019-05-01-Web-framwork/" aria-label=": 2019-05-01 웹프레임워크와 라이브러리의 차이">
+                            2019-05-01 웹프레임워크와 라이브러리의 차이
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-05-01T19:23:50+09:00">
+	
+		    2019/05/01
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/기타/">기타</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h2>프레임워크란?</h2>
+<p>소프트웨어의 구체적인 부분에 해당하는 설계와 구현을 재사용이 가능하게끔 일련의 협업화된 형태로 클래스들을 제공하는 것</p>
+<p>프레임워크는 라이브러리와 달리 애플리케이션의 틀과 구조를 결정할 뿐 아니라, 그 위에 개발된 개발자의 코드를 제어한다.</p>
+<ul>
+<li>프로그램 기본구조(뼈대) -&gt; 자동차 프레임</li>
+</ul>
+<h2>라이브러리란?</h2>
+<p>자주 쓰일 만한 기능들을 모아놓은 유틸(클래스)들의 모음집</p>
+<ul>
+<li>자동차 바퀴, 자동차 헤드라이트, 자동차 에어백</li>
+</ul>
+<h2>그럼 둘의 차이는 뭘까?</h2>
+<p>라이브러리는 도구(연장)의 개념이다</p>
+<ul>
+<li>망치, 톱, 삽 등등<br>
+프레임워크는 탈것의 개념이다</li>
+<li>비행기, 차, 배 등등</li>
+</ul>
+<p>사람은 도구를 선택하는 입장이기 때문에, 어떤 도구를 사용하든 원하는 것을 만들어낼 수 있으면 된다.</p>
+<p>반면에 탈것은 정해진 곳으로만 다녀야 한다. 그 목적에 맞게 만들어져 있기 때문에 정해진 규칙에 맞춰 엔진, 기어, 핸들만 잘 다루면 된다.</p>
+<p>라이브러리와 달리 프레임워크는 이미 프로그래밍할 규칙이 정해져있다.</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/05/01/2019-05-01-Web-framwork/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/04/30/2019-04-27-bookmark/" aria-label=": 2019-04-30 Django bookmark">
                             2019-04-30 Django bookmark
                         </a>
@@ -1153,111 +1223,6 @@ IDE는 Pycham을 기준으로 작성하였습니다.</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/19/2019-04-19-Django시작하기/" aria-label=": 2019-04-19 Django 기본">
-                            2019-04-19 Django 기본
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-19T14:30:50+09:00">
-	
-		    2019/04/19
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/Django/">Django</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>Django 기본</h1>
-<h3>Django 프로젝트 구조 살펴보기</h3>
-<p><img src="/image/Django1.png" alt></p>
-<ol>
-<li>
-<p>second_django 폴더 : 프로젝트 설정 파일과 웹 서비스 실행을 위한 파일들이 들어있다.</p>
-<ul>
-<li><strong>init</strong>.py : 파이썬 2.x대 버전과의 호환을 위해 만들어진 비어있는 파일이다. 지워도 무방하다</li>
-<li>settings.py : 프로젝트 설정에 관한 다양한 내용이 들어있다.</li>
-<li>urls.py : 특정 기능을 수행하기 위해 접속하는 주소를 url이라 하고 이를 설정해주는데, 그 설정을 이 파일에 기록함</li>
-<li>wsgi.py : 웹 서비스를 실행하기 위한 wsgi 관련 내용이 들어있음</li>
-</ul>
-</li>
-<li>
-<p>venv 폴더 : 프로젝트 구동에 필요한 가상환경이 들어있음</p>
-</li>
-<li>
-<p>db.sqlite3 : SQLite3 DB 파일이다. 다른 DB를 이용할시 필요없다</p>
-</li>
-</ol>
-<h3>장고 기본 명령들</h3>
-<ol>
-<li>django-admin startproject : 장고 프로젝트를 만드는 명령이다. 웹 서비스를 만들 때 마다 한번 실행한다.</li>
-<li>startapp : 프로젝트에 기능 단위인 앱을 새로 만들때 사용</li>
-<li>makemigrations : 어플리케이션에 변경 사항을 추적해 DB에 적용할 내용을 정리함. 보통 앱 안에 있는 모델(model)의 변경 사항이 있을 때 주로 사용함.</li>
-<li>sqlmigrate: 실행할 SQL 명령문을 출력한다</li>
-<li>migrate : 실제 변경사항을 DB에 반영한다.</li>
-<li>showmigrations : 프로젝트의 DB 변경사항 목록과 상태를 출력한다.</li>
-<li>runserver : 테스트 서버를 실행한다.</li>
-<li>dumpdata : 현재 DB의 내용을 백업할 때 사용한다.</li>
-<li>loaddata : 백업 파일에서 DB로 내용을 복구 할 때 사용한다</li>
-<li>flush : DB 테이블은 그대로 두고 테이블의 내용만 전부 삭제한다</li>
-<li>shell : 장고 쉘(Shell)을 실행한다</li>
-<li>dbshell : DB에 직접 접근 할 수 있는 쉘을 실행한다</li>
-<li>createsuperuser : 관리자 계정을 생성한다</li>
-<li>changepassword : 계정의 비밀번호를 변경할 수 있다</li>
-</ol>
-<hr>
-<h2>디자인 패턴</h2>
-<h4>MVC와 MTV</h4>
-<ul>
-<li>
-<p>웹 프로그래밍에서 자주 쓰이는 디자인 패턴은 MVC이다 : Model-View-Controller</p>
-<ol>
-<li>Model : DB의 구조를 결정한다.</li>
-<li>View : 사용자에게 보여지는 UI부분이다</li>
-<li>Controller : 기능, 로직부분이다</li>
-</ol>
-</li>
-<li>
-<p>장고에서는 MTV라고 하나 <strong>이름만 다르고 동일한 패턴이다</strong> : Model-Template-View</p>
-<ul>
-<li>양쪽모두 View가 있지만 기능이 서로 다르다 각각 연결해보면 (Model:Model)-(View:Template)-(Controller:View)이다</li>
-</ul>
-</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/19/2019-04-19-Django시작하기/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -1403,7 +1368,7 @@ IDE는 Pycham을 기준으로 작성하였습니다.</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                93 개의 포스트가 있습니다.
+                94 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

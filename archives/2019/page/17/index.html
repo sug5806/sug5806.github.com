@@ -186,6 +186,81 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/05/22/2019-05-22-장고 템플릿문법2/" aria-label=": 2019-05-22 장고 템플릿 문법 2">
+                            2019-05-22 장고 템플릿 문법 2
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-05-22T19:23:50+09:00">
+	
+		    2019/05/22
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>장고 템플릿 문법 2</h1>
+<p>장고에서 화면을 렌더링 하기 위해서는 템플릿 엔진을 사용한다. 템플릿 엔진은 각자 자기만의 템플릿 문법을 제공하는데 여러가지 기본 문법과 태그 필터를 살펴본다</p>
+<ol start="3">
+<li>판별문<br>
+값이 존재하는지 확인하기 위해서 if문을 사용한다 파이썬의 if문과 마찬가지로 비교연산자를 사용할 수 있고, and, or, not is, in을 사용할 수 있다. 그러나 and, or 사용시 괄호를 사용할수 없고 괄호가 필요한 경우 중첩비교구문을 만들어야 한다.</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if 변수 %&#125;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>판별문 2<br>
+값을 비교하기 위해서 ifequal과 ifnotequal을 사용한다</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;% ifequal 변수 값 %&#125;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">&#123;% endifequal %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% ifnotequal 변수 값 %&#125;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">&#123;% endifnotequal %&#125;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>반복문<br>
+본수 객체가 들어가는 변수를 반복하여 출력하고 싶을 때는 for문을 사용한다.</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> object <span class="keyword">in</span> object_list % &#125;</span><br><span class="line">  &#123;&#123; object &#125;&#125;</span><br><span class="line">  &#123;% cycle <span class="string">'1'</span> <span class="string">'0'</span> %&#125;</span><br><span class="line">&#123;% empty %&#125;</span><br><span class="line">  반복할 객체가 비어있다면 출력될 영역</span><br><span class="line"></span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+<p>반복문에는 특별한 추가기능이 있다. 리스트를 출력할때 아래 기능을 활용하면 편리하다</p>
+<p>|||   	|   	|   	|<br>
+|—	|—	|—	|—	|—	|<br>
+|  forloop.counter 	|  1부터 시작되는 반복횟수<br>
+|  forloop.counter() 	| 0부터 시작되는 반복 횟수<br>
+| forloop.revcounter	| 반복횟수 역순<br>
+| forloop.revcounter() | 반복횟수 역순 0부터 시작<br>
+| forloop.first | 첫번째 반복회차인지 여부<br>
+| forloop.last | 마지막 반복회차인지 여부</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/05/22/2019-05-22-장고 템플릿문법2/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/05/21/2019-05-21-장고 템플릿문법1/" aria-label=": 2019-05-21 장고 템플릿 문법 1">
                             2019-05-21 장고 템플릿 문법 1
                         </a>
@@ -325,92 +400,6 @@ Create, Update 뷰 같은 경우 폼을 출력한다. 폼 태그들을 출력할
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/05/19/2019-05-19-아마존인증서/" aria-label=": 2019-05-19 아마존 인증서 발급받기">
-                            2019-05-19 아마존 인증서 발급받기
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-05-19T17:37:32+09:00">
-	
-		    2019/05/19
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/기타/">기타</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>아마존 인증서 발급 받기</h1>
-<p>Domain</p>
-<ul>
-<li>naver.com</li>
-</ul>
-<p>sub Domain</p>
-<ul>
-<li>blog.naver.com</li>
-<li>static.web.nvaer.com</li>
-</ul>
-<hr>
-<p>이메일 검증이 편하긴 하다(1년마다 갱신 해야함)<br>
-DNS검증을 하게되면 자동으로 갱신이 된다.</p>
-<hr>
-<p><img src="/image/amazon0.png" alt></p>
-<p>Certificate Manager로 들어간다</p>
-<hr>
-<p><img src="/image/amazon1.png" alt></p>
-<p>[인증서 요청]을 클릭하게되면 위와 같은 화면이 나온다<br>
-*(와일드카드)로 발급받게되면 서브도메인 전체에 대한 적용이 가능하다</p>
-<hr>
-<p><img src="/image/amazon2.png" alt></p>
-<p>검증방법에서는 DNS 검증을 선택하고 [검토]버튼을 누른다</p>
-<hr>
-<p><img src="/image/amazon3.png" alt></p>
-<p>검증 방법과 신청 내용을 확인하고 [확인 및 요청]버튼을 클릭한다</p>
-<hr>
-<p><img src="/image/amazon4.png" alt></p>
-<p>도메인 옆의 삼각형을 누르면 상세적보가 나오는데 [Route 53에서 레코드 생성] 버튼을 클릭한다<br>
-레코드 내용을 확인하고 [생성] 버튼을 클릭한다</p>
-<hr>
-<p><img src="/image/amazon6.png" alt></p>
-<p>생성 성공 메시지를 확인하고 [계속]버튼을 클릭한다</p>
-<hr>
-<p><img src="/image/amazon7.png" alt></p>
-<p>다시 인증서 목록으로 돌아오면 검증 미완료 상태를 확인할 수 있고<br>
-시간이 지나면 검증 완료가 되고 인증서가 발급된다</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/05/19/2019-05-19-아마존인증서/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -429,7 +418,7 @@ DNS검증을 하게되면 자동으로 갱신이 된다.</p>
             </a>
           </li>
         
-        <li class="pagination-number">page 17 of 31</li>
+        <li class="pagination-number">page 17 of 32</li>
     </ul>
 </div>
 
@@ -557,7 +546,7 @@ DNS검증을 하게되면 자동으로 갱신이 된다.</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                93 개의 포스트가 있습니다.
+                94 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
