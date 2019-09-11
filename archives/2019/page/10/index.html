@@ -186,6 +186,66 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/07/03/2019-07-03-연결리스트2/" aria-label=": 2019-07-03 연결 리스트(Linked List)2">
+                            2019-07-03 연결 리스트(Linked List)2
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-07-03T19:04:46+09:00">
+	
+		    2019/07/03
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/자료구조/">자료구조</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<h2>단일 연결 리스트(Single Linked List)</h2>
+<p>일반적으로 연결 리스트는 단일 연결 리스트를 말합니다. 이것은 다음 요소를 가리키는 포인터를 가진 노드들로 구성됩니다.</p>
+<p><img src="/image/ll1-1.png" alt="img"></p>
+<h5>리스트의 기본 동작</h5>
+<ul>
+<li>리스트 탐색</li>
+<li>리스트 내 아이템 삽입</li>
+<li>리스트에서 아이템을 삭제</li>
+</ul>
+<h5>단일 연결 리스트의 코드</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data=None)</span>:</span></span><br><span class="line">        self.__data = data</span><br><span class="line">        self.__link = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 소멸자</span></span><br><span class="line">    <span class="comment"># 객체가 사라지기 전에</span></span><br><span class="line">    <span class="comment"># 반드시 한번 호출 하는것을 보장한다</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">f"node[<span class="subst">&#123;self.__data&#125;</span>] deleted!! "</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">data</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__data</span><br><span class="line"></span><br><span class="line"><span class="meta">    @data.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">data</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.__data = data</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">link</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__link</span><br><span class="line"></span><br><span class="line"><span class="meta">    @link.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">link</span><span class="params">(self, link)</span>:</span></span><br><span class="line">        self.__link = link</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SLinkedList</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.head = <span class="literal">None</span></span><br><span class="line">        self.d_size = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.d_size == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.d_size</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        new_node = Node(data)</span><br><span class="line">        new_node.link = self.head</span><br><span class="line">        self.head = new_node</span><br><span class="line">        self.d_size += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, target)</span>:</span></span><br><span class="line">        temp = self.head</span><br><span class="line">        <span class="keyword">while</span> temp:</span><br><span class="line">            <span class="keyword">if</span> temp.data == target:</span><br><span class="line">                <span class="keyword">return</span> temp.data</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                temp = temp.link</span><br><span class="line">        <span class="keyword">return</span> temp</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.head <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.head = self.head.link</span><br><span class="line">            self.d_size -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_list</span><span class="params">(sll)</span>:</span></span><br><span class="line">    cur = sll.head</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(sll.size()):</span><br><span class="line">        print(cur.data, end=<span class="string">"  "</span>)</span><br><span class="line">        cur = cur.link</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    SLL = SLinkedList()</span><br><span class="line">    SLL.add(<span class="number">1</span>)</span><br><span class="line">    SLL.add(<span class="number">3</span>)</span><br><span class="line">    SLL.add(<span class="number">4</span>)</span><br><span class="line">    SLL.add(<span class="number">5</span>)</span><br><span class="line">    SLL.add(<span class="number">8</span>)</span><br><span class="line">    show_list(SLL)</span><br><span class="line">    print()</span><br><span class="line">    print(<span class="string">'*'</span> * <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">    target = <span class="number">4</span></span><br><span class="line">    result = SLL.search(target)</span><br><span class="line">    <span class="keyword">if</span> result:</span><br><span class="line">        print(<span class="string">f'target = <span class="subst">&#123;target&#125;</span>'</span>)</span><br><span class="line">        print(<span class="string">f'searched data : <span class="subst">&#123;result&#125;</span>'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">f'there is no such data'</span>)</span><br><span class="line"></span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/07/03/2019-07-03-연결리스트2/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/07/01/2019-07-01-연결리스트1/" aria-label=": 2019-07-01 연결 리스트(Linked List)1">
                             2019-07-01 연결 리스트(Linked List)1
                         </a>
@@ -315,91 +375,6 @@
                     
                         <p>
                             <a href="/2019/06/30/2019-06-30-재귀알고리즘이란/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/06/28/2019-06-28-자료-구조란/" aria-label=": 2019-06-28 자료 구조란?">
-                            2019-06-28 자료 구조란?
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-06-28T19:04:46+09:00">
-	
-		    2019/06/28
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/자료구조/">자료구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h1>자료구조(Data Structure)</h1>
-<p>자료구조는 컴퓨터 내에서 유용하게 사용되도록 데이터를 저장하고 구조화하는 특정한 방법을 말합니다. 즉, 데이터를 저장하고 구조화하는 특별한 형태입니다. 대표적인 자료구조는 배열, 연결 리스트, 스택, 큐, 트리, 그래프 등이 있습니다.</p>
-<p>자료구조는 구성요소들을 어떻게 구조화하였는가에 따라 두 가지 유형으로 분류됩니다.</p>
-<ul>
-<li>선형 자료구조(Linear data structures) : 선형 자료구조의 구성 요소들은 순차적으로 접근되지만, 모든 요소들이 반드시 순차적으로 저장되지는 않습니다. (Ex.연결 리스트, 스택, 큐)</li>
-<li>비선형 자료 구조(Non-linear data structures): 자료 구조의 구성 요소들이 비순차적인 순서로 저장되고 접근됩니다. (Ex. 트리, 그래프)</li>
-</ul>
-<h1>추상 자료형(Abstract Data Types - ADTs)</h1>
-<p>자료 구조와 연산을 결합하여 추상 자료형이라고 부릅니다. 추상 자료형은 두 부분으로 구성됩니다.</p>
-<ul>
-<li>데이터 선언</li>
-<li>연산자 선언<br>
-일반적으로 사용되는 추상 자료형은 연결 리스트, 스택, 큐, 우선 순위 큐, 이진 트리, 딕셔너리, 분리 집합, 해시 테이블, 그래프 등이 있습니다. 예를 들어 스택은 자료 구조에 데이터를 저장할 때 LIFO(Last-In-First-Out) 메커니즘을 사용합니다. 스택에 마지막으로 삽입된 요소는 제일 먼저 빠져나와 제거됩니다. 스택의 일반적인 연산은 스택 생성, 스택에 삽입하는 push, 제거하는 pop, 최상위 데이터를 찾는 top 등이 있습니다.</li>
-</ul>
-<h1>선형 자료구조와 비선형 자료구조</h1>
-<p>자료구조는 크게 선형 자료구조와 비선형 자료구조로 나뉘어 집니다.</p>
-<p><img src="/image/datastruct1-1.png" alt="img"></p>
-<ul>
-<li>
-<p>선형 자료구조란 하나의 데이터 뒤에 하나의 데이터가 존재하는 것입니다.</p>
-</li>
-<li>
-<p>데이터와 데이터간의 관계가 1:1 관계 입니다</p>
-</li>
-<li>
-<p>대표적으로는 배열과 리스트가 있습니다</p>
-</li>
-</ul>
-<p><img src="/image/datastruct1-2.png" alt="img"></p>
-<ul>
-<li>비선형 자료구조란 하나의 데이터 뒤에 여러개의 데이터가 존재할 수 있습니다.</li>
-<li>데이터간의 관계가 1:N 또는 N:M의 관계가 있습니다</li>
-<li>대표적인 비선형 자료구조는 트리와 그래프가 있습니다.</li>
-</ul>
-<p><img src="/image/datastruct1-3.png" alt="img"></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/06/28/2019-06-28-자료-구조란/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -556,7 +531,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                94 개의 포스트가 있습니다.
+                95 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

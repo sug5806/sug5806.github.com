@@ -185,6 +185,76 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/05/02/2019-05-07-회원가입/" aria-label=": 2019-05-02 Django 회원가입기능 만들기">
+                            2019-05-02 Django 회원가입기능 만들기
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-05-02T14:27:20+09:00">
+	
+		    2019/05/02
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>장고로 회원가입 만들기</h1>
+<p>우리가 가입할때는 Username, password, password confirm만 있으면 된다</p>
+<p>validator로 제약조건을 상세하게 설정할 수 있다</p>
+<p>커스텀 폼이 필요하다면 forms.py라는 파일을 새로 만든다</p>
+<ul>
+<li>굳이 forms.py일 필요는 없다</li>
+<li>여기서 비밀번호가 비밀번호 확인과 똑같은이 등등 확인 하는 작업이 필요하다
+<ul>
+<li>def clean_필드명</li>
+</ul>
+</li>
+</ul>
+<h2><code>views.py</code></h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 유저목록이 출력되는 뷰</span></span><br><span class="line"><span class="comment"># 추가기능 : follow기능</span></span><br><span class="line"><span class="comment"># 중간 테이블을 직접 생성하는 형테의 모델을 만든다</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 유저 모델을 커스터마이징 해야함 -&gt;</span></span><br><span class="line"><span class="comment"># 1. 커스터마이징을 하는법을 배워서</span></span><br><span class="line"><span class="comment"># 확장하는 방법에 따라서</span></span><br><span class="line"><span class="comment"># 1). 새로운 유저모델을 만드는 방법 - 기존 유저 데이터를 유지할 수가 없다</span></span><br><span class="line"><span class="comment"># 2). 기존 모델을 확장하는 방법 - DB 다운 타임 alter table -&gt; table lock이 걸림</span></span><br><span class="line"><span class="comment"># 나 - 유저 모델</span></span><br><span class="line"><span class="comment"># 나를 팔로우 한 사람 필드</span></span><br><span class="line"><span class="comment"># 내가 팔로우 한 사람 필드</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 커스터마이징 할 수가 없다면?</span></span><br><span class="line"><span class="comment"># 새로운 모델을 추가하는 방법</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># photo 모델</span></span><br><span class="line"><span class="comment"># 사진을 좋아요한 사람 필드</span></span><br><span class="line"><span class="comment"># 사진을 저장한 사람 필드</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">1. 유저 목록 혹은 유저 프로필에서 팔로우 버튼</span></span><br><span class="line"><span class="string">1-1. 전체 유저 목록을 출력해주는 뷰 - User모델에 대한 ListView</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">2. 팔로우 정보를 저장하는 뷰</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> User</span><br><span class="line"><span class="keyword">from</span> django.views.generic <span class="keyword">import</span> ListView</span><br><span class="line"><span class="keyword">from</span> .forms <span class="keyword">import</span> SignUpForm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserList</span><span class="params">(ListView)</span>:</span></span><br><span class="line">    model = User</span><br><span class="line">    template_name = <span class="string">'accounts/user_list.html'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 기존에 입력받는 뷰 (CreateView 상속 받아서 사용</span></span><br><span class="line"><span class="comment"># 상속을 받아쓰면 커스텀이 힘들다. -&gt; 제약 사항</span></span><br><span class="line"><span class="comment"># 회원 가입 -&gt; User 모델에 값을 입력받는다. -&gt; CreateView</span></span><br><span class="line"><span class="comment"># 회원 가입시 모델 필드 외에 추가 입력이 필요하다.</span></span><br><span class="line"><span class="comment"># 커스텀을 하려면 함수형 뷰가 적절하겠다</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> User</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">signup</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment"># CBV라면 dispatch가 해줌 -&gt; get, post</span></span><br><span class="line">    <span class="comment"># get이냐 post냐</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">"POST"</span>:</span><br><span class="line">        <span class="comment"># TODO : 입력받는 내용을 이용해서 회원 객체 생성</span></span><br><span class="line">        <span class="comment"># 입력받은 내용을 어떻게 가져올것이냐?</span></span><br><span class="line">        <span class="comment"># template에서 입력받은 내용 확인하기</span></span><br><span class="line">        <span class="comment"># get('')부분은 template에서 &lt;input&gt; 태그의 name과 동일하게 해야한다.</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># username = request.POST.get('username')</span></span><br><span class="line">        <span class="comment"># password = request.POST.get('password')</span></span><br><span class="line">        <span class="comment"># password2 = request.POST.get('password2')</span></span><br><span class="line">        <span class="comment"># email = request.POST.get('email')</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># print(username, password, email)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#### 모델 폼을 이용해서 코드를 간결하게 바꾸기</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 빈폼이 생성된다</span></span><br><span class="line">        <span class="comment"># 폼에 내용이 채워져있는 형태로 된다.</span></span><br><span class="line">        signup_form = SignUpForm(request.POST)</span><br><span class="line">        <span class="comment"># 해당 입력받은 정보를 가지고 user_instance가 반환된다</span></span><br><span class="line">        <span class="comment"># 그러나 form_validation을 하지 않은 상태이다</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 이것을 하면 validation을 한다</span></span><br><span class="line">        <span class="keyword">if</span> signup_form.is_valid():</span><br><span class="line">            <span class="comment"># 1. 인스턴스 생성</span></span><br><span class="line">            user_instance = signup_form.save(commit=<span class="literal">False</span>)</span><br><span class="line">            <span class="comment"># 2. 패스워드 암호화한 다음 저장을 한다</span></span><br><span class="line">            <span class="comment"># 폼이 가지고 있는 cleaned_data가 뭐냐?</span></span><br><span class="line">                <span class="comment"># 유효한 문자만 남긴 상태로 처리 과정을 거친 데이터 (SQL_injection 등등 방지)</span></span><br><span class="line">                <span class="comment"># request.POST.get('password')를 하게되면 특수문자나 이런것이 날것으로 온다.</span></span><br><span class="line">            user_instance.set_password(signup_form.cleaned_data[<span class="string">'password'</span>])</span><br><span class="line">            user_instance.save()</span><br><span class="line"></span><br><span class="line">            <span class="comment"># id = signup_form.cleaned_data['username']</span></span><br><span class="line">            id = user_instance.username</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 회원가입이 정상적으로 되었을때만</span></span><br><span class="line">            <span class="keyword">return</span> render(request, <span class="string">'accounts/signup_complete.html'</span>, &#123;<span class="string">'id'</span> : id &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 입력받은 정보를 바탕으로 회원객체 생성하기</span></span><br><span class="line">        <span class="comment"># user = User()</span></span><br><span class="line">        <span class="comment"># user.username = username</span></span><br><span class="line">        <span class="comment"># user.email = email</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment"># # 암호화가 제대로 되지 않음</span></span><br><span class="line">        <span class="comment"># # user.password = password</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment"># # 저장할때 암호화 시켜줌</span></span><br><span class="line">        <span class="comment"># user.set_password(password)</span></span><br><span class="line">        <span class="comment"># user.set_password(password2)</span></span><br><span class="line">        <span class="comment"># user.save()</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># template의 이름</span></span><br><span class="line">        <span class="comment"># return render(request, 'accounts/signup_complete.html')</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 페이지를 처음띄울때는 POST가 아니므로 이것이 실행</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># Todo : form 객체를 만들어서 전달</span></span><br><span class="line">            <span class="comment"># form 에는 username, password만 입력 받으면 된다</span></span><br><span class="line">        <span class="comment"># 1. 변수 만들어서 넣기</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 우리가 만든 form을 넘겨준다</span></span><br><span class="line">        signup_form = SignUpForm()</span><br><span class="line">        <span class="comment"># context_values = &#123;"form": SignUpForm()&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">## render가 하는일</span></span><br><span class="line">        <span class="comment"># 1. 템플릿 불러오기</span></span><br><span class="line">        <span class="comment"># 2. 템플릿 렌더링하기</span></span><br><span class="line">        <span class="comment"># 3. HTTP Response하기</span></span><br><span class="line">        <span class="comment"># return render(request, 'accounts/signup.html', context_values)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 유효한 데이터가 아닐경우 위에서 만들어진 signup_form을 다시 보여줌</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'accounts/signup.html'</span>, &#123;<span class="string">'form'</span> : signup_form&#125;)</span><br></pre></td></tr></table></figure>
+<h2>signup.html</h2>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends 'base.html' %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block title %&#125;</span><br><span class="line">Signup</span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"alert alert-info"</span>&gt;</span>Please enter your account information.<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% csrf_token %&#125;</span><br><span class="line">    &#123;&#123; form.as_p &#125;&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    &lt;label&gt;Username : &lt;input type="text" name="username"&gt; &lt;/label&gt;&lt;br&gt;--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    &lt;label&gt;Passward1 : &lt;input type="password" name="password1"&gt; &lt;/label&gt;&lt;br&gt;--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    &lt;label&gt;Passward2 : &lt;input type="password" name="password2"&gt; &lt;/label&gt;&lt;br&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Sign Up"</span> <span class="attr">class</span>=<span class="string">"btn btn-outline-info"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+<h2>signup_complete.html</h2>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends 'base.html' %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block title %&#125;</span><br><span class="line">Signup_complete</span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"alert alert-success"</span>&gt;</span>&#123;&#123; id &#125;&#125; successfully signed up.<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;% url 'accounts:signin' %&#125;"</span>&gt;</span>Move to sign in<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+<h2><code>form.py</code></h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 모델 폼을 만들려면 2가지가 필요하다</span></span><br><span class="line"><span class="comment"># 제네릭 뷰 : 제네릭 뷰, 모델</span></span><br><span class="line"><span class="comment"># 모델 폼 : 폼, 모델</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 모델</span></span><br><span class="line"><span class="keyword">from</span> django.contrib.auth.models <span class="keyword">import</span> User</span><br><span class="line"></span><br><span class="line"><span class="comment"># 폼</span></span><br><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> forms</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SignUpForm</span><span class="params">(forms.ModelForm)</span>:</span></span><br><span class="line">    <span class="comment"># widget을 오버라이드하여 입력될때 *표시를 찍어준다</span></span><br><span class="line">    password = forms.CharField(label=<span class="string">'Password'</span>, widget=forms.PasswordInput)</span><br><span class="line">    password2 = forms.CharField(label=<span class="string">'Password2'</span>, widget=forms.PasswordInput)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        model = User</span><br><span class="line">        <span class="comment"># fields 에는 해당 모델에 대해 입력받을 필드들을 나열한다.</span></span><br><span class="line">        <span class="comment"># + 추가 필드도 포함될수 있다 -&gt; 위에서 설정한 필드도 추가되고 목록에서 겹치면 오버라이드 한다</span></span><br><span class="line">        <span class="comment"># fields에 써진 순서대로 출력된다.</span></span><br><span class="line">        fields = [<span class="string">'username'</span>, <span class="string">'password'</span>, <span class="string">'password2'</span>, <span class="string">'email'</span>, ]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># TODO : 필드의 기본값 설정, Placeholder 설정법, css Class 설정법, Validator 설정법, help text 설정법</span></span><br><span class="line">        <span class="comment"># TODO : 커스텀 필드 만드는 법</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># clean_필드명</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clean_password2</span><span class="params">(self)</span>:</span></span><br><span class="line">        cd = self.cleaned_data</span><br><span class="line">        <span class="keyword">if</span> cd[<span class="string">'password'</span>] != cd[<span class="string">'password2'</span>]:</span><br><span class="line">            <span class="keyword">raise</span> forms.ValidationError(<span class="string">'비밀번호가 일치하지 않습니다.'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 항상 해당 필드의 값을 리턴한다.</span></span><br><span class="line">        <span class="keyword">return</span> cd[<span class="string">'password2'</span>]</span><br></pre></td></tr></table></figure>
+<h2><code>urls.py</code></h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># url을 연결해준다</span></span><br><span class="line">path(<span class="string">'signup/'</span>, signup, name=<span class="string">'signup'</span>),</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/05/02/2019-05-07-회원가입/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/05/01/2019-05-01-Web-framwork/" aria-label=": 2019-05-01 웹프레임워크와 라이브러리의 차이">
                             2019-05-01 웹프레임워크와 라이브러리의 차이
                         </a>
@@ -1164,65 +1234,6 @@ IDE는 Pycham을 기준으로 작성하였습니다.</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/21/2019-04-21-127.0.0.1과-localhost의-차이점/" aria-label=": 2019-04-21 localhost와 127.0.0.1의 차이점">
-                            2019-04-21 localhost와 127.0.0.1의 차이점
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-21T20:11:12+09:00">
-	
-		    2019/04/21
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/네트워크/">네트워크</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>127.0.0.1은 무엇인가?</h1>
-<p>127.0.0.1은 IPv4 및 IPv6에서 자기 자신을 가리키기 위한 목적으로 쓰기 위해 예약된 IP이다. 모든 컴퓨터는 이 주소를 자신의 주소로 사용하지만 실제 IP 주소처럼 다른 장치와 통신 할 수는 없다.</p>
-<ul>
-<li>Ex) 컴퓨터에서 실행중인 웹 서버는 127.0.0.1을 가리킬 수 있으므로 페이지를 배포하기 전에 로컬에서 실행하고 테스트 할 수 있다.</li>
-</ul>
-<h1>LocalHost는 무엇인가?</h1>
-<p>localhost은 자기 자신을 가리키는 IP의 도메인 네임으로써 알기 쉽게 해놓은 것이다. 그러므로 localhost로 접속을 하게되면 DNS의 테이블과 비교를 해야하는 번거로움이 있다 그로 인하여 127.0.0.1로 직접 접속하는것 보다 느리지만 기억하기는 쉽다.<br>
-그리고 localhost는 hosts 파일을 통해 변경될 수 있다</p>
-<h1>루프백</h1>
-<p>호스트 자신을 가리키는 주소이다 127.0.0.1을 사용한다. 루프백 주소로 네트워크에 직접 연결하지 않은 상태에서 빠르게 프로그램의 테스트를 할 수 있다. 또한 루프백 IP를 갖는 패킷은 외부 네트워크로 전송할수 없다</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/21/2019-04-21-127.0.0.1과-localhost의-차이점/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -1368,7 +1379,7 @@ IDE는 Pycham을 기준으로 작성하였습니다.</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                94 개의 포스트가 있습니다.
+                95 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

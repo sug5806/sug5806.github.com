@@ -186,6 +186,72 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/08/01/2019-08-01-검색/" aria-label=": 2019-08-01 검색">
+                            2019-08-01 검색
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-08-01T19:04:46+09:00">
+	
+		    2019/08/01
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/알고리즘/">알고리즘</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<h2>검색이란?</h2>
+<p>컴퓨터 공학에서 말하는 검색이란 어떤 요소들의 집합에서 특정 속성을 가지는 요소를 찾는 과정을 말합니다. 요소들은 데이터베이스의 레코드, 배열의 요소, 파일의 텍스트, 트리의 노드, 그래프의 정점 혹은 간선이거나 또는 다른 검색 공간의 기타 요소들일 수 있습니다.</p>
+<h2>검색의 종류</h2>
+<ul>
+<li>불규칙 선형 검색</li>
+<li>정렬/규칙 선형검색</li>
+<li>이진 검색</li>
+</ul>
+<h4>불규칙 선형 검색</h4>
+<p>배열의 요소들이 정렬되어 있지 않으면 어떤 요소를 찾고 싶다면 주어신 배열에 해당 요소가 있는지를 모든 요소에 대해 검사해야 합니다.</p>
+<p>시간 복잡도 : 최악의 경우 배열의 모든 요소를 검사해야 하기 때문에 O(n)</p>
+<h4>정렬/규칙 선형 검색</h4>
+<p>배열이 정렬되었을 경우 해당 배열이 찾고자 하는 요소를 가지고 있는지 여부를 알기 위해 배열의 모든 요소를 조사할 필요가 없습니다.</p>
+<p>시간 복잡도 : 최악의 경우 배열의 모든 요소를 검사해야 하기 때문에 O(n)</p>
+<h4>이진 검색</h4>
+<p>사전에서 어떤 단어를 찾는다고 생각해보면, 일반적으로 인접한 페이지를 펴서 거기서부터 찾기 시작합니다. 그리고 우리가 찾는 단어를 찾으면 검색은 끝이 납니다. 펼친 페이지가 찾고자 하는 단어 이전이면, 나머지 페이지들을 가지고 처음 과정을 반복하고 그렇지 않으면 앞 페이지에 처음 과정을 반복합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_serarch</span><span class="params">(a, n, data)</span>:</span></span><br><span class="line">    low = <span class="number">0</span></span><br><span class="line">    high = n - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> low &lt;= high:</span><br><span class="line">        mid = low + (high - low) // <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> a[mid] == data:</span><br><span class="line">            <span class="keyword">return</span> mid</span><br><span class="line">        <span class="keyword">elif</span> a[mid] &lt; data:</span><br><span class="line">            low = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            high = mid - <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line">    n = len(a)</span><br><span class="line">    search = <span class="number">7</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">f'<span class="subst">&#123;search&#125;</span>의 index는: <span class="subst">&#123;binary_serarch(a, n, <span class="number">7</span>)&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/08/01/2019-08-01-검색/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/07/30/2019-07-30-퀵정렬/" aria-label=": 2019-07-30 퀵정렬">
                             2019-07-30 퀵정렬
                         </a>
@@ -293,64 +359,6 @@
                     
                         <p>
                             <a href="/2019/07/28/2019-07-28-합병정렬/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/07/26/2019-07-26-삽입정렬/" aria-label=": 2019-07-26 삽입정렬">
-                            2019-07-26 삽입정렬
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-07-26T19:04:46+09:00">
-	
-		    2019/07/26
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/알고리즘/">알고리즘</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h2>삽입 정렬(Insertion Sort)이란?</h2>
-<p>삽입 정렬은 간단하면서도 효과적인 비교 정렬법입니다. 이 알고리즘은 반복마다 뒤쪽의 정렬되지 않은 요소들의 목록에서 요소를 삭제하고 삭제한 요소를 앞쪽의 이미 정렬된 목록 내 알맞은 자리에 삽입합니다. 입력 데이터에서 삭제될 요소는 정렬되지 않은 목록에서 무작위로 선택하고(일반적으로 앞에서 차례로 선택합니다) 입력 데이터 내 모든 요소를 처리할 때까지 반복합니다.</p>
-<h2>장점</h2>
-<ul>
-<li>간단합니다.</li>
-<li>적은 데이터 양에 효과적입니다.</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ins_sort</span><span class="params">(a)</span>:</span></span><br><span class="line">    n = len(a)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):</span><br><span class="line">        key = a[i]</span><br><span class="line">        j = i - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> j &gt;= <span class="number">0</span> <span class="keyword">and</span> a[j] &gt; key:</span><br><span class="line">            a[j + <span class="number">1</span>] = a[j]</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">        a[j + <span class="number">1</span>] = key</span><br><span class="line">        print(a)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">d = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">3</span>]</span><br><span class="line">ins_sort(d)</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/07/26/2019-07-26-삽입정렬/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -507,7 +515,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                94 개의 포스트가 있습니다.
+                95 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

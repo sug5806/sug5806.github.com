@@ -186,6 +186,105 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/04/15/알고리즘이론/" aria-label=": 2019-04-15 알고리즘이란?">
+                            2019-04-15 알고리즘이란?
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-04-15T19:39:46+09:00">
+	
+		    2019/04/15
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/알고리즘/">알고리즘</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h2>알고리즘이란?</h2>
+<ul>
+<li>유한한 단계를 통해 문제를 해결하기 위한 절차나 방법</li>
+</ul>
+<h4>알고리즘 표현방법</h4>
+<ul>
+<li>슈도코드 : 특정 프로그래밍 언어의 문법을 따라 쓰여진 것이 아니라, 일반적인 언어로 코드를 흉내내어 알고리즘을 써 놓은 코드
+<ul>
+<li>의사 코드로 흉내낸 코드</li>
+<li>실제적인 프로그래밍 언어로 작성된 코드처럼 컴퓨터에서 실행할 수 없음</li>
+<li>특정 언어로 프로그램을  작성하기 전에 알고리즘을 대략적으로 모델링하는데 쓰임</li>
+</ul>
+</li>
+<li>순서도 : 프로그램이나 작업의 진행 흐름을 순서에 따라 여러 가지 기호나 문자로 나타낸 도표</li>
+</ul>
+<h4>무엇이 좋은 알고리즘인가?</h4>
+<ul>
+<li>정확성 : 얼마나 정확하게 동작하는가?</li>
+<li>작업량 : 얼마나 적은 연산으로 원하는 결과를 얻어내는가?</li>
+<li>메모리 사용량 : 얼마나 적은 메모리를 사용하는가?</li>
+<li>단순성 : 얼마나 단순한가?</li>
+<li>최적성 : 더 이상 개선할 여지 없이 최적화 되어있는가?</li>
+</ul>
+<h4>알고리즘의 성능 분석</h4>
+<ul>
+<li>많은 문제에서 알고리즘의 성능 분석기준으로 알고리즘의 작업량을 비교
+<ul>
+<li>Ex) 1~100까지의 합을 구하는 문제</li>
+</ul>
+</li>
+<li>
+<ol>
+<li>실제 걸리는 시간을측정</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>실행되는 명령문의 개수를 계산 -&gt; 일반적으로 많이 사용됨</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Big-O 표기법 : 시간 복잡도 함수 중에서 가장 큰 영향력을 주는 n에 대한 항만을 표시, 계수는 생략하여 표시</li>
+</ol>
+<ul>
+<li>요소 수가 증가함에 따라 각기 다른 시간 복잡도의 알고리즘은 아래와 같은 연산 수를 보임</li>
+</ul>
+</li>
+</ul>
+<p><img src="../image/algorithm.png" alt></p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/04/15/알고리즘이론/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/04/13/greedy/" aria-label=": 2019-04-13 Greedy Algorithm">
                             2019-04-13 Greedy Algorithm
                         </a>
@@ -415,120 +514,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/11/2019-04-11-data_structure/" aria-label=": 2019-04-11 List와 Array의 차이점">
-                            2019-04-11 List와 Array의 차이점
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-11T19:04:46+09:00">
-	
-		    2019/04/11
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/자료구조/">자료구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h3>리스트(List)와 배열(Array)의 차이점</h3>
-<!-- 1. 배열(Array)
-    * 같은 자료형의 변수를 모아놓은 것
-    * **인덱싱을 통해 검색을 함**
-    * **데이터가 군집화 되어있음** -> 이로인해 지역성이 적용되어 **캐시히트 확률이 매우높다**
-    * 장점 : 
-        * 검색으로는 그 어떤 자료구조보다 빠름
-        * 기본적으로 스택에 할당된다
-    * 단점 :
-        * 데이터의 삽입과 삭제가 매우 느림
-
-2. Linked List(연결 리스트)
-    * 장점
-        * 데이터의 삽입과 삭제가 매우 빠름 O(1)
-    * 단점
-        * 검색속도가 매우느림 O(n)
-        * 데이터가 흩어져있음 -> 이로인해 지역성 적용이 떨어져 **캐시미스 확률이 높음**  -->
-<ol>
-<li>동적배열(Dynamic Array) vs 연결리스트(Linked List)의 차이
-<ul>
-<li>
-<p>DynamicArray</p>
-<ul>
-<li>장점:
-<ul>
-<li>search : O(1) -&gt; Indexing을 사용하기 때문
-<ul>
-<li>메모리에 가져올때 지역성이 적용되어 <strong>캐시히트</strong>가 일어나기 때문</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>단점:
-<ul>
-<li>Insert : O(n) -&gt; 삽입을 하기위해 기존의 n개의 데이터를 뒤로 밀어야 한다</li>
-<li>Delete : O(n) -&gt; 삭제를 한 뒤 남아있는 데이터를 앞으로 당겨야 한다.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>LinkedList</p>
-<ul>
-<li>장점: 데이터의 삽입, 삭제가 매우 빠르다
-<ul>
-<li>Insert : O(1)</li>
-<li>Delete : O(1)</li>
-</ul>
-</li>
-<li>단점:
-<ul>
-<li>Search : O(n)
-<ul>
-<li>지역성이 적용될 확률이 낮기때문에 <strong>캐시히트</strong>가 일어나기 힘들다</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<p>Search를 많이하면 배열을, Insert, Delete를 할때는 연결리스트를 주로 사용한다</p>
-<p>다이나믹 힙(Dynamic Heap)기법으로 메모리 할당을 한쪽으로 몰아도 되도록이면 배열을 사용한다</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/11/2019-04-11-data_structure/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -675,7 +660,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                94 개의 포스트가 있습니다.
+                95 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

@@ -186,8 +186,63 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/09/06/2019-09-06-운영체체2/" aria-label=": 2019-09-06 운영체제2">
-                            2019-09-06 운영체제2
+                        <a class="link-unstyled" href="/2019/09/08/2019-09-08-운영체체2-2/" aria-label=": 2019-09-08 운영체제2-2">
+                            2019-09-08 운영체제2-2
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-09-08T19:04:46+09:00">
+	
+		    2019/09/08
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/운영체제/">운영체제</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>Operating System Concepts의 요약본 입니다.</p>
+<p><a href="https://blog.sug5806.site/2019/09/06/2019-09-06-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%B2%B42/">전편</a> 의 내용과 이어집니다.</p>
+<h2>2.3 저장 구조</h2>
+<ul>
+<li></li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/09/08/2019-09-08-운영체체2-2/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/09/06/2019-09-06-운영체체2/" aria-label=": 2019-09-06 운영체제2-1">
+                            2019-09-06 운영체제2-1
                         </a>
                     
                 </h1>
@@ -268,6 +323,11 @@
 </ul>
 </li>
 <li>만약 CPU가 입출력 완료를 항상 기다리면 한번에 한 입출력만 가능하다. 이것은 바람직하지 않다. 여러 입출력을 병행으로 수행할 수 있고, 입출력과 계산을 병행할 수 있어야 시스템의 효울을 높일 수 있다.</li>
+</ul>
+<h3>2.2.2 DMA 구조</h3>
+<ul>
+<li>속도가 느린 입출력 장치는 하나의 입력을 받은 후에 다음 입력까지 CPU는 다른 유용한 작업을 할 수 있다. 그러나 반대로 입출력 장치의 속도가 빠르면 인터럽트가 너무 빈번하게 발생하여 CPU가 다른 유용한 작업을 할 시간이 적다.</li>
+<li>이것을 해결하기 위해 사용하는 기법이 DMA(Direct Memory Access)이다. DMA 방식에서 장치 제어기는 데이터 블록을 CPU의 관여없이 직접 주기억장치로 이동하며, 인터럽트는 바이트 단위가 아닌 블록 단위로 발생한다.</li>
 </ul>
 
                     
@@ -438,103 +498,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/09/02/2019-09-02-그래프1(Graph)/" aria-label=": 2019-09-02 그래프1(Graph)">
-                            2019-09-02 그래프1(Graph)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-09-02T19:04:46+09:00">
-	
-		    2019/09/02
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/자료구조/">자료구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h1>그래프</h1>
-<p>현실에서 많은 문제들은 객체와 객체 사이의 관계로 표현됩니다. 항공기 운항 경로를 예로 들면 &quot;서울에서 뉴욕까지 가는 가장 빠른 노선은 어떻게 됩니까?&quot;와 같은 질문이 있습니다. 이 질문에 답하기위해 도시 간의 관계에 대한 정보가 필요합니다. 이런 문제를 풀기 위해 사용되는 자료 구조가 그래프(Graph)입니다.</p>
-<h1>용어 설명</h1>
-<p>그래프(Graph): 그래프는 정점(vertices)라고 불리는 노드들의 집합 V와 간선(edge)이라고 불리는 정점의 쌍들의 집합 E를 사용하여(V,E)로 나타냅니다.</p>
-<ul>
-<li>정점과 간선은 위치 및 저장 요소입니다.</li>
-<li>그래프에서 사용하는 정의:
-<ul>
-<li>방향을 가진 간선(Directed edge):
-<ul>
-<li>순서를 가진 정점의 쌍(u,v)으로</li>
-<li>첫 번째 정점 u는 출발점을 의미합니다.</li>
-<li>두 번째 정점 v는 도착점을 의미합니다.</li>
-<li>예 : 편도 운행</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/image/Graph1-1.png" alt="img"></p>
-<ul>
-<li>방향을 가지지 않은 간선(Undirected edge)
-<ul>
-<li>순서를 가지지 않는 정점의 쌍 (u,v)</li>
-<li>예 : 기찻길</li>
-</ul>
-</li>
-</ul>
-<p><img src="/image/Graph1-2.png" alt="img"></p>
-<ul>
-<li>방향을 가지는 그래프(Directed graph)
-<ul>
-<li>그래프 내의 모든 간선들이 방향을 가집니다.</li>
-<li>예 - 네트워크의 라우트</li>
-</ul>
-</li>
-</ul>
-<p><img src="image/Graph1-3.png" alt="img"></p>
-<ul>
-<li>방향을 가지지 않는 그래프(Undirected graph)
-<ul>
-<li>그래프 내의 모든 간선이 방향을 가지지 않습니다.</li>
-<li>예 : 비행노선</li>
-</ul>
-</li>
-</ul>
-<p><img src="/image/Graph1-4.png" alt="img"></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/09/02/2019-09-02-그래프1(Graph)/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -674,7 +637,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                94 개의 포스트가 있습니다.
+                95 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
