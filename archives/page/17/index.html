@@ -186,6 +186,101 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/05/25/2019-05-25-커스텀템플릿태그/" aria-label=": 2019-05-25 장고 커스텀 템플릿 태그">
+                            2019-05-25 장고 커스텀 템플릿 태그
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-05-25T18:32:46+09:00">
+	
+		    2019/05/25
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>커스텀 템플릿 태그 만들기</h1>
+<p>템플릿 문법을 사용하다보면 필요한 기능이 없는 경우가 있습니다. 이럴 때는 직접 만들어서 사용할 수 있습니다.<br>
+커스텀 템플릿 태그와 템플릿 필터를 만들 수 있습니다.</p>
+<ol>
+<li>
+<p>커스텀 기능을 만들기 위해서는 앱 안에 templatetags라는 폴더를 만들어야 합니다.</p>
+<p><img src="/image/custom_template_tags01.png" alt></p>
+</li>
+<li>
+<p>원하는 기능을 작성할 파일을 작성합니다. 템플릿 파일에서 이 파일명으로 기능을 불러 옵니다.<br>
+<img src="../image/custom_template_tags02.png" alt></p>
+</li>
+<li>
+<p>템플릿 라이브러리 변수를 만듭니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> template</span><br><span class="line">register = template.Library()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="4">
+<li>
+<p>필터를 등록할 때는 다음과 같이 코드를 합니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@register.filter</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_two</span><span class="params">(value)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> value+<span class="number">2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>등록된 필터는 다음과 같이 사용합니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load example %&#125;</span><br><span class="line">&#123;&#123;변수|add_two&#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>태그를 등록할 때는 다음과 같이 코드를 작성합니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@register_simple_tag</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_template</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render_to_string(<span class="string">'blog/test.html'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>등록한 태그는 다음과 같이 사용합니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load example %&#125;</span><br><span class="line">&#123;% print_template %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>태그를 실행한 결과를 변수로 지정하려면 as 키워드를 사용합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load %&#125;</span><br><span class="line">&#123;% print_template <span class="keyword">as</span> test %&#125;</span><br><span class="line">&#123;&#123;test&#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>추가 인자가 있는 필터는 다음과 같이 코드를 작성합니다.</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@register.filter</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">string_append</span><span class="params">(left, right)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> left+<span class="string">"-"</span>+right</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>해당 필터는 다음과 같이 사용합니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load blog %&#125;</span><br><span class="line">&#123;&#123;<span class="string">'string1'</span>|string_append:<span class="string">'string2'</span>&#125;&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/05/25/2019-05-25-커스텀템플릿태그/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/05/23/2019-05-23-장고 템플릿문법3/" aria-label=": 2019-05-23 장고 템플릿 문법 3">
                             2019-05-23 장고 템플릿 문법 3
                         </a>
@@ -320,70 +415,6 @@
                     
                         <p>
                             <a href="/2019/05/22/2019-05-22-장고 템플릿문법2/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/05/21/2019-05-21-장고 템플릿문법1/" aria-label=": 2019-05-21 장고 템플릿 문법 1">
-                            2019-05-21 장고 템플릿 문법 1
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-05-21T19:23:50+09:00">
-	
-		    2019/05/21
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/Django/">Django</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>장고 템플릿 문법 1</h1>
-<p>장고에서 화면을 렌더링 하기 위해서는 템플릿 엔진을 사용한다. 템플릿 엔진은 각자 자기만의 템플릿 문법을 제공하는데 여러가지 기본 문법과 태그 필터를 살펴본다</p>
-<ol>
-<li>컨텍스트 변수 출력하기
-<ul>
-<li>뷰에서 컨텍스트 변수로 값을 전달해준다면 해당 변수 이름을 가지고 출력할 수 있다</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 해당 변수 값 출력</span></span><br><span class="line">&#123;&#123; 변수명 &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 변수에 html이 들어 있는 경우 html 없애고 출력</span></span><br><span class="line">&#123;&#123; 변수명|safe &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 대문자로 변환하여 출력</span></span><br><span class="line">&#123;&#123; 변수명|upper &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 소문자로 변환하여 출력</span></span><br><span class="line">&#123;&#123; 변수명|lower &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 일부만 끊어서 출력</span></span><br><span class="line">&#123;&#123; 변수명|truncatedwords:<span class="string">'30'</span> &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 날짜일 경우 형식 지정하여 출력</span></span><br><span class="line">&#123;&#123; 변수명|date:<span class="string">"Y m d"</span> &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 기본값 지정하기</span></span><br><span class="line">&#123;&#123; 변수명|default:<span class="string">"없음"</span> &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 변수 길이 출력</span></span><br><span class="line">&#123;&#123; 변수명|length &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 제목 형식 출력</span></span><br><span class="line">&#123;&#123; 변수명|title &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 줄바꿈 태그 출력</span></span><br><span class="line">&#123;&#123; 변수명:linebreaks &#125;&#125; <span class="comment"># p태그로 감싸서 출력</span></span><br><span class="line"></span><br><span class="line">&#123;&#123; 변수명:linebreakbr &#125;&#125; <span class="comment"># &lt;br&gt; 태그만 넣어줌</span></span><br><span class="line"></span><br><span class="line">`</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>폼 출력하기<br>
-Create, Update 뷰 같은 경우 폼을 출력한다. 폼 태그들을 출력할 때 p, li, table 등의 태그로 감싸진 형식으로 출력되게 만들 수 있다. 또 입력 폼에서는 csrf_token은 필수 이다.</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">methd</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">&#123;% csrf_token %&#125;</span><br><span class="line">&#123;&#123;form.as_p&#125;&#125; 각 폼 태그를 p로 감싸 출력</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span> &#123;&#123;form.as_table&#125;&#125; <span class="tag">&lt;/<span class="name">table</span>&gt;</span> 각 폼태그를 tr로 감싸 출력 (table태그로 감싸는것이 아님)</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span> &#123;&#123; form.as_ul &#125;&#125; <span class="tag">&lt;/<span class="name">ul</span>&gt;</span> 각 폼 대그를 li로 감싸 출력</span><br></pre></td></tr></table></figure>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/05/21/2019-05-21-장고 템플릿문법1/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -540,7 +571,7 @@ Create, Update 뷰 같은 경우 폼을 출력한다. 폼 태그들을 출력할
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                95 개의 포스트가 있습니다.
+                96 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

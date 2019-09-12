@@ -8,16 +8,24 @@
     </url>
 
     <url>
-        <loc>http://blog.sug5806.site/2019/09/08/2019-09-08-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%B2%B42-2/</loc>
-        <lastmod>2019-09-11T13:12:33.493Z</lastmod>
+        <loc>http://blog.sug5806.site/2019/09/10/2019-09-10-%EB%A6%AC%EB%88%85%EC%8A%A4%20%EA%B8%B0%EB%B3%B81/</loc>
+        <lastmod>2019-09-12T14:19:18.662Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.sug5806.site/2019/09/06/2019-09-06-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%B2%B42/</loc>
-        <lastmod>2019-09-11T13:05:01.166Z</lastmod>
+        <loc>http://blog.sug5806.site/2019/09/06/2019-09-06-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%B2%B42-1/</loc>
+        <lastmod>2019-09-12T12:53:33.906Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://blog.sug5806.site/2019/09/08/2019-09-08-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%B2%B42-2/</loc>
+        <lastmod>2019-09-11T13:12:33.493Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -48,16 +56,16 @@
     </url>
 
     <url>
-        <loc>http://blog.sug5806.site/2019/03/22/OOP/</loc>
-        <lastmod>2019-09-08T11:06:12.002Z</lastmod>
+        <loc>http://blog.sug5806.site/2019/08/30/2019-08-30-%ED%8A%B8%EB%A6%AC%EC%9D%98%EC%9A%B4%ED%96%892(python_loop)/</loc>
+        <lastmod>2019-09-08T11:08:30.026Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://blog.sug5806.site/2019/08/30/2019-08-30-%ED%8A%B8%EB%A6%AC%EC%9D%98%EC%9A%B4%ED%96%892(python_loop)/</loc>
-        <lastmod>2019-09-01T09:16:28.223Z</lastmod>
+        <loc>http://blog.sug5806.site/2019/03/22/OOP/</loc>
+        <lastmod>2019-09-08T11:06:12.002Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
