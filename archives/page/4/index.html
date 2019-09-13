@@ -186,6 +186,62 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/08/24/2019-08-24-큐2/" aria-label=": 2019-08-24 큐2(Queue)">
+                            2019-08-24 큐2(Queue)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-08-24T19:04:46+09:00">
+	
+		    2019/08/24
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/자료구조/">자료구조</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<p>지난 번에는 파이썬의 자료형인 <a href="https://blog.sug5806.site/2019/07/11/2019-07-11-%ED%81%90(Queue)/">list를 이용하여 큐를 구현</a> 하였습니다. 이번 시간에는 Node를 이용하여 구현하도록 하겠습니다.</p>
+<p>먼저 노드를 이용하여 구현을하면 아래와 같은 그림으로 진행 됩니다.</p>
+<p><img src="/image/queue2-1.png" alt="img"></p>
+<p>이와 같은 방식으로 구현할 경우 Dequeue를 하게되면 head가 이전 노드를 가리킬 방법이 없습니다. 이 문제를 수정하도록 하겠습니다.</p>
+<p><img src="/image/queue2-2.png" alt="img"></p>
+<p>수정을 한 그림을 보면 Dequeue를 해도 Head는 Head가 가리키고 있는 다음 노드를 가리키면 됩니다. Queue의 FIFO(First In First Out)구조를 유지할 수 있습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.next = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.head = <span class="literal">None</span></span><br><span class="line">        self.tail = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.head <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">and</span> self.tail <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peek</span><span class="params">(self)</span>:</span></span><br><span class="line">        ret_data = self.head.data</span><br><span class="line">        <span class="keyword">return</span> ret_data</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        new_node = Node(data)</span><br><span class="line">        <span class="keyword">if</span> self.is_empty():</span><br><span class="line">            self.head = new_node</span><br><span class="line">            self.tail = new_node</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        self.tail.next = new_node</span><br><span class="line">        self.tail = new_node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.is_empty():</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">        ret_data = self.head.data</span><br><span class="line">        self.head = self.head.next</span><br><span class="line">        <span class="keyword">return</span> ret_data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    Q = Queue()</span><br><span class="line"></span><br><span class="line">    Q.enqueue(<span class="number">1</span>)</span><br><span class="line">    Q.enqueue(<span class="number">3</span>)</span><br><span class="line">    Q.enqueue(<span class="number">5</span>)</span><br><span class="line">    Q.enqueue(<span class="number">7</span>)</span><br><span class="line">    Q.enqueue(<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">    print(Q.dequeue())</span><br><span class="line">    print(Q.dequeue())</span><br><span class="line"></span><br><span class="line">    Q.enqueue(<span class="number">11</span>)</span><br><span class="line"></span><br><span class="line">    print(Q.dequeue())</span><br><span class="line">    print(Q.dequeue())</span><br><span class="line">    print(Q.dequeue())</span><br><span class="line">    print(Q.dequeue())</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/08/24/2019-08-24-큐2/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/08/21/2019-08-21-스택2/" aria-label=": 2019-08-21 스택2(Stack)">
                             2019-08-21 스택2(Stack)
                         </a>
@@ -300,94 +356,6 @@
                     
                         <p>
                             <a href="/2019/08/17/2019-08-17-이진트리1/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/08/17/2019-08-19-이진트리2/" aria-label=": 2019-08-19 이진 트리2(Binary Tree)">
-                            2019-08-19 이진 트리2(Binary Tree)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-08-17T19:04:46+09:00">
-	
-		    2019/08/17
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/자료구조/">자료구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h2>이진 트리 운행(Traversals)</h2>
-<p>트리를 다루기 위해서는 트리를 운행하기 위한 메커니즘 필요한데 이것이 여기서 다룰 내용입니다. 트리의 모든 노드들은 방문하는 과정을 트리 운행이라 합니다. 각 노드들은 한 번만 처리되겠지만, 여러 번 방문을 받을 수 있습니다.</p>
-<h2>운행 방법(Traversal Possibilities)</h2>
-<p>운행 방법을 아래와 같이 3가지로 나타낼 수 있습니다.</p>
-<ul>
-<li>전위 운행법(Preorder)</li>
-<li>중위 운행법(Inorder)</li>
-<li>후위 운행법(Postorder)</li>
-</ul>
-<p>여기에 순서를 따르지 않는 다른 운행법을 추가합니다.</p>
-<ul>
-<li>레벨 순서 운행법(Level Order Traversal): 이 함수는 너비 우선 탐색에서 영향을 받았습니다(그래프 알고리즘의 BFS).</li>
-</ul>
-<p><img src="/image/binarytree1-2.png" alt="img"></p>
-<h5>전위 운행법(Preorder)</h5>
-<p>전위 운행법에서는 각 노드의 자신의 좌, 우측 하위 트리보다 먼저 처리됩니다.</p>
-<ul>
-<li>root를 방문합니다.</li>
-<li>다시 전위 운행법으로 왼쪽 하위 트리를 운행합니다.</li>
-<li>전위 운행법으로 오른쪽 하위 트리를 운행합니다.</li>
-</ul>
-<p>위의 트리에서는 1, 2, 4, 5, 3, 6, 7 순서로 처리됩니다.</p>
-<h5>중위 운행법(Inorder)</h5>
-<p>중위 운행법에서 root는 오른쪽 하위 트리와 왼쪽 하위 트리 사이에 방문하게 됩니다. 중위 운행법은 다음과 같이 정의됩니다.</p>
-<ul>
-<li>왼쪽 하위트리를 탐색합니다.</li>
-<li>root를 처리합니다.</li>
-<li>오른쪽 하위 트리를 중위 운행법으로 탐색합니다.</li>
-</ul>
-<p>위의 트리에서는 4, 2, 5, 1, 6, 3, 7 순서로 처리됩니다.</p>
-<h5>후위 운행법(Postorder)</h5>
-<p>후위 운행에서 root는 양쪽 하위 트리가 처리된 이후 처리됩니다. 후위 운행법은 다음과 같이 정의합니다.</p>
-<ul>
-<li>왼쪽 하위 트리를 후위 운행법으로 탐색합니다.</li>
-<li>오른쪽 하위 트리를 후위 운행법으로 탐색합니다.</li>
-<li>root를 처리합니다.</li>
-</ul>
-<p>앞의 예제 트리의 노드들은 4, 5, 2, 6, 7, 3, 1 순서로 처리됩니다.</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/08/17/2019-08-19-이진트리2/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -544,7 +512,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                97 개의 포스트가 있습니다.
+                98 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

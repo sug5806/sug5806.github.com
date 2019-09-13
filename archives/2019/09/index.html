@@ -186,8 +186,67 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/09/11/2019-09-11-리눅스 기본2/" aria-label=": 2019-09-11 리눅스 기본2(xargs)">
-                            2019-09-11 리눅스 기본2(xargs)
+                        <a class="link-unstyled" href="/2019/09/13/2019-09-12-리눅스 기본3/" aria-label=": 2019-09-13 리눅스 기본3">
+                            2019-09-13 리눅스 기본3
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-09-13T19:04:46+09:00">
+	
+		    2019/09/13
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/리눅스/">리눅스</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 내용을 정리하였습니다.</p>
+<p>~ : 현재 유저의 홈디렉토리</p>
+<p>pwd : 현재 내가 위치하고 있는 디렉토리의 절대경로</p>
+<p>ls : 현재 디렉토리의 내용을 출력한다</p>
+<ul>
+<li>F 옵션을 사용하면 명시적으로 나타낸다.</li>
+<li>l 옵션을 사용하면 자세한 정보가 나온다</li>
+<li>h 옵션을 사용하면 사람이 읽기쉬운 상태로 용량이 출력된다.</li>
+<li>a 옵션을 사용하면 숨김파일까지 모두 보여준다.</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/09/13/2019-09-12-리눅스 기본3/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/09/11/2019-09-11-리눅스 기본2/" aria-label=": 2019-09-11 리눅스 기본2(xargs, alias)">
+                            2019-09-11 리눅스 기본2(xargs, alias)
                         </a>
                     
                 </h1>
@@ -213,6 +272,11 @@
 <p>표준 입력을 지원하지 않는 명령어(Ex. echo, rm 등)을 파이프를 통해 연결하고 싶다면 xargs 명령어를 통해 연결할 수 있다.</p>
 <p><strong>date | cut --delimiter=&quot; &quot; --fields=4 | echo</strong> 를 하면 echo는 표준 입력을 지원하지 않으므로 터미널에 출력되지 않지만 <strong>date | cut --delimiter=&quot; &quot; --fields=4 | xargs echo</strong> 을 하면 터미널에 출력된다.</p>
 <p><img src="image/linux2-1.png" alt="img"></p>
+<p>자신의 home 디렉토리에 .bash_aliases 파일을 만들고 그안에 <strong>alias aliasName=“command1 -option args | command -option args…”</strong> 을 하게되면 별칭으로 설정한 것으로 명령을 실행할 수 있다.(설정 뒤 터미널 재시작 필수)</p>
+<ul>
+<li>zshell을 사용할 경우 .zshrc에 적어주면 된다.</li>
+<li>적은 후 저장하고 source /home/.zshrc 를 하면 사용 가능하다.</li>
+</ul>
 
                     
                         
@@ -298,94 +362,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/09/08/2019-09-08-운영체체2-2/" aria-label=": 2019-09-08 운영체제2-2">
-                            2019-09-08 운영체제2-2
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-09-08T19:04:46+09:00">
-	
-		    2019/09/08
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/운영체제/">운영체제</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>Operating System Concepts의 요약본 입니다.</p>
-<p><a href="https://blog.sug5806.site/2019/09/06/2019-09-06-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%B2%B42/">전편</a> 의 내용과 이어집니다.</p>
-<h2>2.3 저장 구조</h2>
-<ul>
-<li>
-<p>컴퓨터 프로그램이 실행되기 위해서는 주기억장치에 적재되어야 한다. 주기억장치를 다른 말로 임의접근 매모리(random-access memory)라 한다.</p>
-</li>
-<li>
-<p>CPU가 직접 접근 할 수 있는 기억장치는 주기억 장치 뿐이다.</p>
-</li>
-<li>
-<p>주기억장치는 보통 동적 임의 접근 메모리(dynamic RAM)라고 하는 반도체 메모리는 사용한다.</p>
-</li>
-<li>
-<p>주기억장치의 한 구성 단위를 워드(word)라 하며, 각 워드는 독특한 주소를 가진다.</p>
-</li>
-<li>
-<p>이상적으로는 모든 프로그램과 데이터를 주기억장치에 영구적으로 저장하고 싶지만 다음 두 가지 이유 때문에 가능하지 않다.</p>
-<ul>
-<li>이유 1. 주기억장치의 크기</li>
-<li>이유 2. 주기억장치의 휘발성</li>
-</ul>
-<p>이 문제를 해결하기 위해 보조 기억장치를 사용한다. 보조 기억장치는 많은 양의 데이터를 영구보관할 수 있어야 한다.</p>
-</li>
-<li>
-<p>가장 널리 사용하는 보조 기억장치는 자기 디스크(magnetic disk)이다.</p>
-</li>
-</ul>
-<h3>2.3.1 주기억장치</h3>
-<ul>
-<li>Memory-mapped I/O : 주기억장치의 일부 주소가 입출력을 위해 예약되어 있으며, 이 주소에서 읽거나 쓰면 장치 레지스터로부터 데이터를 읽거나 쓰는 결과가 된다. 이 방법은 고속 응답시간을 요구하는 장치에 적합하다.</li>
-<li>이 방법은 직렬포트 또는 병렬포트에 연결된 장치와 입출력할때도 사용된다. CPU는 I/O 포트를 통해 이와 같은 장치와 데이터를 교환한다. 데이터 교환 방식은 다음과 같은 두 가지 방식이 있다.
-<ul>
-<li>프로그램된 I/O(programmed I/O): CPU가 계속 장치의 상태를 검사(poling)하는 방식</li>
-<li>인터럽트 기반: 다음 데이터를 처리할 준비가 되면 장치 제어기는 인터럽트를 통해 그 사실을 CPU에 알리는 방식</li>
-</ul>
-</li>
-<li>주기억장치와 CPU의 속도 차이를 극복하기 위해 주기억장치와 CPU 사이에 캐시(cache)라고 하는 고속 메모리 버퍼를 사용한다.</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/09/08/2019-09-08-운영체체2-2/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -397,7 +373,7 @@
             </a>
           </li>
         
-        <li class="pagination-number">page 1 of 2</li>
+        <li class="pagination-number">page 1 of 3</li>
     </ul>
 </div>
 
@@ -525,7 +501,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                97 개의 포스트가 있습니다.
+                98 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
