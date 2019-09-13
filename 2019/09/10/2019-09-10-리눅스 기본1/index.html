@@ -6,24 +6,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="sug5806의 블로그">
-    <title>2019-09-10 리눅스 기본1 - sug5806의 블로그</title>
+    <title>2019-09-10 리눅스 기본1(표준 입,출,에러, 파이프, tee) - sug5806의 블로그</title>
     <meta name="author" content="sug5806">
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 내용을 정리하였습니다.\n\n0 : 표준 입력(&lt;)\n1 : 표준 출력(&gt;)\n2 : 표준 에러(2&gt;)\n\ncat 1&gt; example.txt : cat 명령어로 표준입력을 받고 example.txt 파일이 없으면 만들고 있다면 기존 내용을 덮어씌워 표준 출력을 한다.\ncat 1&gt;&gt; example.txt : cat 명령어로 표준입력을 받고 example.txt 파일이 없으면 만들고 있다면 기존 내용에 추가하여 표준 입력을 한다.\ncat -k bla 2&gt; error.txt : 발생한 오류를  error.txt 파일이 없으면 만들고 있다면 기존 내용을 덮어씌워 표준 에러를 출력한다.\ncat -k bla 2&gt;&gt; error.txt : 발생한 오류를  error.txt 파일이 없으면 만들고 있다면 기존 내용에 추가하여 표준 에러를 출력한다.\ncat &lt; input.txt &gt; hello.txt : cat 명령어로 input.txt의 파일에 있는 내용을 표준입력으로 받고 hello.txt에 표준출력을 한다.\ndate &gt; date.txt : date 명령어의 결과를 date.txt에 표준 출력한다.\ncut &lt; date.txt --delimiter &quot; &quot; --fields 4 : 공백을 구분자로하여 4번째 열에 있는 것을 자른다.\nA | B : A의 출력을 B의 입력으로 사용하여 실행\nA | tee output.txt | B : A의 출력을 output.txt에 출력(쓰기)하고 B의 입력으로 사용한 다음 결과를 터미널에 출력한다\ndate | tee output.txt | B &gt; output2.txt : A의 출력을 output.txt에 출력(쓰기)하고 B의 입력으로 사용한 다음 결과를 output2.txt에 출력(쓰기)한다. 터미널에서는 출력 X\n","dateCreated":"2019-09-10T19:04:46+09:00","dateModified":"2019-09-12T23:19:18+09:00","datePublished":"2019-09-10T19:04:46+09:00","description":"","headline":"2019-09-10 리눅스 기본1","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/09/10/2019-09-10-리눅스 기본1/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/09/10/2019-09-10-리눅스 기본1/","keywords":"리눅스 기본"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 내용을 정리하였습니다.\n\n0 : 표준 입력(&lt;)\n1 : 표준 출력(&gt;)\n2 : 표준 에러(2&gt;)\n\ncat 1&gt; example.txt : cat 명령어로 표준입력을 받고 example.txt 파일이 없으면 만들고 있다면 기존 내용을 덮어씌워 표준 출력을 한다.\ncat 1&gt;&gt; example.txt : cat 명령어로 표준입력을 받고 example.txt 파일이 없으면 만들고 있다면 기존 내용에 추가하여 표준 입력을 한다.\ncat -k bla 2&gt; error.txt : 발생한 오류를  error.txt 파일이 없으면 만들고 있다면 기존 내용을 덮어씌워 표준 에러를 출력한다.\ncat -k bla 2&gt;&gt; error.txt : 발생한 오류를  error.txt 파일이 없으면 만들고 있다면 기존 내용에 추가하여 표준 에러를 출력한다.\ncat &lt; input.txt &gt; hello.txt : cat 명령어로 input.txt의 파일에 있는 내용을 표준입력으로 받고 hello.txt에 표준출력을 한다.\ndate &gt; date.txt : date 명령어의 결과를 date.txt에 표준 출력한다.\ncut &lt; date.txt --delimiter &quot; &quot; --fields 4 : 공백을 구분자로하여 4번째 열에 있는 것을 자른다.\nA | B : A의 출력을 B의 입력으로 사용하여 실행\nA | tee output.txt | B : A의 출력을 output.txt에 출력(쓰기)하고 B의 입력으로 사용한 다음 결과를 터미널에 출력한다\ndate | tee output.txt | B &gt; output2.txt : A의 출력을 output.txt에 출력(쓰기)하고 B의 입력으로 사용한 다음 결과를 output2.txt에 출력(쓰기)한다. 터미널에서는 출력 X\n\n","dateCreated":"2019-09-10T19:04:46+09:00","dateModified":"2019-09-13T12:40:10+09:00","datePublished":"2019-09-10T19:04:46+09:00","description":"","headline":"2019-09-10 리눅스 기본1(표준 입,출,에러, 파이프, tee)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/09/10/2019-09-10-리눅스 기본1/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/09/10/2019-09-10-리눅스 기본1/","keywords":"리눅스 기본"}</script>
     <meta name="description" content="개인적으로 공부한 내용을 정리하였습니다.  0 : 표준 입력(&amp;lt;) 1 : 표준 출력(&amp;gt;) 2 : 표준 에러(2&amp;gt;)  cat 1&amp;gt; example.txt : cat 명령어로 표준입력을 받고 example.txt 파일이 없으면 만들고 있다면 기존 내용을 덮어씌워 표준 출력을 한다. cat 1&amp;gt;&amp;gt; example.txt : cat 명">
 <meta name="keywords" content="리눅스 기본">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="2019-09-10 리눅스 기본1">
+<meta property="og:title" content="2019-09-10 리눅스 기본1(표준 입,출,에러, 파이프, tee)">
 <meta property="og:url" content="http://blog.sug5806.site/2019/09/10/2019-09-10-리눅스 기본1/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="개인적으로 공부한 내용을 정리하였습니다.  0 : 표준 입력(&amp;lt;) 1 : 표준 출력(&amp;gt;) 2 : 표준 에러(2&amp;gt;)  cat 1&amp;gt; example.txt : cat 명령어로 표준입력을 받고 example.txt 파일이 없으면 만들고 있다면 기존 내용을 덮어씌워 표준 출력을 한다. cat 1&amp;gt;&amp;gt; example.txt : cat 명">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2019-09-12T14:19:18.662Z">
+<meta property="og:image" content="http://blog.sug5806.site/image/linux1-1.png">
+<meta property="og:updated_time" content="2019-09-13T03:40:10.379Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019-09-10 리눅스 기본1">
+<meta name="twitter:title" content="2019-09-10 리눅스 기본1(표준 입,출,에러, 파이프, tee)">
 <meta name="twitter:description" content="개인적으로 공부한 내용을 정리하였습니다.  0 : 표준 입력(&amp;lt;) 1 : 표준 출력(&amp;gt;) 2 : 표준 에러(2&amp;gt;)  cat 1&amp;gt; example.txt : cat 명령어로 표준입력을 받고 example.txt 파일이 없으면 만들고 있다면 기존 내용을 덮어씌워 표준 출력을 한다. cat 1&amp;gt;&amp;gt; example.txt : cat 명">
+<meta name="twitter:image" content="http://blog.sug5806.site/image/linux1-1.png">
     
     
         
@@ -187,7 +189,7 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title">
-            2019-09-10 리눅스 기본1
+            2019-09-10 리눅스 기본1(표준 입,출,에러, 파이프, tee)
         </h1>
     
     
@@ -228,6 +230,7 @@
 <p>A | B : A의 출력을 B의 입력으로 사용하여 실행</p>
 <p>A | tee output.txt | B : A의 출력을 output.txt에 출력(쓰기)하고 B의 입력으로 사용한 다음 결과를 터미널에 출력한다</p>
 <p>date | tee output.txt | B &gt; output2.txt : A의 출력을 output.txt에 출력(쓰기)하고 B의 입력으로 사용한 다음 결과를 output2.txt에 출력(쓰기)한다. 터미널에서는 출력 X</p>
+<p><img src="/image/linux1-1.png" alt="img"></p>
 
             
 
@@ -249,8 +252,9 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled" aria-hidden="true">
-                        
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/11/2019-09-11-리눅스 기본2/" data-tooltip="2019-09-11 리눅스 기본2(xargs)" aria-label="이전: 2019-09-11 리눅스 기본2(xargs)">
+                    
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">이전</span>
                     </a>
@@ -344,8 +348,9 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled" aria-hidden="true">
-                        
+                    
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/11/2019-09-11-리눅스 기본2/" data-tooltip="2019-09-11 리눅스 기본2(xargs)" aria-label="이전: 2019-09-11 리눅스 기본2(xargs)">
+                    
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">이전</span>
                     </a>
@@ -559,7 +564,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                96 개의 포스트가 있습니다.
+                97 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

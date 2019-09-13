@@ -185,6 +185,88 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/04/23/2019-04-23-Exhaustive-Search/" aria-label=": 2019-04-23 Exhaustive Search(과도한 검색)">
+                            2019-04-23 Exhaustive Search(과도한 검색)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-04-23T21:11:12+09:00">
+	
+		    2019/04/23
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/알고리즘/">알고리즘</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h3>완전 검색 방법</h3>
+<ul>
+<li>문제의 해법으로 생각할 수 있는 모든 경우의 수를 나열해보고 확인하는 기법, 다시말해 처음부터 끝까지 하나하나 대입해서 푸는 방법이다
+<ul>
+<li>Brute-force 혹은 Henerate-and-Test 기법이라고 불림</li>
+<li>모든 경우의 수를 테스트한 후, 최종 해법을 도출함</li>
+<li>일반적으로 경우의 수가 상대적으로 작을 때 유용함</li>
+<li>모든 경우의 수를 생성하고 테스트하기 때문에 수행 속도는 느리지만, 해답을 찾아내지 못할 확률이 적음</li>
+<li>주어진 문제를 풀 때, 우선 완전 검색으로 접근하여 해답을 도출한 후, 성능 개선을 위해 다른 알고리즘을 사용하고 해답을 확인하는 것이 바람직하다</li>
+</ul>
+</li>
+<li>Ex) Baby-gin 게임
+<ul>
+<li>
+<ol>
+<li>6개의 숫자로 만들 수 있는 모든 숫자 나열(중복 포함)</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>앞의 3자리와 뒤의 3자리를 잘라, run과 triplete 여부를 테스트하고 최종적으로 Baby-gin을 판단함</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Ex) 순열 : 서로 다른 것들 중 몇 개를 뽑아서 한 줄로 나열하는 것
+<ul>
+<li>서로 다른 n개 중 r개를 택하는 순열은 nPr</li>
+<li>nPr은 다음과 같은 식이 성립 : nPr = n*(n-1)<em>(n-2)</em> … * (n-r+1)</li>
+<li>nPn = n! 이라고 표기하며 Factorial이라 부른다</li>
+</ul>
+</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/04/23/2019-04-23-Exhaustive-Search/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/04/22/2019-04-22-가상환경/" aria-label=": 2019-04-22 Python 가상환경 구축하기">
                             2019-04-22 Python 가상환경 구축하기
                         </a>
@@ -1101,120 +1183,6 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/11/2019-04-11-data_structure/" aria-label=": 2019-04-11 List와 Array의 차이점">
-                            2019-04-11 List와 Array의 차이점
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-11T19:04:46+09:00">
-	
-		    2019/04/11
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/자료구조/">자료구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h3>리스트(List)와 배열(Array)의 차이점</h3>
-<!-- 1. 배열(Array)
-    * 같은 자료형의 변수를 모아놓은 것
-    * **인덱싱을 통해 검색을 함**
-    * **데이터가 군집화 되어있음** -> 이로인해 지역성이 적용되어 **캐시히트 확률이 매우높다**
-    * 장점 : 
-        * 검색으로는 그 어떤 자료구조보다 빠름
-        * 기본적으로 스택에 할당된다
-    * 단점 :
-        * 데이터의 삽입과 삭제가 매우 느림
-
-2. Linked List(연결 리스트)
-    * 장점
-        * 데이터의 삽입과 삭제가 매우 빠름 O(1)
-    * 단점
-        * 검색속도가 매우느림 O(n)
-        * 데이터가 흩어져있음 -> 이로인해 지역성 적용이 떨어져 **캐시미스 확률이 높음**  -->
-<ol>
-<li>동적배열(Dynamic Array) vs 연결리스트(Linked List)의 차이
-<ul>
-<li>
-<p>DynamicArray</p>
-<ul>
-<li>장점:
-<ul>
-<li>search : O(1) -&gt; Indexing을 사용하기 때문
-<ul>
-<li>메모리에 가져올때 지역성이 적용되어 <strong>캐시히트</strong>가 일어나기 때문</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>단점:
-<ul>
-<li>Insert : O(n) -&gt; 삽입을 하기위해 기존의 n개의 데이터를 뒤로 밀어야 한다</li>
-<li>Delete : O(n) -&gt; 삭제를 한 뒤 남아있는 데이터를 앞으로 당겨야 한다.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>LinkedList</p>
-<ul>
-<li>장점: 데이터의 삽입, 삭제가 매우 빠르다
-<ul>
-<li>Insert : O(1)</li>
-<li>Delete : O(1)</li>
-</ul>
-</li>
-<li>단점:
-<ul>
-<li>Search : O(n)
-<ul>
-<li>지역성이 적용될 확률이 낮기때문에 <strong>캐시히트</strong>가 일어나기 힘들다</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<p>Search를 많이하면 배열을, Insert, Delete를 할때는 연결리스트를 주로 사용한다</p>
-<p>다이나믹 힙(Dynamic Heap)기법으로 메모리 할당을 한쪽으로 몰아도 되도록이면 배열을 사용한다</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/11/2019-04-11-data_structure/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -1360,7 +1328,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                96 개의 포스트가 있습니다.
+                97 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

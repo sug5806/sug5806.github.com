@@ -186,8 +186,61 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/09/10/2019-09-10-리눅스 기본1/" aria-label=": 2019-09-10 리눅스 기본1">
-                            2019-09-10 리눅스 기본1
+                        <a class="link-unstyled" href="/2019/09/11/2019-09-11-리눅스 기본2/" aria-label=": 2019-09-11 리눅스 기본2(xargs)">
+                            2019-09-11 리눅스 기본2(xargs)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-09-11T19:04:46+09:00">
+	
+		    2019/09/11
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/리눅스/">리눅스</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 내용을 정리하였습니다.</p>
+<p>표준 입력을 지원하지 않는 명령어(Ex. echo, rm 등)을 파이프를 통해 연결하고 싶다면 xargs 명령어를 통해 연결할 수 있다.</p>
+<p><strong>date | cut --delimiter=&quot; &quot; --fields=4 | echo</strong> 를 하면 echo는 표준 입력을 지원하지 않으므로 터미널에 출력되지 않지만 <strong>date | cut --delimiter=&quot; &quot; --fields=4 | xargs echo</strong> 을 하면 터미널에 출력된다.</p>
+<p><img src="image/linux2-1.png" alt="img"></p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/09/11/2019-09-11-리눅스 기본2/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/09/10/2019-09-10-리눅스 기본1/" aria-label=": 2019-09-10 리눅스 기본1(표준 입,출,에러, 파이프, tee)">
+                            2019-09-10 리눅스 기본1(표준 입,출,에러, 파이프, tee)
                         </a>
                     
                 </h1>
@@ -225,6 +278,7 @@
 <p>A | B : A의 출력을 B의 입력으로 사용하여 실행</p>
 <p>A | tee output.txt | B : A의 출력을 output.txt에 출력(쓰기)하고 B의 입력으로 사용한 다음 결과를 터미널에 출력한다</p>
 <p>date | tee output.txt | B &gt; output2.txt : A의 출력을 output.txt에 출력(쓰기)하고 B의 입력으로 사용한 다음 결과를 output2.txt에 출력(쓰기)한다. 터미널에서는 출력 X</p>
+<p><img src="/image/linux1-1.png" alt="img"></p>
 
                     
                         
@@ -375,7 +429,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                96 개의 포스트가 있습니다.
+                97 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

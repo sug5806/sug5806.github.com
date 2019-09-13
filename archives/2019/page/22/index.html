@@ -186,6 +186,76 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/05/01/2019-05-01-Web-framwork/" aria-label=": 2019-05-01 웹프레임워크와 라이브러리의 차이">
+                            2019-05-01 웹프레임워크와 라이브러리의 차이
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-05-01T19:23:50+09:00">
+	
+		    2019/05/01
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/기타/">기타</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h2>프레임워크란?</h2>
+<p>소프트웨어의 구체적인 부분에 해당하는 설계와 구현을 재사용이 가능하게끔 일련의 협업화된 형태로 클래스들을 제공하는 것</p>
+<p>프레임워크는 라이브러리와 달리 애플리케이션의 틀과 구조를 결정할 뿐 아니라, 그 위에 개발된 개발자의 코드를 제어한다.</p>
+<ul>
+<li>프로그램 기본구조(뼈대) -&gt; 자동차 프레임</li>
+</ul>
+<h2>라이브러리란?</h2>
+<p>자주 쓰일 만한 기능들을 모아놓은 유틸(클래스)들의 모음집</p>
+<ul>
+<li>자동차 바퀴, 자동차 헤드라이트, 자동차 에어백</li>
+</ul>
+<h2>그럼 둘의 차이는 뭘까?</h2>
+<p>라이브러리는 도구(연장)의 개념이다</p>
+<ul>
+<li>망치, 톱, 삽 등등<br>
+프레임워크는 탈것의 개념이다</li>
+<li>비행기, 차, 배 등등</li>
+</ul>
+<p>사람은 도구를 선택하는 입장이기 때문에, 어떤 도구를 사용하든 원하는 것을 만들어낼 수 있으면 된다.</p>
+<p>반면에 탈것은 정해진 곳으로만 다녀야 한다. 그 목적에 맞게 만들어져 있기 때문에 정해진 규칙에 맞춰 엔진, 기어, 핸들만 잘 다루면 된다.</p>
+<p>라이브러리와 달리 프레임워크는 이미 프로그래밍할 규칙이 정해져있다.</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/05/01/2019-05-01-Web-framwork/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/04/30/2019-04-27-bookmark/" aria-label=": 2019-04-30 Django bookmark">
                             2019-04-30 Django bookmark
                         </a>
@@ -494,88 +564,6 @@ DB에 변경사항이 반영돼야할 항목들만 migrate를 한다</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/26/2019-04-26-HTTP_server/" aria-label=": 2019-04-26 HTTP Server 만들어보기">
-                            2019-04-26 HTTP Server 만들어보기
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-26T21:05:12+09:00">
-	
-		    2019/04/26
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/네트워크/">네트워크</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>HTTP Server</h1>
-<ol>
-<li>
-<p>브라우저를 통해 사용자가 HTTP Request Message를 보내면</p>
-</li>
-<li>
-<p>서버는 그 Message를 해석하고 Response Message로 응답한다</p>
-<ol>
-<li>어느 페이지로 접속했느냐?</li>
-<li>Query String은 어떤 데이터를 가지고 있느냐?</li>
-<li>특정 스크립트 요청이 있느냐?</li>
-<li>최종 응답을 HTML, 다운로드는 파일로 할것이냐?</li>
-</ol>
-</li>
-<li>
-<p>HTTP Response만 하는 서버</p>
-</li>
-</ol>
-<ul>
-<li>주소에 검색어값을 넘겨준다 -&gt; 쿼리스패싱?</li>
-<li>쿼리스트링
-<ul>
-<li>? : 쿼리스트링의 시작</li>
-<li>&amp; : 다음변수</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3>논외</h3>
-<p>with 구문을 def로 바꾸거나 def를 with구문으로 바꿀줄 알아야함</p>
-<p>요즘에는 404나 이런 오류메시지를 서버에서 만들어주는게 트랜드이다</p>
-<p>랜덤값을 뽑아주는 패키지를 잘 알아두는것이 좋다</p>
-<hr>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> http.server</span><br><span class="line"><span class="keyword">import</span> socketserver</span><br><span class="line"></span><br><span class="line"><span class="comment"># 서버에 접속하는 포트</span></span><br><span class="line">PORT = <span class="number">8000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 요청이 들어오면 어느 객체가 요청을 해석하고 처리할것이냐?</span></span><br><span class="line"><span class="comment"># Ex) 수리기사를 부르는 개념</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 현재 디렉토리와 하위의 파일을 제공하고 디렉토리 구조를 HTTP 요청에 직접 매핑함</span></span><br><span class="line">Handler = http.server.SimpleHTTPRequestHandler</span><br><span class="line"></span><br><span class="line"><span class="comment"># ""으로 하면 localhost(127.0.0.1)이다"</span></span><br><span class="line"><span class="keyword">with</span> socketserver.TCPServer((<span class="string">""</span>, PORT), Handler) <span class="keyword">as</span> httpd:</span><br><span class="line">    print(<span class="string">"serving at PORT"</span>, PORT)</span><br><span class="line">    <span class="comment"># 클라이언트의 접속 요청을 수신대기 한다. 접속 요청이 있을시</span></span><br><span class="line">    <span class="comment"># 수락하고 SimpleHTTPRequestHandler의 handle 메소드를 호출한다.</span></span><br><span class="line">    httpd.serve_forever()</span><br></pre></td></tr></table></figure>
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/26/2019-04-26-HTTP_server/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -594,7 +582,7 @@ DB에 변경사항이 반영돼야할 항목들만 migrate를 한다</p>
             </a>
           </li>
         
-        <li class="pagination-number">page 22 of 32</li>
+        <li class="pagination-number">page 22 of 33</li>
     </ul>
 </div>
 
@@ -722,7 +710,7 @@ DB에 변경사항이 반영돼야할 항목들만 migrate를 한다</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                96 개의 포스트가 있습니다.
+                97 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

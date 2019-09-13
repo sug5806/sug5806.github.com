@@ -186,6 +186,87 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/07/01/2019-07-01-연결리스트1/" aria-label=": 2019-07-01 연결 리스트(Linked List)1">
+                            2019-07-01 연결 리스트(Linked List)1
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-07-01T19:04:46+09:00">
+	
+		    2019/07/01
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/자료구조/">자료구조</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<h2>연결 리스트란?</h2>
+<p>연결 리스트(Linked list)는 데이터 집합을 저장할 때 사용되는 자료 구조입니다. 연결 리스트는 다음과 같은 속성을 가집니다.</p>
+<ul>
+<li>연속된 요소들은 포인터로 연결됩니다.</li>
+<li>마지막 요소는 NULL을 가리킵니다.</li>
+<li>프로그램 실행 중에 크기가 늘거나 줄 수 있습니다.</li>
+<li>필요한 만큼 만들 수 있습니다.(시스템 메모리를 다 쓸 때까지).</li>
+<li>메모리 공간을 낭비하지 않습니다.</li>
+</ul>
+<h5>기본 구조</h5>
+<p><img src="/image/ll1-1.png" alt="img"></p>
+<h2>연결 리스트의 추상 데이터 형(ADT)</h2>
+<p>연결 리스트의 추상 함수는 다음과 같습니다.</p>
+<ul>
+<li>연결 리스트 주요 함수
+<ul>
+<li>Insert : 리스트에 요소를 추가합니다.</li>
+<li>Delete : 리스트의 지정된 위치의 요소를 제거하고 반환합니다.</li>
+</ul>
+</li>
+<li>연결 리스트의 보조 함수
+<ul>
+<li>Delete List : 리스트의 모든 요소들을 제거합니다.</li>
+<li>Count : 리스트 내 모든 요소의 수를 반환합니다.</li>
+</ul>
+</li>
+</ul>
+<h2>연결 리스트의 장점</h2>
+<p>연결 리스트는 장단점을 가지고 있습니다. 연결 리스트의 장점은 일정 시간(고정된 시간) 내에 확장될 수 있다는 것입니다. 배열의 경우 생성할 때 요소들의 수 만큼 메모리를 할당해야 합니다. 배열에 새로운 요소를 추가하기 위해서는 새로운 배열을 생성하고 기존의 배열의 요소들을 새로운 배열로 복사해야 하기 때문에 시간을 많이 소모 합니다. 연결리스트는 이러한 문제 없이 쉽게 새로운 요소를 추가할 수 있습니다.</p>
+<h2>연결 리스트의 단점</h2>
+<p>연결 리스트는 리스트 내 요소에 접근하는데 최악의 경우 O(n)을 가집니다. 비록 연결 리스트의 동적인 저장 공간의 할당이 큰 장점이라 하더라도 데이터의 정렬과 탐색의 오버헤드는 다른 상황을 만들 수 있습니다.</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/07/01/2019-07-01-연결리스트1/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/06/30/2019-06-30-재귀알고리즘이란/" aria-label=": 2019-06-30 재귀 알고리즘이란?">
                             2019-06-30 재귀 알고리즘이란?
                         </a>
@@ -329,69 +410,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/06/26/2019-06-24-Django-Form/" aria-label=": 2019-06-26 Django Form 사용하기">
-                            2019-06-26 Django Form 사용하기
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-06-26T17:45:01+09:00">
-	
-		    2019/06/26
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/Django/">Django</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>이번 포스팅에서는 Django의 Form 사용법을 알아보도록 하겠습니다.</p>
-<h3><code>models.py</code></h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your models here.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    name = models.CharField(max_length=<span class="number">20</span>)</span><br><span class="line">    price = models.PositiveSmallIntegerField()</span><br><span class="line">    seller = models.CharField(max_length=<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
-<h3><code>forms.py</code></h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> forms</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ContactForm</span><span class="params">(forms.Form)</span>:</span></span><br><span class="line">    <span class="comment"># 모델의 필드명과 동일하게 만들어 줍니다</span></span><br><span class="line">    name = forms.CharField(max_length=<span class="number">20</span>)</span><br><span class="line">    price = forms.IntegerField()</span><br><span class="line">    seller = forms.CharField(max_length=<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
-<h3><code>views.py</code></h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, redirect</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> form.models <span class="keyword">import</span> Product</span><br><span class="line"><span class="keyword">from</span> .forms <span class="keyword">import</span> ProductForm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">list_create_product</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment"># 먼저 빈 폼을 만들어 줍니다</span></span><br><span class="line">    form = ProductForm()</span><br><span class="line">    <span class="comment"># 등록 버튼을 누른 요청이면</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">"POST"</span>:</span><br><span class="line">        <span class="comment"># 입력 정보를 기반으로 폼을 채웁니다</span></span><br><span class="line">        form = ProductForm(request.POST)</span><br><span class="line">        <span class="comment"># 입력 정보가 유효 하다면</span></span><br><span class="line">        <span class="keyword">if</span> form.is_valid():</span><br><span class="line">            <span class="comment"># Product 데이터를 생성합니다.</span></span><br><span class="line">            Product.objects.create(**form.cleaned_data)</span><br><span class="line">            <span class="comment"># 생성이 완료되면 홈으로 돌아갑니다</span></span><br><span class="line">            <span class="keyword">return</span> redirect(<span class="string">'/'</span>)</span><br><span class="line">    <span class="comment"># POST 요청이 아니면</span></span><br><span class="line">    <span class="comment"># Product의 모든 데이터를 가져옵니다</span></span><br><span class="line">    objects_list = Product.objects.all()</span><br><span class="line">    <span class="comment"># context 변수에 담아줍니다.</span></span><br><span class="line">    context = &#123;</span><br><span class="line">        <span class="string">'objects_list'</span>: objects_list,</span><br><span class="line">        <span class="string">'form'</span>: form,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># product_list_create.html로 렌더링을 합니다</span></span><br><span class="line">    <span class="keyword">return</span> render(request, template_name=<span class="string">'form/product_list_create.html'</span>, context=context)</span><br></pre></td></tr></table></figure>
-<h3><code>product_list_create.html</code></h3>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 뷰에서 넘어온 objects_list를 받습니다 --&gt;</span></span><br><span class="line">    &#123;% for obj in objects_list %&#125;</span><br><span class="line">        <span class="comment">&lt;!-- 모든 정보를 출력합니다 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; obj.name &#125;&#125;  &#123;&#123; obj.price &#125;&#125; &#123;&#123; obj.seller &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line">    <span class="comment">&lt;!-- 뷰에서 넘어온 form으로 from을 만듭니다 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">        &#123;% csrf_token %&#125;</span><br><span class="line">        <span class="comment">&lt;!-- foRm을 &lt;p&gt;태그로 만듭니다 --&gt;</span></span><br><span class="line">        &#123;&#123; form.as_p &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"등록하기"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>이제 <code>./manage.py runserver</code>를 통해 접속하도록 하겠습니다.</p>
-<p><img src="/image/form1-1.png" alt="img"></p>
-<p>내용을 채워넣고 등록버튼을 눌러줍니다.</p>
-<p><img src="/image/form1-2.png" alt="img"></p>
-<p>생성이 완료되면 데이터를 보여줍니다.</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/06/26/2019-06-24-Django-Form/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -410,7 +428,7 @@
             </a>
           </li>
         
-        <li class="pagination-number">page 11 of 32</li>
+        <li class="pagination-number">page 11 of 33</li>
     </ul>
 </div>
 
@@ -538,7 +556,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                96 개의 포스트가 있습니다.
+                97 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

@@ -186,6 +186,155 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/04/08/DB2/" aria-label=": 2019-04-08 데이터베이스 관계, 조인, Group, Index">
+                            2019-04-08 데이터베이스 관계, 조인, Group, Index
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-04-08T21:05:32+09:00">
+	
+		    2019/04/08
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/데이터베이스/">데이터베이스</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h3>N:M 관계</h3>
+<ul>
+<li>A테이블과 B테이블이 있을때 A테이블의 레코드 1개가 B테이블의 레코드 N개로 대응되고 B테이블의 레코드 1개가 A테이블의 레코드 M개와 대응될때 M:N이라 한다.</li>
+<li><img src="/image/N:M.png" alt></li>
+</ul>
+<h3>1:N or N:1관계</h3>
+<ul>
+<li>A테이블 레코드 하나에 B테이블 레코드가 N개 대응될때 1:N이라 한다.</li>
+<li><img src="/image/1:N.png" alt>  <img src="/image/N:1.png" alt></li>
+</ul>
+<h2>조인</h2>
+<ul>
+<li>inner join (MySQL, Maria DB, Oracle은 Where로 묶어도 잘 작동하지만 ANSI 표준으로 하는게 더 좋다)</li>
+<li>outer join
+<ul>
+<li>left outer
+<ul>
+<li>A from B를 했을때 A, B의 동일한 필드로 묶었을때 A 테이블을 기준으로 표시하고 B필드값이 NULL이더라도 표시한다</li>
+</ul>
+</li>
+<li>right outer
+<ul>
+<li>A from B 를 했을때 A와 B가 동일한 필드로 묶었을때 B 테이블을 기준으로 A의 필드값이 NULL이더라도 표시한다</li>
+</ul>
+</li>
+<li>full outer(MySQL, Maria DB 지원 X -&gt; UNION이라는 명령어를 통해 구현)</li>
+</ul>
+</li>
+<li>테이블의 데이터를 가로로 연결한다 (레코드대 레코드)</li>
+<li>일반적으로는  join하면 inner join 이다</li>
+</ul>
+<h2>Group By</h2>
+<ul>
+<li>Where와 Having의 차이
+<ul>
+<li>Where : 그룹핑 이전에 조건을 수행함</li>
+<li>Having : 이미 Group By로 그룹을 나눈후에 조건을 수행함 -&gt; Group By가 반드시 필요함</li>
+</ul>
+</li>
+</ul>
+<p>schema :DB의 뼈대</p>
+<h2>VIEW</h2>
+<ul>
+<li>필요할때마다 select문을 계속 작성을 할수 없으므로 view를 하나 설정해 마치 테이블처럼 사용하는 것</li>
+<li>view는 테이블이 새로 만들어 지는것이 아님</li>
+<li>가독성이 높아진다.</li>
+<li>보안성</li>
+</ul>
+<h2>INDEX</h2>
+<p>필드를 기준으로 데이터 검색을 할때 사용한다.<br>
+인덱싱을 제외하고 트리구조( 그 중에서도 BST(log N)가 가장 빠르다<br>
+인덱스는B Tree로 함</p>
+<p>index를 지우려면 foreign key를 먼저 지우고 index를 지운다</p>
+<ul>
+<li>ALTER TABLE 테이블명 DROP FOREIGN KEY 외래키명 ;</li>
+</ul>
+<p>index는 필요없어지면 바로 지워주는게 좋다 (성능 하락에 주범)</p>
+<ul>
+<li>DROP INDEX 인덱스명</li>
+</ul>
+<ul>
+<li>CLUSTERED INDEX
+<ul>
+<li>한 테이블에 1개씩만 존재함
+<ul>
+<li>Primary Key</li>
+<li>Unique Not NULL</li>
+</ul>
+</li>
+<li>데이터 자체를 클러스터 인덱스에 맞춰 정렬을 해 저장을 한다 -&gt; 이것으로 인해 한테이블에 1개씩밖에 존재함
+<ul>
+<li>주키를 잡으면 자동으로 클러스터 인덱스로됨(반드시 테이블을 만들때 주키를 잡을것)</li>
+<li>ALTER TABLE 명령어를 사용해야</li>
+</ul>
+</li>
+<li>DROP INDEX <code>PRIMARY</code> ON students; -&gt; 주키를 제거하면서 인덱스 역시 제거</li>
+<li>ALTER TABLE students ADD CONSTRAINT PRIMARY KEY(studentID) -&gt; students 테이블에 studentID속성을 주키로 설정하겠다</li>
+</ul>
+</li>
+<li>SECONDARY INDEX
+<ul>
+<li>장점
+<ul>
+<li>검색속도가 엄청나게 빨라짐</li>
+<li>쿼리에 대한 부담이 줄어든다</li>
+</ul>
+</li>
+<li>단점
+<ul>
+<li>insert와 update를 계속된다면 테이블이 계속 갱신이 되어야 하므로 페이지 분할이 일어나 속도가 매우 느려진다.</li>
+<li>메모리를 잡아먹음 약 10%</li>
+</ul>
+</li>
+<li>원하는 만큼 얼마든지 가능</li>
+<li>B 트리 라는 자료구조를 만들고 이것이 데이터를 참조하는 형식 (Where 을 할때 인덱스가 있다면 쓰인다) -&gt; Page와 Offset으로 구성되어있음</li>
+<li>Where를 자주쓰는 상황이면 만드는게 좋다. 만약 사용을 하지않게 된다면 무조건 지워라</li>
+<li>CREATE INDEX -&gt;  secondary index만 만들수 있다.</li>
+</ul>
+</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/04/08/DB2/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/04/08/DataBase/" aria-label=": 2019-04-08 DataBase">
                             2019-04-08 DataBase
                         </a>
@@ -582,64 +731,6 @@ IP주소는 논리주소의 한 종류입니다.</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/07/동기식_비동기식/" aria-label=": 2019-04-07 Synchronous와 Asynchronous의 차이점">
-                            2019-04-07 Synchronous와 Asynchronous의 차이점
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-07T15:48:32+09:00">
-	
-		    2019/04/07
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/운영체제/">운영체제</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>Synchronous(동기)와 Asynchronous(비동기)의 차이점</h1>
-<p>동기식과 비동기식의 큰 차이점은 데이터를 받는 방식에 있습니다</p>
-<p>동기식 처리는 A,B,C 순서대로 작업이 수행되었을 경우 A,B,C의 순서로 작업이 끝나야 합니다. 작업의 순서가 보장됩니다.</p>
-<p>Synchronous란 '동시에 일어난다’라는 뜻을 가지고 있으며 여기서 동시에 일어난다는 것은 <strong>요청에 따른 응답이 동시에 일어난다</strong>는 것입니다.</p>
-<p><img src="https://nesoy.github.io/assets/posts/20170127/Synchronous.jpg" alt><br>
-출처 : https://nesoy.github.io/articles/2017-01/Synchronized</p>
-<p>반면 비동기식 처리는 작업의 순서가 보장되지 않습니다. A,B,C의 순서로 작업이 시작되었더라도 A,B,C의 순서로 작업이 끝난다고 보장 할 수 없습니다.</p>
-<p><img src="https://nesoy.github.io/assets/posts/20170127/ASynchronous.jpg" alt><br>
-출처 : https://nesoy.github.io/articles/2017-01/Synchronized</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/07/동기식_비동기식/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -658,7 +749,7 @@ IP주소는 논리주소의 한 종류입니다.</p>
             </a>
           </li>
         
-        <li class="pagination-number">page 29 of 32</li>
+        <li class="pagination-number">page 29 of 33</li>
     </ul>
 </div>
 
@@ -786,7 +877,7 @@ IP주소는 논리주소의 한 종류입니다.</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                96 개의 포스트가 있습니다.
+                97 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
