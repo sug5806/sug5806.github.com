@@ -6,24 +6,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="sug5806의 블로그">
-    <title>2019-09-13 리눅스 기본3 - sug5806의 블로그</title>
+    <title>2019-09-12 Docker 명령어1 - sug5806의 블로그</title>
     <meta name="author" content="sug5806">
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 내용을 정리하였습니다.\n~ : 현재 유저의 홈디렉토리\npwd : 현재 내가 위치하고 있는 디렉토리의 절대경로\nls : 현재 디렉토리의 내용을 출력한다\n\nF 옵션을 사용하면 명시적으로 나타낸다.\nl 옵션을 사용하면 자세한 정보가 나온다\nh 옵션을 사용하면 사람이 읽기쉬운 상태로 용량이 출력된다.\na 옵션을 사용하면 숨김파일까지 모두 보여준다.\n\n","dateCreated":"2019-09-13T19:04:46+09:00","dateModified":"2019-09-13T14:38:50+09:00","datePublished":"2019-09-13T19:04:46+09:00","description":"","headline":"2019-09-13 리눅스 기본3","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/09/13/2019-09-12-리눅스 기본3/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/09/13/2019-09-12-리눅스 기본3/","keywords":"리눅스 기본"}</script>
-    <meta name="description" content="개인적으로 공부한 내용을 정리하였습니다. ~ : 현재 유저의 홈디렉토리 pwd : 현재 내가 위치하고 있는 디렉토리의 절대경로 ls : 현재 디렉토리의 내용을 출력한다  F 옵션을 사용하면 명시적으로 나타낸다. l 옵션을 사용하면 자세한 정보가 나온다 h 옵션을 사용하면 사람이 읽기쉬운 상태로 용량이 출력된다. a 옵션을 사용하면 숨김파일까지 모두 보여준다">
-<meta name="keywords" content="리눅스 기본">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 내용을 정리하였습니다.\ndocker ps : 현재 실행중인 컨테이너 목록\n\na : 종료된 모든 컨테이너의 목록이 출력\n\ndocker rm ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 해당 컨테이너를 삭제\ndocker stop ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 실행 중인 컨테이너를 정지시킴\ndocker run ‘이미지이름’: 해당 이미지를 실행시킨다. 이미지가 없으면 pull해서 만듬\n\nd : 백그라운드에서 실행시킴\nsleep ‘숫자’ : 숫자만큼 실행이 유지됨(초 기준)\n–name ‘원하는 이름’ : 원하는 이름으로 컨테이너 생성\n‘이미지이름:원하는 버전’ : 원하는 버전으로 실행 가능\n-p A:B : A포트를 B포트에 연결하겠다.\n\ndocker rmi ‘이미지 이름’ : 해당 이미지를 삭제함\n\n이미지를 지우기 위해선 해당 이미지로 만든 컨테이너를 모두 삭제시켜야 이미지삭제 가능\n\ndocker exec ‘컨테이너의 ID’ ‘명령어’: 컨테이너에서 명령어를 실행시킨다.\n","dateCreated":"2019-09-12T19:04:46+09:00","dateModified":"2019-09-15T15:32:27+09:00","datePublished":"2019-09-12T19:04:46+09:00","description":"","headline":"2019-09-12 Docker 명령어1","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/09/12/2019-09-12-도커/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/09/12/2019-09-12-도커/","keywords":"Docker"}</script>
+    <meta name="description" content="개인적으로 공부한 내용을 정리하였습니다. docker ps : 현재 실행중인 컨테이너 목록  a : 종료된 모든 컨테이너의 목록이 출력  docker rm ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 해당 컨테이너를 삭제 docker stop ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 실행 중인 컨테이너를 정지시킴 docker run ‘이미지이름’:">
+<meta name="keywords" content="Docker">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="2019-09-13 리눅스 기본3">
-<meta property="og:url" content="http://blog.sug5806.site/2019/09/13/2019-09-12-리눅스 기본3/index.html">
+<meta property="og:title" content="2019-09-12 Docker 명령어1">
+<meta property="og:url" content="http://blog.sug5806.site/2019/09/12/2019-09-12-도커/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
-<meta property="og:description" content="개인적으로 공부한 내용을 정리하였습니다. ~ : 현재 유저의 홈디렉토리 pwd : 현재 내가 위치하고 있는 디렉토리의 절대경로 ls : 현재 디렉토리의 내용을 출력한다  F 옵션을 사용하면 명시적으로 나타낸다. l 옵션을 사용하면 자세한 정보가 나온다 h 옵션을 사용하면 사람이 읽기쉬운 상태로 용량이 출력된다. a 옵션을 사용하면 숨김파일까지 모두 보여준다">
+<meta property="og:description" content="개인적으로 공부한 내용을 정리하였습니다. docker ps : 현재 실행중인 컨테이너 목록  a : 종료된 모든 컨테이너의 목록이 출력  docker rm ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 해당 컨테이너를 삭제 docker stop ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 실행 중인 컨테이너를 정지시킴 docker run ‘이미지이름’:">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2019-09-13T05:38:50.025Z">
+<meta property="og:updated_time" content="2019-09-15T06:32:27.258Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019-09-13 리눅스 기본3">
-<meta name="twitter:description" content="개인적으로 공부한 내용을 정리하였습니다. ~ : 현재 유저의 홈디렉토리 pwd : 현재 내가 위치하고 있는 디렉토리의 절대경로 ls : 현재 디렉토리의 내용을 출력한다  F 옵션을 사용하면 명시적으로 나타낸다. l 옵션을 사용하면 자세한 정보가 나온다 h 옵션을 사용하면 사람이 읽기쉬운 상태로 용량이 출력된다. a 옵션을 사용하면 숨김파일까지 모두 보여준다">
+<meta name="twitter:title" content="2019-09-12 Docker 명령어1">
+<meta name="twitter:description" content="개인적으로 공부한 내용을 정리하였습니다. docker ps : 현재 실행중인 컨테이너 목록  a : 종료된 모든 컨테이너의 목록이 출력  docker rm ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 해당 컨테이너를 삭제 docker stop ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 실행 중인 컨테이너를 정지시킴 docker run ‘이미지이름’:">
     
     
         
@@ -187,20 +187,20 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title">
-            2019-09-13 리눅스 기본3
+            2019-09-12 Docker 명령어1
         </h1>
     
     
         <div class="post-meta">
-    <time datetime="2019-09-13T19:04:46+09:00">
+    <time datetime="2019-09-12T19:04:46+09:00">
 	
-		    2019/09/13
+		    2019/09/12
     	
     </time>
     
         <span>카테고리 </span>
         
-    <a class="category-link" href="/categories/리눅스/">리눅스</a>
+    <a class="category-link" href="/categories/Docker/">Docker</a>
 
 
     
@@ -213,15 +213,25 @@
     <div class="post-content markdown">
         <div class="main-content-wrap">
             <p>개인적으로 공부한 내용을 정리하였습니다.</p>
-<p>~ : 현재 유저의 홈디렉토리</p>
-<p>pwd : 현재 내가 위치하고 있는 디렉토리의 절대경로</p>
-<p>ls : 현재 디렉토리의 내용을 출력한다</p>
+<p>docker ps : 현재 실행중인 컨테이너 목록</p>
 <ul>
-<li>F 옵션을 사용하면 명시적으로 나타낸다.</li>
-<li>l 옵션을 사용하면 자세한 정보가 나온다</li>
-<li>h 옵션을 사용하면 사람이 읽기쉬운 상태로 용량이 출력된다.</li>
-<li>a 옵션을 사용하면 숨김파일까지 모두 보여준다.</li>
+<li>a : 종료된 모든 컨테이너의 목록이 출력</li>
 </ul>
+<p>docker rm ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 해당 컨테이너를 삭제</p>
+<p>docker stop ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 실행 중인 컨테이너를 정지시킴</p>
+<p>docker run ‘이미지이름’: 해당 이미지를 실행시킨다. 이미지가 없으면 pull해서 만듬</p>
+<ul>
+<li>d : 백그라운드에서 실행시킴</li>
+<li>sleep ‘숫자’ : 숫자만큼 실행이 유지됨(초 기준)</li>
+<li>–name ‘원하는 이름’ : 원하는 이름으로 컨테이너 생성</li>
+<li>‘이미지이름:원하는 버전’ : 원하는 버전으로 실행 가능</li>
+<li>-p A:B : A포트를 B포트에 연결하겠다.</li>
+</ul>
+<p>docker rmi ‘이미지 이름’ : 해당 이미지를 삭제함</p>
+<ul>
+<li>이미지를 지우기 위해선 해당 이미지로 만든 컨테이너를 모두 삭제시켜야 이미지삭제 가능</li>
+</ul>
+<p>docker exec ‘컨테이너의 ID’ ‘명령어’: 컨테이너에서 명령어를 실행시킨다.</p>
 
             
 
@@ -233,7 +243,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">태그</span><br>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/리눅스-기본/">리눅스 기본</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/Docker/">Docker</a>
 
             </div>
         
@@ -252,7 +262,7 @@
             <li class="post-action">
                 
                     
-                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/11/2019-09-11-리눅스 기본2/" data-tooltip="2019-09-11 리눅스 기본2(xargs, alias)" aria-label="다음: 2019-09-11 리눅스 기본2(xargs, alias)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/11/2019-09-11-리눅스 기본2/" data-tooltip="2019-09-11 리눅스 기본2(xargs, alias, ls)" aria-label="다음: 2019-09-11 리눅스 기본2(xargs, alias, ls)">
                     
                         <span class="hide-xs hide-sm text-small icon-mr">다음</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -270,7 +280,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/13/2019-09-12-리눅스 기본3/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -278,7 +288,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/13/2019-09-12-리눅스 기본3/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -286,7 +296,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/13/2019-09-12-리눅스 기본3/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -347,7 +357,7 @@
             <li class="post-action">
                 
                     
-                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/11/2019-09-11-리눅스 기본2/" data-tooltip="2019-09-11 리눅스 기본2(xargs, alias)" aria-label="다음: 2019-09-11 리눅스 기본2(xargs, alias)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/11/2019-09-11-리눅스 기본2/" data-tooltip="2019-09-11 리눅스 기본2(xargs, alias, ls)" aria-label="다음: 2019-09-11 리눅스 기본2(xargs, alias, ls)">
                     
                         <span class="hide-xs hide-sm text-small icon-mr">다음</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -365,7 +375,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/13/2019-09-12-리눅스 기본3/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -373,7 +383,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/13/2019-09-12-리눅스 기본3/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -381,7 +391,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/13/2019-09-12-리눅스 기본3/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -415,7 +425,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/13/2019-09-12-리눅스 기본3/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -423,7 +433,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/13/2019-09-12-리눅스 기본3/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -431,7 +441,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/13/2019-09-12-리눅스 기본3/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -570,9 +580,9 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://blog.sug5806.site/2019/09/13/2019-09-12-리눅스 기본3/';
+            this.page.url = 'http://blog.sug5806.site/2019/09/12/2019-09-12-도커/';
               
-            this.page.identifier = '2019/09/13/2019-09-12-리눅스 기본3/';
+            this.page.identifier = '2019/09/12/2019-09-12-도커/';
               
           };
           (function() {

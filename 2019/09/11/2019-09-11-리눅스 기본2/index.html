@@ -6,24 +6,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="sug5806의 블로그">
-    <title>2019-09-11 리눅스 기본2(xargs, alias) - sug5806의 블로그</title>
+    <title>2019-09-11 리눅스 기본2(xargs, alias, ls) - sug5806의 블로그</title>
     <meta name="author" content="sug5806">
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 내용을 정리하였습니다.\n표준 입력을 지원하지 않는 명령어(Ex. echo, rm 등)을 파이프를 통해 연결하고 싶다면 xargs 명령어를 통해 연결할 수 있다.\ndate | cut --delimiter=&quot; &quot; --fields=4 | echo 를 하면 echo는 표준 입력을 지원하지 않으므로 터미널에 출력되지 않지만 date | cut --delimiter=&quot; &quot; --fields=4 | xargs echo 을 하면 터미널에 출력된다.\n\n자신의 home 디렉토리에 .bash_aliases 파일을 만들고 그안에 alias aliasName=“command1 -option args | command -option args…” 을 하게되면 별칭으로 설정한 것으로 명령을 실행할 수 있다.(설정 뒤 터미널 재시작 필수)\n\nzshell을 사용할 경우 .zshrc에 적어주면 된다.\n적은 후 저장하고 source /home/.zshrc 를 하면 사용 가능하다.\n\n","dateCreated":"2019-09-11T19:04:46+09:00","dateModified":"2019-09-13T12:57:32+09:00","datePublished":"2019-09-11T19:04:46+09:00","description":"","headline":"2019-09-11 리눅스 기본2(xargs, alias)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/09/11/2019-09-11-리눅스 기본2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/09/11/2019-09-11-리눅스 기본2/","keywords":"리눅스 기본"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 내용을 정리하였습니다.\n표준 입력을 지원하지 않는 명령어(Ex. echo, rm 등)을 파이프를 통해 연결하고 싶다면 xargs 명령어를 통해 연결할 수 있다.\ndate | cut --delimiter=&quot; &quot; --fields=4 | echo 를 하면 echo는 표준 입력을 지원하지 않으므로 터미널에 출력되지 않지만 date | cut --delimiter=&quot; &quot; --fields=4 | xargs echo 을 하면 터미널에 출력된다.\n\n자신의 home 디렉토리에 .bash_aliases 파일을 만들고 그안에 alias aliasName=“command1 -option args | command -option args…” 을 하게되면 별칭으로 설정한 것으로 명령을 실행할 수 있다.(설정 뒤 터미널 재시작 필수)\n\nzshell을 사용할 경우 .zshrc에 적어주면 된다.\n적은 후 저장하고 source /home/.zshrc 를 하면 사용 가능하다.\n\n~ : 현재 유저의 홈디렉토리\npwd : 현재 내가 위치하고 있는 디렉토리의 절대경로\nls : 현재 디렉토리의 내용을 출력한다\n\nF 옵션을 사용하면 명시적으로 나타낸다.\nl 옵션을 사용하면 자세한 정보가 나온다\nh 옵션을 사용하면 사람이 읽기쉬운 상태로 용량이 출력된다.\na 옵션을 사용하면 숨김파일까지 모두 보여준다.\n\n","dateCreated":"2019-09-11T19:04:46+09:00","dateModified":"2019-09-15T13:20:51+09:00","datePublished":"2019-09-11T19:04:46+09:00","description":"","headline":"2019-09-11 리눅스 기본2(xargs, alias, ls)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/09/11/2019-09-11-리눅스 기본2/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/09/11/2019-09-11-리눅스 기본2/","keywords":"리눅스 기본"}</script>
     <meta name="description" content="개인적으로 공부한 내용을 정리하였습니다. 표준 입력을 지원하지 않는 명령어(Ex. echo, rm 등)을 파이프를 통해 연결하고 싶다면 xargs 명령어를 통해 연결할 수 있다. date | cut --delimiter=&amp;quot; &amp;quot; --fields=4 | echo 를 하면 echo는 표준 입력을 지원하지 않으므로 터미널에 출력되지 않지만 dat">
 <meta name="keywords" content="리눅스 기본">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="2019-09-11 리눅스 기본2(xargs, alias)">
+<meta property="og:title" content="2019-09-11 리눅스 기본2(xargs, alias, ls)">
 <meta property="og:url" content="http://blog.sug5806.site/2019/09/11/2019-09-11-리눅스 기본2/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="개인적으로 공부한 내용을 정리하였습니다. 표준 입력을 지원하지 않는 명령어(Ex. echo, rm 등)을 파이프를 통해 연결하고 싶다면 xargs 명령어를 통해 연결할 수 있다. date | cut --delimiter=&amp;quot; &amp;quot; --fields=4 | echo 를 하면 echo는 표준 입력을 지원하지 않으므로 터미널에 출력되지 않지만 dat">
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="http://blog.sug5806.site/2019/09/11/2019-09-11-리눅스%20기본2/image/linux2-1.png">
-<meta property="og:updated_time" content="2019-09-13T03:57:32.364Z">
+<meta property="og:updated_time" content="2019-09-15T04:20:51.034Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019-09-11 리눅스 기본2(xargs, alias)">
+<meta name="twitter:title" content="2019-09-11 리눅스 기본2(xargs, alias, ls)">
 <meta name="twitter:description" content="개인적으로 공부한 내용을 정리하였습니다. 표준 입력을 지원하지 않는 명령어(Ex. echo, rm 등)을 파이프를 통해 연결하고 싶다면 xargs 명령어를 통해 연결할 수 있다. date | cut --delimiter=&amp;quot; &amp;quot; --fields=4 | echo 를 하면 echo는 표준 입력을 지원하지 않으므로 터미널에 출력되지 않지만 dat">
 <meta name="twitter:image" content="http://blog.sug5806.site/2019/09/11/2019-09-11-리눅스%20기본2/image/linux2-1.png">
     
@@ -189,7 +189,7 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title">
-            2019-09-11 리눅스 기본2(xargs, alias)
+            2019-09-11 리눅스 기본2(xargs, alias, ls)
         </h1>
     
     
@@ -223,6 +223,15 @@
 <li>zshell을 사용할 경우 .zshrc에 적어주면 된다.</li>
 <li>적은 후 저장하고 source /home/.zshrc 를 하면 사용 가능하다.</li>
 </ul>
+<p>~ : 현재 유저의 홈디렉토리</p>
+<p>pwd : 현재 내가 위치하고 있는 디렉토리의 절대경로</p>
+<p>ls : 현재 디렉토리의 내용을 출력한다</p>
+<ul>
+<li>F 옵션을 사용하면 명시적으로 나타낸다.</li>
+<li>l 옵션을 사용하면 자세한 정보가 나온다</li>
+<li>h 옵션을 사용하면 사람이 읽기쉬운 상태로 용량이 출력된다.</li>
+<li>a 옵션을 사용하면 숨김파일까지 모두 보여준다.</li>
+</ul>
 
             
 
@@ -245,7 +254,7 @@
             <li class="post-action">
                 
                     
-                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/13/2019-09-12-리눅스 기본3/" data-tooltip="2019-09-13 리눅스 기본3" aria-label="이전: 2019-09-13 리눅스 기본3">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/12/2019-09-12-도커/" data-tooltip="2019-09-12 Docker 명령어1" aria-label="이전: 2019-09-12 Docker 명령어1">
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">이전</span>
@@ -341,7 +350,7 @@
             <li class="post-action">
                 
                     
-                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/13/2019-09-12-리눅스 기본3/" data-tooltip="2019-09-13 리눅스 기본3" aria-label="이전: 2019-09-13 리눅스 기본3">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/12/2019-09-12-도커/" data-tooltip="2019-09-12 Docker 명령어1" aria-label="이전: 2019-09-12 Docker 명령어1">
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">이전</span>
