@@ -11,7 +11,7 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 내용을 정리하였습니다.\ndocker ps : 현재 실행중인 컨테이너 목록\n\na : 종료된 모든 컨테이너의 목록이 출력\n\ndocker rm ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 해당 컨테이너를 삭제\ndocker stop ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 실행 중인 컨테이너를 정지시킴\ndocker run ‘이미지이름’: 해당 이미지를 실행시킨다. 이미지가 없으면 pull해서 만듬\n\nd : 백그라운드에서 실행시킴\nsleep ‘숫자’ : 숫자만큼 실행이 유지됨(초 기준)\n–name ‘원하는 이름’ : 원하는 이름으로 컨테이너 생성\n‘이미지이름:원하는 버전’ : 원하는 버전으로 실행 가능\n-p A:B : A포트를 B포트에 연결하겠다.\n\ndocker rmi ‘이미지 이름’ : 해당 이미지를 삭제함\n\n이미지를 지우기 위해선 해당 이미지로 만든 컨테이너를 모두 삭제시켜야 이미지삭제 가능\n\ndocker exec ‘컨테이너의 ID’ ‘명령어’: 컨테이너에서 명령어를 실행시킨다.\n","dateCreated":"2019-09-12T19:04:46+09:00","dateModified":"2019-09-15T15:32:27+09:00","datePublished":"2019-09-12T19:04:46+09:00","description":"","headline":"2019-09-12 Docker 명령어1","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/09/12/2019-09-12-도커/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/09/12/2019-09-12-도커/","keywords":"Docker"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 내용을 정리하였습니다.\ndocker ps : 현재 실행중인 컨테이너 목록\n\na : 종료된 모든 컨테이너의 목록이 출력\n\ndocker rm ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 해당 컨테이너를 삭제\ndocker stop ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 실행 중인 컨테이너를 정지시킴\ndocker run ‘이미지이름’: 해당 이미지를 실행시킨다. 이미지가 없으면 pull해서 만듬\n\nd : 백그라운드에서 실행시킴\nsleep ‘숫자’ : 숫자만큼 실행이 유지됨(초 기준)\n–name ‘원하는 이름’ : 원하는 이름으로 컨테이너 생성\n‘이미지이름:원하는 버전’ : 원하는 버전으로 실행 가능\n-p A:B : A포트를 B포트에 연결하겠다.\n\ndocker rmi ‘이미지 이름’ : 해당 이미지를 삭제함\n\n이미지를 지우기 위해선 해당 이미지로 만든 컨테이너를 모두 삭제시켜야 이미지삭제 가능\n\n컨테이너나 이미지를 지울때 ID를 하나씩 쳐서 지우는게 매우 귀찮은데 이럴때는 docker rm $(docker ps -a -q) 를 하면 전체 컨테이너가 모두 지워진다, 삭제뿐만 아니라 stop에도 사용가능\ndocker exec ‘컨테이너의 ID’ ‘명령어’: 컨테이너에서 명령어를 실행시킨다.\n","dateCreated":"2019-09-12T19:04:46+09:00","dateModified":"2019-09-15T18:37:39+09:00","datePublished":"2019-09-12T19:04:46+09:00","description":"","headline":"2019-09-12 Docker 명령어1","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/09/12/2019-09-12-도커/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/09/12/2019-09-12-도커/","keywords":"Docker"}</script>
     <meta name="description" content="개인적으로 공부한 내용을 정리하였습니다. docker ps : 현재 실행중인 컨테이너 목록  a : 종료된 모든 컨테이너의 목록이 출력  docker rm ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 해당 컨테이너를 삭제 docker stop ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 실행 중인 컨테이너를 정지시킴 docker run ‘이미지이름’:">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="blog">
@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="개인적으로 공부한 내용을 정리하였습니다. docker ps : 현재 실행중인 컨테이너 목록  a : 종료된 모든 컨테이너의 목록이 출력  docker rm ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 해당 컨테이너를 삭제 docker stop ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 실행 중인 컨테이너를 정지시킴 docker run ‘이미지이름’:">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2019-09-15T06:32:27.258Z">
+<meta property="og:updated_time" content="2019-09-15T09:37:39.540Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-09-12 Docker 명령어1">
 <meta name="twitter:description" content="개인적으로 공부한 내용을 정리하였습니다. docker ps : 현재 실행중인 컨테이너 목록  a : 종료된 모든 컨테이너의 목록이 출력  docker rm ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 해당 컨테이너를 삭제 docker stop ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 실행 중인 컨테이너를 정지시킴 docker run ‘이미지이름’:">
@@ -231,6 +231,7 @@
 <ul>
 <li>이미지를 지우기 위해선 해당 이미지로 만든 컨테이너를 모두 삭제시켜야 이미지삭제 가능</li>
 </ul>
+<p>컨테이너나 이미지를 지울때 ID를 하나씩 쳐서 지우는게 매우 귀찮은데 이럴때는 <strong>docker rm $(docker ps -a -q)</strong> 를 하면 전체 컨테이너가 모두 지워진다, 삭제뿐만 아니라 stop에도 사용가능</p>
 <p>docker exec ‘컨테이너의 ID’ ‘명령어’: 컨테이너에서 명령어를 실행시킨다.</p>
 
             
