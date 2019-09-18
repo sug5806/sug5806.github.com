@@ -6,24 +6,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="sug5806의 블로그">
-    <title>2019-09-12 Docker 명령어1 - sug5806의 블로그</title>
+    <title>2019-09-14 Go 기초 - sug5806의 블로그</title>
     <meta name="author" content="sug5806">
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 내용을 정리하였습니다.\ndocker ps : 현재 실행중인 컨테이너 목록\n\na : 종료된 모든 컨테이너의 목록이 출력\n\ndocker rm ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 해당 컨테이너를 삭제\ndocker stop ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 실행 중인 컨테이너를 정지시킴\ndocker run ‘이미지이름’: 해당 이미지를 실행시킨다. 이미지가 없으면 pull해서 만듬\n\nd : 백그라운드에서 실행시킴\nsleep ‘숫자’ : 숫자만큼 실행이 유지됨(초 기준)\n–name ‘원하는 이름’ : 원하는 이름으로 컨테이너 생성\n‘이미지이름:원하는 버전’ : 원하는 버전으로 실행 가능\n-p A:B : A포트를 B포트에 연결하겠다.\n\ndocker rmi ‘이미지 이름’ : 해당 이미지를 삭제함\n\n이미지를 지우기 위해선 해당 이미지로 만든 컨테이너를 모두 삭제시켜야 이미지삭제 가능\n\n컨테이너나 이미지를 지울때 ID를 하나씩 쳐서 지우는게 매우 귀찮은데 이럴때는 docker rm $(docker ps -a -q) 를 하면 전체 컨테이너가 모두 지워진다, 삭제뿐만 아니라 stop에도 사용가능\ndocker exec ‘컨테이너의 ID’ ‘명령어’: 컨테이너에서 명령어를 실행시킨다.\n","dateCreated":"2019-09-12T19:04:46+09:00","dateModified":"2019-09-15T18:37:39+09:00","datePublished":"2019-09-12T19:04:46+09:00","description":"","headline":"2019-09-12 Docker 명령어1","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/09/12/2019-09-12-도커/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/09/12/2019-09-12-도커/","keywords":"Docker"}</script>
-    <meta name="description" content="개인적으로 공부한 내용을 정리하였습니다. docker ps : 현재 실행중인 컨테이너 목록  a : 종료된 모든 컨테이너의 목록이 출력  docker rm ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 해당 컨테이너를 삭제 docker stop ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 실행 중인 컨테이너를 정지시킴 docker run ‘이미지이름’:">
-<meta name="keywords" content="Docker">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 내용을 정리하였습니다.\nGo 기초\nGo는 기본적으로\nmain 패키지에서부터 실행을 시작하며\n입,출력을 위해 fmt 패키지가 필요하다\nx := 42 -&gt; x를 선언하고 42를 할당한다. (명시적 타입을 생략가능하고 선언과 동시에 할당하며 함수 밖에서는 사용할 수 없음)\nx = 99 -&gt; 위에서 선언한 x를 99로 재할당 한다.\n\n출력하기\n\n\nPrint의 경우 바이트수와 발생한 쓰기 오류를 리턴하며\nSprint의 경우 결과 문자열을 리턴한다.\n타입 변환\n다른 언어에서는 casting라고 하는것을 Go에서는 conversion이라 한다.\n\niota\niota는 상수 선언에서 사용하며 처음 선언했을때 0으로 시작하며 자동으로 1씩 증가한다.\n같은 스코프 내에서 다시 할당해도 초기화 되지 않으며 다른 스코프에서 재할당을 하면 0으로 초기화된다.\n\n","dateCreated":"2019-09-14T19:04:46+09:00","dateModified":"2019-09-18T17:07:10+09:00","datePublished":"2019-09-14T19:04:46+09:00","description":"","headline":"2019-09-14 Go 기초","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/09/14/2019-09-14-Go/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/09/14/2019-09-14-Go/","keywords":"Go"}</script>
+    <meta name="description" content="개인적으로 공부한 내용을 정리하였습니다. Go 기초 Go는 기본적으로 main 패키지에서부터 실행을 시작하며 입,출력을 위해 fmt 패키지가 필요하다 x := 42 -&amp;gt; x를 선언하고 42를 할당한다. (명시적 타입을 생략가능하고 선언과 동시에 할당하며 함수 밖에서는 사용할 수 없음) x = 99 -&amp;gt; 위에서 선언한 x를 99로 재할당 한다.">
+<meta name="keywords" content="Go">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="2019-09-12 Docker 명령어1">
-<meta property="og:url" content="http://blog.sug5806.site/2019/09/12/2019-09-12-도커/index.html">
+<meta property="og:title" content="2019-09-14 Go 기초">
+<meta property="og:url" content="http://blog.sug5806.site/2019/09/14/2019-09-14-Go/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
-<meta property="og:description" content="개인적으로 공부한 내용을 정리하였습니다. docker ps : 현재 실행중인 컨테이너 목록  a : 종료된 모든 컨테이너의 목록이 출력  docker rm ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 해당 컨테이너를 삭제 docker stop ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 실행 중인 컨테이너를 정지시킴 docker run ‘이미지이름’:">
+<meta property="og:description" content="개인적으로 공부한 내용을 정리하였습니다. Go 기초 Go는 기본적으로 main 패키지에서부터 실행을 시작하며 입,출력을 위해 fmt 패키지가 필요하다 x := 42 -&amp;gt; x를 선언하고 42를 할당한다. (명시적 타입을 생략가능하고 선언과 동시에 할당하며 함수 밖에서는 사용할 수 없음) x = 99 -&amp;gt; 위에서 선언한 x를 99로 재할당 한다.">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2019-09-15T09:37:39.540Z">
+<meta property="og:image" content="http://blog.sug5806.site/image/Go1-1.png">
+<meta property="og:image" content="http://blog.sug5806.site/image/Go1-2.png">
+<meta property="og:image" content="http://blog.sug5806.site/image/Go1-3.png">
+<meta property="og:image" content="http://blog.sug5806.site/2019/09/14/2019-09-14-Go/image/Go1-4.png">
+<meta property="og:image" content="http://blog.sug5806.site/2019/09/14/2019-09-14-Go/image/Go1-5.png">
+<meta property="og:updated_time" content="2019-09-18T08:07:10.114Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019-09-12 Docker 명령어1">
-<meta name="twitter:description" content="개인적으로 공부한 내용을 정리하였습니다. docker ps : 현재 실행중인 컨테이너 목록  a : 종료된 모든 컨테이너의 목록이 출력  docker rm ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 해당 컨테이너를 삭제 docker stop ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 실행 중인 컨테이너를 정지시킴 docker run ‘이미지이름’:">
+<meta name="twitter:title" content="2019-09-14 Go 기초">
+<meta name="twitter:description" content="개인적으로 공부한 내용을 정리하였습니다. Go 기초 Go는 기본적으로 main 패키지에서부터 실행을 시작하며 입,출력을 위해 fmt 패키지가 필요하다 x := 42 -&amp;gt; x를 선언하고 42를 할당한다. (명시적 타입을 생략가능하고 선언과 동시에 할당하며 함수 밖에서는 사용할 수 없음) x = 99 -&amp;gt; 위에서 선언한 x를 99로 재할당 한다.">
+<meta name="twitter:image" content="http://blog.sug5806.site/image/Go1-1.png">
     
     
         
@@ -187,20 +193,20 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title">
-            2019-09-12 Docker 명령어1
+            2019-09-14 Go 기초
         </h1>
     
     
         <div class="post-meta">
-    <time datetime="2019-09-12T19:04:46+09:00">
+    <time datetime="2019-09-14T19:04:46+09:00">
 	
-		    2019/09/12
+		    2019/09/14
     	
     </time>
     
         <span>카테고리 </span>
         
-    <a class="category-link" href="/categories/Docker/">Docker</a>
+    <a class="category-link" href="/categories/Go/">Go</a>
 
 
     
@@ -213,26 +219,25 @@
     <div class="post-content markdown">
         <div class="main-content-wrap">
             <p>개인적으로 공부한 내용을 정리하였습니다.</p>
-<p>docker ps : 현재 실행중인 컨테이너 목록</p>
-<ul>
-<li>a : 종료된 모든 컨테이너의 목록이 출력</li>
-</ul>
-<p>docker rm ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 해당 컨테이너를 삭제</p>
-<p>docker stop ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 실행 중인 컨테이너를 정지시킴</p>
-<p>docker run ‘이미지이름’: 해당 이미지를 실행시킨다. 이미지가 없으면 pull해서 만듬</p>
-<ul>
-<li>d : 백그라운드에서 실행시킴</li>
-<li>sleep ‘숫자’ : 숫자만큼 실행이 유지됨(초 기준)</li>
-<li>–name ‘원하는 이름’ : 원하는 이름으로 컨테이너 생성</li>
-<li>‘이미지이름:원하는 버전’ : 원하는 버전으로 실행 가능</li>
-<li>-p A:B : A포트를 B포트에 연결하겠다.</li>
-</ul>
-<p>docker rmi ‘이미지 이름’ : 해당 이미지를 삭제함</p>
-<ul>
-<li>이미지를 지우기 위해선 해당 이미지로 만든 컨테이너를 모두 삭제시켜야 이미지삭제 가능</li>
-</ul>
-<p>컨테이너나 이미지를 지울때 ID를 하나씩 쳐서 지우는게 매우 귀찮은데 이럴때는 <strong>docker rm $(docker ps -a -q)</strong> 를 하면 전체 컨테이너가 모두 지워진다, 삭제뿐만 아니라 stop에도 사용가능</p>
-<p>docker exec ‘컨테이너의 ID’ ‘명령어’: 컨테이너에서 명령어를 실행시킨다.</p>
+<h1>Go 기초</h1>
+<p>Go는 기본적으로<br>
+main 패키지에서부터 실행을 시작하며<br>
+입,출력을 위해 fmt 패키지가 필요하다</p>
+<p>x := 42 -&gt; x를 선언하고 42를 할당한다. (명시적 타입을 생략가능하고 선언과 동시에 할당하며 함수 밖에서는 사용할 수 없음)</p>
+<p>x = 99 -&gt; 위에서 선언한 x를 99로 재할당 한다.</p>
+<p><img src="/image/Go1-1.png" alt="img"></p>
+<h3>출력하기</h3>
+<p><img src="/image/Go1-2.png" alt="img"></p>
+<p><img src="/image/Go1-3.png" alt="img"></p>
+<p>Print의 경우 바이트수와 발생한 쓰기 오류를 리턴하며<br>
+Sprint의 경우 결과 문자열을 리턴한다.</p>
+<h3>타입 변환</h3>
+<p>다른 언어에서는 casting라고 하는것을 Go에서는 conversion이라 한다.</p>
+<p><img src="image/Go1-4.png" alt="img"></p>
+<h3>iota</h3>
+<p>iota는 상수 선언에서 사용하며 처음 선언했을때 0으로 시작하며 자동으로 1씩 증가한다.<br>
+같은 스코프 내에서 다시 할당해도 초기화 되지 않으며 다른 스코프에서 재할당을 하면 0으로 초기화된다.</p>
+<p><img src="image/Go1-5.png" alt="img"></p>
 
             
 
@@ -244,7 +249,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">태그</span><br>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/Docker/">Docker</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/Go/">Go</a>
 
             </div>
         
@@ -263,7 +268,7 @@
             <li class="post-action">
                 
                     
-                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/11/2019-09-11-리눅스 기본2/" data-tooltip="2019-09-11 리눅스 기본2(xargs, alias, ls)" aria-label="다음: 2019-09-11 리눅스 기본2(xargs, alias, ls)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/12/2019-09-12-도커 copy/" data-tooltip="2019-09-12 Docker 명령어1" aria-label="다음: 2019-09-12 Docker 명령어1">
                     
                         <span class="hide-xs hide-sm text-small icon-mr">다음</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -281,7 +286,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/14/2019-09-14-Go/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -289,7 +294,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/14/2019-09-14-Go/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -297,7 +302,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/14/2019-09-14-Go/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -358,7 +363,7 @@
             <li class="post-action">
                 
                     
-                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/11/2019-09-11-리눅스 기본2/" data-tooltip="2019-09-11 리눅스 기본2(xargs, alias, ls)" aria-label="다음: 2019-09-11 리눅스 기본2(xargs, alias, ls)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/12/2019-09-12-도커 copy/" data-tooltip="2019-09-12 Docker 명령어1" aria-label="다음: 2019-09-12 Docker 명령어1">
                     
                         <span class="hide-xs hide-sm text-small icon-mr">다음</span>
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -376,7 +381,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/14/2019-09-14-Go/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -384,7 +389,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/14/2019-09-14-Go/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -392,7 +397,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/14/2019-09-14-Go/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -426,7 +431,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/14/2019-09-14-Go/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -434,7 +439,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/14/2019-09-14-Go/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -442,7 +447,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/12/2019-09-12-도커/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/14/2019-09-14-Go/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -564,7 +569,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                98 개의 포스트가 있습니다.
+                99 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
@@ -581,9 +586,9 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://blog.sug5806.site/2019/09/12/2019-09-12-도커/';
+            this.page.url = 'http://blog.sug5806.site/2019/09/14/2019-09-14-Go/';
               
-            this.page.identifier = '2019/09/12/2019-09-12-도커/';
+            this.page.identifier = '2019/09/14/2019-09-14-Go/';
               
           };
           (function() {

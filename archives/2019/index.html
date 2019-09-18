@@ -186,7 +186,76 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/09/12/2019-09-12-도커/" aria-label=": 2019-09-12 Docker 명령어1">
+                        <a class="link-unstyled" href="/2019/09/14/2019-09-14-Go/" aria-label=": 2019-09-14 Go 기초">
+                            2019-09-14 Go 기초
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-09-14T19:04:46+09:00">
+	
+		    2019/09/14
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Go/">Go</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 내용을 정리하였습니다.</p>
+<h1>Go 기초</h1>
+<p>Go는 기본적으로<br>
+main 패키지에서부터 실행을 시작하며<br>
+입,출력을 위해 fmt 패키지가 필요하다</p>
+<p>x := 42 -&gt; x를 선언하고 42를 할당한다. (명시적 타입을 생략가능하고 선언과 동시에 할당하며 함수 밖에서는 사용할 수 없음)</p>
+<p>x = 99 -&gt; 위에서 선언한 x를 99로 재할당 한다.</p>
+<p><img src="/image/Go1-1.png" alt="img"></p>
+<h3>출력하기</h3>
+<p><img src="/image/Go1-2.png" alt="img"></p>
+<p><img src="/image/Go1-3.png" alt="img"></p>
+<p>Print의 경우 바이트수와 발생한 쓰기 오류를 리턴하며<br>
+Sprint의 경우 결과 문자열을 리턴한다.</p>
+<h3>타입 변환</h3>
+<p>다른 언어에서는 casting라고 하는것을 Go에서는 conversion이라 한다.</p>
+<p><img src="image/Go1-4.png" alt="img"></p>
+<h3>iota</h3>
+<p>iota는 상수 선언에서 사용하며 처음 선언했을때 0으로 시작하며 자동으로 1씩 증가한다.<br>
+같은 스코프 내에서 다시 할당해도 초기화 되지 않으며 다른 스코프에서 재할당을 하면 0으로 초기화된다.</p>
+<p><img src="image/Go1-5.png" alt="img"></p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/09/14/2019-09-14-Go/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/09/12/2019-09-12-도커 copy/" aria-label=": 2019-09-12 Docker 명령어1">
                             2019-09-12 Docker 명령어1
                         </a>
                     
@@ -238,7 +307,7 @@
                     
                     
                         <p>
-                            <a href="/2019/09/12/2019-09-12-도커/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/09/12/2019-09-12-도커 copy/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -306,72 +375,6 @@
                     
                         <p>
                             <a href="/2019/09/11/2019-09-11-리눅스 기본2/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/09/10/2019-09-10-리눅스 기본1/" aria-label=": 2019-09-10 리눅스 기본1(표준 입,출,에러, 파이프, tee)">
-                            2019-09-10 리눅스 기본1(표준 입,출,에러, 파이프, tee)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-09-10T19:04:46+09:00">
-	
-		    2019/09/10
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/리눅스/">리눅스</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 내용을 정리하였습니다.</p>
-<ul>
-<li>0 : 표준 입력(&lt;)</li>
-<li>1 : 표준 출력(&gt;)</li>
-<li>2 : 표준 에러(2&gt;)</li>
-</ul>
-<p>cat 1&gt; example.txt : cat 명령어로 표준입력을 받고 example.txt 파일이 없으면 만들고 있다면 기존 내용을 덮어씌워 표준 출력을 한다.</p>
-<p>cat 1&gt;&gt; example.txt : cat 명령어로 표준입력을 받고 example.txt 파일이 없으면 만들고 있다면 기존 내용에 추가하여 표준 입력을 한다.</p>
-<p>cat -k bla 2&gt; error.txt : 발생한 오류를  error.txt 파일이 없으면 만들고 있다면 기존 내용을 덮어씌워 표준 에러를 출력한다.</p>
-<p>cat -k bla 2&gt;&gt; error.txt : 발생한 오류를  error.txt 파일이 없으면 만들고 있다면 기존 내용에 추가하여 표준 에러를 출력한다.</p>
-<p>cat &lt; input.txt &gt; hello.txt : cat 명령어로 input.txt의 파일에 있는 내용을 표준입력으로 받고 hello.txt에 표준출력을 한다.</p>
-<p>date &gt; date.txt : date 명령어의 결과를 date.txt에 표준 출력한다.</p>
-<p>cut &lt; date.txt --delimiter &quot; &quot; --fields 4 : 공백을 구분자로하여 4번째 열에 있는 것을 자른다.</p>
-<p>A | B : A의 출력을 B의 입력으로 사용하여 실행</p>
-<p>A | tee output.txt | B : A의 출력을 output.txt에 출력(쓰기)하고 B의 입력으로 사용한 다음 결과를 터미널에 출력한다</p>
-<p>date | tee output.txt | B &gt; output2.txt : A의 출력을 output.txt에 출력(쓰기)하고 B의 입력으로 사용한 다음 결과를 output2.txt에 출력(쓰기)한다. 터미널에서는 출력 X</p>
-<p><img src="/image/linux1-1.png" alt="img"></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/09/10/2019-09-10-리눅스 기본1/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -521,7 +524,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                98 개의 포스트가 있습니다.
+                99 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

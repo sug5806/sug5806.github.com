@@ -185,6 +185,62 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/08/24/2019-08-24-큐2/" aria-label=": 2019-08-24 큐2(Queue)">
+                            2019-08-24 큐2(Queue)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-08-24T19:04:46+09:00">
+	
+		    2019/08/24
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/자료구조/">자료구조</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
+<p>지난 번에는 파이썬의 자료형인 <a href="https://blog.sug5806.site/2019/07/11/2019-07-11-%ED%81%90(Queue)/">list를 이용하여 큐를 구현</a> 하였습니다. 이번 시간에는 Node를 이용하여 구현하도록 하겠습니다.</p>
+<p>먼저 노드를 이용하여 구현을하면 아래와 같은 그림으로 진행 됩니다.</p>
+<p><img src="/image/queue2-1.png" alt="img"></p>
+<p>이와 같은 방식으로 구현할 경우 Dequeue를 하게되면 head가 이전 노드를 가리킬 방법이 없습니다. 이 문제를 수정하도록 하겠습니다.</p>
+<p><img src="/image/queue2-2.png" alt="img"></p>
+<p>수정을 한 그림을 보면 Dequeue를 해도 Head는 Head가 가리키고 있는 다음 노드를 가리키면 됩니다. Queue의 FIFO(First In First Out)구조를 유지할 수 있습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.next = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.head = <span class="literal">None</span></span><br><span class="line">        self.tail = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.head <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">and</span> self.tail <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peek</span><span class="params">(self)</span>:</span></span><br><span class="line">        ret_data = self.head.data</span><br><span class="line">        <span class="keyword">return</span> ret_data</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        new_node = Node(data)</span><br><span class="line">        <span class="keyword">if</span> self.is_empty():</span><br><span class="line">            self.head = new_node</span><br><span class="line">            self.tail = new_node</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        self.tail.next = new_node</span><br><span class="line">        self.tail = new_node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.is_empty():</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">        ret_data = self.head.data</span><br><span class="line">        self.head = self.head.next</span><br><span class="line">        <span class="keyword">return</span> ret_data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    Q = Queue()</span><br><span class="line"></span><br><span class="line">    Q.enqueue(<span class="number">1</span>)</span><br><span class="line">    Q.enqueue(<span class="number">3</span>)</span><br><span class="line">    Q.enqueue(<span class="number">5</span>)</span><br><span class="line">    Q.enqueue(<span class="number">7</span>)</span><br><span class="line">    Q.enqueue(<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">    print(Q.dequeue())</span><br><span class="line">    print(Q.dequeue())</span><br><span class="line"></span><br><span class="line">    Q.enqueue(<span class="number">11</span>)</span><br><span class="line"></span><br><span class="line">    print(Q.dequeue())</span><br><span class="line">    print(Q.dequeue())</span><br><span class="line">    print(Q.dequeue())</span><br><span class="line">    print(Q.dequeue())</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/08/24/2019-08-24-큐2/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/08/21/2019-08-21-스택2/" aria-label=": 2019-08-21 스택2(Stack)">
                             2019-08-21 스택2(Stack)
                         </a>
@@ -758,66 +814,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/07/30/2019-07-30-퀵정렬/" aria-label=": 2019-07-30 퀵정렬">
-                            2019-07-30 퀵정렬
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-07-30T19:04:46+09:00">
-	
-		    2019/07/30
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/알고리즘/">알고리즘</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h2>퀵 정렬(Quick) Sort)이란?</h2>
-<p>퀵 정렬 또한 분할 정복 알고리즘 기술의 좋은 예입니다. 퀵 정렬은 분할 교한 정렬이라고도 하며 요소들을 정렬하기 위해 재귀 호출을 사용합니다.</p>
-<h2>알고리즘</h2>
-<p>재귀 호출 알고리즘은 4단계로 구성됩니다.</p>
-<ol>
-<li>배열에 정렬될 요소가 하나 이하일 때 return 합니다.</li>
-<li>피봇(pivot) 지점 역할을 하는 요소를 배열에서 선택합니다</li>
-<li>배열을 두개의 부분으로 분할합니다. 하나는 피봇 값 보다 큰 요소들이고 다른 하나는 피봇 값 보다 작은 요소들이 됩니다.</li>
-<li>원래 배열을 양분한 두 배열에 대해 재귀적으로 알고리즘을 반복합니다.</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random <span class="keyword">as</span> rd</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_pivot_index</span><span class="params">(li, start, mid, end)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    get_pivot_index(li, start, mid, end) -&gt; index</span></span><br><span class="line"><span class="string">    리스트의 맨 처음 값, 가운데 값, 마지막 값 중에서</span></span><br><span class="line"><span class="string">    중간 값을 가진 인덱스를 반환한다</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    idx_li = [start, mid, end]</span><br><span class="line">    <span class="keyword">if</span> li[idx_li[<span class="number">0</span>]] &gt; li[idx_li[<span class="number">1</span>]]:</span><br><span class="line">        idx_li[<span class="number">0</span>], idx_li[<span class="number">1</span>] = idx_li[<span class="number">1</span>], idx_li[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> li[idx_li[<span class="number">1</span>]] &gt; li[idx_li[<span class="number">2</span>]]:</span><br><span class="line">        idx_li[<span class="number">1</span>], idx_li[<span class="number">2</span>] = idx_li[<span class="number">2</span>], idx_li[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">if</span> li[idx_li[<span class="number">0</span>]] &gt; li[idx_li[<span class="number">1</span>]]:</span><br><span class="line">        idx_li[<span class="number">0</span>], idx_li[<span class="number">1</span>] = idx_li[<span class="number">1</span>], idx_li[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> idx_li[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort_sub</span><span class="params">(li, start, end)</span>:</span></span><br><span class="line">    <span class="comment"># base case</span></span><br><span class="line">    <span class="keyword">if</span> start &gt;= end:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    left = start</span><br><span class="line">    right = end</span><br><span class="line">    mid = (start + end) // <span class="number">2</span></span><br><span class="line">    pivot_idx = get_pivot_index(li, left, mid, right)</span><br><span class="line">    li[pivot_idx], li[mid] = li[mid], li[pivot_idx]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">        <span class="keyword">while</span> li[left] &lt; li[pivot_idx]:</span><br><span class="line">            left += <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> li[right] &gt; li[pivot_idx]:</span><br><span class="line">            right -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> left &lt;= right:</span><br><span class="line">            li[left], li[right] = li[right], li[left]</span><br><span class="line">            left += <span class="number">1</span></span><br><span class="line">            right -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    quick_sort_sub(li, start, right)</span><br><span class="line">    quick_sort_sub(li, left, end)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        num_data = int(input(<span class="string">"데이터 개수(종료:0) : "</span>))</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> num_data:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        data = [rd.randint(<span class="number">1</span>, <span class="number">100</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(num_data)]</span><br><span class="line">        print(data)</span><br><span class="line">        quick_sort_sub(data, <span class="number">0</span>, len(data) - <span class="number">1</span>)</span><br><span class="line">        print(data)</span><br></pre></td></tr></table></figure>
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/07/30/2019-07-30-퀵정렬/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -963,7 +959,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                98 개의 포스트가 있습니다.
+                99 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

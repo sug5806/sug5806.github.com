@@ -186,6 +186,156 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/09/04/2019-09-04-운영체제1/" aria-label=": 2019-09-04 운영체제1">
+                            2019-09-04 운영체제1
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-09-04T19:04:46+09:00">
+	
+		    2019/09/04
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/운영체제/">운영체제</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>Operating System Concepts의 요약본 입니다.</p>
+<h1>1. 소개</h1>
+<ul>
+<li>운영체제란?
+<ul>
+<li>컴퓨터 하드웨어를 관리하는 프로그램</li>
+<li>응용프로그램의 토대를 제공해주는 프로그램</li>
+<li>컴퓨터의 사용자와 컴퓨터 하드웨어 사이에 중간 매개체 역할을 해주는 프로그램</li>
+</ul>
+</li>
+</ul>
+<h2>1.1 운영체제란?</h2>
+<ul>
+<li>컴퓨터 시스템의 구성요소
+<ul>
+<li>하드웨어</li>
+<li>운영체제</li>
+<li>응용프로그램</li>
+<li>사용자</li>
+</ul>
+</li>
+<li>운영체제 범위에 대한 정의
+<ul>
+<li>정의 1. 운영체제를 구입하였을 때 포함되어 있는 모든 것</li>
+<li>정의 2. 항상 수행되고 있는 유일한 프로그램만 운영체제이다. 보통 다른 말로 커널(kernel)이라 한다.</li>
+</ul>
+</li>
+</ul>
+<h2>1.2 메인프레임 시스템</h2>
+<ul>
+<li>한 사용자가 하나의 프로그램만을 수행하면 운행체제의 일은 그만큼 쉽다. 반면에 한 사용자가 여러 프로그램을 동시에 수행하거나 여러 사용자가 동시에 사용하는 시스템에서는 운영체제의 일은 간단하지 않다.</li>
+</ul>
+<h3>1.2.1 일괄처리 시스템</h3>
+<ul>
+<li>
+<p>한번에 하나의 프로그램만이 수행되므로 운영체제의 주 임무는 하나의 작업에서 다음 작업으로 제어를 자동적으로 옮기는 것이었다.</p>
+</li>
+<li>
+<p>운영체제는 항상 메모리에 상주하였다.</p>
+</li>
+<li>
+<p>처리속도를 향상하기 위해 유사한 요구를 필요로 하는 작업을 함께 모아서 일괄처리하였다.</p>
+</li>
+<li>
+<p>문제점</p>
+<ul>
+<li>기계적 입출력 장치가 전자적 장치의 속도보다 상대적으로 느려 CPU가 종종 쉬는 경우가 많았다.</li>
+</ul>
+</li>
+<li>
+<p>직접 접근(direct access)이 가능한 디스크의 도입</p>
+<ul>
+<li><strong>작업 스케줄링(jop scheduling)</strong> 과 <strong>다중 프로그래밍(multiprogramming)</strong> 이 가능하게됨.</li>
+</ul>
+</li>
+</ul>
+<h3>1.2.2 다중프로그램 시스템</h3>
+<ul>
+<li>
+<p>다중 프로그래밍이란 여러 개의 프로그램을 동시에 메모리에 적재하여 하나의 프로그램이 대기 상태가되면 그 동안 다른 프로그램을 실행하는 방식을 말한다.</p>
+</li>
+<li>
+<p>장점</p>
+<ul>
+<li>입출력과 프로그램의 실행을 병행으로 수행할 수 있어 CPU의 사용 효율이 증가함</li>
+</ul>
+</li>
+<li>
+<p>다중 프로그래밍에서 운영체제는 사용자를 대신하여 의사결정을 하여야 한다.</p>
+<ul>
+<li>디스크에 있는 작업 저장소에서 작업을 선택하여 메모리로 옮기는 것을 작업 스케줄링이라 한다.</li>
+<li>실행중인 작업이 대기 상태가 되었을 때 메모리에 있는 작업 중 하나를 선택하여 CPU에 항당하는 것은 CPU 스케줄링이라 한다.</li>
+</ul>
+</li>
+<li>
+<p>여러 프로그램이 동시에 메모리에 상주하므로 메모리 관리가 복잡하다.</p>
+</li>
+</ul>
+<h3>1.2.3 시분할 시스템</h3>
+<ul>
+<li>
+<p>다중 프로그래밍을 제공하는 일괄처리 시스템은 CPU의 사용 효율은 높였지만 사용자와 컴퓨터 간에 상호작용은 제공하지 못하였다.</p>
+</li>
+<li>
+<p>시분할(time sharing)또는 멀티태스킹은 다중 프로그래밍과 달리 정해진 시간이 되면 무조건 다음 순서의 작업을 실행하는 방식으로, 교대하는 시간이 매우 짧아 프로그램이 실행되는 동안 사용자는 컴퓨터와 상호작용이 가능하다.</p>
+</li>
+<li>
+<p>이처럼 사용자와 시스템 간에 직접 상호작용이 가능한 시스템을 대화식 컴퓨터 시스템이라 한다. 이런 시스템에서는 응답시간(response time)이 짧아야 한다.</p>
+</li>
+<li>
+<p>시분할 시스템은 여러 사용자가 동시에 컴퓨터를 사용할 수 있게 해준다.</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>메모리에 적재되어 실행중인 프로그램을 <strong>프로세스(process)</strong> 라 한다.</p>
+</li>
+<li>
+<p>많은 사용자의 프로그램을 동시에 수행하기 위해서는 주기억장치의 용량으로는 부족하다. 이 문제를 해결하기 위해 디스크를 주기억장치의 보조 저장장치로 활용하며, 현재 가장 널리 사용되는 기법은 가상 메모리(virtual memory)이다.</p>
+</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/09/04/2019-09-04-운영체제1/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/09/02/2019-09-02-그래프1(Graph)/" aria-label=": 2019-09-02 그래프1(Graph)">
                             2019-09-02 그래프1(Graph)
                         </a>
@@ -355,76 +505,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/08/27/2019-08-27-트리의운행1(python_recursive)/" aria-label=": 2019-08-27 트리의 운행1(Python_recursive)">
-                            2019-08-27 트리의 운행1(Python_recursive)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-08-27T19:04:46+09:00">
-	
-		    2019/08/27
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/자료구조/">자료구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<p>지난번에는 <a href="https://blog.sug5806.site/2019/08/17/2019-08-17-%EC%9D%B4%EC%A7%84%ED%8A%B8%EB%A6%AC1/">이진트리</a>에 대해 알아보았습니다.</p>
-<p>이번시간에는 재귀를 통한 트리의 운행 코드를 알아보겠습니다.</p>
-<h2>운행 방법(Traversal Possibilities)</h2>
-<p>운행 방법을 아래와 같이 3가지로 나타낼 수 있습니다.</p>
-<ul>
-<li>전위 운행법(Preorder)</li>
-<li>중위 운행법(Inorder)</li>
-<li>후위 운행법(Postorder)</li>
-</ul>
-<p>기본 트리는 아래와 같은 모양입니다<br>
-<img src="/image/binarytree1-2.png" alt="img"></p>
-<h1>전위 순회(pre_order)</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.left_child = <span class="literal">None</span></span><br><span class="line">        self.right_child = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 전위 순회</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pre_order</span><span class="params">(tree_node)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> tree_node <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    print(tree_node.data, end=<span class="string">" "</span>)</span><br><span class="line">    pre_order(tree_node.left_child)</span><br><span class="line">    pre_order(tree_node.right_child)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    n1 = TreeNode(<span class="number">1</span>)</span><br><span class="line">    n2 = TreeNode(<span class="number">2</span>)</span><br><span class="line">    n3 = TreeNode(<span class="number">3</span>)</span><br><span class="line">    n4 = TreeNode(<span class="number">4</span>)</span><br><span class="line">    n5 = TreeNode(<span class="number">5</span>)</span><br><span class="line">    n6 = TreeNode(<span class="number">6</span>)</span><br><span class="line">    n7 = TreeNode(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">    n1.left_child = n2</span><br><span class="line">    n1.right_child = n3</span><br><span class="line">    n2.left_child = n4</span><br><span class="line">    n2.right_child = n5</span><br><span class="line">    n3.left_child = n6</span><br><span class="line">    n3.right_child = n7</span><br><span class="line"></span><br><span class="line">    print(<span class="string">f'전위 순회 재귀: '</span>, end=<span class="string">""</span>)</span><br><span class="line">    pre_order(n1)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-<p><img src="/image/tree3_pre.png" alt="img"></p>
-<h1>중위 순회(in_order)</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.left_child = <span class="literal">None</span></span><br><span class="line">        self.right_child = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 중위 순회</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">in_order</span><span class="params">(tree_node)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> tree_node <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    in_order(tree_node.left_child)</span><br><span class="line">    print(tree_node.data, end=<span class="string">" "</span>)</span><br><span class="line">    in_order(tree_node.right_child)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    n1 = TreeNode(<span class="number">1</span>)</span><br><span class="line">    n2 = TreeNode(<span class="number">2</span>)</span><br><span class="line">    n3 = TreeNode(<span class="number">3</span>)</span><br><span class="line">    n4 = TreeNode(<span class="number">4</span>)</span><br><span class="line">    n5 = TreeNode(<span class="number">5</span>)</span><br><span class="line">    n6 = TreeNode(<span class="number">6</span>)</span><br><span class="line">    n7 = TreeNode(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">    n1.left_child = n2</span><br><span class="line">    n1.right_child = n3</span><br><span class="line">    n2.left_child = n4</span><br><span class="line">    n2.right_child = n5</span><br><span class="line">    n3.left_child = n6</span><br><span class="line">    n3.right_child = n7</span><br><span class="line"></span><br><span class="line">    print(<span class="string">f'중위 순회 재귀: '</span>, end=<span class="string">''</span>)</span><br><span class="line">    in_order(n1)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-<p><img src="/image/tree3_in.png" alt="img"></p>
-<h1>후위 순회(post_order)</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.left_child = <span class="literal">None</span></span><br><span class="line">        self.right_child = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 후위 순회</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">post_order</span><span class="params">(tree_node)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> tree_node <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    post_order(tree_node.left_child)</span><br><span class="line">    post_order(tree_node.right_child)</span><br><span class="line">    print(tree_node.data, end=<span class="string">" "</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    n1 = TreeNode(<span class="number">1</span>)</span><br><span class="line">    n2 = TreeNode(<span class="number">2</span>)</span><br><span class="line">    n3 = TreeNode(<span class="number">3</span>)</span><br><span class="line">    n4 = TreeNode(<span class="number">4</span>)</span><br><span class="line">    n5 = TreeNode(<span class="number">5</span>)</span><br><span class="line">    n6 = TreeNode(<span class="number">6</span>)</span><br><span class="line">    n7 = TreeNode(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">    n1.left_child = n2</span><br><span class="line">    n1.right_child = n3</span><br><span class="line">    n2.left_child = n4</span><br><span class="line">    n2.right_child = n5</span><br><span class="line">    n3.left_child = n6</span><br><span class="line">    n3.right_child = n7</span><br><span class="line"></span><br><span class="line">    print(<span class="string">f'후위 순회 재귀: '</span>, end=<span class="string">''</span>)</span><br><span class="line">    post_order(n1)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-<p><img src="/image/tree3_post.png" alt="img"></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/08/27/2019-08-27-트리의운행1(python_recursive)/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -571,7 +651,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                98 개의 포스트가 있습니다.
+                99 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
