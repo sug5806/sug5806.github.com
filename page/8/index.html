@@ -185,6 +185,200 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/04/29/2019-04-25-Pyhon으로-파일저장하기/" aria-label=": 2019-04-29 Python으로 파일(Excel, text, CSV) 저장하기">
+                            2019-04-29 Python으로 파일(Excel, text, CSV) 저장하기
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-04-29T10:31:23+09:00">
+	
+		    2019/04/29
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/python/">python</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>Python으로 Excel에 자료 저장하기</h1>
+<p>파이썬 모듈인 openpyxl을 설치해줍니다</p>
+<ol>
+<li>pip3 install openpyxl</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 메모리 상에 임시 엑셀파일을 하나 만든다</span></span><br><span class="line">wb = workbook()</span><br><span class="line"><span class="comment"># 현재 선택되어 있는 시트(sheet1)을 선택한다.</span></span><br><span class="line">ws = wb.active</span><br><span class="line"><span class="comment"># 2가지 방법으로 셀에 정보를 입력할 수 있다</span></span><br><span class="line">ws1.cell(row=<span class="number">1</span>, column=<span class="number">1</span>, value=<span class="string">"test"</span>) <span class="comment"># A1</span></span><br><span class="line">ws1[<span class="string">'A1'</span>] = <span class="string">"aaa"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 엑셀시트 만들기 -&gt; second sheet라는 이름으로 새 시트를 만든다</span></span><br><span class="line">ws2 = wb.create_sheet(title=<span class="string">"second sheet"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 메모리에 있는 임시 엑셀파일을 현재 디렉토리에 test.xlsx라는 파일로 저장한다.</span></span><br><span class="line">wb.save(<span class="string">"test.xlsx"</span>)</span><br><span class="line"><span class="comment"># 메모리에 있는 Workbook을 메모리에서 해제시킨다</span></span><br><span class="line">wb.close()</span><br></pre></td></tr></table></figure>
+<h1>Python으로 Text에 자료 저장하기</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># f라는 이름으로 'lotto.txt'을 쓰기형식으로 열어준다(파일이 없다면 생성된다.)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># w : 쓰기모드</span></span><br><span class="line"><span class="comment"># r : 읽기모드</span></span><br><span class="line"><span class="comment"># a : 추가모드</span></span><br><span class="line">f = open(<span class="string">"lotto.txt"</span>, <span class="string">'w'</span>)</span><br><span class="line">f.write(내용)</span><br><span class="line">f.writelines(내용)</span><br><span class="line"><span class="comment"># write와 writelines의 차이점은 </span></span><br><span class="line">f.close</span><br></pre></td></tr></table></figure>
+<h1>Python 으로 CSV에 자료 저장하기</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lotto.csv를 쓰기모드로 연다 만약 파일이 없으면 만든다.</span></span><br><span class="line"><span class="comment"># lotto.csv를 csv.writer에 넣어준다.</span></span><br><span class="line"><span class="comment"># newline을 지정해 주지 않는경우 각 라인뒤에 빈 라인이 추가되는 경우가 있다</span></span><br><span class="line">csvfile = open(<span class="string">'lotto.csv'</span>, <span class="string">'w'</span>, newline=<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># delimiter 옵션으로 문자 간격? 당 구분자를 지어준다</span></span><br><span class="line"><span class="comment"># 이것을 ,으로 해주거나 옵션을 주지 않으면 각 열에 따로따로 들어가지만</span></span><br><span class="line"><span class="comment"># 이외의 것을 하게되면 한 열에 전부다 들어가게 된다.</span></span><br><span class="line">writer = csv.writer(csvfile, delimiter=<span class="string">','</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 한 행을 기준으로 데이터가 들어가게 된다</span></span><br><span class="line">writer.writerow(내용)</span><br><span class="line">wr.writerow([<span class="number">1</span>, <span class="string">"김기동"</span>, <span class="literal">False</span>])</span><br><span class="line">wr.writerow([<span class="number">2</span>, <span class="string">"박춘삼"</span>, <span class="literal">True</span>])</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/04/29/2019-04-25-Pyhon으로-파일저장하기/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/04/26/2019-04-26-HTTP_server/" aria-label=": 2019-04-26 HTTP Server 만들어보기">
+                            2019-04-26 HTTP Server 만들어보기
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-04-26T21:05:12+09:00">
+	
+		    2019/04/26
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/네트워크/">네트워크</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>HTTP Server</h1>
+<ol>
+<li>
+<p>브라우저를 통해 사용자가 HTTP Request Message를 보내면</p>
+</li>
+<li>
+<p>서버는 그 Message를 해석하고 Response Message로 응답한다</p>
+<ol>
+<li>어느 페이지로 접속했느냐?</li>
+<li>Query String은 어떤 데이터를 가지고 있느냐?</li>
+<li>특정 스크립트 요청이 있느냐?</li>
+<li>최종 응답을 HTML, 다운로드는 파일로 할것이냐?</li>
+</ol>
+</li>
+<li>
+<p>HTTP Response만 하는 서버</p>
+</li>
+</ol>
+<ul>
+<li>주소에 검색어값을 넘겨준다 -&gt; 쿼리스패싱?</li>
+<li>쿼리스트링
+<ul>
+<li>? : 쿼리스트링의 시작</li>
+<li>&amp; : 다음변수</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>논외</h3>
+<p>with 구문을 def로 바꾸거나 def를 with구문으로 바꿀줄 알아야함</p>
+<p>요즘에는 404나 이런 오류메시지를 서버에서 만들어주는게 트랜드이다</p>
+<p>랜덤값을 뽑아주는 패키지를 잘 알아두는것이 좋다</p>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> http.server</span><br><span class="line"><span class="keyword">import</span> socketserver</span><br><span class="line"></span><br><span class="line"><span class="comment"># 서버에 접속하는 포트</span></span><br><span class="line">PORT = <span class="number">8000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 요청이 들어오면 어느 객체가 요청을 해석하고 처리할것이냐?</span></span><br><span class="line"><span class="comment"># Ex) 수리기사를 부르는 개념</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 현재 디렉토리와 하위의 파일을 제공하고 디렉토리 구조를 HTTP 요청에 직접 매핑함</span></span><br><span class="line">Handler = http.server.SimpleHTTPRequestHandler</span><br><span class="line"></span><br><span class="line"><span class="comment"># ""으로 하면 localhost(127.0.0.1)이다"</span></span><br><span class="line"><span class="keyword">with</span> socketserver.TCPServer((<span class="string">""</span>, PORT), Handler) <span class="keyword">as</span> httpd:</span><br><span class="line">    print(<span class="string">"serving at PORT"</span>, PORT)</span><br><span class="line">    <span class="comment"># 클라이언트의 접속 요청을 수신대기 한다. 접속 요청이 있을시</span></span><br><span class="line">    <span class="comment"># 수락하고 SimpleHTTPRequestHandler의 handle 메소드를 호출한다.</span></span><br><span class="line">    httpd.serve_forever()</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/04/26/2019-04-26-HTTP_server/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/04/25/2019-04-25-크롤러만들기2/" aria-label=": 2019-04-25 크롤러로 쇼핑몰 목록 가져오기(웹 크롤러 만들기2)">
+                            2019-04-25 크롤러로 쇼핑몰 목록 가져오기(웹 크롤러 만들기2)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-04-25T10:31:23+09:00">
+	
+		    2019/04/25
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/python/">python</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>네이버 쇼핑에서 주요 쇼핑몰 목록 가져오기</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="comment"># 네이버 쇼핑몰의 url</span></span><br><span class="line">url = <span class="string">"https://shopping.naver.com/"</span></span><br><span class="line"></span><br><span class="line">req = requests.get(url)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> req.status_code == requests.codes.ok:</span><br><span class="line">    print(<span class="string">"접속성공"</span>)</span><br><span class="line">    html = BeautifulSoup(req.text, <span class="string">"html.parser"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 각 리스트 원소마다 태그가 여러개 중첩되어 있음</span></span><br><span class="line">    s_list1 = html.select(<span class="string">'ul#mallListPage1 li'</span>)</span><br><span class="line">    <span class="comment"># print(s_list1)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 각 리스트 원소마다 태그가 1개밖에 없음</span></span><br><span class="line">    s_list2 = html.select(<span class="string">'ul#mallListPage1 li img'</span>)</span><br><span class="line">    <span class="comment"># print(s_list2)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> s_list1:</span><br><span class="line">        <span class="comment"># 중첩되어 있는 태그를 하나씩 분리함</span></span><br><span class="line">        mall_url = i.select_one(<span class="string">'a'</span>)</span><br><span class="line">        mall_name = i.select_one(<span class="string">'img'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># print(mall_name.get('alt'), mall_url.get('href'))</span></span><br><span class="line">        <span class="comment"># print(mall_name['alt'], mall_url['href'])</span></span><br></pre></td></tr></table></figure>
+<p><img src="/image/multitag_display.png" alt></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment"># s_list2는 애초에 태그가 1개밖에 없으므로 분리 안해도 무방</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> s_list2:</span><br><span class="line">    print(i[<span class="string">'alt'</span>])</span><br><span class="line">    print(i.get(<span class="string">'alt'</span>))</span><br></pre></td></tr></table></figure>
+<p><img src="/image/solotag_display.png" alt></p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/04/25/2019-04-25-크롤러만들기2/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/04/25/2019-04-25-DataBase기초/" aria-label=": 2019-04-25 데이터 베이스 기초">
                             2019-04-25 데이터 베이스 기초
                         </a>
@@ -942,306 +1136,6 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/17/CSS 기초/" aria-label=": 2019-04-17 CSS 기초1">
-                            2019-04-17 CSS 기초1
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-17T21:18:32+09:00">
-	
-		    2019/04/17
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/CSS/">CSS</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>CSS 기초1 (Syntax ~ background)</h1>
-<h2>CSS Syntax</h2>
-<h4>element Selector</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>:blue;<span class="attribute">font-size</span>:<span class="number">12px</span>;&#125;</span><br><span class="line"><span class="comment">/*h1 element의 색깔은 blue</span></span><br><span class="line"><span class="comment">폰트 사이즈는 12px</span></span><br></pre></td></tr></table></figure>
-<h4>id Selector</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#para1</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*id가 para1인 element의 텍스트 정렬은 중앙,색깔은 red</span></span><br></pre></td></tr></table></figure>
-<h4>class Selector</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.center</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*center 클래스의 텍스트 정렬은 중앙, 색깔은 red</span></span><br></pre></td></tr></table></figure>
-<h4>class + element</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-class">.center</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line"><span class="comment">/* p태그 이면서 center클래스의 텍스트 정렬은 중앙, 색깔은 red</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
-<h4>클래스 부여하기</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p class="center large"&gt;This paragraph refers to two classed.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-<h4>Grouping Selectors</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* h1, h2, p 태그의 텍스트 정렬은 중앙, 색깔은 red</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h2>CSS를 삽입하는 3가지 방법</h2>
-<h4>1. External style sheet</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">head</span>&gt;</span><br><span class="line">&lt;link rel="stylesheet" type="text/css" href="mystyle.css"&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
-<h4>2. Internal stryle sheet</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">head</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>:linen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: maroon;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
-<h4>3. Inline style</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 style="color:blue; margin-left:30px;"&gt;This is a heading&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2>Backgrounds</h2>
-<h4>Background color</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: lightblue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4>Background Image</h4>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">"paper.gif"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>
-<p>이미지를 X좌표로만 반복하기</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"gradient_bg.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: repeat-x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>y좌표로만 반복하려면 repteat -y를 해주면 된다.</p>
-</li>
-<li>
-<p>반복없이 하기</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"gradient_bg.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>이미지를 오른쪽 상단에 위치시키기</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"img_tree.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="attribute">background-position</span>: right top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>스크롤해도 이미지 이동하지 않게 하기</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"img_tree.png"</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>:no-repeat;</span><br><span class="line">    <span class="attribute">background-position</span>:right top;</span><br><span class="line">    <span class="attribute">background-attachment</span>: fixed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>Background - Shorthand roperty</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">bacground</span>: red <span class="built_in">url</span>(<span class="string">"img_tree.png"</span>) no-repeat right top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/17/CSS 기초/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/16/실수의표현/" aria-label=": 2019-04-16 실수의 표현">
-                            2019-04-16 실수의 표현
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-16T21:48:32+09:00">
-	
-		    2019/04/16
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/컴퓨터구조/">컴퓨터구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h3>실수의 표현 (epsilon comparison을 위해 반드시 알아두어야함)</h3>
-<ol>
-<li>
-<p>고정 소수점 -&gt; 표현숫자를 줄이면 정밀도가 높아아지고 늘리면 정밀도가 낮아짐, 표현범위가 좁음  #현재 잘 사용하지 않음</p>
-</li>
-<li>
-<p>부동 소수점 -&gt; 정밀도 매우낮음, 표현범위 넓음</p>
-<ol>
-<li>단정도 (single precision)
-<ol>
-<li>32bit (4 byte)</li>
-<li>부호(sign) (1 bit) + 지수(exponent) (8 bit) + 가수(mentissa) (23 bit)
-<ol>
-<li>지수부 : 표현범위 담당 (클수록 범위)</li>
-<li>가수부 : 정밀도를 담당 (클수록 정확)</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>배정도 (double precision)
-<ol>
-<li>64bit (8 byte)</li>
-<li>부호 (1 bit) + 지수 (11 bit) + 가수 (52 bit)</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>
-<p>10.23 * 102 -&gt; 1.023(가수부) 10(밑수) 3(지수 = exponent real)</p>
-</li>
-<li>
-<p><img src="../image/real.png" alt> 에서 1도 수학적으로는 mentissa이나 컴퓨터 메모리 저장 X --&gt; 0이 아닌 자연수 1자리로 정규화를 하기위해 한자리는 무조건 남겨둠 /// bias = 2<sup>n-1</sup> -1 /// Ere = Emem - bias  /// float의 bias는 127 --&gt; 지수에도 ±기호가 있으므로 맨앞자리 비트는 제외하고 나머지 1일때 127 // bias + exponent real 한 값을 이진수로 바꿔서 exponent에 저장</p>
-<ul>
-<li>정규화 : 가수 부분을 밑수보다 작은 자연수가 되도록 만드는것</li>
-</ul>
-</li>
-<li>
-<p>실수의 정밀도 보장 : float는 6자리, double 15자리의 의미 : 10진수 1자리를 다 표현하려면 2진수 4자리(0~15), 10진수 2자리를 다 표현하려면 2진수 7자리(0~127), 10진수 3자리 -&gt; 2진수 10자리</p>
-<ol>
-<li>float는 가수부가 23+1자리이므로 이진수 23+1자리라고 생각가능 -&gt; 십진수 6자리표현을 보장함(정밀도)</li>
-<li>double은 가수부가 52+1 자리 이므로 이진수 52+1자리라고 생각 가능 -&gt; 십진수 15자리 표현을 보장함</li>
-</ol>
-</li>
-<li>
-<p>1.0과 1.0다음으로 나타낼수 있는 수의 차이를 epsilon이라 함<br>
-<img src="../image/real2.png" alt></p>
-<ul>
-<li>어떠한 수의 지수부분과 엡실론을 곱하면 그 수의 다음수가 나옴</li>
-</ul>
-</li>
-</ol>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/16/실수의표현/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/15/알고리즘이론/" aria-label=": 2019-04-15 알고리즘이란?">
-                            2019-04-15 알고리즘이란?
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-15T19:39:46+09:00">
-	
-		    2019/04/15
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/알고리즘/">알고리즘</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h2>알고리즘이란?</h2>
-<ul>
-<li>유한한 단계를 통해 문제를 해결하기 위한 절차나 방법</li>
-</ul>
-<h4>알고리즘 표현방법</h4>
-<ul>
-<li>슈도코드 : 특정 프로그래밍 언어의 문법을 따라 쓰여진 것이 아니라, 일반적인 언어로 코드를 흉내내어 알고리즘을 써 놓은 코드
-<ul>
-<li>의사 코드로 흉내낸 코드</li>
-<li>실제적인 프로그래밍 언어로 작성된 코드처럼 컴퓨터에서 실행할 수 없음</li>
-<li>특정 언어로 프로그램을  작성하기 전에 알고리즘을 대략적으로 모델링하는데 쓰임</li>
-</ul>
-</li>
-<li>순서도 : 프로그램이나 작업의 진행 흐름을 순서에 따라 여러 가지 기호나 문자로 나타낸 도표</li>
-</ul>
-<h4>무엇이 좋은 알고리즘인가?</h4>
-<ul>
-<li>정확성 : 얼마나 정확하게 동작하는가?</li>
-<li>작업량 : 얼마나 적은 연산으로 원하는 결과를 얻어내는가?</li>
-<li>메모리 사용량 : 얼마나 적은 메모리를 사용하는가?</li>
-<li>단순성 : 얼마나 단순한가?</li>
-<li>최적성 : 더 이상 개선할 여지 없이 최적화 되어있는가?</li>
-</ul>
-<h4>알고리즘의 성능 분석</h4>
-<ul>
-<li>많은 문제에서 알고리즘의 성능 분석기준으로 알고리즘의 작업량을 비교
-<ul>
-<li>Ex) 1~100까지의 합을 구하는 문제</li>
-</ul>
-</li>
-<li>
-<ol>
-<li>실제 걸리는 시간을측정</li>
-</ol>
-</li>
-<li>
-<ol start="2">
-<li>실행되는 명령문의 개수를 계산 -&gt; 일반적으로 많이 사용됨</li>
-</ol>
-</li>
-<li>
-<ol start="3">
-<li>Big-O 표기법 : 시간 복잡도 함수 중에서 가장 큰 영향력을 주는 n에 대한 항만을 표시, 계수는 생략하여 표시</li>
-</ol>
-<ul>
-<li>요소 수가 증가함에 따라 각기 다른 시간 복잡도의 알고리즘은 아래와 같은 연산 수를 보임</li>
-</ul>
-</li>
-</ul>
-<p><img src="../image/algorithm.png" alt></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/15/알고리즘이론/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -1260,7 +1154,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
             </a>
           </li>
         
-        <li class="pagination-number">page 8 of 10</li>
+        <li class="pagination-number">page 8 of 11</li>
     </ul>
 </div>
 
@@ -1387,7 +1281,7 @@ concurecncy programming과 pararrelism programming은 다른 개념이다</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                99 개의 포스트가 있습니다.
+                102 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

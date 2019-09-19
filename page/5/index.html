@@ -185,6 +185,193 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/06/22/2019-06-22-Django-ajax적용하기2/" aria-label=": 2019-06-22 Django에 Ajax 적용하기2">
+                            2019-06-22 Django에 Ajax 적용하기2
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-06-22T17:45:01+09:00">
+	
+		    2019/06/22
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>이번 포스팅에서는 지난번 포스팅에 이어 좀더 심화내용을 다루도록 하겠습니다.</p>
+<p>제가 기존에 작성해놓은 프로젝트를 이용하도록 하겠습니다.</p>
+<h3><code>media_list.html</code></h3>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  &#123;% for page in range %&#125;</span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"page-item"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"page-link btn_get_document"</span> <span class="attr">id</span>=<span class="string">"list_btn"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">href</span>=<span class="string">"&#123;% url 'room:list' %&#125;?page=&#123;&#123; page &#125;&#125;"</span>&gt;</span>&#123;&#123; page &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  &#123;% endfor %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block extra_script %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        $('.btn_get_document').click(function (e) &#123;</span></span><br><span class="line"><span class="undefined">            e.preventDefault();</span></span><br><span class="line"><span class="undefined">            // 페이지번호를 누르면 url 가져옴</span></span><br><span class="line"><span class="undefined">            url = $(this).attr('href');</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            $.ajax(&#123;</span></span><br><span class="line"><span class="undefined">                url: url</span></span><br><span class="line"><span class="undefined">            &#125;).done(function (data) &#123;</span></span><br><span class="line"><span class="undefined">                var rp_list = $(data).find('.table');</span></span><br><span class="line"><span class="undefined">                $('.table').html(rp_list);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            &#125;);</span></span><br><span class="line"><span class="undefined">        &#125;);</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+<h3><code>views.py</code></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_media</span><span class="params">(request)</span>:</span></span><br><span class="line">	<span class="comment"># request 요청이 GET이거나 ajax 일시</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">"GET"</span> <span class="keyword">or</span> request.is_ajax():</span><br><span class="line">        page = int(request.GET.get(<span class="string">'page'</span>, <span class="number">1</span>))</span><br><span class="line">        paginated_by = <span class="number">5</span></span><br><span class="line">        rooms = Media.objects.all()</span><br><span class="line"></span><br><span class="line">        total_count = len(rooms)</span><br><span class="line">        start_index = paginated_by * (page - <span class="number">1</span>)</span><br><span class="line">        end_index = paginated_by * page</span><br><span class="line">        rooms = rooms[start_index:end_index]</span><br><span class="line">        rng = range(<span class="number">1</span>, math.ceil(total_count / paginated_by) + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        context = &#123;</span><br><span class="line">            <span class="string">'object_list'</span>: rooms,</span><br><span class="line">            <span class="string">'range'</span>: rng,</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> render(request, <span class="string">'room/media_list.html'</span>, context)</span><br></pre></td></tr></table></figure>
+<p><code>./manage.py runserver</code>를 한 화면을 보여드리겠습니다.</p>
+<p><img src="/image/ajax2-1.png" alt="img"></p>
+<p>이제 ajax가 제대로 작동하는지 확인하겠습니다 검색창에<br>
+1234를 입력하고 페이지 전환을 했을 시 1234가 사라지면 ajax가 적용이 안된것이고 남아있다면 정상적으로 적용이 된것입니다.</p>
+<p><img src="/image/ajax2-2.png" alt="img"></p>
+<p>리스트가 변경되었지만 검색창에 1234는 지워지지 않았습니다. 정상적으로 작동이 되었습니다!</p>
+<p>이제 어떻게 코드가 진행되는지 알아보겠습니다.</p>
+<p>먼저 127.0.0.1:8000으로 접속하게 되면 Django urls.py에서 url과 일치하는 view를 찾게됩니다.<br>
+여기서는 <code>show_meida view</code>가 되겠습니다. 그다음 <code>media_list.html</code>로 렌더링을 하게됩니다.<br>
+그러면 첫번째 사진과 같은 화면이 나오게됩니다.<br>
+2번째 항목을 누르게 되면</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    $('.btn_get_document').click(function (e) &#123;</span></span><br><span class="line"><span class="undefined">        e.preventDefault();</span></span><br><span class="line"><span class="undefined">        // 페이지번호를 누르면 url 가져옴</span></span><br><span class="line"><span class="undefined">        url = $(this).attr('href');</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        $.ajax(&#123;</span></span><br><span class="line"><span class="undefined">            url: url</span></span><br><span class="line"><span class="undefined">        &#125;).done(function (data) &#123;</span></span><br><span class="line"><span class="undefined">            var rp_list = $(data).find('.table');</span></span><br><span class="line"><span class="undefined">            $('.table').html(rp_list);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        &#125;);</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>위의 코드가 작동합니다 <code>btn_get_document</code> 클래스의 버튼을 누를시 <code>preventDefault</code> 으로 인하여 페이지 전환이 일어나지 않습니다. 그 다음 <code>$(this).attr('href');</code>가 해당 버튼 <code>href속성에 연결된 url</code>을 가져오게 됩니다. 그런 다음 <code>$.ajax()</code>가 발동하게 됩니다!<br>
+추출한 url로 요청을 보낸 후 응답을 받게 되면 ajax통신이 종료되면서 <code>.done()</code>가 실행됩니다. 그 후 	전달 받은 data에서 <code>re_list = $(data).find('.table');</code>을 통해 <code>table</code>클래스를 가진 태그를 찾습니다.<br>
+그런 다음<code>$('.table').html(re_list)</code>의 코드로 기존 화면의 <code>table</code>클래스의 html을 추출한 <code>re_list</code>로 교체하게 됩니다.</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/06/22/2019-06-22-Django-ajax적용하기2/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/06/20/2019-06-20-Django-ajax적용하기1/" aria-label=": 2019-06-20 Django에 Ajax 적용하기1">
+                            2019-06-20 Django에 Ajax 적용하기1
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-06-20T17:45:01+09:00">
+	
+		    2019/06/20
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>이번 포스팅에서는 Django에 Ajax를 적용하도록 하겠습니다.</p>
+<p>앱을 만들어주시고 html파일을 하나 만들어 주세요</p>
+<p><code>index.html</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- ajax를 사용하려면 필요합니다! --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">$(document).ready(function()&#123;</span></span><br><span class="line"><span class="undefined">    // button을 클릭하면 작동합니다.</span></span><br><span class="line"><span class="undefined">  $("button").click(function()&#123;</span></span><br><span class="line"><span class="undefined">    // id=div1인 태그 끝에 누를때 마다 추가가 됩니다.</span></span><br><span class="line"><span class="undefined">    $("#div1").append(</span></span><br><span class="line"><span class="xml">    	"<span class="tag">&lt;<span class="name">p</span>&gt;</span>ajax가 적용되었습니다!<span class="tag">&lt;/<span class="name">p</span>&gt;</span>"</span></span><br><span class="line"><span class="undefined">    );</span></span><br><span class="line"><span class="undefined">  &#125;);</span></span><br><span class="line"><span class="undefined">&#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Ajax 적용 실습입니다!<span class="tag">&lt;/<span class="name">h2</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>Ajax 해보기<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>위와같이 작성 하신후 <code>./manage.py runserver</code>를 실행해주세요</p>
+<p><img src="/image/ajax1-1.png" alt="img"></p>
+<p>실행한 뒤 버튼을 눌러주세요</p>
+<p><img src="/image/ajax1-2.png" alt="img"></p>
+<p>몇번 더 눌러보도록 하겠습니다</p>
+<p><img src="/image/ajax1-3.png" alt="img"></p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/06/20/2019-06-20-Django-ajax적용하기1/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/06/18/2019-06-18-ajax란/" aria-label=": 2019-06-18 Ajax란?">
+                            2019-06-18 Ajax란?
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-06-18T17:45:01+09:00">
+	
+		    2019/06/18
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/기타/">기타</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>Ajax란?</h1>
+<p>Ajax는 JavaScript의 라이브러리중 하나이며 Asynchronous Javascript And Xml(비동기식 자바스크립트와 xml)의 약자입니다. 브라우저가 가지고있는 XMLHttpRequest 객체를 이용해서 전체 페이지를 새로 고치지 않고도 페이지의 일부만을 위한 데이터를 로드하는 기법이며 <strong>Ajax를 한마디로 정의하자면 JavaScript를 사용한 비동기 통신, 클라이언트와 서버간에 XML데이터를 주고받는 기술이라고 할 수 있습니다.</strong></p>
+<blockquote>
+<p>출처: <a href="https://coding-factory.tistory.com/143" target="_blank" rel="noopener">코딩팩토리</a></p>
+</blockquote>
+<p>실생활에서 사용하는 앱중에서 예를들면 인스타그램이나 페이스북의 좋아요를 눌렀을시 새로고침 없이 작동하거나 무한스크롤 기능이 있습니다.</p>
+<hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    <span class="comment">// url은 반드시 필요한 필수 요소 입니다.</span></span><br><span class="line">    url   : <span class="string">"url"</span>, <span class="comment">// 요청이 전송될 URL 주소</span></span><br><span class="line">    type  : <span class="string">"GET"</span>, <span class="comment">// http 요청 방식 (default = GET)</span></span><br><span class="line">    <span class="keyword">async</span> : <span class="literal">true</span>, <span class="comment">// 동기 or 비동기 여부 (default = true)</span></span><br><span class="line">    cache : <span class="literal">true</span>, <span class="comment">// 캐시 여부</span></span><br><span class="line">    timeout : <span class="number">3000</span>, <span class="comment">// 요청 제한 시간안에 완료되지 않으면 요청을 취소하거나 error 콜백을 호출 (단위 : ms)</span></span><br><span class="line">    data  : &#123;<span class="attr">key</span> : value&#125;, <span class="comment">// 요청 시 포함될 데이터</span></span><br><span class="line">    processData : <span class="literal">true</span>, <span class="comment">// 데이터를 컨텐트 타입에 맞게 변환 여부</span></span><br><span class="line">    contentType : <span class="string">"application/json"</span>, <span class="comment">// 요청 컨텐트 타입</span></span><br><span class="line">    dataType    : <span class="string">"json"</span>, <span class="comment">// 응답 데이터 형식(명시하지 않으면 자동으로 추측)</span></span><br><span class="line">    beforeSend  : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// XHR Header를 포함해서 HTTP Request를 하기전에 호출됩니다.</span></span><br><span class="line">    &#125;,</span><br><span class="line">    success : <span class="function"><span class="keyword">function</span>(<span class="params">data, status xhr</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// 정상적으로 응답 받았을 경우에는 success 콜백이 호출됩니다.</span></span><br><span class="line">        <span class="comment">// 이 콜백 함수의 파라미터에서는 응답 바디, 응답 코드 그리고 XHR 헤더를 확인 할 수 있습니다.</span></span><br><span class="line">    &#125;,</span><br><span class="line">    error : <span class="function"><span class="keyword">function</span>(<span class="params">xhr, status, error</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// 응답을 받지 못하였거나 정상적인 응답이지만 데이터 형식을 확인할 수 없기 때문에</span></span><br><span class="line">        <span class="comment">// error 콜백이 호출될 수 있습니다.</span></span><br><span class="line">        <span class="comment">// 예를 들어, dataType을 지정해서 응답 받을 데이터 형식을 지정하였지만,</span></span><br><span class="line">        <span class="comment">// 서버에서는 다른 데이터형식으로 응답하면 error 콜백이 호출되게 됩니다.</span></span><br><span class="line">    &#125;,</span><br><span class="line">    complete : <span class="function"><span class="keyword">function</span>(<span class="params">xhr, status</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// success와 error콜백이 호출된 후에 반드시 호출됩니다.</span></span><br><span class="line">        <span class="comment">// tyy - catch - finally의 finally 구문과 동일합니다.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>다음 시간에는 Django에 Ajax를 적용하도록 하겠습니다.</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/06/18/2019-06-18-ajax란/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/06/16/2019-06-16-함수형뷰(FBV)/" aria-label=": 2019-06-16 함수형 뷰(FBV)">
                             2019-06-16 함수형 뷰(FBV)
                         </a>
@@ -761,306 +948,6 @@ render함수를 통해 index.html로 렌더링을 하게됩니다.</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/06/02/2019-06-02-장고 외래키 필터링/" aria-label=": 2019-06-02 Django Foriegn Key 필터링">
-                            2019-06-02 Django Foriegn Key 필터링
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-06-02T18:32:46+09:00">
-	
-		    2019/06/02
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/Django/">Django</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>Django Foriegn Key Filterig 하기</h1>
-<h3>모델</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your models here.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Blog</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    name = models.CharField(max_length=<span class="number">100</span>)</span><br><span class="line">    tagline = models.TextField()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Entry</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    blog = models.ForeignKey(Blog, related_name=<span class="string">'entrys'</span>, on_delete=models.CASCADE)</span><br><span class="line">    headline = models.CharField(max_length=<span class="number">100</span>)</span><br><span class="line">    pub_date = models.DateField(auto_now_add=<span class="literal">True</span>)</span><br><span class="line">    mod_date = models.DateField(auto_now=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.headline</span><br></pre></td></tr></table></figure>
-<h3>Blog의 QuerySet</h3>
-<p><img src="/../image/For1.png" alt="1234"></p>
-<h3>Entry의 QuerySet</h3>
-<p><img src="/../image/For2.png" alt="1234"></p>
-<hr>
-<p>Entry와 Blog는 1:M(일대다) 관계이다. 여기서 특정 블로그에 속해있는 모든 글을 가지고 오고싶다면 어떻게 해야할까?(1-&gt;M을 참조하여 가져오기)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Entry.objects.filter(blog__name=<span class="string">'특정블로그'</span>)</span><br><span class="line"><span class="comment"># blog는 Entry모델의 Foriegn Key 필드이며 name은 Blog모델의 필드이다.</span></span><br></pre></td></tr></table></figure>
-<p><img src="/../image/For3.png" alt="1234"></p>
-<p>그렇다면 역으로 특정 글의 headline을 가지고 있는 블로그는 어떻게 가지고 올 수 있을까?(M-&gt;1을 참조하여 가져오기)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Blog.objects.filter(entrys__headline=<span class="string">'주스'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Blog 모델과 Entry모델이 Foriegn Key로 연결되어 있으므로 related_name을 통해 역참조가 가능하다</span></span><br></pre></td></tr></table></figure>
-<p><img src="/../image/For4.png" alt="1234"></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/06/02/2019-06-02-장고 외래키 필터링/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/05/31/2019-05-31-AWS-IAM/" aria-label=": 2019-05-31 Amazon CLI 설정하기">
-                            2019-05-31 Amazon CLI 설정하기
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-05-31T13:20:02+09:00">
-	
-		    2019/05/31
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/기타/">기타</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>Amazon CLI를 사용하여 사용자 등록하기</h1>
-<p>Django로 Amazon 서비스를 연동하다 보면 settings.py에 아마존 aws_access_key_id와 aws_secret_access_key를 입력해야 하는데 github 같은 곳에 실수로 올리게 되면 해커들이 도용을 하게됩니다. 이것 방지하기위해 AWS CLI를 통해 등록하면 settings.py에 더이상 access_key를 적지 않아도 됩니다.</p>
-<ol>
-<li>
-<p>먼저 아마존에 가입을하고 IAM항목으로 들어갑니다.<br>
-<img src="/image/Amazon01.png" alt></p>
-</li>
-<li>
-<p>그룹을 누르고 새로운 그룹생성을 합니다.<br>
-<img src="/image/Amazon02.png" alt></p>
-</li>
-<li>
-<p>그룹이름을 적고 우측하단에 다음단계를 누릅니다<br>
-<img src="/image/Amazon03.png" alt></p>
-</li>
-</ol>
-<ol start="4">
-<li>본인이 이용하실 서비스에 대한 정책을 선택하고 우측 하단에 다음단계로 진행합니다. 저는 S3를 이용할것이므로 S3FullAccess를 선택하였습니다.<br>
-<img src="/image/Amazon04.png" alt></li>
-</ol>
-<ol start="5">
-<li>선택하신것을 확인하시고 우측 하단에 그룹선택을 눌러줍니다.<br>
-<img src="/image/Amazon05.png" alt></li>
-</ol>
-<ol start="6">
-<li>이제 그룹에 사용자를 추가시켜줘야 합니다. 사용자 탭을눌러 사용자 추가를 해줍니다.<br>
-<img src="/image/Amazon06.png" alt></li>
-</ol>
-<ol start="7">
-<li>사용자 이름을 적어주시고 우리는 CLI를 통해 등록을 할것이므로 프로그래밍 방식 액세스에 체크하도록 합니다. 그리고 우측 하단의 다음으로 넘어갑니다<br>
-<img src="/image/Amazon07.png" alt></li>
-</ol>
-<ol start="8">
-<li>방금 만든 그룹이 보이실텐데 추가하고 싶은 그룹을 체크박스 하신뒤 우측 하단의 다음버튼을 눌러줍니다<br>
-<img src="/image/Amazon08.png" alt></li>
-</ol>
-<ol start="9">
-<li>태그 추가는 지금당장 할일이 없으므로 생략하도록 합니다<br>
-<img src="/image/Amazon09.png" alt></li>
-</ol>
-<ol start="10">
-<li>이제 그동안 설정한 값들을 확인할 수 있는 화면입니다. 확인후 사용자 만들기를 누릅니다.<br>
-<img src="/image/Amazon10.png" alt></li>
-</ol>
-<ol start="11">
-<li>제일 중요한 화면입니다. 이 화면을 벗어나게되면 확인할 수가 없습니다. 그러므로 .csv 다운로드를 통해 등록한 사용자의 ID와 시크릿키를 다운받습니다. <strong>절대 다른사람에게 노출이 되면 안됩니다.</strong><br>
-<img src="/image/Amazon11.png" alt></li>
-</ol>
-<ol start="12">
-<li>이제 django에서 사용자를 등록하도록 하겠습니다.<br>
-<code>pip install awscli</code>를 입력하여 설치해줍니다<br>
-<img src="/image/Amazon12.png" alt></li>
-</ol>
-<ol start="13">
-<li>설치가 다 되면 <code>aws configure</code>을 통해 다운받으신 csv파일의 ID와 Key를 입력하시면 됩니다. region은 서울이니 <code>ap-northeast-2</code>, output format은 <code>json, text, table</code>중 하나를 입력해주면 됩니다.<br>
-<img src="/image/Amazon13.png" alt></li>
-</ol>
-<ol start="14">
-<li>등록을 마치면 더이상 settings.py에 ID와 Key를 입력하지 않아도 자동으로 본인 root디렉토리에 .aws디렉토리 내부의 파일을 읽어 사용할 수 있습니다.<br>
-<img src="/image/Amazon14.png" alt></li>
-</ol>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/05/31/2019-05-31-AWS-IAM/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/05/29/2019-05-29-장고-커스텀-유저모델/" aria-label=": 2019-05-29 장고 커스텀 유저모델 만들기">
-                            2019-05-29 장고 커스텀 유저모델 만들기
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-05-29T12:32:46+09:00">
-	
-		    2019/05/29
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/Django/">Django</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>커스텀 유저모델 만들기</h1>
-<p>커스텀 유저 모델은 기존의 유저 모델에 추가 필드나 기능을 사용하고 싶거나 이전에 존재하는 유저 데이터를 마이그레이션 해서 사용하고 싶을 때 선택하는 기법입니다. 커스텀 유저 모델을 3가지가 존재합니다.</p>
-<ol>
-<li>
-<p>기존의 유저 모델을 확장하여 추가 정보만 입력받는 방법</p>
-</li>
-<li>
-<p>AbstractBaseUser를 사용해서 기본 기능을 제외한 모든 기능과 필드를 새로 만드는법</p>
-</li>
-<li>
-<p>AbstractUser를 사용해서 추가 필드를 포함한 유저 모델을 만드는 방법</p>
-</li>
-</ol>
-<p>세가지 방법중 가장 편리한 방법은 3번째 방법인 AbstractUser를 사용하는 방법입니다.<br>
-<strong>이 방법의 주의할 점은 기존 유저 정보를 사용할 수 없기 때문에 프로젝트를 시작할 때 커스텀 유저 모델을 만들고 관리자 계정 생성을 진행해야 한다는 것입니다.</strong></p>
-<ol>
-<li>
-<p>새 프로젝트를 만들고 account 앱을 만듭니다.<br>
-<img src="/image/custom_user_model01.png" alt></p>
-</li>
-<li>
-<p>settings.py의 INSTALLED_APPS에 accounts 앱을 추가해줍니다.<br>
-<img src="/image/custom_user_model02.png" alt></p>
-</li>
-<li>
-<p>모델에서 AbstractUser 클래스를 상속받아 새로운 User 모델을 작성합니다. 모델의 이름은 User일 필요는 없습니다. User 모델에 원하는 추가 필드를 작성합니다.<br>
-<img src="/image/CUM03.png" alt></p>
-</li>
-<li>
-<p>새로운 유저 모델을 만들면 settings.py에 모델을 설정해야 합니다.<br>
-AUTH_USER_MODEL이라는 변수를 만들고 값을 설정합니다.<br>
-<img src="/image/CUM04.png" alt></p>
-</li>
-</ol>
-<ol start="5">
-<li>새로 만든 유저 모델의 DB 생성을 위해서 makemigrations 명령을 실행하겠습니다. 그런데 유저 모델에는 이미지 필드가 있으므로 Pillow 모듈을 먼저 설치합니다.<br>
-<img src="/image/CUM05-1.png" alt><br>
-<img src="/image/CUM05-2.png" alt><br>
-<img src="/image/CUM05-3.png" alt></li>
-</ol>
-<ol start="6">
-<li>
-<p>관리자 계정을 생성합니다<br>
-<img src="/image/CUM06.png" alt></p>
-</li>
-<li>
-<p>서버를 실행하고 관리자 페이지에 들어가서 확인해 봅시다.<br>
-<img src="/image/CUM07.png" alt></p>
-</li>
-<li>
-<p>관리자 페이지에 로그인을 하면 목록에 유저 모델이 나타나지 않습니다. 유저 모델을 확장하여 새로 만들었기 때문에 새로 등록을 해주어야 합니다. admin.py에 유저 모델을 추가해 봅시다.<br>
-<img src="/image/CUM08-1.png" alt><br>
-<img src="/image/CUM08-2.png" alt></p>
-</li>
-<li>
-<p>관리자 페이지를 새로 고침하면 유저 모델이 나타나는 것을 확인할 수 있습니다.<br>
-<img src="/image/CUM09.png" alt></p>
-</li>
-<li>
-<p>유저 모델에 등록되어 있는 관리자 계정의 수정 페이지로 이동합니다. 우리가 만났던 기존의 사용자 관리 화면과는 많이 다릅니다. 기존에 사용했던 페이지와 흡사하게 변경해보겠습니다.<br>
-<img src="/image/CUM10.png" alt></p>
-</li>
-</ol>
-<ol start="11">
-<li>admin.py에 UserAdmin 클래스를 옵션으로 등록해줍니다. 우리가 admin.py에서 옵션 클래스를 만들어 등록하면 관리자 페이지의 목록을 커스터마이징 했던것처럼 유저 모델도 이 옵션클래스가 필요한데, 기존에 있던 Useradmin 모델이 이 옵션 클래스 역할을 하고 있습니다.<br>
-<img src="/image/CUM11-1.png" alt><br>
-<img src="/image/CUM11-2.png" alt></li>
-</ol>
-<ol start="12">
-<li>
-<p>그런데 우리가 만든 추가 필드가 나타나지 않습니다. 이것을 나타나게 하려면 Option 클래스를 새로 만들어 등록해줘야 합니다. 기존의 UserAdmin 클래스에는 fieldsets와 add_fieldsets가 존재하는데 fieldsets는 상세 화면에서 출력될 수정 폼 설정이고 add_fieldsets는 추가 화면에 출력될 입력 폼의 설정값 입니다. 두가지에 모두 추가 필드를 입력하겠습니다.<br>
-<img src="/image/CUM12.png" alt></p>
-</li>
-<li>
-<p>새로고침해서 화면을 확인해 봅시다. Profile과 Message 값이 잘 출력되는 것을 확인할 수 있습니다.<br>
-<img src="/image/CUM13.png" alt></p>
-</li>
-</ol>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/05/29/2019-05-29-장고-커스텀-유저모델/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -1079,7 +966,7 @@ AUTH_USER_MODEL이라는 변수를 만들고 값을 설정합니다.<br>
             </a>
           </li>
         
-        <li class="pagination-number">page 5 of 10</li>
+        <li class="pagination-number">page 5 of 11</li>
     </ul>
 </div>
 
@@ -1206,7 +1093,7 @@ AUTH_USER_MODEL이라는 변수를 만들고 값을 설정합니다.<br>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                99 개의 포스트가 있습니다.
+                102 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

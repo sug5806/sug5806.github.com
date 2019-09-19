@@ -8,8 +8,32 @@
     </url>
 
     <url>
+        <loc>http://blog.sug5806.site/2019/09/15/2019-09-15%20Go%20%EA%B8%B0%EC%B4%884-function/</loc>
+        <lastmod>2019-09-19T09:42:59.616Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://blog.sug5806.site/2019/09/15/2019-09-15%20Go%20%EA%B8%B0%EC%B4%883-map,struct/</loc>
+        <lastmod>2019-09-19T05:14:43.735Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://blog.sug5806.site/2019/09/15/2019-09-15%20Go%20%EA%B8%B0%EC%B4%882-loop/</loc>
+        <lastmod>2019-09-19T05:14:19.651Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://blog.sug5806.site/2019/09/14/2019-09-14-Go/</loc>
-        <lastmod>2019-09-18T08:07:10.114Z</lastmod>
+        <lastmod>2019-09-18T09:22:22.685Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

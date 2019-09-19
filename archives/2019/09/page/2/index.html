@@ -186,15 +186,158 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/09/10/2019-09-10-리눅스 기본1/" aria-label=": 2019-09-10 리눅스 기본1(표준 입,출,에러, 파이프, tee)">
-                            2019-09-10 리눅스 기본1(표준 입,출,에러, 파이프, tee)
+                        <a class="link-unstyled" href="/2019/09/14/2019-09-14-Go/" aria-label=": 2019-09-14 Go 기초">
+                            2019-09-14 Go 기초
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-09-10T19:04:46+09:00">
+    <time datetime="2019-09-14T19:04:46+09:00">
 	
-		    2019/09/10
+		    2019/09/14
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Go/">Go</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 내용을 정리하였습니다.</p>
+<h1>Go 기초</h1>
+<h3>Go의 키워드</h3>
+<p>Go는 키워드가 25개가 존재합니다<br>
+<img src="image/Go1-6.png" alt="img"></p>
+<h3>Go의 기본</h3>
+<p>Go는 기본적으로<br>
+main 패키지에서부터 실행을 시작하며<br>
+입,출력을 위해 fmt 패키지가 필요합니다</p>
+<p>x := 42 -&gt; x를 선언하고 42를 할당합니다. (명시적 타입을 생략가능하고 선언과 동시에 할당하며 함수 밖에서는 사용할 수 없습니다)</p>
+<p>x = 99 -&gt; 위에서 선언한 x를 99로 재할당합니다.</p>
+<p><img src="/image/Go1-1.png" alt="img"></p>
+<h3>출력하기</h3>
+<p><img src="/image/Go1-2.png" alt="img"></p>
+<p><img src="/image/Go1-3.png" alt="img"></p>
+<p>Print의 경우 바이트수와 발생한 쓰기 오류를 리턴하며<br>
+Sprint의 경우 결과 문자열을 리턴합니다.</p>
+<h3>타입 변환</h3>
+<p>다른 언어에서는 casting라고 하는것을 Go에서는 conversion이라 합니다.</p>
+<p><img src="image/Go1-4.png" alt="img"></p>
+<h3>iota</h3>
+<p>iota는 상수 선언에서 사용하며 처음 선언했을때 0으로 시작하며 자동으로 1씩 증가합니다.<br>
+같은 스코프 내에서 다시 할당해도 초기화 되지 않으며 다른 스코프에서 재할당을 하면 0으로 초기화됩니다.</p>
+<p><img src="image/Go1-5.png" alt="img"></p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/09/14/2019-09-14-Go/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/09/12/2019-09-12-도커 copy/" aria-label=": 2019-09-12 Docker 명령어1">
+                            2019-09-12 Docker 명령어1
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-09-12T19:04:46+09:00">
+	
+		    2019/09/12
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Docker/">Docker</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 내용을 정리하였습니다.</p>
+<p>docker ps : 현재 실행중인 컨테이너 목록</p>
+<ul>
+<li>a : 종료된 모든 컨테이너의 목록이 출력</li>
+</ul>
+<p>docker rm ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 해당 컨테이너를 삭제</p>
+<p>docker stop ‘컨테이너 이름’ or ‘컨테이너의 ID’ : 실행 중인 컨테이너를 정지시킴</p>
+<p>docker run ‘이미지이름’: 해당 이미지를 실행시킨다. 이미지가 없으면 pull해서 만듬</p>
+<ul>
+<li>d : 백그라운드에서 실행시킴</li>
+<li>sleep ‘숫자’ : 숫자만큼 실행이 유지됨(초 기준)</li>
+<li>–name ‘원하는 이름’ : 원하는 이름으로 컨테이너 생성</li>
+<li>‘이미지이름:원하는 버전’ : 원하는 버전으로 실행 가능</li>
+<li>-p A:B : A포트를 B포트에 연결하겠다.</li>
+</ul>
+<p>docker rmi ‘이미지 이름’ : 해당 이미지를 삭제함</p>
+<ul>
+<li>이미지를 지우기 위해선 해당 이미지로 만든 컨테이너를 모두 삭제시켜야 이미지삭제 가능</li>
+</ul>
+<p>컨테이너나 이미지를 지울때 ID를 하나씩 쳐서 지우는게 매우 귀찮은데 이럴때는 <strong>docker rm $(docker ps -a -q)</strong> 를 하면 전체 컨테이너가 모두 지워진다, 삭제뿐만 아니라 stop에도 사용가능</p>
+<p>docker exec ‘컨테이너의 ID’ ‘명령어’: 컨테이너에서 명령어를 실행시킨다.</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/09/12/2019-09-12-도커 copy/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/09/11/2019-09-11-리눅스 기본2/" aria-label=": 2019-09-11 리눅스 기본2(xargs, alias, ls)">
+                            2019-09-11 리눅스 기본2(xargs, alias, ls)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-09-11T19:04:46+09:00">
+	
+		    2019/09/11
     	
     </time>
     
@@ -210,109 +353,22 @@
             
                 <div class="postShorten-content">
                     <p>개인적으로 공부한 내용을 정리하였습니다.</p>
+<p>표준 입력을 지원하지 않는 명령어(Ex. echo, rm 등)을 파이프를 통해 연결하고 싶다면 xargs 명령어를 통해 연결할 수 있다.</p>
+<p><strong>date | cut --delimiter=&quot; &quot; --fields=4 | echo</strong> 를 하면 echo는 표준 입력을 지원하지 않으므로 터미널에 출력되지 않지만 <strong>date | cut --delimiter=&quot; &quot; --fields=4 | xargs echo</strong> 을 하면 터미널에 출력된다.</p>
+<p><img src="image/linux2-1.png" alt="img"></p>
+<p>자신의 home 디렉토리에 .bash_aliases 파일을 만들고 그안에 <strong>alias aliasName=“command1 -option args | command -option args…”</strong> 을 하게되면 별칭으로 설정한 것으로 명령을 실행할 수 있다.(설정 뒤 터미널 재시작 필수)</p>
 <ul>
-<li>0 : 표준 입력(&lt;)</li>
-<li>1 : 표준 출력(&gt;)</li>
-<li>2 : 표준 에러(2&gt;)</li>
+<li>zshell을 사용할 경우 .zshrc에 적어주면 된다.</li>
+<li>적은 후 저장하고 source /home/.zshrc 를 하면 사용 가능하다.</li>
 </ul>
-<p>cat 1&gt; example.txt : cat 명령어로 표준입력을 받고 example.txt 파일이 없으면 만들고 있다면 기존 내용을 덮어씌워 표준 출력을 한다.</p>
-<p>cat 1&gt;&gt; example.txt : cat 명령어로 표준입력을 받고 example.txt 파일이 없으면 만들고 있다면 기존 내용에 추가하여 표준 입력을 한다.</p>
-<p>cat -k bla 2&gt; error.txt : 발생한 오류를  error.txt 파일이 없으면 만들고 있다면 기존 내용을 덮어씌워 표준 에러를 출력한다.</p>
-<p>cat -k bla 2&gt;&gt; error.txt : 발생한 오류를  error.txt 파일이 없으면 만들고 있다면 기존 내용에 추가하여 표준 에러를 출력한다.</p>
-<p>cat &lt; input.txt &gt; hello.txt : cat 명령어로 input.txt의 파일에 있는 내용을 표준입력으로 받고 hello.txt에 표준출력을 한다.</p>
-<p>date &gt; date.txt : date 명령어의 결과를 date.txt에 표준 출력한다.</p>
-<p>cut &lt; date.txt --delimiter &quot; &quot; --fields 4 : 공백을 구분자로하여 4번째 열에 있는 것을 자른다.</p>
-<p>A | B : A의 출력을 B의 입력으로 사용하여 실행</p>
-<p>A | tee output.txt | B : A의 출력을 output.txt에 출력(쓰기)하고 B의 입력으로 사용한 다음 결과를 터미널에 출력한다</p>
-<p>date | tee output.txt | B &gt; output2.txt : A의 출력을 output.txt에 출력(쓰기)하고 B의 입력으로 사용한 다음 결과를 output2.txt에 출력(쓰기)한다. 터미널에서는 출력 X</p>
-<p><img src="/image/linux1-1.png" alt="img"></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/09/10/2019-09-10-리눅스 기본1/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/09/08/2019-09-08-운영체체2-2/" aria-label=": 2019-09-08 운영체제2-2">
-                            2019-09-08 운영체제2-2
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-09-08T19:04:46+09:00">
-	
-		    2019/09/08
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/운영체제/">운영체제</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>Operating System Concepts의 요약본 입니다.</p>
-<p><a href="https://blog.sug5806.site/2019/09/06/2019-09-06-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%B2%B42/">전편</a> 의 내용과 이어집니다.</p>
-<h2>2.3 저장 구조</h2>
+<p>~ : 현재 유저의 홈디렉토리</p>
+<p>pwd : 현재 내가 위치하고 있는 디렉토리의 절대경로</p>
+<p>ls : 현재 디렉토리의 내용을 출력한다</p>
 <ul>
-<li>
-<p>컴퓨터 프로그램이 실행되기 위해서는 주기억장치에 적재되어야 한다. 주기억장치를 다른 말로 임의접근 매모리(random-access memory)라 한다.</p>
-</li>
-<li>
-<p>CPU가 직접 접근 할 수 있는 기억장치는 주기억 장치 뿐이다.</p>
-</li>
-<li>
-<p>주기억장치는 보통 동적 임의 접근 메모리(dynamic RAM)라고 하는 반도체 메모리는 사용한다.</p>
-</li>
-<li>
-<p>주기억장치의 한 구성 단위를 워드(word)라 하며, 각 워드는 독특한 주소를 가진다.</p>
-</li>
-<li>
-<p>이상적으로는 모든 프로그램과 데이터를 주기억장치에 영구적으로 저장하고 싶지만 다음 두 가지 이유 때문에 가능하지 않다.</p>
-<ul>
-<li>이유 1. 주기억장치의 크기</li>
-<li>이유 2. 주기억장치의 휘발성</li>
-</ul>
-<p>이 문제를 해결하기 위해 보조 기억장치를 사용한다. 보조 기억장치는 많은 양의 데이터를 영구보관할 수 있어야 한다.</p>
-</li>
-<li>
-<p>가장 널리 사용하는 보조 기억장치는 자기 디스크(magnetic disk)이다.</p>
-</li>
-</ul>
-<h3>2.3.1 주기억장치</h3>
-<ul>
-<li>Memory-mapped I/O : 주기억장치의 일부 주소가 입출력을 위해 예약되어 있으며, 이 주소에서 읽거나 쓰면 장치 레지스터로부터 데이터를 읽거나 쓰는 결과가 된다. 이 방법은 고속 응답시간을 요구하는 장치에 적합하다.</li>
-<li>이 방법은 직렬포트 또는 병렬포트에 연결된 장치와 입출력할때도 사용된다. CPU는 I/O 포트를 통해 이와 같은 장치와 데이터를 교환한다. 데이터 교환 방식은 다음과 같은 두 가지 방식이 있다.
-<ul>
-<li>프로그램된 I/O(programmed I/O): CPU가 계속 장치의 상태를 검사(poling)하는 방식</li>
-<li>인터럽트 기반: 다음 데이터를 처리할 준비가 되면 장치 제어기는 인터럽트를 통해 그 사실을 CPU에 알리는 방식</li>
-</ul>
-</li>
-<li>주기억장치와 CPU의 속도 차이를 극복하기 위해 주기억장치와 CPU 사이에 캐시(cache)라고 하는 고속 메모리 버퍼를 사용한다.</li>
+<li>F 옵션을 사용하면 명시적으로 나타낸다.</li>
+<li>l 옵션을 사용하면 자세한 정보가 나온다</li>
+<li>h 옵션을 사용하면 사람이 읽기쉬운 상태로 용량이 출력된다.</li>
+<li>a 옵션을 사용하면 숨김파일까지 모두 보여준다.</li>
 </ul>
 
                     
@@ -322,121 +378,7 @@
                     
                     
                         <p>
-                            <a href="/2019/09/08/2019-09-08-운영체체2-2/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/09/06/2019-09-06-운영체체2-1/" aria-label=": 2019-09-06 운영체제2-1">
-                            2019-09-06 운영체제2-1
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-09-06T19:04:46+09:00">
-	
-		    2019/09/06
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/운영체제/">운영체제</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>Operating System Concepts의 요약본 입니다.</p>
-<h1>2. 컴퓨터 시스템 구조</h1>
-<h2>2.1 컴퓨터 시스템의 동작</h2>
-<ul>
-<li>
-<p>현대의 범용 컴퓨터는 공유된 주기억장치에 접근을 제공하는 공통 버스에 의해 연결된 CPU와 여러 개의 장치 제어기(device controller)로 구성되어 있다.</p>
-<ul>
-<li>장치 제어기 : 각 장치(디스크, 오디오 장치, 비디오 디스플레이)를 관리한다.</li>
-<li>장치 제어기와 CPU는 병행으로 수행되므로 이들은 주기억장치 접근에 대해 경쟁한다. 주기억장치 제어기는 이들의 접근을 동기화해준다.</li>
-</ul>
-</li>
-<li>
-<p>컴퓨터가 처음 구동되면 초기에 실행될 프로그램이 필요하다. 이 프로그램을 <strong>부트스트랩 프로그램(bootstrap program)</strong><br>
-이라 한다. 이 프로그램은 보통 컴퓨터 하드웨어 내에 ROM에 저장되어 있다.</p>
-<ul>
-<li>부트스트랩 프로그램은 모든 하드웨어를 초기화하고 운영체제 커널을 주기억장치에 적재한 후에 커널을 실행한다.</li>
-</ul>
-</li>
-<li>
-<p>컴퓨터에서 사건의 발생은  <strong>인터럽트(interrupt)신호</strong> 또는<br>
-<strong>트랩(trap)</strong> 을 통해 운영체제에 통보된다. 트랩은 다른 말로 예외(exception)라 한다.</p>
-<ul>
-<li>인터럽트는 하드웨어가 시스템의 수행 흐름을 바꾸기 위해 발생하는 것이고, 트랩은 소프트웨어가 발생하는 인터럽트이다.</li>
-<li>하드웨어는 CPU에 특정 신호를 보내어 인터럽트의 발생을 알린다.</li>
-<li>소프트웨어는 시스템 호출(system call)이라는 특정 연산을 실행하여 일부로 발생시키거나 오류(0 나누기, 부적합한 주기억장치 접근) 때문에 자발적으로 발생된다.</li>
-<li>인터럽트가 발생되면 CPU는 현재 수행중인 작업을 멈추고, 운영체제 내에 있는 특정코드를 실행한다. 이 실행이 끝나면 다시 멈춘 작업을 재개한다.</li>
-<li>기본적인 인터럽트 동작원리
-<ol>
-<li>현재 작업을 멈추고, 현재 상태를 보관</li>
-<li>인터럽트의 종류 분석</li>
-<li>특정 인터럽트 수행(인터럽트 벡터 활용)</li>
-<li>보관된 상태를 원상복귀하고 멈춘 작업을 재개</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<h2>2.2 I/O 구조</h2>
-<ul>
-<li>장치 제어기에 따라 하나 이상의 장치가 제어기에 연결될 수 있다.</li>
-<li>장치 제어기는 지역 버퍼와 몇 개의 특수 목적 레지스터를 유지한다.</li>
-<li>장치 제어기는 연결된 주변장치와 지역 버퍼간에 데이터 이동을 책임진다. 이 버퍼의 크기는 주변장치에 따라 다르다.</li>
-</ul>
-<h3>2.2.1 I/O 인터럽트</h3>
-<ul>
-<li>I/O를 시작하기 위해 CPU는 장치 제어기 내에 있는 레지스터에 적절한 데이터를 적재한다. 제어기는 이것을 검사하여 어떤 행동을 취할지 결정한다. 입출력의 수행이 끝나면 보통 인터럽트를 통해 CPU에 그 사실을 통보한다.</li>
-<li>입출력의 두 가지 형태
-<ul>
-<li>동기식 입출력(synchronous I/O): 입출력이 시작되면 요청한 프로세서는 입출력이 완료될 때까지 기다린다.</li>
-<li>비동기식 입출력(asynchronous I/O): 요청한 프로세서는 입출력이 완료될 때까지 기다리지 않고 계속 다른 작업을 수행한다.</li>
-</ul>
-</li>
-<li>입출력의 완료를 기다리는 방법
-<ul>
-<li>특수한 명령어 사용</li>
-<li>대기 루프 사용</li>
-</ul>
-</li>
-<li>만약 CPU가 입출력 완료를 항상 기다리면 한번에 한 입출력만 가능하다. 이것은 바람직하지 않다. 여러 입출력을 병행으로 수행할 수 있고, 입출력과 계산을 병행할 수 있어야 시스템의 효울을 높일 수 있다.</li>
-</ul>
-<h3>2.2.2 DMA 구조</h3>
-<ul>
-<li>속도가 느린 입출력 장치는 하나의 입력을 받은 후에 다음 입력까지 CPU는 다른 유용한 작업을 할 수 있다. 그러나 반대로 입출력 장치의 속도가 빠르면 인터럽트가 너무 빈번하게 발생하여 CPU가 다른 유용한 작업을 할 시간이 적다.</li>
-<li>이것을 해결하기 위해 사용하는 기법이 DMA(Direct Memory Access)이다. DMA 방식에서 장치 제어기는 데이터 블록을 CPU의 관여없이 직접 주기억장치로 이동하며, 인터럽트는 바이트 단위가 아닌 블록 단위로 발생한다.</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/09/06/2019-09-06-운영체체2-1/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/09/11/2019-09-11-리눅스 기본2/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -465,7 +407,7 @@
             </a>
           </li>
         
-        <li class="pagination-number">page 2 of 3</li>
+        <li class="pagination-number">page 2 of 4</li>
     </ul>
 </div>
 
@@ -593,7 +535,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                99 개의 포스트가 있습니다.
+                102 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

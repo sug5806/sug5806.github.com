@@ -185,6 +185,194 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/09/15/2019-09-15 Go 기초3-map,struct/" aria-label=": 2019-09-15 Go 기초3(map,struct)">
+                            2019-09-15 Go 기초3(map,struct)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-09-15T19:04:46+09:00">
+	
+		    2019/09/15
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Go/">Go</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 내용을 정리하였습니다.</p>
+<h1>Go 기초3</h1>
+<h2>Map</h2>
+<p>Map은 Key와 Value로 이루어져 있는 정렬되지 않은 요소의 그룹입니다.</p>
+<p>MapType = map[KeyType][ElementType]으로 이루어져 있습니다.</p>
+<p><img src="image/Go3-1.png" alt="img"></p>
+<h3>Map에서 추가하고 range사용하기</h3>
+<p>기존 코드에서 아래를 추가시켰습니다.</p>
+<p><img src="image/Go3-2.png" alt="img"></p>
+<h3>Map에서 삭제하기</h3>
+<p><img src="image/Go3-3.png" alt="img"></p>
+<h2>Struct</h2>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> person <span class="keyword">struct</span> &#123;</span><br><span class="line">	first <span class="keyword">string</span></span><br><span class="line">	last  <span class="keyword">string</span></span><br><span class="line">	age   <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> secretAgent <span class="keyword">struct</span> &#123;</span><br><span class="line">	person</span><br><span class="line">	first <span class="keyword">string</span></span><br><span class="line">	ltk <span class="keyword">bool</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	sa1 := secretAgent&#123;</span><br><span class="line">		person: person&#123;</span><br><span class="line">				first : <span class="string">"James"</span>,</span><br><span class="line">				last: <span class="string">"Bond"</span>,</span><br><span class="line">				age: <span class="number">32</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">		first: <span class="string">"somethin cool"</span>,</span><br><span class="line">		ltk: <span class="literal">true</span>,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	p2 := person&#123;</span><br><span class="line">		first: <span class="string">"Miss"</span>,</span><br><span class="line">		last:  <span class="string">"Moneypenny"</span>,</span><br><span class="line">		age:   <span class="number">27</span>,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fmt.Println(sa1)</span><br><span class="line">	fmt.Println(p2)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// age의 경우 person 타입의 필드이나 secreAgent의 필드로 승격이 되었다.</span></span><br><span class="line">	fmt.Println(sa1.person.first, sa1.first, sa1.person.last, sa1.age, sa1.ltk)</span><br><span class="line">	fmt.Println(p2.first, p2.last, p2.age)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5>anonymous struct</h5>
+<p>위의 예제와는 달리 struct에 이름이 없어서 anonymous입니다.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    p1 := <span class="keyword">struct</span> &#123;</span><br><span class="line">        first <span class="keyword">string</span></span><br><span class="line">        last <span class="keyword">string</span></span><br><span class="line">        age <span class="keyword">int</span></span><br><span class="line">    &#125;&#123;</span><br><span class="line">        first: <span class="string">"James"</span>,</span><br><span class="line">        last: <span class="string">"Bond"</span>,</span><br><span class="line">        age: <span class="number">32</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fmt.Println(p1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/09/15/2019-09-15 Go 기초3-map,struct/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/09/15/2019-09-15 Go 기초4-function/" aria-label=": 2019-09-16 Go 기초4(function)">
+                            2019-09-16 Go 기초4(function)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-09-15T19:04:46+09:00">
+	
+		    2019/09/15
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Go/">Go</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 내용을 정리하였습니다.</p>
+<h1>Go 기초4</h1>
+<h2>Function</h2>
+<p>function의 문법</p>
+<ul>
+<li>func (receiver) identifier(parameters) (returns) {code}</li>
+</ul>
+<p>argument와 parameter의 차이점</p>
+<p>argument는 함수를 호출할때 넘겨주는 변수의 실제값입니다.</p>
+<p>parameter는 함수를 선언할때 전달 받은 인수를 받기위한 변수입니다.</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	foo()</span><br><span class="line">	bar(<span class="string">"Hong"</span>)</span><br><span class="line">	s1 := woo(<span class="string">"Dong"</span>)</span><br><span class="line">	fmt.Println(s1)</span><br><span class="line">	x, y := mouse(<span class="string">"Ian"</span>, <span class="string">"Fleming"</span>)</span><br><span class="line">	fmt.Println(x)</span><br><span class="line">	fmt.Println(y)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">foo</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"hello from foo"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">bar</span><span class="params">(s <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"Hello,"</span>, s)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">woo</span><span class="params">(st <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> fmt.Sprint(<span class="string">"Hello from woo, "</span>, st)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mouse</span><span class="params">(fn <span class="keyword">string</span>, ln <span class="keyword">string</span>)</span> <span class="params">(<span class="keyword">string</span>, <span class="keyword">bool</span>)</span></span> &#123;</span><br><span class="line">	a := fmt.Sprint(fn, ln, <span class="string">`, says "Hello"`</span>)</span><br><span class="line">	b := <span class="literal">false</span></span><br><span class="line">	<span class="keyword">return</span> a, b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3>변수에 func 할당하기</h3>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"Hello, playground"</span>)</span><br><span class="line"></span><br><span class="line">	f := <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"my first func expression"</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	f()</span><br><span class="line"></span><br><span class="line">	g := <span class="function"><span class="keyword">func</span><span class="params">(x <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"the year big brother started watching:"</span>, x)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	g(<span class="number">1984</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3>callback</h3>
+<p>golang에서는 함수를 인자로 전달하는 것을 callback이라 합니다.</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	ii := []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>,&#125;</span><br><span class="line">	s := sum(ii...)</span><br><span class="line">	fmt.Println(<span class="string">"all sum:"</span>, s)</span><br><span class="line"></span><br><span class="line">	e := even(sum, ii...)</span><br><span class="line">	fmt.Println(<span class="string">"even sum:"</span>, e)</span><br><span class="line"></span><br><span class="line">	o := odd(sum, ii...)</span><br><span class="line">	fmt.Println(<span class="string">"odd sum:"</span>, o)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sum</span><span class="params">(xi ...<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	fmt.Printf(<span class="string">"%T\n"</span>, xi)</span><br><span class="line">	total := <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> xi &#123;</span><br><span class="line">		total += v</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> total</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 리턴 value가 int인 함수와 길이제한 없는 슬라이스를 파라미터로 받고 리턴은 int로 한다.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">even</span><span class="params">(f <span class="keyword">func</span>(xi ...<span class="keyword">int</span>)</span> <span class="title">int</span>, <span class="title">vi</span> ...<span class="title">int</span>) <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> yi []<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> vi &#123;</span><br><span class="line">		<span class="keyword">if</span> v%<span class="number">2</span> == <span class="number">0</span> &#123;</span><br><span class="line">			yi = <span class="built_in">append</span>(yi, v)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 파라미터로 받은 함수 f를 yi인자를 넘겨주고 호출한다.</span></span><br><span class="line">	<span class="comment">// 호출하고 리턴받은 value를 리턴한다.  </span></span><br><span class="line">	<span class="keyword">return</span> f(yi...)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">odd</span><span class="params">(f <span class="keyword">func</span>(xi ...<span class="keyword">int</span>)</span> <span class="title">int</span>, <span class="title">vi</span> ...<span class="title">int</span>) <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> xi []<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> vi &#123;</span><br><span class="line">		<span class="keyword">if</span> v%<span class="number">2</span> == <span class="number">1</span> &#123;</span><br><span class="line">			xi = <span class="built_in">append</span>(xi, v)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> f(xi...)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/09/15/2019-09-15 Go 기초4-function/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
+                        <a class="link-unstyled" href="/2019/09/15/2019-09-15 Go 기초2-loop/" aria-label=": 2019-09-15 Go 기초2(for)">
+                            2019-09-15 Go 기초2(for)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-09-15T19:04:46+09:00">
+	
+		    2019/09/15
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Go/">Go</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 내용을 정리하였습니다.</p>
+<h1>Go 기초2</h1>
+<h3>Loop</h3>
+<p>Go에서 루프를 수행할 수 있는 3가지 방법이 있는데 모두 For을 통해 사용가능합니다.</p>
+<ul>
+<li>for init condition; post { }</li>
+<li>for condition { }</li>
+<li>for { }</li>
+</ul>
+<p>다음 예제에 3가지 case모두 포함되어 있습니다.</p>
+<p><img src="image/Go2-3.png" alt="img"></p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/09/15/2019-09-15 Go 기초2-loop/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/09/14/2019-09-14-Go/" aria-label=": 2019-09-14 Go 기초">
                             2019-09-14 Go 기초
                         </a>
@@ -210,23 +398,27 @@
                 <div class="postShorten-content">
                     <p>개인적으로 공부한 내용을 정리하였습니다.</p>
 <h1>Go 기초</h1>
+<h3>Go의 키워드</h3>
+<p>Go는 키워드가 25개가 존재합니다<br>
+<img src="image/Go1-6.png" alt="img"></p>
+<h3>Go의 기본</h3>
 <p>Go는 기본적으로<br>
 main 패키지에서부터 실행을 시작하며<br>
-입,출력을 위해 fmt 패키지가 필요하다</p>
-<p>x := 42 -&gt; x를 선언하고 42를 할당한다. (명시적 타입을 생략가능하고 선언과 동시에 할당하며 함수 밖에서는 사용할 수 없음)</p>
-<p>x = 99 -&gt; 위에서 선언한 x를 99로 재할당 한다.</p>
+입,출력을 위해 fmt 패키지가 필요합니다</p>
+<p>x := 42 -&gt; x를 선언하고 42를 할당합니다. (명시적 타입을 생략가능하고 선언과 동시에 할당하며 함수 밖에서는 사용할 수 없습니다)</p>
+<p>x = 99 -&gt; 위에서 선언한 x를 99로 재할당합니다.</p>
 <p><img src="/image/Go1-1.png" alt="img"></p>
 <h3>출력하기</h3>
 <p><img src="/image/Go1-2.png" alt="img"></p>
 <p><img src="/image/Go1-3.png" alt="img"></p>
 <p>Print의 경우 바이트수와 발생한 쓰기 오류를 리턴하며<br>
-Sprint의 경우 결과 문자열을 리턴한다.</p>
+Sprint의 경우 결과 문자열을 리턴합니다.</p>
 <h3>타입 변환</h3>
-<p>다른 언어에서는 casting라고 하는것을 Go에서는 conversion이라 한다.</p>
+<p>다른 언어에서는 casting라고 하는것을 Go에서는 conversion이라 합니다.</p>
 <p><img src="image/Go1-4.png" alt="img"></p>
 <h3>iota</h3>
-<p>iota는 상수 선언에서 사용하며 처음 선언했을때 0으로 시작하며 자동으로 1씩 증가한다.<br>
-같은 스코프 내에서 다시 할당해도 초기화 되지 않으며 다른 스코프에서 재할당을 하면 0으로 초기화된다.</p>
+<p>iota는 상수 선언에서 사용하며 처음 선언했을때 0으로 시작하며 자동으로 1씩 증가합니다.<br>
+같은 스코프 내에서 다시 할당해도 초기화 되지 않으며 다른 스코프에서 재할당을 하면 0으로 초기화됩니다.</p>
 <p><img src="image/Go1-5.png" alt="img"></p>
 
                     
@@ -802,252 +994,6 @@ Sprint의 경우 결과 문자열을 리턴한다.</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/09/02/2019-09-02-그래프1(Graph)/" aria-label=": 2019-09-02 그래프1(Graph)">
-                            2019-09-02 그래프1(Graph)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-09-02T19:04:46+09:00">
-	
-		    2019/09/02
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/자료구조/">자료구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<h1>그래프</h1>
-<p>현실에서 많은 문제들은 객체와 객체 사이의 관계로 표현됩니다. 항공기 운항 경로를 예로 들면 &quot;서울에서 뉴욕까지 가는 가장 빠른 노선은 어떻게 됩니까?&quot;와 같은 질문이 있습니다. 이 질문에 답하기위해 도시 간의 관계에 대한 정보가 필요합니다. 이런 문제를 풀기 위해 사용되는 자료 구조가 그래프(Graph)입니다.</p>
-<h1>용어 설명</h1>
-<p>그래프(Graph): 그래프는 정점(vertices)라고 불리는 노드들의 집합 V와 간선(edge)이라고 불리는 정점의 쌍들의 집합 E를 사용하여(V,E)로 나타냅니다.</p>
-<ul>
-<li>정점과 간선은 위치 및 저장 요소입니다.</li>
-<li>그래프에서 사용하는 정의:
-<ul>
-<li>방향을 가진 간선(Directed edge):
-<ul>
-<li>순서를 가진 정점의 쌍(u,v)으로</li>
-<li>첫 번째 정점 u는 출발점을 의미합니다.</li>
-<li>두 번째 정점 v는 도착점을 의미합니다.</li>
-<li>예 : 편도 운행</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/image/Graph1-1.png" alt="img"></p>
-<ul>
-<li>방향을 가지지 않은 간선(Undirected edge)
-<ul>
-<li>순서를 가지지 않는 정점의 쌍 (u,v)</li>
-<li>예 : 기찻길</li>
-</ul>
-</li>
-</ul>
-<p><img src="/image/Graph1-2.png" alt="img"></p>
-<ul>
-<li>방향을 가지는 그래프(Directed graph)
-<ul>
-<li>그래프 내의 모든 간선들이 방향을 가집니다.</li>
-<li>예 - 네트워크의 라우트</li>
-</ul>
-</li>
-</ul>
-<p><img src="image/Graph1-3.png" alt="img"></p>
-<ul>
-<li>방향을 가지지 않는 그래프(Undirected graph)
-<ul>
-<li>그래프 내의 모든 간선이 방향을 가지지 않습니다.</li>
-<li>예 : 비행노선</li>
-</ul>
-</li>
-</ul>
-<p><img src="/image/Graph1-4.png" alt="img"></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/09/02/2019-09-02-그래프1(Graph)/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/08/30/2019-08-30-트리의운행2(python_loop)/" aria-label=": 2019-08-30 트리의 운행2(Python_Loop)">
-                            2019-08-30 트리의 운행2(Python_Loop)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-08-30T19:04:46+09:00">
-	
-		    2019/08/30
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/자료구조/">자료구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<p>지난번에는 <a href="https://blog.sug5806.site/2019/08/27/2019-08-27-%ED%8A%B8%EB%A6%AC%EC%9D%98%EC%9A%B4%ED%96%891(python_recursive)/">재귀를 통한 이진트리 순회</a>에 대해 알아보았습니다.</p>
-<p>이번시간에는 반복문을 통한 트리의 운행 코드를 알아보겠습니다.</p>
-<h2>운행 방법(Traversal Possibilities)</h2>
-<p>운행 방법을 아래와 같이 3가지로 나타낼 수 있습니다.</p>
-<ul>
-<li>전위 운행법(Preorder)</li>
-<li>중위 운행법(Inorder)</li>
-<li>후위 운행법(Postorder)</li>
-</ul>
-<p>여기에 순서를 따르지 않는 다른 운행법을 추가합니다.</p>
-<ul>
-<li>레벨 순서 운행법(Level Order Traversal)</li>
-</ul>
-<p>기본 트리는 아래와 같은 모양입니다<br>
-<img src="/image/binarytree1-2.png" alt="img"></p>
-<p>먼저 전위, 중위, 후위는 <strong>스택(Stack)</strong> 을 사용하고<br>
-레벨 순서 운행은 <strong>큐(Queue)</strong> 를 사용 하여 문제를 해결 할수 있습니다.</p>
-<h1>전위 순회(pre_order)</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.left_child = <span class="literal">None</span></span><br><span class="line">        self.right_child = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.container = list()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.container:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.container.append(data)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        ret = self.container.pop()</span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peek</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.container[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iter_pre_order</span><span class="params">(cur)</span>:</span></span><br><span class="line">    s = Stack()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            print(cur.data, end=<span class="string">" "</span>)</span><br><span class="line">            s.push(cur)</span><br><span class="line">            cur = cur.left_child</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> s.is_empty():</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        cur = s.pop()</span><br><span class="line">        cur = cur.right_child</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    n1 = TreeNode(<span class="number">1</span>)</span><br><span class="line">    n2 = TreeNode(<span class="number">2</span>)</span><br><span class="line">    n3 = TreeNode(<span class="number">3</span>)</span><br><span class="line">    n4 = TreeNode(<span class="number">4</span>)</span><br><span class="line">    n5 = TreeNode(<span class="number">5</span>)</span><br><span class="line">    n6 = TreeNode(<span class="number">6</span>)</span><br><span class="line">    n7 = TreeNode(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">    n1.left_child = n2</span><br><span class="line">    n1.right_child = n3</span><br><span class="line">    n2.left_child = n4</span><br><span class="line">    n2.right_child = n5</span><br><span class="line">    n3.left_child = n6</span><br><span class="line">    n3.right_child = n7</span><br><span class="line"></span><br><span class="line">    print(<span class="string">f'전위 순회 재귀: '</span>, end=<span class="string">""</span>)</span><br><span class="line">    iter_pre_order(n1)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-<p><img src="/image/tree3_pre.png" alt="img"></p>
-<h1>중위 순회(in_order)</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.left_child = <span class="literal">None</span></span><br><span class="line">        self.right_child = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.container = list()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.container:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.container.append(data)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        ret = self.container.pop()</span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peek</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.container[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 중위 순회 반복문</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iter_in_order</span><span class="params">(cur)</span>:</span></span><br><span class="line">    s = Stack()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            s.push(cur)</span><br><span class="line">            cur = cur.left_child</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> s.is_empty():</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        cur = s.pop()</span><br><span class="line">        print(cur.data, end=<span class="string">' '</span>)</span><br><span class="line">        cur = cur.right_child</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    n1 = TreeNode(<span class="number">1</span>)</span><br><span class="line">    n2 = TreeNode(<span class="number">2</span>)</span><br><span class="line">    n3 = TreeNode(<span class="number">3</span>)</span><br><span class="line">    n4 = TreeNode(<span class="number">4</span>)</span><br><span class="line">    n5 = TreeNode(<span class="number">5</span>)</span><br><span class="line">    n6 = TreeNode(<span class="number">6</span>)</span><br><span class="line">    n7 = TreeNode(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">    n1.left_child = n2</span><br><span class="line">    n1.right_child = n3</span><br><span class="line">    n2.left_child = n4</span><br><span class="line">    n2.right_child = n5</span><br><span class="line">    n3.left_child = n6</span><br><span class="line">    n3.right_child = n7</span><br><span class="line"></span><br><span class="line">    print(<span class="string">f'중위 순회 재귀: '</span>, end=<span class="string">''</span>)</span><br><span class="line">    iter_in_order(n1)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-<p><img src="/image/tree3_in.png" alt="img"></p>
-<h1>후위 순회(post_order)</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.left_child = <span class="literal">None</span></span><br><span class="line">        self.right_child = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.container = list()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.container:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.container.append(data)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        ret = self.container.pop()</span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peek</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.container[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iter_post_order</span><span class="params">(cur)</span>:</span></span><br><span class="line">    stack1 = Stack()</span><br><span class="line">    stack2 = Stack()</span><br><span class="line"></span><br><span class="line">    stack1.push(cur)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> stack1.is_empty():</span><br><span class="line">        cur = stack1.pop()</span><br><span class="line">        stack2.push(cur)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> cur.left_child:</span><br><span class="line">            stack1.push(cur.left_child)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> cur.right_child:</span><br><span class="line">            stack1.push(cur.right_child)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> stack2.is_empty():</span><br><span class="line">        cur = stack2.pop()</span><br><span class="line">        print(cur.data, end=<span class="string">" "</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    n1 = TreeNode(<span class="number">1</span>)</span><br><span class="line">    n2 = TreeNode(<span class="number">2</span>)</span><br><span class="line">    n3 = TreeNode(<span class="number">3</span>)</span><br><span class="line">    n4 = TreeNode(<span class="number">4</span>)</span><br><span class="line">    n5 = TreeNode(<span class="number">5</span>)</span><br><span class="line">    n6 = TreeNode(<span class="number">6</span>)</span><br><span class="line">    n7 = TreeNode(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">    n1.left_child = n2</span><br><span class="line">    n1.right_child = n3</span><br><span class="line">    n2.left_child = n4</span><br><span class="line">    n2.right_child = n5</span><br><span class="line">    n3.left_child = n6</span><br><span class="line">    n3.right_child = n7</span><br><span class="line"></span><br><span class="line">    print(<span class="string">f'후위 순회 재귀: '</span>, end=<span class="string">''</span>)</span><br><span class="line">    iter_post_order(n1)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-<p><img src="/image/tree3_post.png" alt="img"></p>
-<h1>레벨 순회</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.left_child = <span class="literal">None</span></span><br><span class="line">        self.right_child = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.next = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.head = <span class="literal">None</span></span><br><span class="line">        self.tail = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.head <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span><span class="params">(self, tree_node)</span>:</span></span><br><span class="line">        new_node = Node(tree_node)</span><br><span class="line">        <span class="keyword">if</span> self.is_empty():</span><br><span class="line">            self.head = new_node</span><br><span class="line">            self.tail = new_node</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        self.tail.next = new_node</span><br><span class="line">        self.tail = new_node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.is_empty():</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        ret_node = self.head.data</span><br><span class="line">        self.head = self.head.next</span><br><span class="line">        <span class="keyword">return</span> ret_node</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">level_order</span><span class="params">(cur)</span>:</span></span><br><span class="line">    q = Queue()</span><br><span class="line"></span><br><span class="line">    q.enqueue(cur)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> q.is_empty():</span><br><span class="line">        cur = q.dequeue()</span><br><span class="line"></span><br><span class="line">        print(cur.data, end=<span class="string">" "</span>)</span><br><span class="line">        <span class="keyword">if</span> cur.left_child:</span><br><span class="line">            q.enqueue(cur.left_child)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> cur.right_child:</span><br><span class="line">            q.enqueue(cur.right_child)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    n1 = TreeNode(<span class="number">1</span>)</span><br><span class="line">    n2 = TreeNode(<span class="number">2</span>)</span><br><span class="line">    n3 = TreeNode(<span class="number">3</span>)</span><br><span class="line">    n4 = TreeNode(<span class="number">4</span>)</span><br><span class="line">    n5 = TreeNode(<span class="number">5</span>)</span><br><span class="line">    n6 = TreeNode(<span class="number">6</span>)</span><br><span class="line">    n7 = TreeNode(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">    n1.left_child = n2</span><br><span class="line">    n1.right_child = n3</span><br><span class="line">    n2.left_child = n4</span><br><span class="line">    n2.right_child = n5</span><br><span class="line">    n3.left_child = n6</span><br><span class="line">    n3.right_child = n7</span><br><span class="line">    print(<span class="string">f'레벨 순회 반복: '</span>, end=<span class="string">''</span>)</span><br><span class="line">    level_order(n1)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-<p><img src="/image/tree3_level.png" alt="img"></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/08/30/2019-08-30-트리의운행2(python_loop)/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/08/27/2019-08-27-트리의운행1(python_recursive)/" aria-label=": 2019-08-27 트리의 운행1(Python_recursive)">
-                            2019-08-27 트리의 운행1(Python_recursive)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-08-27T19:04:46+09:00">
-	
-		    2019/08/27
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/자료구조/">자료구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<p>지난번에는 <a href="https://blog.sug5806.site/2019/08/17/2019-08-17-%EC%9D%B4%EC%A7%84%ED%8A%B8%EB%A6%AC1/">이진트리</a>에 대해 알아보았습니다.</p>
-<p>이번시간에는 재귀를 통한 트리의 운행 코드를 알아보겠습니다.</p>
-<h2>운행 방법(Traversal Possibilities)</h2>
-<p>운행 방법을 아래와 같이 3가지로 나타낼 수 있습니다.</p>
-<ul>
-<li>전위 운행법(Preorder)</li>
-<li>중위 운행법(Inorder)</li>
-<li>후위 운행법(Postorder)</li>
-</ul>
-<p>기본 트리는 아래와 같은 모양입니다<br>
-<img src="/image/binarytree1-2.png" alt="img"></p>
-<h1>전위 순회(pre_order)</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.left_child = <span class="literal">None</span></span><br><span class="line">        self.right_child = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 전위 순회</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pre_order</span><span class="params">(tree_node)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> tree_node <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    print(tree_node.data, end=<span class="string">" "</span>)</span><br><span class="line">    pre_order(tree_node.left_child)</span><br><span class="line">    pre_order(tree_node.right_child)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    n1 = TreeNode(<span class="number">1</span>)</span><br><span class="line">    n2 = TreeNode(<span class="number">2</span>)</span><br><span class="line">    n3 = TreeNode(<span class="number">3</span>)</span><br><span class="line">    n4 = TreeNode(<span class="number">4</span>)</span><br><span class="line">    n5 = TreeNode(<span class="number">5</span>)</span><br><span class="line">    n6 = TreeNode(<span class="number">6</span>)</span><br><span class="line">    n7 = TreeNode(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">    n1.left_child = n2</span><br><span class="line">    n1.right_child = n3</span><br><span class="line">    n2.left_child = n4</span><br><span class="line">    n2.right_child = n5</span><br><span class="line">    n3.left_child = n6</span><br><span class="line">    n3.right_child = n7</span><br><span class="line"></span><br><span class="line">    print(<span class="string">f'전위 순회 재귀: '</span>, end=<span class="string">""</span>)</span><br><span class="line">    pre_order(n1)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-<p><img src="/image/tree3_pre.png" alt="img"></p>
-<h1>중위 순회(in_order)</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.left_child = <span class="literal">None</span></span><br><span class="line">        self.right_child = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 중위 순회</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">in_order</span><span class="params">(tree_node)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> tree_node <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    in_order(tree_node.left_child)</span><br><span class="line">    print(tree_node.data, end=<span class="string">" "</span>)</span><br><span class="line">    in_order(tree_node.right_child)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    n1 = TreeNode(<span class="number">1</span>)</span><br><span class="line">    n2 = TreeNode(<span class="number">2</span>)</span><br><span class="line">    n3 = TreeNode(<span class="number">3</span>)</span><br><span class="line">    n4 = TreeNode(<span class="number">4</span>)</span><br><span class="line">    n5 = TreeNode(<span class="number">5</span>)</span><br><span class="line">    n6 = TreeNode(<span class="number">6</span>)</span><br><span class="line">    n7 = TreeNode(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">    n1.left_child = n2</span><br><span class="line">    n1.right_child = n3</span><br><span class="line">    n2.left_child = n4</span><br><span class="line">    n2.right_child = n5</span><br><span class="line">    n3.left_child = n6</span><br><span class="line">    n3.right_child = n7</span><br><span class="line"></span><br><span class="line">    print(<span class="string">f'중위 순회 재귀: '</span>, end=<span class="string">''</span>)</span><br><span class="line">    in_order(n1)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-<p><img src="/image/tree3_in.png" alt="img"></p>
-<h1>후위 순회(post_order)</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.left_child = <span class="literal">None</span></span><br><span class="line">        self.right_child = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 후위 순회</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">post_order</span><span class="params">(tree_node)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> tree_node <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    post_order(tree_node.left_child)</span><br><span class="line">    post_order(tree_node.right_child)</span><br><span class="line">    print(tree_node.data, end=<span class="string">" "</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    n1 = TreeNode(<span class="number">1</span>)</span><br><span class="line">    n2 = TreeNode(<span class="number">2</span>)</span><br><span class="line">    n3 = TreeNode(<span class="number">3</span>)</span><br><span class="line">    n4 = TreeNode(<span class="number">4</span>)</span><br><span class="line">    n5 = TreeNode(<span class="number">5</span>)</span><br><span class="line">    n6 = TreeNode(<span class="number">6</span>)</span><br><span class="line">    n7 = TreeNode(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">    n1.left_child = n2</span><br><span class="line">    n1.right_child = n3</span><br><span class="line">    n2.left_child = n4</span><br><span class="line">    n2.right_child = n5</span><br><span class="line">    n3.left_child = n6</span><br><span class="line">    n3.right_child = n7</span><br><span class="line"></span><br><span class="line">    print(<span class="string">f'후위 순회 재귀: '</span>, end=<span class="string">''</span>)</span><br><span class="line">    post_order(n1)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-<p><img src="/image/tree3_post.png" alt="img"></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/08/27/2019-08-27-트리의운행1(python_recursive)/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -1059,7 +1005,7 @@ Sprint의 경우 결과 문자열을 리턴한다.</p>
             </a>
           </li>
         
-        <li class="pagination-number">page 1 of 10</li>
+        <li class="pagination-number">page 1 of 11</li>
     </ul>
 </div>
 
@@ -1186,7 +1132,7 @@ Sprint의 경우 결과 문자열을 리턴한다.</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                99 개의 포스트가 있습니다.
+                102 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

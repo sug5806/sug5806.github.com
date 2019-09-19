@@ -186,15 +186,15 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/" aria-label=": 2019-05-15 Django 필터링 F, QuerySet 캐싱">
-                            2019-05-15 Django 필터링 F, QuerySet 캐싱
+                        <a class="link-unstyled" href="/2019/05/18/2019-05-18-소셜로그인구현/" aria-label=": 2019-05-18 Django social login(naver)">
+                            2019-05-18 Django social login(naver)
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-05-15T18:32:46+09:00">
+    <time datetime="2019-05-18T18:32:46+09:00">
 	
-		    2019/05/15
+		    2019/05/18
     	
     </time>
     
@@ -209,107 +209,37 @@
             </div>
             
                 <div class="postShorten-content">
-                    <h1>F로 DB 속성 자체를 비교하여 추출할 수 있다</h1>
-<p>from django.db.models import F</p>
-<p>Ex) title이 text에 포함이 되어있느냐?</p>
-<p>Q로는 내 DB의 필드를 참조할 수 없어 한계치가 존재한다</p>
-<p>filter를 걸고 그 결과에 대해 또 filter를 걸 수 있다</p>
+                    <h1>네이버 소셜로그인 구현하기</h1>
+<h3>1. allauth 모듈 설치하기</h3>
 <ul>
-<li>filter는 filter를 걸어도 실제로 값이 필요할때 실행을 하고 그 전에는 실행하지 않는다 -&gt; lazy-evaluation</li>
+<li><code>pip install django-allauth</code></li>
 </ul>
-<p>Ex) q = Document.objects.filter author__username=‘sangki’)</p>
-<p>from django.db.models import F<br>
-F : 컬럼 참조 -&gt; DB내의 필드를 직접 참조한다<br>
-Document.objects.filter(text__icontains=‘11’)</p>
-<p>select_related -&gt; DB에 부담을 줄 것이냐? 아니면 서버에 부담을 줄것이냐?<br>
-Document.objects.select_related(‘author’).all()</p>
-<ol>
-<li>select_related -&gt; Join Query를 만들어서 한큐에 데이터를 불러온다.
+<h3>2. <code>settings.py</code> 수정하기</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 맨 마지막에 추가</span></span><br><span class="line">AUTHENTICATION_BACKENDS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment"># Needed to login by username in Django admin, regardless of `allauth`</span></span><br><span class="line">    <span class="string">'django.contrib.auth.backends.ModelBackend'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># `allauth` specific authentication methods, such as login by e-mail</span></span><br><span class="line">    <span class="string">'allauth.account.auth_backends.AuthenticationBackend'</span>,</span><br><span class="line">    </span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">SITE_ID = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># INSTALLED_APPS에 추가하기</span></span><br><span class="line">    <span class="string">'django.contrib.sites'</span>,</span><br><span class="line">    <span class="string">'allauth'</span>,</span><br><span class="line">    <span class="string">'allauth.account'</span>,</span><br><span class="line">    <span class="string">'allauth.socialaccount'</span>,</span><br><span class="line">    <span class="comment"># 이 부분은 소셜로그인을 구현하고 싶은 사이트를 입력하면 된다</span></span><br><span class="line">    <span class="string">'allauth.socialaccount.providers.naver'</span>,</span><br></pre></td></tr></table></figure>
+<h3>3. app의 <code>urls.py</code>에 추가하기</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">'accounts'</span>, include(<span class="string">'allauth.urls'</span>)),</span><br></pre></td></tr></table></figure>
+<h3>4. DB migrate 하기</h3>
+<pre><code>* `python manage.py migate`
+</code></pre>
+<h3>5. 네이버 개발자 센터방문</h3>
+<p><img src="/image/naver1.png" alt></p>
 <ul>
-<li>ForeingnKey까지만 묶을 수 있다.</li>
-<li>Join
+<li>사용하고자 하는 이름 작성</li>
+<li>권한은 원하는대로<br>
+<img src="/image/naver3.png" alt></li>
+<li>서비스 URL과 Callback URL을 위와 같이 적어준다</li>
+<li>만약 직접 서비스하고 있는 사이트가 있다면 서비스 URL에 자신의 사이트를 적어준다.</li>
+</ul>
+<h3>6. app의 <code>url.py</code>에 추가하기 2</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.auth.views <span class="keyword">import</span> LoginView, LogoutView</span><br><span class="line"></span><br><span class="line">path(<span class="string">'login/'</span>, LoginView.as_view(template_name=<span class="string">'account/login.html'</span>), name=<span class="string">'login'</span>),</span><br><span class="line">    path(<span class="string">'logout/'</span>, LogoutView.as_view(template_name=<span class="string">'account/logout.html'</span>), name=<span class="string">'logout'</span>),</span><br></pre></td></tr></table></figure>
+<h3>7. <code>./manage.py</code> admin 사이트로 접속</h3>
+<p><img src="/image/naver_admin.png" alt><br>
+맨 밑의 Social application으로 접속</p>
+<h3>8. Social application에서 추가하기</h3>
+<p><img src="/image/naver_admin2.png" alt></p>
 <ul>
-<li>author를 가져오는데 inner_join을 통해 DB access를 줄인다.</li>
-<li>inner_join : 서로 가지고 있는 데이터만 합쳐서 보여준다 -&gt; 교집합</li>
-<li>outer_join : 서로 가지고 있는 데이터와 함께 어떤 테이블을 기준으로 레코드를 가져오는데 없으면 null로 가져온다</li>
+<li>위에서 Key와 ID는 네이버 개발자센터에서 발급받은 자신의 ID와 Key를 적으면 된다</li>
 </ul>
-</li>
-</ul>
-</li>
-<li>prefetch_related -&gt; Join을 사용하지 않음
-<ul>
-<li>Document.objects.prefetch_related(‘author’).all()</li>
-<li>Document를 부르고, Category를 부러서 DB내에서 붙여서 하지않고 파이썬 코드에서 병합한다.</li>
-<li>ManyToMany 이런것도 지원함</li>
-<li>selete_related로 할수 없는 것은 prefetch_related를 사용한다.</li>
-</ul>
-</li>
-</ol>
-<p>select_related, prefetch_related를 사용하지 않는 경우<br>
-참조 테이블에 대한 데이터 질의를 항상 실행한다. = DB에 대해 access를 항상하여 부담 증가</p>
-<h1>QuerySet 캐시</h1>
-<p>장고 내에도 캐시가 있어 한번 질의를 실행하면 캐시에 저장한다.</p>
-<ul>
-<li>object_list = Document.objects.all()  :  쿼리가 실행되지 않음</li>
-<li>object_list[:4] : 4번까지 꺼내온다
-<ul>
-<li>LIMIT을 걸어 slicing을 하게되면 캐싱이 되지않는다</li>
-<li>한번 전체가 돌고 난뒤에 slicing을 하면 캐싱이 된다</li>
-<li>한번 다 돌고 평가가 되어야 캐싱이 일어난다</li>
-</ul>
-</li>
-</ul>
-<p>object_list = Document.objects.all() -&gt; 캐싱 아님<br>
-[object.title for object in object_list] -&gt; 캐싱</p>
-<p>object_list = Document.objects.all()<br>
-object_list[4] -&gt; 캐싱 아님<br>
-object_list[5] -&gt; 캐싱 아님</p>
-<p>object_list = Document.objects.all()<br>
-[object.title for object in object_list]<br>
-object_list[4] -&gt; 캐싱<br>
-object_list[5] -&gt; 캐싱</p>
-<h1>~을 제외하여 가져오기</h1>
-<p>Document.objects.exclude(title__incontains=‘1’) : 타이틀중에 1이 포함된 것을 제외하고 가져오기</p>
-<ul>
-<li>필터를 이용했을때는 필드를 나열하면 자동으로 and연산이 되었지만 <strong>exclude는 안된다.</strong></li>
-</ul>
-<p>제외하고 싶은 카테고리를 먼저 추출하고 거기서 전체 카테고리에 제외하고싶은 카테고리가 있으면 exclude를 한다<br>
-Document.objects.exclude(category__in=Category.objects.filter(name__icontains=‘question’))</p>
-<p>블로그에 속한 글들이 있는경우</p>
-<ol>
-<li>블로그 제목에 제외 키워드가 있는경우
-<ul>
-<li>Ex) 블로그에 특정 키워드가 있는경우</li>
-</ul>
-</li>
-<li>블로그 생성일이 한달 이내인 경우</li>
-<li>나머지 글들만</li>
-</ol>
-<p>Document.objects.exclude(blog__in=Blog.objects.filter(title__icontains=‘key’, create__gt=dateime.now()-timedelta(months=1)))</p>
-<h1>추출한 QuerySet의 기본 정렬값</h1>
-<ol>
-<li>모델에서 설정한 값이다</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Model:</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        ordering = [<span class="string">'field name'</span>]</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>
-<p>정렬값이 없다면 PK를 기준으로 한다</p>
-</li>
-<li>
-<p>내가 원하는 정렬값이 있다.</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Document.objects.all().order_by(<span class="string">'title'</span>) <span class="comment"># 오름차순</span></span><br><span class="line">Document.objects.all().order_by(<span class="string">'-title'</span>) <span class="comment"># 내림차순</span></span><br></pre></td></tr></table></figure>
-<h1>삭제</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Document.objects.get(pk=<span class="number">1</span>).delete()</span><br></pre></td></tr></table></figure>
-<p>#갱신</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Document.objects.get(pk=<span class="number">1</span>).update(title=<span class="string">'afasdf'</span>)</span><br><span class="line"><span class="comment"># pk=1인 레코드의 title을 afasdf로 변경</span></span><br></pre></td></tr></table></figure>
-<h1>전체 레코드에 대해서 갱신</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Document.objects.all().update(title=<span class="string">'afasdf'</span>)</span><br><span class="line">Document.objects.filter(title__icontains=<span class="string">'word'</span>).update(title=<span class="string">'afasdf'</span>)</span><br></pre></td></tr></table></figure>
-<hr>
-<h1>소셜로그인</h1>
-<p>기존에는 우리가 구분을 하였으나 소셜로그인을 하면 유저가 맞는지의 구분이 소셜에 대리로 맡긴다.</p>
-<p>allauth로 구현가능</p>
 
                     
                         
@@ -318,7 +248,7 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
                     
                     
                         <p>
-                            <a href="/2019/05/15/2019-05-15-수업(F filter, QuerySet caching)/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/05/18/2019-05-18-소셜로그인구현/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -336,15 +266,15 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/05/10/2019-05-10-수업-signal-amazon(s3, RDS)/" aria-label=": 2019-05-10 TIL(Django signals, Amazon S3, RDS)">
-                            2019-05-10 TIL(Django signals, Amazon S3, RDS)
+                        <a class="link-unstyled" href="/2019/05/17/2019-04-30-Bootstrap/" aria-label=": 2019-05-17 Django에 Bootstrap 적용하기">
+                            2019-05-17 Django에 Bootstrap 적용하기
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-05-10T15:46:50+09:00">
+    <time datetime="2019-05-17T18:32:46+09:00">
 	
-		    2019/05/10
+		    2019/05/17
     	
     </time>
     
@@ -359,81 +289,50 @@ Document.objects.exclude(category__in=Category.objects.filter(name__icontains=�
             </div>
             
                 <div class="postShorten-content">
-                    <p>글 삭제를 할때는 DB를 먼저 지우고 사진을 지운다.</p>
-<ul>
-<li>레코드를 먼저 삭제해도 메모리상에는 정보가 그대로 있으므로 레코드를 지우고 사진을 지운다. 역순으로 하면 레코드가 안지워지는 경우가 있다</li>
-</ul>
-<p>save함수를 오버라이드하여 행동한다</p>
-<ul>
-<li>save를 실행하기 전에 무언가를 하고싶다
-<ul>
-<li>부모 save를 실행하기전에 행동을하고 부모 save를 호출한다</li>
-</ul>
-</li>
-<li>save를 하고나서 무언가를 하고싶다
-<ul>
-<li>부모 save를 실행한 다음 무언가를 실행한다.</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save</span><span class="params">(self, force_insert=False, force_update=False, using=None, update_fields=None)</span>:</span></span><br><span class="line">    <span class="comment"># before</span></span><br><span class="line">    super(Photo, self).save(...)</span><br><span class="line">    <span class="comment"># after</span></span><br></pre></td></tr></table></figure>
-<p>models.Model : ORM 관련 기능을 모두 가지고있다(delete, update, create 등등)</p>
-<h3>signal</h3>
-<p>django에서는 어떠한 일이 일어나면 signal이 발생한다<br>
-다른 프레임워크에서도 존재하는 개념이다(Hook, Signal, Injection)<br>
-기본적인 개념은 override로도 충분히 가능하지만 signal로도 할 수 있다</p>
-<p>siganl이 좀더 효율적인 방법이다</p>
-<p>signal의 종류</p>
-<ul>
-<li>pre_save : 저장 전</li>
-<li>post_save : 저장 후</li>
-<li>pre_delete : 삭제 전</li>
-<li>post_delete : 삭제 후</li>
-</ul>
-<h4>시그널 만드는 법</h4>
-<h4>시그널 받아 처리하는 법</h4>
+                    <h1>bootstrap 적용하기</h1>
 <ol>
+<li>base.html에 bootstrap 설치하기
+<ul>
 <li>
-<p>어떤 시그널이 발생했을 때 반응할 것이냐?</p>
+<p>CDN 스크립트로 설치하기 : 리소스 절감효과, 최신버전을 자동 유지, CDN을 사용하면 접속 속도가 증가</p>
 </li>
 <li>
-<p>그 시널이 발생한걸 어떻게 알아?</p>
+<p>다운로드해서 설치하기 : 커스터마이징 가능, 도메인을 넘나들지 않아도 된다.(특정 위치에서는 더 빠를 수 있다)</p>
 </li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db.models.signals <span class="keyword">import</span> post_delete</span><br><span class="line"><span class="keyword">from</span> django.dispatch <span class="keyword">import</span> receiver <span class="comment"># 시그널이 발생한 것을 받을 수 있다</span></span><br><span class="line"><span class="keyword">import</span> boto3</span><br><span class="line"><span class="keyword">from</span> django.conf <span class="keyword">import</span> settings</span><br><span class="line"></span><br><span class="line"><span class="comment"># @receiver(어떤 시그널이 발생했느냐?, 누가 발생시켰느냐?)</span></span><br><span class="line"><span class="comment"># receiver를 통하여 import한 post_delete의 신호를 받을 수 있다</span></span><br><span class="line"><span class="meta">@receiver(post_delete, sender=Photo)</span></span><br><span class="line">    <span class="comment"># 데코레이터로 붙여놨기 때문에 함수명은 상관이 없다</span></span><br><span class="line">    <span class="comment"># instance : 실제로 삭제되는 1개의 DB 레코드</span></span><br><span class="line">    <span class="comment"># post_delete를 진행한 후의 행동을 지정할 수 있다</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">post_delete</span><span class="params">(sender, instance, **kwargs)</span>:</span></span><br><span class="line">    session = boto3.Session(</span><br><span class="line">        aws_access_key_id = settings.AWS_ACCESS_KEY_ID,</span><br><span class="line">        aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY,</span><br><span class="line">        region_name = settings.AWS_REGION</span><br><span class="line">    )</span><br><span class="line">    s3 = session.resource(<span class="string">'s3'</span>)</span><br><span class="line">    <span class="comment"># instance가 전달 받은 객체</span></span><br><span class="line">    <span class="comment"># s3.Object는 s3에 업로드된 파일 객체를 얻어오는 클래스</span></span><br><span class="line">    <span class="comment"># arg1 = 버킷네임</span></span><br><span class="line">    <span class="comment"># arg2 = 파일 경로 - Key</span></span><br><span class="line">    </span><br><span class="line">    image = s3.Object(settings.AWS_STORAGE_BUCKET_NAME, <span class="string">"media/"</span> + str(instance.image))</span><br><span class="line">    image.delete()</span><br></pre></td></tr></table></figure>
-<p>S3에서는 파일경로가 폴더가 아니라 Key의 형태로 저장이되므로 실제 존재하지 않는다?<br>
-원격지에서는 네트워크주소로 접근하기때문에 절대경로가 유효하지 않다</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@receiver(post_delete, sender=Photo)</span></span><br><span class="line">    <span class="comment"># 데코레이터로 붙여놨기 때문에 함수명은 상관이 없다</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">post_delete</span><span class="params">(sender, instance, **kwargs)</span>:</span></span><br><span class="line">    storage = instance.image.storage</span><br><span class="line">    <span class="keyword">if</span> storage.exists(<span class="string">'media/'</span> + str(instance.image)):</span><br><span class="line">        storage.delete(str(instance.image))</span><br></pre></td></tr></table></figure>
-<hr>
-<p>“”&quot;<br>
-board 프로젝트<br>
-게시판</p>
-<ol>
-<li>장고 프로젝트 생성</li>
-<li>db는 AWS RDS - postgreSQL로 세팅 -&gt; 10.x 버전
+<li>
+<p><strong>jQuery Slim 버전은 ajax 기능이 빠져있다.</strong></p>
 <ul>
-<li>VPC보안 그룹만들기</li>
+<li>min 버전 : 용량을 최소화한 버전 -&gt; 띄어쓰기 생략, 엔터 생략</li>
+<li>beautify : min 버전은 소스코드를 알아보기 힘들기 때문에 beautify해서 다시 보기 좋게 만든다.</li>
 </ul>
 </li>
-<li>S3 까지 세팅 - URL있는 형태로
+<li>
+<p>모든 static 리소스들은 캐시가 걸린다. -&gt; 수정사항 바로 반영되지 않음</p>
+<ol>
+<li>웹 서버에서 캐시타임 조절 -&gt; 자주 수정되는 경우 캐시 타임을 확 줄인다.(보통 1~2일 유지)</li>
+<li>이미 받은것은 만료가 될때까지 갱신이 안됨 -&gt; static 리소스의 파일명을 변경한다.(가장 쉬운 방법이지만 장고의 소스코드를 바꿔야하므로 귀찮은 방법)</li>
+<li>static 리소스 뒤에 Query String을 붙인다. -&gt; 아예 캐싱이 안되도록 한다.(뒤에 Query string을 붙이면 다른 파일이라고 인식하여 다운받음)</li>
+</ol>
+</li>
+<li>
+<p>HTML 파일에 적용하기<br>
+<img src="/image/Boot.png" alt></p>
 <ul>
-<li>정적 웹사이트 호스팅 옵션을 켜야한다</li>
+<li>CSS 파일은 헤더 바로밑에</li>
+<li>JS파일은 /body태그 바로위에 위치시킨다 - jQuery, popper, bootstrap 순으로 위치시킨다</li>
 </ul>
 </li>
-<li>앱 board</li>
-<li>모델 Document - author, category, title, slug, text, image, created, updated</li>
-<li>모델 Category - slug, name</li>
-</ol>
-<p>“”&quot;</p>
-<hr>
-<p>AWS 서비스의 종류</p>
-<ol>
-<li>EC2 : 리눅스 서버</li>
-<li>RDS - DB</li>
-<li>S3 - file</li>
-<li>IAM - API Key</li>
+</ul>
+</li>
 </ol>
 <hr>
+<p>기존에는 user-agent로 모바일, 데스크탑, 태블릿으로 구분을 했으나 현재에는 반응형 웹을통해 화면의 너비를 통해 기종 구분없이 화면이 달라진다</p>
+<hr>
+<p>Grid system : Bootstrap에서 지원하는 내장 반응형웹</p>
+<ul>
+<li>col-로 쪼갠 나머지를 다른 애들이 먹는다</li>
+<li>여백을 col로 지정만 해주고 내용 부분만 조절하면 된다.</li>
+</ul>
 
                     
                         
@@ -442,7 +341,7 @@ board 프로젝트<br>
                     
                     
                         <p>
-                            <a href="/2019/05/10/2019-05-10-수업-signal-amazon(s3, RDS)/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/05/17/2019-04-30-Bootstrap/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -460,15 +359,15 @@ board 프로젝트<br>
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/05/09/2019-05-03-Django-Heroku배포하기/" aria-label=": 2019-05-09 heroku에 장고 배포하기">
-                            2019-05-09 heroku에 장고 배포하기
+                        <a class="link-unstyled" href="/2019/05/16/2019-05-13-수업(Filter, Q Filter)/" aria-label=": 2019-05-16 Django filter, pagination">
+                            2019-05-16 Django filter, pagination
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-05-09T18:32:50+09:00">
+    <time datetime="2019-05-16T18:32:46+09:00">
 	
-		    2019/05/09
+		    2019/05/16
     	
     </time>
     
@@ -483,52 +382,59 @@ board 프로젝트<br>
             </div>
             
                 <div class="postShorten-content">
-                    <h1>Heroku에 장고 배포하기</h1>
-<h3>1. 모듈을 설치해야 한다.</h3>
+                    <p>pagination</p>
 <ol>
-<li>
-<p>dj-database-url : 데이터베이스 관련 옵션을 변수로 쉽게 접근할 수 있게 해주는 유틸리티</p>
+<li>총 페이지 수</li>
+<li>Page당 게시글의 갯수</li>
+</ol>
+<p>검색기능 구현하기</p>
+<ul>
+<li>DB 질의문 like
+<ul>
+<li>항상 DB에서 가져오는것이 정답은 아니다(병목현상)</li>
+<li>여러개를 통합해서 한번에 물어보느냐 아니면 짧게 여러번 물어보느냐가 중요하다</li>
+</ul>
 </li>
-<li>
-<p>gunicorn : wsgi용 미들웨어 : 웹서버와 장고 사이에서 다리역할을 한다</p>
+<li>코드레벨 검색</li>
+</ul>
+<ol>
+<li>검색어
+<ol>
+<li>검색어를 제대로 받았냐</li>
+<li>filter 메소드
+<ul>
+<li>어떤 항목(제목에서, 글 내용에서, 작성자에서)</li>
+<li>어떤 옵션(대소문자 구분, Hello로 시작하냐 끝나냐 등등)</li>
+<li>filter(field 이름) : 매칭
+<ul>
+<li>Document.objects.filter(pk=25, title=?)을 하면 and로 한다 Ex) pk=25이고 title이 ?인것</li>
+</ul>
 </li>
-<li>
-<p>whitenoise : static 파일 서빙용 미들웨어</p>
+<li>filter(field 이름__옵션) : 옵션으로매칭
+<ul>
+<li>Document.objects.filter(title__startwith=“4”) : title이 4로 시작하는 것</li>
+<li>i를 붙여주면 ignorecase가 된다</li>
+<li>filter(title__icontains=“4”) : 중간에 4가 들어있느냐</li>
+<li>Forignkey Field는 fileter(category__name=‘4’)로 한다</li>
+<li>filter(category__name__endswith=‘4’) : 카테고리의 이름이 4로 끝나느냐</li>
+</ul>
 </li>
-<li>
-<p>psycopg2-binary : postgreSQL용 드라이버</p>
+</ul>
 </li>
 </ol>
-<h3>2. <code>pip freeze &gt; requirements.txt</code> 명령을 통해 현재 자신한테 설치되어 있는 모듈의 목록을 만든다</h3>
-<h3>3. settings.py에서 세팅을 한다</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 맨 밑에 추가</span></span><br><span class="line">STATIC_ROOT = os.path.join(BASE_DIR, <span class="string">'staticfiles'</span>)</span><br><span class="line"></span><br><span class="line">DEBUG = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">ALLOWED_HOSTS = [<span class="string">'*'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># MIDDLEWARE 2번째 줄에 추가</span></span><br><span class="line"> <span class="string">'whitenoise.middleware.WhiteNoiseMiddleware'</span>,</span><br></pre></td></tr></table></figure>
-<h3>4. git 설정</h3>
+</li>
+</ol>
+<p>일반 필드는 AND연산 밖에 안되기때문에 OR연산을 하기위해서는 Q객체를 써야한다</p>
+<p>from django.db.models import Q<br>
+Q(title__incontains=‘1’)</p>
 <ul>
-<li><code>heroku login</code> : 헤로쿠 계정으로 로그인한다</li>
-<li><code>git init</code> : 현재 폴더로 깃을 사용하겠다</li>
-<li><code>git add -A .</code> : 현재 변경 사항 전부를 add하겠다</li>
-<li><code>git commit -m &quot;message&quot;</code> : add한 내용을 commit을 하겠다</li>
+<li>default_q = Q(title__icontains=‘1’)</li>
+<li>second_q = Q(title__icontains=‘1’)</li>
+<li>default_q | second_q</li>
+<li>섞어서 쓰려면 q객체를 다 쓴다음에 일반 필드를 적어주면 된다</li>
 </ul>
-<h3>5. heroku app 만들기</h3>
-<ul>
-<li><code>heroku create [app_name]</code> : app_name에서 특수문자는 <strong>-</strong> 만 사용가능하다</li>
-</ul>
-<h3>6. 업로드</h3>
-<ul>
-<li><code>git push heroku master</code></li>
-</ul>
-<h3>7. db 초기화</h3>
-<ul>
-<li><code>heroku run python manage.py migrate</code></li>
-</ul>
-<h3>8. 관리자 비밀번호 만들기</h3>
-<ul>
-<li><code>heroku run python manage.py createsuperuser</code></li>
-</ul>
-<h3>9. 확인하기</h3>
-<ul>
-<li><code>heroku open</code></li>
-</ul>
+<p>나중에는 일래스틱서치를 붙여서 쓴다(<strong>한번 써볼것</strong>)<br>
+세부 옵션을 통해 symentic Web을 구현가능하다</p>
 
                     
                         
@@ -537,7 +443,7 @@ board 프로젝트<br>
                     
                     
                         <p>
-                            <a href="/2019/05/09/2019-05-03-Django-Heroku배포하기/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/05/16/2019-05-13-수업(Filter, Q Filter)/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -566,7 +472,7 @@ board 프로젝트<br>
             </a>
           </li>
         
-        <li class="pagination-number">page 21 of 33</li>
+        <li class="pagination-number">page 21 of 34</li>
     </ul>
 </div>
 
@@ -694,7 +600,7 @@ board 프로젝트<br>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                99 개의 포스트가 있습니다.
+                102 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
