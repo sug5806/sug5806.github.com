@@ -8,8 +8,16 @@
     </url>
 
     <url>
-        <loc>http://blog.sug5806.site/2019/09/15/2019-09-15%20Go%20%EA%B8%B0%EC%B4%884-function/</loc>
-        <lastmod>2019-09-19T09:42:59.616Z</lastmod>
+        <loc>http://blog.sug5806.site/2019/09/16/2019-09-18%20%ED%95%A8%EC%88%98%EC%99%80%20%EB%A9%94%EC%86%8C%EB%93%9C%EC%9D%98%20%EC%B0%A8%EC%9D%B4%EC%A0%90/</loc>
+        <lastmod>2019-09-22T02:20:28.706Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://blog.sug5806.site/2019/09/16/2019-09-16%20Go%20%EA%B8%B0%EC%B4%884-function/</loc>
+        <lastmod>2019-09-22T02:11:44.967Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

@@ -186,6 +186,104 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/05/27/2019-5-27-도커/" aria-label=": 2019-05-27 장고 Docker">
+                            2019-05-27 장고 Docker
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-05-27T18:32:46+09:00">
+	
+		    2019/05/27
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>로컬 시스템에 개발 환경 구축</p>
+<ol>
+<li>파이참</li>
+<li>파이썬 개발환경</li>
+<li>프로젝트에 필요한 모듈 설치</li>
+</ol>
+<p>배포</p>
+<ol>
+<li>Pythonanywhere - Paas</li>
+<li>Heroku</li>
+<li>클라우드 시스템 - 모든 환경 설정, EB</li>
+<li>Hosting - 서버의 일정 공간을 대여받아 사용</li>
+<li>사내 서버 구축 (NAS, 라즈베리 파이, 구형 스마트폰)</li>
+</ol>
+<hr>
+<p>Elastic Beanstalk</p>
+<p>개발 환경과 배포 환경 상이하다</p>
+<p>컨테이터 서비스 도커 : 가상환경 구축(운영체제 환경까지 어느 정도 지원)<br>
+모토 : 개발환경을 그대로 배포환경까지 이어가겠다.</p>
+<ol>
+<li>LCX 시스템 - 도커는 리눅스에서만 동작한다.</li>
+<li>runC - 리눅스, 맥, 윈도우 모두 가능</li>
+</ol>
+<p>도커 시스템은 무조건 리눅스이다</p>
+<p>장점 : 개발환경을 그대로 감싸서 배포까지 한번에<br>
+단점 : 배포 환경 그대로 개발 환경에서 사용해야 한다.</p>
+<p>도커 이미지를 만드는 절차</p>
+<ol>
+<li>기본 베이스 이미지를 선택한다. - 도커 허브(각종 배포용 이미지가 있다) 기본 리눅스 이미즐 선택</li>
+<li>컨테이너 구동(개발용, 배포용)<br>
+2-1) 개발 환경 셋팅 - Docker file 이라는 곳에 명령행을 기록<br>
+2-2) 변경사항이 남아있는 이미지를 생성</li>
+<li>이미지를 리포지터리에 업로드</li>
+<li>배포<br>
+4-1) 도커 - 리눅스시스템, 서버 시스템에서 도커이미지를 받아서 여러개의 컨테이너를 구동<br>
+4-2) 엘라스틱 빈즈토크 - 도커용 시스템</li>
+</ol>
+<hr>
+<ol>
+<li>개발+배포용 도커이미지 만들고</li>
+<li>해당 이미지를 사용해서 장고 어플리케이션 구동</li>
+<li>개인 리포지터리에 업로드</li>
+</ol>
+<hr>
+<p>코드를 업데이트 하는 방법</p>
+<ol>
+<li>Dockerfile에 ADD 명령을 통해 넣기</li>
+<li>container를 마운팅해서 넣는 방법 : -v 내 프로젝트 경로 : container의 마운팅시킬 디렉토리의 경로</li>
+</ol>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/05/27/2019-5-27-도커/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/05/25/2019-05-25-커스텀템플릿태그/" aria-label=": 2019-05-25 장고 커스텀 템플릿 태그">
                             2019-05-25 장고 커스텀 템플릿 태그
                         </a>
@@ -350,81 +448,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/05/22/2019-05-22-장고 템플릿문법2/" aria-label=": 2019-05-22 장고 템플릿 문법 2">
-                            2019-05-22 장고 템플릿 문법 2
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-05-22T19:23:50+09:00">
-	
-		    2019/05/22
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/Django/">Django</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>장고 템플릿 문법 2</h1>
-<p>장고에서 화면을 렌더링 하기 위해서는 템플릿 엔진을 사용한다. 템플릿 엔진은 각자 자기만의 템플릿 문법을 제공하는데 여러가지 기본 문법과 태그 필터를 살펴본다</p>
-<ol start="3">
-<li>판별문<br>
-값이 존재하는지 확인하기 위해서 if문을 사용한다 파이썬의 if문과 마찬가지로 비교연산자를 사용할 수 있고, and, or, not is, in을 사용할 수 있다. 그러나 and, or 사용시 괄호를 사용할수 없고 괄호가 필요한 경우 중첩비교구문을 만들어야 한다.</li>
-</ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if 변수 %&#125;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>판별문 2<br>
-값을 비교하기 위해서 ifequal과 ifnotequal을 사용한다</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;% ifequal 변수 값 %&#125;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">&#123;% endifequal %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% ifnotequal 변수 값 %&#125;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">&#123;% endifnotequal %&#125;</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>반복문<br>
-본수 객체가 들어가는 변수를 반복하여 출력하고 싶을 때는 for문을 사용한다.</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> object <span class="keyword">in</span> object_list % &#125;</span><br><span class="line">  &#123;&#123; object &#125;&#125;</span><br><span class="line">  &#123;% cycle <span class="string">'1'</span> <span class="string">'0'</span> %&#125;</span><br><span class="line">&#123;% empty %&#125;</span><br><span class="line">  반복할 객체가 비어있다면 출력될 영역</span><br><span class="line"></span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
-<p>반복문에는 특별한 추가기능이 있다. 리스트를 출력할때 아래 기능을 활용하면 편리하다</p>
-<p>|||   	|   	|   	|<br>
-|—	|—	|—	|—	|—	|<br>
-|  forloop.counter 	|  1부터 시작되는 반복횟수<br>
-|  forloop.counter() 	| 0부터 시작되는 반복 횟수<br>
-| forloop.revcounter	| 반복횟수 역순<br>
-| forloop.revcounter() | 반복횟수 역순 0부터 시작<br>
-| forloop.first | 첫번째 반복회차인지 여부<br>
-| forloop.last | 마지막 반복회차인지 여부</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/05/22/2019-05-22-장고 템플릿문법2/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -443,7 +466,7 @@
             </a>
           </li>
         
-        <li class="pagination-number">page 19 of 34</li>
+        <li class="pagination-number">page 19 of 35</li>
     </ul>
 </div>
 
@@ -571,7 +594,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                102 개의 포스트가 있습니다.
+                103 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

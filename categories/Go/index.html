@@ -186,6 +186,70 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/09/16/2019-09-16 Go 기초4-function/" aria-label=": 2019-09-16 Go 기초4(function)">
+                            2019-09-16 Go 기초4(function)
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-09-16T19:04:46+09:00">
+	
+		    2019/09/16
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Go/">Go</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>개인적으로 공부한 내용을 정리하였습니다.</p>
+<h1>Go 기초4</h1>
+<h2>Function</h2>
+<p>function의 문법</p>
+<ul>
+<li>func (receiver) identifier(parameters) (returns) {code}</li>
+</ul>
+<p>argument와 parameter의 차이점</p>
+<p>argument는 함수를 호출할때 넘겨주는 변수의 실제값입니다.</p>
+<p>parameter는 함수를 선언할때 전달 받은 인수를 받기위한 변수입니다.</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	foo()</span><br><span class="line">	bar(<span class="string">"Hong"</span>)</span><br><span class="line">	s1 := woo(<span class="string">"Dong"</span>)</span><br><span class="line">	fmt.Println(s1)</span><br><span class="line">	x, y := mouse(<span class="string">"Ian"</span>, <span class="string">"Fleming"</span>)</span><br><span class="line">	fmt.Println(x)</span><br><span class="line">	fmt.Println(y)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">foo</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"hello from foo"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">bar</span><span class="params">(s <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"Hello,"</span>, s)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">woo</span><span class="params">(st <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> fmt.Sprint(<span class="string">"Hello from woo, "</span>, st)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mouse</span><span class="params">(fn <span class="keyword">string</span>, ln <span class="keyword">string</span>)</span> <span class="params">(<span class="keyword">string</span>, <span class="keyword">bool</span>)</span></span> &#123;</span><br><span class="line">	a := fmt.Sprint(fn, ln, <span class="string">`, says "Hello"`</span>)</span><br><span class="line">	b := <span class="literal">false</span></span><br><span class="line">	<span class="keyword">return</span> a, b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3>변수에 func 할당하기</h3>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"Hello, playground"</span>)</span><br><span class="line"></span><br><span class="line">	f := <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"my first func expression"</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	f()</span><br><span class="line"></span><br><span class="line">	g := <span class="function"><span class="keyword">func</span><span class="params">(x <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"the year big brother started watching:"</span>, x)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	g(<span class="number">1984</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3>callback</h3>
+<p>golang에서는 함수를 인자로 전달하는 것을 callback이라 합니다.</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	ii := []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>,&#125;</span><br><span class="line">	s := sum(ii...)</span><br><span class="line">	fmt.Println(<span class="string">"all sum:"</span>, s)</span><br><span class="line"></span><br><span class="line">	e := even(sum, ii...)</span><br><span class="line">	fmt.Println(<span class="string">"even sum:"</span>, e)</span><br><span class="line"></span><br><span class="line">	o := odd(sum, ii...)</span><br><span class="line">	fmt.Println(<span class="string">"odd sum:"</span>, o)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sum</span><span class="params">(xi ...<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	fmt.Printf(<span class="string">"%T\n"</span>, xi)</span><br><span class="line">	total := <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> xi &#123;</span><br><span class="line">		total += v</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> total</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 리턴 value가 int인 함수와 길이제한 없는 슬라이스를 파라미터로 받고 리턴은 int로 한다.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">even</span><span class="params">(f <span class="keyword">func</span>(xi ...<span class="keyword">int</span>)</span> <span class="title">int</span>, <span class="title">vi</span> ...<span class="title">int</span>) <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> yi []<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> vi &#123;</span><br><span class="line">		<span class="keyword">if</span> v%<span class="number">2</span> == <span class="number">0</span> &#123;</span><br><span class="line">			yi = <span class="built_in">append</span>(yi, v)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 파라미터로 받은 함수 f를 yi인자를 넘겨주고 호출한다.</span></span><br><span class="line">	<span class="comment">// 호출하고 리턴받은 value를 리턴한다.  </span></span><br><span class="line">	<span class="keyword">return</span> f(yi...)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">odd</span><span class="params">(f <span class="keyword">func</span>(xi ...<span class="keyword">int</span>)</span> <span class="title">int</span>, <span class="title">vi</span> ...<span class="title">int</span>) <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> xi []<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> vi &#123;</span><br><span class="line">		<span class="keyword">if</span> v%<span class="number">2</span> == <span class="number">1</span> &#123;</span><br><span class="line">			xi = <span class="built_in">append</span>(xi, v)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> f(xi...)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/09/16/2019-09-16 Go 기초4-function/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/09/15/2019-09-15 Go 기초2-loop/" aria-label=": 2019-09-15 Go 기초2(for)">
                             2019-09-15 Go 기초2(for)
                         </a>
@@ -229,70 +293,6 @@
                     
                         <p>
                             <a href="/2019/09/15/2019-09-15 Go 기초2-loop/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/09/15/2019-09-15 Go 기초4-function/" aria-label=": 2019-09-16 Go 기초4(function)">
-                            2019-09-16 Go 기초4(function)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-09-15T19:04:46+09:00">
-	
-		    2019/09/15
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/Go/">Go</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 내용을 정리하였습니다.</p>
-<h1>Go 기초4</h1>
-<h2>Function</h2>
-<p>function의 문법</p>
-<ul>
-<li>func (receiver) identifier(parameters) (returns) {code}</li>
-</ul>
-<p>argument와 parameter의 차이점</p>
-<p>argument는 함수를 호출할때 넘겨주는 변수의 실제값입니다.</p>
-<p>parameter는 함수를 선언할때 전달 받은 인수를 받기위한 변수입니다.</p>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	foo()</span><br><span class="line">	bar(<span class="string">"Hong"</span>)</span><br><span class="line">	s1 := woo(<span class="string">"Dong"</span>)</span><br><span class="line">	fmt.Println(s1)</span><br><span class="line">	x, y := mouse(<span class="string">"Ian"</span>, <span class="string">"Fleming"</span>)</span><br><span class="line">	fmt.Println(x)</span><br><span class="line">	fmt.Println(y)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">foo</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"hello from foo"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">bar</span><span class="params">(s <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"Hello,"</span>, s)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">woo</span><span class="params">(st <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> fmt.Sprint(<span class="string">"Hello from woo, "</span>, st)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mouse</span><span class="params">(fn <span class="keyword">string</span>, ln <span class="keyword">string</span>)</span> <span class="params">(<span class="keyword">string</span>, <span class="keyword">bool</span>)</span></span> &#123;</span><br><span class="line">	a := fmt.Sprint(fn, ln, <span class="string">`, says "Hello"`</span>)</span><br><span class="line">	b := <span class="literal">false</span></span><br><span class="line">	<span class="keyword">return</span> a, b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3>변수에 func 할당하기</h3>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">"Hello, playground"</span>)</span><br><span class="line"></span><br><span class="line">	f := <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"my first func expression"</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	f()</span><br><span class="line"></span><br><span class="line">	g := <span class="function"><span class="keyword">func</span><span class="params">(x <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"the year big brother started watching:"</span>, x)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	g(<span class="number">1984</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3>callback</h3>
-<p>golang에서는 함수를 인자로 전달하는 것을 callback이라 합니다.</p>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	ii := []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>,&#125;</span><br><span class="line">	s := sum(ii...)</span><br><span class="line">	fmt.Println(<span class="string">"all sum:"</span>, s)</span><br><span class="line"></span><br><span class="line">	e := even(sum, ii...)</span><br><span class="line">	fmt.Println(<span class="string">"even sum:"</span>, e)</span><br><span class="line"></span><br><span class="line">	o := odd(sum, ii...)</span><br><span class="line">	fmt.Println(<span class="string">"odd sum:"</span>, o)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sum</span><span class="params">(xi ...<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	fmt.Printf(<span class="string">"%T\n"</span>, xi)</span><br><span class="line">	total := <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> xi &#123;</span><br><span class="line">		total += v</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> total</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 리턴 value가 int인 함수와 길이제한 없는 슬라이스를 파라미터로 받고 리턴은 int로 한다.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">even</span><span class="params">(f <span class="keyword">func</span>(xi ...<span class="keyword">int</span>)</span> <span class="title">int</span>, <span class="title">vi</span> ...<span class="title">int</span>) <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> yi []<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> vi &#123;</span><br><span class="line">		<span class="keyword">if</span> v%<span class="number">2</span> == <span class="number">0</span> &#123;</span><br><span class="line">			yi = <span class="built_in">append</span>(yi, v)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 파라미터로 받은 함수 f를 yi인자를 넘겨주고 호출한다.</span></span><br><span class="line">	<span class="comment">// 호출하고 리턴받은 value를 리턴한다.  </span></span><br><span class="line">	<span class="keyword">return</span> f(yi...)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">odd</span><span class="params">(f <span class="keyword">func</span>(xi ...<span class="keyword">int</span>)</span> <span class="title">int</span>, <span class="title">vi</span> ...<span class="title">int</span>) <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> xi []<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> vi &#123;</span><br><span class="line">		<span class="keyword">if</span> v%<span class="number">2</span> == <span class="number">1</span> &#123;</span><br><span class="line">			xi = <span class="built_in">append</span>(xi, v)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> f(xi...)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/09/15/2019-09-15 Go 기초4-function/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -506,7 +506,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                102 개의 포스트가 있습니다.
+                103 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

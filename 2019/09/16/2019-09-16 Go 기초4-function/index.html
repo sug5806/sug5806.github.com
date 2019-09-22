@@ -11,16 +11,16 @@
     
     
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 내용을 정리하였습니다.\nGo 기초4\nFunction\nfunction의 문법\n\nfunc (receiver) identifier(parameters) (returns) {code}\n\nargument와 parameter의 차이점\nargument는 함수를 호출할때 넘겨주는 변수의 실제값입니다.\nparameter는 함수를 선언할때 전달 받은 인수를 받기위한 변수입니다.\n1234567891011121314151617181920212223242526272829303132package mainimport \"fmt\"func main() &#123;\tfoo()\tbar(\"Hong\")\ts1 := woo(\"Dong\")\tfmt.Println(s1)\tx, y := mouse(\"Ian\", \"Fleming\")\tfmt.Println(x)\tfmt.Println(y)&#125;func foo() &#123;\tfmt.Println(\"hello from foo\")&#125;func bar(s string) &#123;\tfmt.Println(\"Hello,\", s)&#125;func woo(st string) string &#123;\treturn fmt.Sprint(\"Hello from woo, \", st)&#125;func mouse(fn string, ln string) (string, bool) &#123;\ta := fmt.Sprint(fn, ln, `, says \"Hello\"`)\tb := false\treturn a, b&#125;\n변수에 func 할당하기\n123456789101112131415161718192021package mainimport (\t\"fmt\")func main() &#123;\tfmt.Println(\"Hello, playground\")\tf := func() &#123;\t\tfmt.Println(\"my first func expression\")\t&#125;\tf()\tg := func(x int) &#123;\t\tfmt.Println(\"the year big brother started watching:\", x)\t&#125;\tg(1984)&#125;\ncallback\ngolang에서는 함수를 인자로 전달하는 것을 callback이라 합니다.\n1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950package mainimport (\t\"fmt\")func main() &#123;\tii := []int&#123;1, 2, 3, 4, 5, 6, 7, 8, 9,&#125;\ts := sum(ii...)\tfmt.Println(\"all sum:\", s)\te := even(sum, ii...)\tfmt.Println(\"even sum:\", e)\to := odd(sum, ii...)\tfmt.Println(\"odd sum:\", o)&#125;func sum(xi ...int) int &#123;\tfmt.Printf(\"%T\\n\", xi)\ttotal := 0\tfor _, v := range xi &#123;\t\ttotal += v\t&#125;\treturn total&#125;// 리턴 value가 int인 함수와 길이제한 없는 슬라이스를 파라미터로 받고 리턴은 int로 한다.func even(f func(xi ...int) int, vi ...int) int &#123;\tvar yi []int\tfor _, v := range vi &#123;\t\tif v%2 == 0 &#123;\t\t\tyi = append(yi, v)\t\t&#125;\t&#125;\t// 파라미터로 받은 함수 f를 yi인자를 넘겨주고 호출한다.\t// 호출하고 리턴받은 value를 리턴한다.  \treturn f(yi...)&#125;func odd(f func(xi ...int) int, vi ...int) int &#123;\tvar xi []int\tfor _, v := range vi &#123;\t\tif v%2 == 1 &#123;\t\t\txi = append(xi, v)\t\t&#125;\t&#125;\treturn f(xi...)&#125;","dateCreated":"2019-09-15T19:04:46+09:00","dateModified":"2019-09-19T18:42:59+09:00","datePublished":"2019-09-15T19:04:46+09:00","description":"","headline":"2019-09-16 Go 기초4(function)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/09/15/2019-09-15 Go 기초4-function/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/09/15/2019-09-15 Go 기초4-function/","keywords":"Go"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"},"articleBody":"개인적으로 공부한 내용을 정리하였습니다.\nGo 기초4\nFunction\nfunction의 문법\n\nfunc (receiver) identifier(parameters) (returns) {code}\n\nargument와 parameter의 차이점\nargument는 함수를 호출할때 넘겨주는 변수의 실제값입니다.\nparameter는 함수를 선언할때 전달 받은 인수를 받기위한 변수입니다.\n1234567891011121314151617181920212223242526272829303132package mainimport \"fmt\"func main() &#123;\tfoo()\tbar(\"Hong\")\ts1 := woo(\"Dong\")\tfmt.Println(s1)\tx, y := mouse(\"Ian\", \"Fleming\")\tfmt.Println(x)\tfmt.Println(y)&#125;func foo() &#123;\tfmt.Println(\"hello from foo\")&#125;func bar(s string) &#123;\tfmt.Println(\"Hello,\", s)&#125;func woo(st string) string &#123;\treturn fmt.Sprint(\"Hello from woo, \", st)&#125;func mouse(fn string, ln string) (string, bool) &#123;\ta := fmt.Sprint(fn, ln, `, says \"Hello\"`)\tb := false\treturn a, b&#125;\n변수에 func 할당하기\n123456789101112131415161718192021package mainimport (\t\"fmt\")func main() &#123;\tfmt.Println(\"Hello, playground\")\tf := func() &#123;\t\tfmt.Println(\"my first func expression\")\t&#125;\tf()\tg := func(x int) &#123;\t\tfmt.Println(\"the year big brother started watching:\", x)\t&#125;\tg(1984)&#125;\ncallback\ngolang에서는 함수를 인자로 전달하는 것을 callback이라 합니다.\n1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950package mainimport (\t\"fmt\")func main() &#123;\tii := []int&#123;1, 2, 3, 4, 5, 6, 7, 8, 9,&#125;\ts := sum(ii...)\tfmt.Println(\"all sum:\", s)\te := even(sum, ii...)\tfmt.Println(\"even sum:\", e)\to := odd(sum, ii...)\tfmt.Println(\"odd sum:\", o)&#125;func sum(xi ...int) int &#123;\tfmt.Printf(\"%T\\n\", xi)\ttotal := 0\tfor _, v := range xi &#123;\t\ttotal += v\t&#125;\treturn total&#125;// 리턴 value가 int인 함수와 길이제한 없는 슬라이스를 파라미터로 받고 리턴은 int로 한다.func even(f func(xi ...int) int, vi ...int) int &#123;\tvar yi []int\tfor _, v := range vi &#123;\t\tif v%2 == 0 &#123;\t\t\tyi = append(yi, v)\t\t&#125;\t&#125;\t// 파라미터로 받은 함수 f를 yi인자를 넘겨주고 호출한다.\t// 호출하고 리턴받은 value를 리턴한다.  \treturn f(yi...)&#125;func odd(f func(xi ...int) int, vi ...int) int &#123;\tvar xi []int\tfor _, v := range vi &#123;\t\tif v%2 == 1 &#123;\t\t\txi = append(xi, v)\t\t&#125;\t&#125;\treturn f(xi...)&#125;","dateCreated":"2019-09-16T19:04:46+09:00","dateModified":"2019-09-22T11:11:44+09:00","datePublished":"2019-09-16T19:04:46+09:00","description":"","headline":"2019-09-16 Go 기초4(function)","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://blog.sug5806.site/2019/09/16/2019-09-16 Go 기초4-function/"},"publisher":{"@type":"Organization","name":"sug5806","sameAs":["https://github.com/sug5806","http://portfolio.sug5806.site/","mailto"],"image":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/14e522fbacce4700b50086d6664a25a0"}},"url":"http://blog.sug5806.site/2019/09/16/2019-09-16 Go 기초4-function/","keywords":"Go"}</script>
     <meta name="description" content="개인적으로 공부한 내용을 정리하였습니다. Go 기초4 Function function의 문법  func (receiver) identifier(parameters) (returns) {code}  argument와 parameter의 차이점 argument는 함수를 호출할때 넘겨주는 변수의 실제값입니다. parameter는 함수를 선언할때 전달 받은 인수를">
 <meta name="keywords" content="Go">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="2019-09-16 Go 기초4(function)">
-<meta property="og:url" content="http://blog.sug5806.site/2019/09/15/2019-09-15 Go 기초4-function/index.html">
+<meta property="og:url" content="http://blog.sug5806.site/2019/09/16/2019-09-16 Go 기초4-function/index.html">
 <meta property="og:site_name" content="sug5806의 블로그">
 <meta property="og:description" content="개인적으로 공부한 내용을 정리하였습니다. Go 기초4 Function function의 문법  func (receiver) identifier(parameters) (returns) {code}  argument와 parameter의 차이점 argument는 함수를 호출할때 넘겨주는 변수의 실제값입니다. parameter는 함수를 선언할때 전달 받은 인수를">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2019-09-19T09:42:59.616Z">
+<meta property="og:updated_time" content="2019-09-22T02:11:44.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019-09-16 Go 기초4(function)">
 <meta name="twitter:description" content="개인적으로 공부한 내용을 정리하였습니다. Go 기초4 Function function의 문법  func (receiver) identifier(parameters) (returns) {code}  argument와 parameter의 차이점 argument는 함수를 호출할때 넘겨주는 변수의 실제값입니다. parameter는 함수를 선언할때 전달 받은 인수를">
@@ -192,9 +192,9 @@
     
     
         <div class="post-meta">
-    <time datetime="2019-09-15T19:04:46+09:00">
+    <time datetime="2019-09-16T19:04:46+09:00">
 	
-		    2019/09/15
+		    2019/09/16
     	
     </time>
     
@@ -249,7 +249,7 @@
             <li class="post-action">
                 
                     
-                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/15/2019-09-15 Go 기초3-map,struct/" data-tooltip="2019-09-15 Go 기초3(map,struct)" aria-label="이전: 2019-09-15 Go 기초3(map,struct)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/16/2019-09-18 함수와 메소드의 차이점/" data-tooltip="2019-09-18 함수와 메소드의 차이점" aria-label="이전: 2019-09-18 함수와 메소드의 차이점">
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">이전</span>
@@ -276,7 +276,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/15/2019-09-15 Go 기초4-function/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/16/2019-09-16 Go 기초4-function/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -284,7 +284,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/15/2019-09-15 Go 기초4-function/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/16/2019-09-16 Go 기초4-function/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -292,7 +292,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/15/2019-09-15 Go 기초4-function/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/16/2019-09-16 Go 기초4-function/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -345,7 +345,7 @@
             <li class="post-action">
                 
                     
-                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/15/2019-09-15 Go 기초3-map,struct/" data-tooltip="2019-09-15 Go 기초3(map,struct)" aria-label="이전: 2019-09-15 Go 기초3(map,struct)">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/2019/09/16/2019-09-18 함수와 메소드의 차이점/" data-tooltip="2019-09-18 함수와 메소드의 차이점" aria-label="이전: 2019-09-18 함수와 메소드의 차이점">
                     
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                         <span class="hide-xs hide-sm text-small icon-ml">이전</span>
@@ -372,7 +372,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/15/2019-09-15 Go 기초4-function/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/16/2019-09-16 Go 기초4-function/" title="Facebook에 공유하기" aria-label="Facebook에 공유하기">
                     <i class="fab fa-facebook" aria-hidden="true"></i>
                 </a>
             </li>
@@ -380,7 +380,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/15/2019-09-15 Go 기초4-function/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/16/2019-09-16 Go 기초4-function/" title="Twitter에 공유하기" aria-label="Twitter에 공유하기">
                     <i class="fab fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -388,7 +388,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/15/2019-09-15 Go 기초4-function/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/16/2019-09-16 Go 기초4-function/" title="Google+에 공유하기" aria-label="Google+에 공유하기">
                     <i class="fab fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -422,7 +422,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/15/2019-09-15 Go 기초4-function/" aria-label="Facebook에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.sug5806.site/2019/09/16/2019-09-16 Go 기초4-function/" aria-label="Facebook에 공유하기">
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook에 공유하기</span>
                     </a>
                 </li>
@@ -430,7 +430,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/15/2019-09-15 Go 기초4-function/" aria-label="Twitter에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.sug5806.site/2019/09/16/2019-09-16 Go 기초4-function/" aria-label="Twitter에 공유하기">
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter에 공유하기</span>
                     </a>
                 </li>
@@ -438,7 +438,7 @@
                 
                 
                 <li class="share-option">
-                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/15/2019-09-15 Go 기초4-function/" aria-label="Google+에 공유하기">
+                    <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.sug5806.site/2019/09/16/2019-09-16 Go 기초4-function/" aria-label="Google+에 공유하기">
                         <i class="fab fa-google-plus" aria-hidden="true"></i><span>Google+에 공유하기</span>
                     </a>
                 </li>
@@ -560,7 +560,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                102 개의 포스트가 있습니다.
+                103 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
@@ -577,9 +577,9 @@
     
         <script>
           var disqus_config = function() {
-            this.page.url = 'http://blog.sug5806.site/2019/09/15/2019-09-15 Go 기초4-function/';
+            this.page.url = 'http://blog.sug5806.site/2019/09/16/2019-09-16 Go 기초4-function/';
               
-            this.page.identifier = '2019/09/15/2019-09-15 Go 기초4-function/';
+            this.page.identifier = '2019/09/16/2019-09-16 Go 기초4-function/';
               
           };
           (function() {

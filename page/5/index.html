@@ -185,6 +185,66 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/06/26/2019-06-26-Django-ModelForm/" aria-label=": 2019-06-26 Django ModelForm 사용하기">
+                            2019-06-26 Django ModelForm 사용하기
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-06-26T17:45:01+09:00">
+	
+		    2019/06/26
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/Django/">Django</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>이번 포스팅에서는 Django의 ModelForm 사용법을 알아보도록 하겠습니다.</p>
+<p>저번 포스트인 Form사용법에 있는 코드와 많이 유사합니다. 그러므로 변경이 있는 코드만 보도록 하겠습니다.</p>
+<h3><code>forms.py</code></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> forms</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Product</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductModelForm</span><span class="params">(forms.ModelForm)</span>:</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        <span class="comment"># 폼으로 사용하고 싶은 모델</span></span><br><span class="line">        model = Product</span><br><span class="line">        <span class="comment"># 모델의 필드명을 적어줍니다</span></span><br><span class="line">        fields = [<span class="string">'name'</span>, <span class="string">'price'</span>, <span class="string">'seller'</span>]</span><br></pre></td></tr></table></figure>
+<h3><code>views.py</code></h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render, redirect</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Product</span><br><span class="line"><span class="keyword">from</span> .forms <span class="keyword">import</span> ProductModelForm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">list_create_product</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment"># 먼저 빈 폼을 만들어 줍니다</span></span><br><span class="line">    form = ProductModelForm()</span><br><span class="line">    <span class="comment"># 등록 버튼을 누른 요청이면</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">"POST"</span>:</span><br><span class="line">        <span class="comment"># 입력 정보를 기반으로 폼을 채웁니다</span></span><br><span class="line">        form = ProductModelForm(request.POST)</span><br><span class="line">        <span class="comment"># 입력 정보가 유효 하다면</span></span><br><span class="line">        <span class="keyword">if</span> form.is_valid():</span><br><span class="line">            <span class="comment"># form.save 명령어를 통해 데이터를 저장합니다.</span></span><br><span class="line">            form.save()</span><br><span class="line">            <span class="comment"># 생성이 완료되면 홈으로 돌아갑니다</span></span><br><span class="line">            <span class="keyword">return</span> redirect(<span class="string">'/'</span>)</span><br><span class="line">    <span class="comment"># POST 요청이 아니면</span></span><br><span class="line">    <span class="comment"># Product의 모든 데이터를 가져옵니다</span></span><br><span class="line">    objects_list = Product.objects.all()</span><br><span class="line">    <span class="comment"># context 변수에 담아줍니다.</span></span><br><span class="line">    context = &#123;</span><br><span class="line">        <span class="string">'objects_list'</span>: objects_list,</span><br><span class="line">        <span class="string">'form'</span>: form,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># product_list_create.html로 렌더링을 합니다</span></span><br><span class="line">    <span class="keyword">return</span> render(request, template_name=<span class="string">'form/product_list_create.html'</span>, context=context)</span><br></pre></td></tr></table></figure>
+<p>이제 <code>./manage.py runserver</code>를 통해 접속하도록 하겠습니다.</p>
+<p><img src="/image/form1-1.png" alt="img"></p>
+<p>내용을 채워넣고 등록버튼을 눌러줍니다.</p>
+<p><img src="/image/modelform1-1.png" alt="img"></p>
+<p>생성이 완료되면 데이터를 보여줍니다.</p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/06/26/2019-06-26-Django-ModelForm/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/06/22/2019-06-22-Django-ajax적용하기2/" aria-label=": 2019-06-22 Django에 Ajax 적용하기2">
                             2019-06-22 Django에 Ajax 적용하기2
                         </a>
@@ -875,79 +935,6 @@ render함수를 통해 index.html로 렌더링을 하게됩니다.</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/06/04/2019-06-04-Django-admin-page다루기1/" aria-label=": 2019-06-04 Django admin page 다루기1">
-                            2019-06-04 Django admin page 다루기1
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-06-04T15:20:02+09:00">
-	
-		    2019/06/04
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/Django/">Django</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>오늘은 장고 어드민 페이지에 대해서 다뤄보도록 하겠습니다</p>
-<h3><code>Models.py</code></h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from django.db import models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Create your models here.</span><br><span class="line"></span><br><span class="line">class AdminPage(models.Model):</span><br><span class="line">    name = models.CharField(max_length=20)</span><br><span class="line">    age = models.PositiveSmallIntegerField()</span><br><span class="line">    address = models.CharField(max_length=30)</span><br></pre></td></tr></table></figure>
-<p>기본적인 모델입니다. 이름, 나이, 주소가 있습니다</p>
-<p><code>settings.py</code>, <code>admin.py</code>에서 방금 만든 앱을 등록하도록 하겠습니다. 앱이름은 <code>admin_page</code>입니다<br>
-<img src="/image/admin3.png" alt="img"><br>
-<img src="/image/admin4.png" alt="img"></p>
-<p><code>./manage.py migrate</code> 명령어를 실행하여 DB반영 합니다.</p>
-<p><code>./manage.py createsuperuser</code> 명령어를 통해 관리자 계정을 생성해 줍니다.</p>
-<p><img src="/image/admin1.png" alt="img"><br>
-비밀번호가 너무 짧고 단조로워 오류가 뜨네요.<br>
-관리자 계정을 만들때는 어렵게 만들도록 합시다</p>
-<p>이제 <code>./manage.py runserver</code>를 통해 서버를 실행시킨후 <code>http://127.0.0.1:8000/admin/</code>로 접속해 관리자 페이지로 들어가도록 하겠습니다</p>
-<p><img src="/image/admin2.png" alt="img"></p>
-<hr>
-<p><img src="/image/admin5.png" alt></p>
-<p>보시면 만든 Admin page가 있습니다 들어가 봅니다.<br>
-들어가면 아무것도 없을텐데 하나 만들어 줍니다.</p>
-<p><img src="/image/admin6.png" alt></p>
-<p>만들었는데 AdminPage object(1)이라고 뜹니다. 이렇게되면 구분을 할수 없습니다. <code>models.py</code>를 수정하여 제대로 출력해보도록 하겠습니다</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from django.db import models</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Create your models here.</span><br><span class="line"></span><br><span class="line">class AdminPage(models.Model):</span><br><span class="line">    name = models.CharField(max_length=20)</span><br><span class="line">    age = models.PositiveSmallIntegerField()</span><br><span class="line">    address = models.CharField(max_length=30)</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return f&apos;&#123;self.name&#125; &#123;self.age&#125; &#123;self.address&#125;&apos;</span><br></pre></td></tr></table></figure>
-<p><img src="/image/admin7.png" alt="img"></p>
-<p>수정 후 화면입니다 이름, 나이, 주소가 같이 출력되는 것을 확인 할 수 있습니다.</p>
-<p>다음번엔 admin page에서 검색기능을 추가를 알아보겠습니다</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/06/04/2019-06-04-Django-admin-page다루기1/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -1093,7 +1080,7 @@ render함수를 통해 index.html로 렌더링을 하게됩니다.</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                102 개의 포스트가 있습니다.
+                103 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

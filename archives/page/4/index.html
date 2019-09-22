@@ -186,6 +186,120 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/09/06/2019-09-06-운영체체2-1/" aria-label=": 2019-09-06 운영체제2-1">
+                            2019-09-06 운영체제2-1
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-09-06T19:04:46+09:00">
+	
+		    2019/09/06
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/운영체제/">운영체제</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <p>Operating System Concepts의 요약본 입니다.</p>
+<h1>2. 컴퓨터 시스템 구조</h1>
+<h2>2.1 컴퓨터 시스템의 동작</h2>
+<ul>
+<li>
+<p>현대의 범용 컴퓨터는 공유된 주기억장치에 접근을 제공하는 공통 버스에 의해 연결된 CPU와 여러 개의 장치 제어기(device controller)로 구성되어 있다.</p>
+<ul>
+<li>장치 제어기 : 각 장치(디스크, 오디오 장치, 비디오 디스플레이)를 관리한다.</li>
+<li>장치 제어기와 CPU는 병행으로 수행되므로 이들은 주기억장치 접근에 대해 경쟁한다. 주기억장치 제어기는 이들의 접근을 동기화해준다.</li>
+</ul>
+</li>
+<li>
+<p>컴퓨터가 처음 구동되면 초기에 실행될 프로그램이 필요하다. 이 프로그램을 <strong>부트스트랩 프로그램(bootstrap program)</strong><br>
+이라 한다. 이 프로그램은 보통 컴퓨터 하드웨어 내에 ROM에 저장되어 있다.</p>
+<ul>
+<li>부트스트랩 프로그램은 모든 하드웨어를 초기화하고 운영체제 커널을 주기억장치에 적재한 후에 커널을 실행한다.</li>
+</ul>
+</li>
+<li>
+<p>컴퓨터에서 사건의 발생은  <strong>인터럽트(interrupt)신호</strong> 또는<br>
+<strong>트랩(trap)</strong> 을 통해 운영체제에 통보된다. 트랩은 다른 말로 예외(exception)라 한다.</p>
+<ul>
+<li>인터럽트는 하드웨어가 시스템의 수행 흐름을 바꾸기 위해 발생하는 것이고, 트랩은 소프트웨어가 발생하는 인터럽트이다.</li>
+<li>하드웨어는 CPU에 특정 신호를 보내어 인터럽트의 발생을 알린다.</li>
+<li>소프트웨어는 시스템 호출(system call)이라는 특정 연산을 실행하여 일부로 발생시키거나 오류(0 나누기, 부적합한 주기억장치 접근) 때문에 자발적으로 발생된다.</li>
+<li>인터럽트가 발생되면 CPU는 현재 수행중인 작업을 멈추고, 운영체제 내에 있는 특정코드를 실행한다. 이 실행이 끝나면 다시 멈춘 작업을 재개한다.</li>
+<li>기본적인 인터럽트 동작원리
+<ol>
+<li>현재 작업을 멈추고, 현재 상태를 보관</li>
+<li>인터럽트의 종류 분석</li>
+<li>특정 인터럽트 수행(인터럽트 벡터 활용)</li>
+<li>보관된 상태를 원상복귀하고 멈춘 작업을 재개</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2>2.2 I/O 구조</h2>
+<ul>
+<li>장치 제어기에 따라 하나 이상의 장치가 제어기에 연결될 수 있다.</li>
+<li>장치 제어기는 지역 버퍼와 몇 개의 특수 목적 레지스터를 유지한다.</li>
+<li>장치 제어기는 연결된 주변장치와 지역 버퍼간에 데이터 이동을 책임진다. 이 버퍼의 크기는 주변장치에 따라 다르다.</li>
+</ul>
+<h3>2.2.1 I/O 인터럽트</h3>
+<ul>
+<li>I/O를 시작하기 위해 CPU는 장치 제어기 내에 있는 레지스터에 적절한 데이터를 적재한다. 제어기는 이것을 검사하여 어떤 행동을 취할지 결정한다. 입출력의 수행이 끝나면 보통 인터럽트를 통해 CPU에 그 사실을 통보한다.</li>
+<li>입출력의 두 가지 형태
+<ul>
+<li>동기식 입출력(synchronous I/O): 입출력이 시작되면 요청한 프로세서는 입출력이 완료될 때까지 기다린다.</li>
+<li>비동기식 입출력(asynchronous I/O): 요청한 프로세서는 입출력이 완료될 때까지 기다리지 않고 계속 다른 작업을 수행한다.</li>
+</ul>
+</li>
+<li>입출력의 완료를 기다리는 방법
+<ul>
+<li>특수한 명령어 사용</li>
+<li>대기 루프 사용</li>
+</ul>
+</li>
+<li>만약 CPU가 입출력 완료를 항상 기다리면 한번에 한 입출력만 가능하다. 이것은 바람직하지 않다. 여러 입출력을 병행으로 수행할 수 있고, 입출력과 계산을 병행할 수 있어야 시스템의 효울을 높일 수 있다.</li>
+</ul>
+<h3>2.2.2 DMA 구조</h3>
+<ul>
+<li>속도가 느린 입출력 장치는 하나의 입력을 받은 후에 다음 입력까지 CPU는 다른 유용한 작업을 할 수 있다. 그러나 반대로 입출력 장치의 속도가 빠르면 인터럽트가 너무 빈번하게 발생하여 CPU가 다른 유용한 작업을 할 시간이 적다.</li>
+<li>이것을 해결하기 위해 사용하는 기법이 DMA(Direct Memory Access)이다. DMA 방식에서 장치 제어기는 데이터 블록을 CPU의 관여없이 직접 주기억장치로 이동하며, 인터럽트는 바이트 단위가 아닌 블록 단위로 발생한다.</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/09/06/2019-09-06-운영체체2-1/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/09/04/2019-09-04-운영체제1/" aria-label=": 2019-09-04 운영체제1">
                             2019-09-04 운영체제1
                         </a>
@@ -426,85 +540,6 @@
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/08/30/2019-08-30-트리의운행2(python_loop)/" aria-label=": 2019-08-30 트리의 운행2(Python_Loop)">
-                            2019-08-30 트리의 운행2(Python_Loop)
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-08-30T19:04:46+09:00">
-	
-		    2019/08/30
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/자료구조/">자료구조</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <p>개인적으로 공부한 것을 정리하였습니다.</p>
-<p>지난번에는 <a href="https://blog.sug5806.site/2019/08/27/2019-08-27-%ED%8A%B8%EB%A6%AC%EC%9D%98%EC%9A%B4%ED%96%891(python_recursive)/">재귀를 통한 이진트리 순회</a>에 대해 알아보았습니다.</p>
-<p>이번시간에는 반복문을 통한 트리의 운행 코드를 알아보겠습니다.</p>
-<h2>운행 방법(Traversal Possibilities)</h2>
-<p>운행 방법을 아래와 같이 3가지로 나타낼 수 있습니다.</p>
-<ul>
-<li>전위 운행법(Preorder)</li>
-<li>중위 운행법(Inorder)</li>
-<li>후위 운행법(Postorder)</li>
-</ul>
-<p>여기에 순서를 따르지 않는 다른 운행법을 추가합니다.</p>
-<ul>
-<li>레벨 순서 운행법(Level Order Traversal)</li>
-</ul>
-<p>기본 트리는 아래와 같은 모양입니다<br>
-<img src="/image/binarytree1-2.png" alt="img"></p>
-<p>먼저 전위, 중위, 후위는 <strong>스택(Stack)</strong> 을 사용하고<br>
-레벨 순서 운행은 <strong>큐(Queue)</strong> 를 사용 하여 문제를 해결 할수 있습니다.</p>
-<h1>전위 순회(pre_order)</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.left_child = <span class="literal">None</span></span><br><span class="line">        self.right_child = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.container = list()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.container:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.container.append(data)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        ret = self.container.pop()</span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peek</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.container[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iter_pre_order</span><span class="params">(cur)</span>:</span></span><br><span class="line">    s = Stack()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            print(cur.data, end=<span class="string">" "</span>)</span><br><span class="line">            s.push(cur)</span><br><span class="line">            cur = cur.left_child</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> s.is_empty():</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        cur = s.pop()</span><br><span class="line">        cur = cur.right_child</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    n1 = TreeNode(<span class="number">1</span>)</span><br><span class="line">    n2 = TreeNode(<span class="number">2</span>)</span><br><span class="line">    n3 = TreeNode(<span class="number">3</span>)</span><br><span class="line">    n4 = TreeNode(<span class="number">4</span>)</span><br><span class="line">    n5 = TreeNode(<span class="number">5</span>)</span><br><span class="line">    n6 = TreeNode(<span class="number">6</span>)</span><br><span class="line">    n7 = TreeNode(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">    n1.left_child = n2</span><br><span class="line">    n1.right_child = n3</span><br><span class="line">    n2.left_child = n4</span><br><span class="line">    n2.right_child = n5</span><br><span class="line">    n3.left_child = n6</span><br><span class="line">    n3.right_child = n7</span><br><span class="line"></span><br><span class="line">    print(<span class="string">f'전위 순회 재귀: '</span>, end=<span class="string">""</span>)</span><br><span class="line">    iter_pre_order(n1)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-<p><img src="/image/tree3_pre.png" alt="img"></p>
-<h1>중위 순회(in_order)</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.left_child = <span class="literal">None</span></span><br><span class="line">        self.right_child = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.container = list()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.container:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.container.append(data)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        ret = self.container.pop()</span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peek</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.container[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 중위 순회 반복문</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iter_in_order</span><span class="params">(cur)</span>:</span></span><br><span class="line">    s = Stack()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            s.push(cur)</span><br><span class="line">            cur = cur.left_child</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> s.is_empty():</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        cur = s.pop()</span><br><span class="line">        print(cur.data, end=<span class="string">' '</span>)</span><br><span class="line">        cur = cur.right_child</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    n1 = TreeNode(<span class="number">1</span>)</span><br><span class="line">    n2 = TreeNode(<span class="number">2</span>)</span><br><span class="line">    n3 = TreeNode(<span class="number">3</span>)</span><br><span class="line">    n4 = TreeNode(<span class="number">4</span>)</span><br><span class="line">    n5 = TreeNode(<span class="number">5</span>)</span><br><span class="line">    n6 = TreeNode(<span class="number">6</span>)</span><br><span class="line">    n7 = TreeNode(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">    n1.left_child = n2</span><br><span class="line">    n1.right_child = n3</span><br><span class="line">    n2.left_child = n4</span><br><span class="line">    n2.right_child = n5</span><br><span class="line">    n3.left_child = n6</span><br><span class="line">    n3.right_child = n7</span><br><span class="line"></span><br><span class="line">    print(<span class="string">f'중위 순회 재귀: '</span>, end=<span class="string">''</span>)</span><br><span class="line">    iter_in_order(n1)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-<p><img src="/image/tree3_in.png" alt="img"></p>
-<h1>후위 순회(post_order)</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.left_child = <span class="literal">None</span></span><br><span class="line">        self.right_child = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.container = list()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.container:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.container.append(data)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        ret = self.container.pop()</span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peek</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.container[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">iter_post_order</span><span class="params">(cur)</span>:</span></span><br><span class="line">    stack1 = Stack()</span><br><span class="line">    stack2 = Stack()</span><br><span class="line"></span><br><span class="line">    stack1.push(cur)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> stack1.is_empty():</span><br><span class="line">        cur = stack1.pop()</span><br><span class="line">        stack2.push(cur)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> cur.left_child:</span><br><span class="line">            stack1.push(cur.left_child)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> cur.right_child:</span><br><span class="line">            stack1.push(cur.right_child)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> stack2.is_empty():</span><br><span class="line">        cur = stack2.pop()</span><br><span class="line">        print(cur.data, end=<span class="string">" "</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    n1 = TreeNode(<span class="number">1</span>)</span><br><span class="line">    n2 = TreeNode(<span class="number">2</span>)</span><br><span class="line">    n3 = TreeNode(<span class="number">3</span>)</span><br><span class="line">    n4 = TreeNode(<span class="number">4</span>)</span><br><span class="line">    n5 = TreeNode(<span class="number">5</span>)</span><br><span class="line">    n6 = TreeNode(<span class="number">6</span>)</span><br><span class="line">    n7 = TreeNode(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">    n1.left_child = n2</span><br><span class="line">    n1.right_child = n3</span><br><span class="line">    n2.left_child = n4</span><br><span class="line">    n2.right_child = n5</span><br><span class="line">    n3.left_child = n6</span><br><span class="line">    n3.right_child = n7</span><br><span class="line"></span><br><span class="line">    print(<span class="string">f'후위 순회 재귀: '</span>, end=<span class="string">''</span>)</span><br><span class="line">    iter_post_order(n1)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-<p><img src="/image/tree3_post.png" alt="img"></p>
-<h1>레벨 순회</h1>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.left_child = <span class="literal">None</span></span><br><span class="line">        self.right_child = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.next = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.head = <span class="literal">None</span></span><br><span class="line">        self.tail = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.head <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span><span class="params">(self, tree_node)</span>:</span></span><br><span class="line">        new_node = Node(tree_node)</span><br><span class="line">        <span class="keyword">if</span> self.is_empty():</span><br><span class="line">            self.head = new_node</span><br><span class="line">            self.tail = new_node</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        self.tail.next = new_node</span><br><span class="line">        self.tail = new_node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.is_empty():</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        ret_node = self.head.data</span><br><span class="line">        self.head = self.head.next</span><br><span class="line">        <span class="keyword">return</span> ret_node</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">level_order</span><span class="params">(cur)</span>:</span></span><br><span class="line">    q = Queue()</span><br><span class="line"></span><br><span class="line">    q.enqueue(cur)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> q.is_empty():</span><br><span class="line">        cur = q.dequeue()</span><br><span class="line"></span><br><span class="line">        print(cur.data, end=<span class="string">" "</span>)</span><br><span class="line">        <span class="keyword">if</span> cur.left_child:</span><br><span class="line">            q.enqueue(cur.left_child)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> cur.right_child:</span><br><span class="line">            q.enqueue(cur.right_child)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    n1 = TreeNode(<span class="number">1</span>)</span><br><span class="line">    n2 = TreeNode(<span class="number">2</span>)</span><br><span class="line">    n3 = TreeNode(<span class="number">3</span>)</span><br><span class="line">    n4 = TreeNode(<span class="number">4</span>)</span><br><span class="line">    n5 = TreeNode(<span class="number">5</span>)</span><br><span class="line">    n6 = TreeNode(<span class="number">6</span>)</span><br><span class="line">    n7 = TreeNode(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">    n1.left_child = n2</span><br><span class="line">    n1.right_child = n3</span><br><span class="line">    n2.left_child = n4</span><br><span class="line">    n2.right_child = n5</span><br><span class="line">    n3.left_child = n6</span><br><span class="line">    n3.right_child = n7</span><br><span class="line">    print(<span class="string">f'레벨 순회 반복: '</span>, end=<span class="string">''</span>)</span><br><span class="line">    level_order(n1)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-<p><img src="/image/tree3_level.png" alt="img"></p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/08/30/2019-08-30-트리의운행2(python_loop)/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -523,7 +558,7 @@
             </a>
           </li>
         
-        <li class="pagination-number">page 4 of 34</li>
+        <li class="pagination-number">page 4 of 35</li>
     </ul>
 </div>
 
@@ -651,7 +686,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                102 개의 포스트가 있습니다.
+                103 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

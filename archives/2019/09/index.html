@@ -186,21 +186,21 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/09/15/2019-09-15 Go 기초3-map,struct/" aria-label=": 2019-09-15 Go 기초3(map,struct)">
-                            2019-09-15 Go 기초3(map,struct)
+                        <a class="link-unstyled" href="/2019/09/16/2019-09-18 함수와 메소드의 차이점/" aria-label=": 2019-09-18 함수와 메소드의 차이점">
+                            2019-09-18 함수와 메소드의 차이점
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-09-15T19:04:46+09:00">
+    <time datetime="2019-09-16T19:04:46+09:00">
 	
-		    2019/09/15
+		    2019/09/16
     	
     </time>
     
         <span>카테고리 </span>
         
-    <a class="category-link" href="/categories/Go/">Go</a>
+    <a class="category-link" href="/categories/기타/">기타</a>
 
 
     
@@ -210,21 +210,12 @@
             
                 <div class="postShorten-content">
                     <p>개인적으로 공부한 내용을 정리하였습니다.</p>
-<h1>Go 기초3</h1>
-<h2>Map</h2>
-<p>Map은 Key와 Value로 이루어져 있는 정렬되지 않은 요소의 그룹입니다.</p>
-<p>MapType = map[KeyType][ElementType]으로 이루어져 있습니다.</p>
-<p><img src="image/Go3-1.png" alt="img"></p>
-<h3>Map에서 추가하고 range사용하기</h3>
-<p>기존 코드에서 아래를 추가시켰습니다.</p>
-<p><img src="image/Go3-2.png" alt="img"></p>
-<h3>Map에서 삭제하기</h3>
-<p><img src="image/Go3-3.png" alt="img"></p>
-<h2>Struct</h2>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> person <span class="keyword">struct</span> &#123;</span><br><span class="line">	first <span class="keyword">string</span></span><br><span class="line">	last  <span class="keyword">string</span></span><br><span class="line">	age   <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> secretAgent <span class="keyword">struct</span> &#123;</span><br><span class="line">	person</span><br><span class="line">	first <span class="keyword">string</span></span><br><span class="line">	ltk <span class="keyword">bool</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	sa1 := secretAgent&#123;</span><br><span class="line">		person: person&#123;</span><br><span class="line">				first : <span class="string">"James"</span>,</span><br><span class="line">				last: <span class="string">"Bond"</span>,</span><br><span class="line">				age: <span class="number">32</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">		first: <span class="string">"somethin cool"</span>,</span><br><span class="line">		ltk: <span class="literal">true</span>,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	p2 := person&#123;</span><br><span class="line">		first: <span class="string">"Miss"</span>,</span><br><span class="line">		last:  <span class="string">"Moneypenny"</span>,</span><br><span class="line">		age:   <span class="number">27</span>,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fmt.Println(sa1)</span><br><span class="line">	fmt.Println(p2)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// age의 경우 person 타입의 필드이나 secreAgent의 필드로 승격이 되었다.</span></span><br><span class="line">	fmt.Println(sa1.person.first, sa1.first, sa1.person.last, sa1.age, sa1.ltk)</span><br><span class="line">	fmt.Println(p2.first, p2.last, p2.age)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5>anonymous struct</h5>
-<p>위의 예제와는 달리 struct에 이름이 없어서 anonymous입니다.</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    p1 := <span class="keyword">struct</span> &#123;</span><br><span class="line">        first <span class="keyword">string</span></span><br><span class="line">        last <span class="keyword">string</span></span><br><span class="line">        age <span class="keyword">int</span></span><br><span class="line">    &#125;&#123;</span><br><span class="line">        first: <span class="string">"James"</span>,</span><br><span class="line">        last: <span class="string">"Bond"</span>,</span><br><span class="line">        age: <span class="number">32</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fmt.Println(p1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2>함수와 메소드의 차이점</h2>
+<p>기본적으로 함수가 메소드보다 좀 더 포괄적인 개념입니다.</p>
+<p>함수는 어딘가에 종속적이지(포함되지 않고) 않고 개별적으로 사용되면 함수입니다.</p>
+<p>메소드는 종속되어 사용되면 메소드입니다.(Ex. 클래스명.메소드명으로 사용)</p>
+<p>또 다른 개념으로 말씀드리면 함수는 input에 대해 output이 달라지면 함수, 메소드는 input이 똑같아도 객체에 따라 output이 달라지면 메소드입니다.</p>
+
                     
                         
 
@@ -232,7 +223,7 @@
                     
                     
                         <p>
-                            <a href="/2019/09/15/2019-09-15 Go 기초3-map,struct/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/09/16/2019-09-18 함수와 메소드의 차이점/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -250,15 +241,15 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
-                        <a class="link-unstyled" href="/2019/09/15/2019-09-15 Go 기초4-function/" aria-label=": 2019-09-16 Go 기초4(function)">
+                        <a class="link-unstyled" href="/2019/09/16/2019-09-16 Go 기초4-function/" aria-label=": 2019-09-16 Go 기초4(function)">
                             2019-09-16 Go 기초4(function)
                         </a>
                     
                 </h1>
                 <div class="postShorten-meta">
-    <time datetime="2019-09-15T19:04:46+09:00">
+    <time datetime="2019-09-16T19:04:46+09:00">
 	
-		    2019/09/15
+		    2019/09/16
     	
     </time>
     
@@ -296,7 +287,7 @@
                     
                     
                         <p>
-                            <a href="/2019/09/15/2019-09-15 Go 기초4-function/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                            <a href="/2019/09/16/2019-09-16 Go 기초4-function/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -506,7 +497,7 @@
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                102 개의 포스트가 있습니다.
+                103 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

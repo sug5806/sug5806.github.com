@@ -186,6 +186,180 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/04/24/2019-04-24-Crawler/" aria-label=": 2019-04-24 웹 크롤러 만들기 1">
+                            2019-04-24 웹 크롤러 만들기 1
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-04-24T16:36:02+09:00">
+	
+		    2019/04/24
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/python/">python</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>크롤러 만들기 1</h1>
+<p>크롤러 : 웹 페이지에 있는 자료를 자동으로 수집하는 프로그램<br>
+Ex) 검색엔진<br>
+–&gt;<br>
+Robot.txt : 검색엔진에게 어디까지 검색을 허용할 것이냐?</p>
+<p>브라우저가 혹은 크롤러 어떤식으로 서버에 접근해서 데이터를 가져오는가?</p>
+<ol>
+<li>주소를 입력하면 해당 서버로 접근한다.</li>
+<li>웹 서버 프로그램이 해당 주소에 맞는 내용을 전달한다.
+<ul>
+<li>request -&gt; 3rd party 모듈</li>
+<li>urllib의 wrapper 클래스</li>
+</ul>
+</li>
+<li>소스
+<ul>
+<li>받은 내용을 해석해서 내가 원하는 데이터를 찾는다. 뽑아낸다.
+<ul>
+<li>BeautifulSoup</li>
+<li>HTML 코드의 해석</li>
+<li>CSS Selector 만드는 방법</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>모듈 설치 :</p>
+<ol>
+<li>request -&gt; pip install request</li>
+<li>BeautifulSoup -&gt; pip install BeautifulSoup4</li>
+</ol>
+<p>크롤러 자체는 불법이 아니나 얻은 정보로 수익창출을 하면 불법이다.<br>
+크롤러를 이용해 매크로 구현가능</p>
+<hr>
+<p>웹 페이지에 접근해서 데이터를 가져온다.<br>
+requests는 Ajax로 받아온 데이터를 실시간으로 반영할 수 없다.<br>
+requestt로 받아온 데이터는 소스보기에서 보는 소스까지만 있다.(실시간 반영이 안된다)</p>
+<ul>
+<li>selenium : 웹 브라우저를 원격 조작하는 방식의 크롤러</li>
+<li>크롤링 모듈 : selenium, scrapy</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br></pre></td></tr></table></figure>
+<p>BeautifulSoup을 사용하여 가져온 데이터를 HTML로 해석한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br></pre></td></tr></table></figure>
+<p>개발자도구의 elements와 우클릭 페이지 소스보기가 다른경우가 있다</p>
+<ul>
+<li>페이지 소스보기 : 맨처음 얻게되는 코드</li>
+<li>개발자 도구의 Elements : 실시간으로 바뀌는 코드가 포함되어 있다
+<ul>
+<li>AJAX를 이용해 일부만 리프레쉬가능</li>
+</ul>
+</li>
+</ul>
+<p>개발자도구</p>
+<ul>
+<li>Sources를 통해 홈페이지가 어떻게 구성되어 있는지 알 수 있다</li>
+<li>Network : 웹페이지를 띄울때 파일들이 잘 받아졌나 볼 수 있다
+<ul>
+<li>Protocol : h2은 http2.0으로 접속을 하였다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>셀렉터 : 가지고오고 싶은 내용을 감싸고있는 태그를 가져온다.<br>
+HTML 태그</p>
+<ol>
+<li>Container Tag : 안에 내용을 포함하고 있는 태그(Ex. <code>&lt;div td=&quot;asdf&quot;&gt;내용&lt;/div&gt;</code>)</li>
+<li>Empty Tag : 안에 내용을 포함하고 있지 않는 태그(Ex. <code>&lt;img src=&quot;이미지주소&quot;&gt;)</code></li>
+</ol>
+<h2>단일 셀렉터</h2>
+<ol>
+<li>
+<p>tag이름 : div</p>
+<ul>
+<li>태그는 속성을 갖는다. -&gt; <code>&lt;tag id=&quot;&quot; class=&quot;test&quot; data-rel=&quot;&quot; data-num=&quot;&quot;&gt;cont&lt;/tag&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>id : 태그와 구분하기위해 #super -&gt; 한 페이지 내에서 단 한개</p>
+</li>
+<li>
+<p>class : 태그와 구분하기위해 .test -&gt; 별명또는 그룹 개념</p>
+</li>
+</ol>
+<h2>다중 셀렉터</h2>
+<p>~안에 있는 무엇</p>
+<ol>
+<li>div ul li.ah_k -&gt; 띄어쓰기로 구분
+<ul>
+<li>div li.ah_k : 중간경로 생략 가능, 그냥 ~안에</li>
+</ul>
+</li>
+<li>div &gt; ul &gt; li.ah_k : &gt;로 구분, 조금 더 빠르다
+<ul>
+<li>중간경로 생략 불가능, ~바로 ~안에</li>
+</ul>
+</li>
+</ol>
+<p>~이고 ~인것</p>
+<ul>
+<li><code>&lt;span class=&quot;ah_k&quot;&gt;???&lt;/span&gt;</code><br>
+span.ah_k.anroll</li>
+<li><code>&lt;div class=&quot;ah_k&quot;&gt;???\&lt;/div&gt;</code></li>
+</ul>
+<p>~의 근처에 있는 것</p>
+<hr>
+<p>HTTP Method : Get, Post, Put, Head, Delete</p>
+<ul>
+<li>Get : 리소스 얻기</li>
+<li>Post : 데이터 전달 - 로그인, 회원가입, 글쓰기 -&gt; 이후에 수정할때</li>
+<li>Put : 리소스 전달(파일이나 동영상, 사진) - 사진 올리기 -&gt; 최초 업로드</li>
+<li>Delete : 리소스 삭제</li>
+<li>Head : Method 확인</li>
+<li>크롬에서 Postman 이라는 확장프로그램을 설치하라 : 어떠한 방식으로 전달하는지 알 수 있음</li>
+</ul>
+<h1>네이버에서 실시간 검색어 가져오기</h1>
+<p>웹 페이지에 접근해서 데이터를 가져온다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br></pre></td></tr></table></figure>
+<p>가져온 데이터를 HTML로 해석한다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br></pre></td></tr></table></figure>
+<p>가져오고자 하는 페이지의 주소를 적는다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">"https://www.naver.com/"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># requests 모듈로 해당 url의 데이터를 가져온다</span></span><br><span class="line">req = requests.get(url)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Response Status을 requests 모듈 안에 명세를 해놓음  </span></span><br><span class="line"><span class="keyword">if</span> req.status_code == requests.codes.ok:</span><br><span class="line">    print(<span class="string">'접속 성공'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 여기서 데이터를 해석하면 된다</span></span><br><span class="line">    <span class="comment"># req.text에 받아온 데이터가 담겨져 있다</span></span><br><span class="line">    html = BeautifulSoup(req.text, <span class="string">"html.parser"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># select와 select_one의 차이점은 select_one()은 해당하는 것중 제일 첫번째만 반환</span></span><br><span class="line">    <span class="comment"># span1 = html.select('.PM_CL_realtimeKeyword_list_base span.ah_k')</span></span><br><span class="line">    <span class="comment"># print("span1", span1)</span></span><br><span class="line">    <span class="comment"># # 목록에 있는것 20개 돌아가고있는것 40</span></span><br><span class="line">    <span class="comment"># print(len(span1))</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># ~어떤 요소를 찾고</span></span><br><span class="line">    <span class="comment"># 그 요소 안에 각각의 요소를 다시 찾을 수 있다.</span></span><br><span class="line">    <span class="comment"># 클래스 ah_item에 각종 정보가 들어있다</span></span><br><span class="line">    items = html.select(<span class="string">'.PM_CL_realtimeKeyword_list_base .ah_item'</span>)</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> items:</span><br><span class="line">        <span class="comment"># select_one으로 하나씩 뽑아온다.</span></span><br><span class="line">        keyword = item.select_one(<span class="string">'.ah_k'</span>)</span><br><span class="line">        rank = item.select_one(<span class="string">'.ah_r'</span>)</span><br><span class="line">        link = item.select_one(<span class="string">'.ah_a'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># link['속성명']으로 해당 속성의 링크를 가져올 수 있다</span></span><br><span class="line">        print(rank.text, keyword.text, link[<span class="string">'href'</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'접속 실패'</span>)</span><br></pre></td></tr></table></figure>
+<h2>결과 화면</h2>
+<p><img src="/image/Crawler_naver.png" alt></p>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/04/24/2019-04-24-Crawler/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/04/23/2019-04-23-Exhaustive-Search/" aria-label=": 2019-04-23 Exhaustive Search(과도한 검색)">
                             2019-04-23 Exhaustive Search(과도한 검색)
                         </a>
@@ -349,65 +523,6 @@ IDE는 Pycham을 기준으로 작성하였습니다.</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/21/2019-04-21-127.0.0.1과-localhost의-차이점/" aria-label=": 2019-04-21 localhost와 127.0.0.1의 차이점">
-                            2019-04-21 localhost와 127.0.0.1의 차이점
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-21T20:11:12+09:00">
-	
-		    2019/04/21
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/네트워크/">네트워크</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>127.0.0.1은 무엇인가?</h1>
-<p>127.0.0.1은 IPv4 및 IPv6에서 자기 자신을 가리키기 위한 목적으로 쓰기 위해 예약된 IP이다. 모든 컴퓨터는 이 주소를 자신의 주소로 사용하지만 실제 IP 주소처럼 다른 장치와 통신 할 수는 없다.</p>
-<ul>
-<li>Ex) 컴퓨터에서 실행중인 웹 서버는 127.0.0.1을 가리킬 수 있으므로 페이지를 배포하기 전에 로컬에서 실행하고 테스트 할 수 있다.</li>
-</ul>
-<h1>LocalHost는 무엇인가?</h1>
-<p>localhost은 자기 자신을 가리키는 IP의 도메인 네임으로써 알기 쉽게 해놓은 것이다. 그러므로 localhost로 접속을 하게되면 DNS의 테이블과 비교를 해야하는 번거로움이 있다 그로 인하여 127.0.0.1로 직접 접속하는것 보다 느리지만 기억하기는 쉽다.<br>
-그리고 localhost는 hosts 파일을 통해 변경될 수 있다</p>
-<h1>루프백</h1>
-<p>호스트 자신을 가리키는 주소이다 127.0.0.1을 사용한다. 루프백 주소로 네트워크에 직접 연결하지 않은 상태에서 빠르게 프로그램의 테스트를 할 수 있다. 또한 루프백 IP를 갖는 패킷은 외부 네트워크로 전송할수 없다</p>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/21/2019-04-21-127.0.0.1과-localhost의-차이점/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -426,7 +541,7 @@ IDE는 Pycham을 기준으로 작성하였습니다.</p>
             </a>
           </li>
         
-        <li class="pagination-number">page 26 of 34</li>
+        <li class="pagination-number">page 26 of 35</li>
     </ul>
 </div>
 
@@ -554,7 +669,7 @@ IDE는 Pycham을 기준으로 작성하였습니다.</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                102 개의 포스트가 있습니다.
+                103 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

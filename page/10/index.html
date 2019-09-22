@@ -185,6 +185,155 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/04/08/DB2/" aria-label=": 2019-04-08 데이터베이스 관계, 조인, Group, Index">
+                            2019-04-08 데이터베이스 관계, 조인, Group, Index
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-04-08T21:05:32+09:00">
+	
+		    2019/04/08
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/데이터베이스/">데이터베이스</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h3>N:M 관계</h3>
+<ul>
+<li>A테이블과 B테이블이 있을때 A테이블의 레코드 1개가 B테이블의 레코드 N개로 대응되고 B테이블의 레코드 1개가 A테이블의 레코드 M개와 대응될때 M:N이라 한다.</li>
+<li><img src="/image/N:M.png" alt></li>
+</ul>
+<h3>1:N or N:1관계</h3>
+<ul>
+<li>A테이블 레코드 하나에 B테이블 레코드가 N개 대응될때 1:N이라 한다.</li>
+<li><img src="/image/1:N.png" alt>  <img src="/image/N:1.png" alt></li>
+</ul>
+<h2>조인</h2>
+<ul>
+<li>inner join (MySQL, Maria DB, Oracle은 Where로 묶어도 잘 작동하지만 ANSI 표준으로 하는게 더 좋다)</li>
+<li>outer join
+<ul>
+<li>left outer
+<ul>
+<li>A from B를 했을때 A, B의 동일한 필드로 묶었을때 A 테이블을 기준으로 표시하고 B필드값이 NULL이더라도 표시한다</li>
+</ul>
+</li>
+<li>right outer
+<ul>
+<li>A from B 를 했을때 A와 B가 동일한 필드로 묶었을때 B 테이블을 기준으로 A의 필드값이 NULL이더라도 표시한다</li>
+</ul>
+</li>
+<li>full outer(MySQL, Maria DB 지원 X -&gt; UNION이라는 명령어를 통해 구현)</li>
+</ul>
+</li>
+<li>테이블의 데이터를 가로로 연결한다 (레코드대 레코드)</li>
+<li>일반적으로는  join하면 inner join 이다</li>
+</ul>
+<h2>Group By</h2>
+<ul>
+<li>Where와 Having의 차이
+<ul>
+<li>Where : 그룹핑 이전에 조건을 수행함</li>
+<li>Having : 이미 Group By로 그룹을 나눈후에 조건을 수행함 -&gt; Group By가 반드시 필요함</li>
+</ul>
+</li>
+</ul>
+<p>schema :DB의 뼈대</p>
+<h2>VIEW</h2>
+<ul>
+<li>필요할때마다 select문을 계속 작성을 할수 없으므로 view를 하나 설정해 마치 테이블처럼 사용하는 것</li>
+<li>view는 테이블이 새로 만들어 지는것이 아님</li>
+<li>가독성이 높아진다.</li>
+<li>보안성</li>
+</ul>
+<h2>INDEX</h2>
+<p>필드를 기준으로 데이터 검색을 할때 사용한다.<br>
+인덱싱을 제외하고 트리구조( 그 중에서도 BST(log N)가 가장 빠르다<br>
+인덱스는B Tree로 함</p>
+<p>index를 지우려면 foreign key를 먼저 지우고 index를 지운다</p>
+<ul>
+<li>ALTER TABLE 테이블명 DROP FOREIGN KEY 외래키명 ;</li>
+</ul>
+<p>index는 필요없어지면 바로 지워주는게 좋다 (성능 하락에 주범)</p>
+<ul>
+<li>DROP INDEX 인덱스명</li>
+</ul>
+<ul>
+<li>CLUSTERED INDEX
+<ul>
+<li>한 테이블에 1개씩만 존재함
+<ul>
+<li>Primary Key</li>
+<li>Unique Not NULL</li>
+</ul>
+</li>
+<li>데이터 자체를 클러스터 인덱스에 맞춰 정렬을 해 저장을 한다 -&gt; 이것으로 인해 한테이블에 1개씩밖에 존재함
+<ul>
+<li>주키를 잡으면 자동으로 클러스터 인덱스로됨(반드시 테이블을 만들때 주키를 잡을것)</li>
+<li>ALTER TABLE 명령어를 사용해야</li>
+</ul>
+</li>
+<li>DROP INDEX <code>PRIMARY</code> ON students; -&gt; 주키를 제거하면서 인덱스 역시 제거</li>
+<li>ALTER TABLE students ADD CONSTRAINT PRIMARY KEY(studentID) -&gt; students 테이블에 studentID속성을 주키로 설정하겠다</li>
+</ul>
+</li>
+<li>SECONDARY INDEX
+<ul>
+<li>장점
+<ul>
+<li>검색속도가 엄청나게 빨라짐</li>
+<li>쿼리에 대한 부담이 줄어든다</li>
+</ul>
+</li>
+<li>단점
+<ul>
+<li>insert와 update를 계속된다면 테이블이 계속 갱신이 되어야 하므로 페이지 분할이 일어나 속도가 매우 느려진다.</li>
+<li>메모리를 잡아먹음 약 10%</li>
+</ul>
+</li>
+<li>원하는 만큼 얼마든지 가능</li>
+<li>B 트리 라는 자료구조를 만들고 이것이 데이터를 참조하는 형식 (Where 을 할때 인덱스가 있다면 쓰인다) -&gt; Page와 Offset으로 구성되어있음</li>
+<li>Where를 자주쓰는 상황이면 만드는게 좋다. 만약 사용을 하지않게 된다면 무조건 지워라</li>
+<li>CREATE INDEX -&gt;  secondary index만 만들수 있다.</li>
+</ul>
+</li>
+</ul>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/04/08/DB2/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/04/08/DataBase/" aria-label=": 2019-04-08 DataBase">
                             2019-04-08 DataBase
                         </a>
@@ -1175,187 +1324,6 @@ IP주소는 논리주소의 한 종류입니다.</p>
         
     </article>
     
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/03/22/OOP/" aria-label=": 2019-03-22 OOP">
-                            2019-03-22 OOP
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-03-22T15:12:46+09:00">
-	
-		    2019/03/22
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/기타/">기타</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>Procedural vs Object-Oriented</h1>
-<ul>
-<li>procedural -&gt; 함수를 이용해서 추상화를 했다</li>
-<li>Object-Oriented -&gt; 객체를 통해 추상화를 했다
-<ul>
-<li>객체 단위로 프로그래밍을 한다</li>
-<li>객체(Object) -&gt; ‘관련있는’ 변수(상태정보)와 ‘관련있는’ 함수를 한곳에 모아놓은 ‘곳’ (곳 = 메모리) -&gt; bundling
-<ul>
-<li>attribute(속성)
-<ul>
-<li>instance member(변수)
-<ul>
-<li>각각의 객체가 가지는 값</li>
-</ul>
-</li>
-<li>instance method(함수)
-<ul>
-<li>객체가 할 수 있는 행동, 기능</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>message passing</p>
-<ul>
-<li>다른 객체(other)의 상태정보(멤버)를 변경할 때는 반드시 상대 객체가 가진 메서드를 이용한다</li>
-</ul>
-<p>클래스는 함수의 모임</p>
-<p>객체와 인스턴스의 차이<br>
-객체와 인스턴스의 메모리는 같음<br>
-인스턴스=&gt; Ex) me라는 객체는 Account라는 클래스의 인스턴스</p>
-<h1>OOP</h1>
-<ol>
-<li>
-<p>캡슐화(Encapsulation)</p>
-<ol>
-<li>관련있는 멤버(변수) 와 메서드(함수)를 하나의 단위(대부분 클래스)로 묶는 것
-<ol>
-<li>클래스를 제외하고도 하나의 단위로 묶을수 있다면 OOP라고 함
-<ol>
-<li>Ex) C에서의 구조체</li>
-<li>the bundling of data with methods</li>
-</ol>
-</li>
-<li>정보 은닉을 포함함</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>
-<p>정보은닉( 파이썬은 완벽한 정보은닉을 지원 안함) -&gt; C++에서 클래스 만들면서 private선언</p>
-<ol>
-<li>어떤 멤버를 공개  / 비공개</li>
-<li>어떤 메서드를 공개 / 비공개</li>
-</ol>
-</li>
-<li>
-<p>다형성</p>
-<ol>
-<li>상속
-<ul>
-<li>상속을 쓰지 말자</li>
-<li>상속은 OOP의 정수이다
-<ul>
-<li>상속은 쓰되 다중상속은 하지말자</li>
-</ul>
-</li>
-<li>멤버변수에는 절대 직접접근 금지</li>
-<li>객체의 멤버에 접근 -&gt; getter / 수정 -&gt; setter 을 수행할때는 method function을 이용해야함</li>
-<li>내부에서는 멤버처럼 쓰는것처럼 하면서 property를 사용하여 정보은닉을 함</li>
-<li>인스턴스 멤버를 만든다고하면 지금 당장 쓰지 않아도 되도록이면  생성자에서 만들어 주는게 좋음</li>
-<li>멤버는 어디에서든지 생성될 수 있음</li>
-</ul>
-</li>
-<li>Relations between classes
-<ul>
-<li>choose either inheritance or composition (언제 상속으로하고 언제 컴포지션으로 하는가)
-<ul>
-<li>IS - A
-<ul>
-<li>A laptop IS - A computer / ~은 ~의 한 종류이다</li>
-<li>Inheritance (상속)</li>
-<li>조건 1 : 모든 멤버와 모든 메서드의 중복이 되어야함</li>
-<li>재사용성(reusability)  -&gt; 재사용성 만으로 IS -A 상속을 하면 절대 안되고 조건을 모두 충족해야함!</li>
-</ul>
-</li>
-<li>HAS - A
-<ul>
-<li>A policeman has a gun / ~이 ~을 가지고 있다. or 포함하고 있다</li>
-<li>Composition(합성) -&gt; ◆(In UML)
-<ul>
-<li>same life cycle = 강하게 연결되어 있다</li>
-</ul>
-</li>
-<li>Aggregation(통합) -&gt; ◇(In UML)
-<ul>
-<li>NOT same life cycle = weak coupling</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>method overriding (메소드 오버라이딩) -&gt; 상속이 필수
-<ul>
-<li>polymophism (다형성)
-<ul>
-<li>상속 관계에 있는 다양한 클래스의 객체에서 같은 이름의 메서드를 호출할 때, 각 객체가 서로 다르게 구현된 메서드를 호출함으로써 서로 다른 행동, 기능, 결과를 가져오는 것</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>abstract class (추상 클래스)
-<ul>
-<li>인스턴스를 만들 수 없다.</li>
-<li>하나 이상의 abstract method (추상 메소드)
-<ul>
-<li>몸체(body)가 없는 함수 -&gt; pass</li>
-</ul>
-</li>
-<li>파생 클래스에서 반드시 overriding을 해야함 -&gt; 구현을 강제하도록 한다</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/03/22/OOP/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
     <div class="pagination-bar">
     <ul class="pagination">
         
@@ -1501,7 +1469,7 @@ IP주소는 논리주소의 한 종류입니다.</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                102 개의 포스트가 있습니다.
+                103 개의 포스트가 있습니다.
             </p>
         </div>
     </div>

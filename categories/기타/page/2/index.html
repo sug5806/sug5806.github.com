@@ -186,6 +186,116 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title">
                     
+                        <a class="link-unstyled" href="/2019/05/31/2019-05-31-AWS-IAM/" aria-label=": 2019-05-31 Amazon CLI 설정하기">
+                            2019-05-31 Amazon CLI 설정하기
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time datetime="2019-05-31T13:20:02+09:00">
+	
+		    2019/05/31
+    	
+    </time>
+    
+        <span>카테고리 </span>
+        
+    <a class="category-link" href="/categories/기타/">기타</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content">
+                    <h1>Amazon CLI를 사용하여 사용자 등록하기</h1>
+<p>Django로 Amazon 서비스를 연동하다 보면 settings.py에 아마존 aws_access_key_id와 aws_secret_access_key를 입력해야 하는데 github 같은 곳에 실수로 올리게 되면 해커들이 도용을 하게됩니다. 이것 방지하기위해 AWS CLI를 통해 등록하면 settings.py에 더이상 access_key를 적지 않아도 됩니다.</p>
+<ol>
+<li>
+<p>먼저 아마존에 가입을하고 IAM항목으로 들어갑니다.<br>
+<img src="/image/Amazon01.png" alt></p>
+</li>
+<li>
+<p>그룹을 누르고 새로운 그룹생성을 합니다.<br>
+<img src="/image/Amazon02.png" alt></p>
+</li>
+<li>
+<p>그룹이름을 적고 우측하단에 다음단계를 누릅니다<br>
+<img src="/image/Amazon03.png" alt></p>
+</li>
+</ol>
+<ol start="4">
+<li>본인이 이용하실 서비스에 대한 정책을 선택하고 우측 하단에 다음단계로 진행합니다. 저는 S3를 이용할것이므로 S3FullAccess를 선택하였습니다.<br>
+<img src="/image/Amazon04.png" alt></li>
+</ol>
+<ol start="5">
+<li>선택하신것을 확인하시고 우측 하단에 그룹선택을 눌러줍니다.<br>
+<img src="/image/Amazon05.png" alt></li>
+</ol>
+<ol start="6">
+<li>이제 그룹에 사용자를 추가시켜줘야 합니다. 사용자 탭을눌러 사용자 추가를 해줍니다.<br>
+<img src="/image/Amazon06.png" alt></li>
+</ol>
+<ol start="7">
+<li>사용자 이름을 적어주시고 우리는 CLI를 통해 등록을 할것이므로 프로그래밍 방식 액세스에 체크하도록 합니다. 그리고 우측 하단의 다음으로 넘어갑니다<br>
+<img src="/image/Amazon07.png" alt></li>
+</ol>
+<ol start="8">
+<li>방금 만든 그룹이 보이실텐데 추가하고 싶은 그룹을 체크박스 하신뒤 우측 하단의 다음버튼을 눌러줍니다<br>
+<img src="/image/Amazon08.png" alt></li>
+</ol>
+<ol start="9">
+<li>태그 추가는 지금당장 할일이 없으므로 생략하도록 합니다<br>
+<img src="/image/Amazon09.png" alt></li>
+</ol>
+<ol start="10">
+<li>이제 그동안 설정한 값들을 확인할 수 있는 화면입니다. 확인후 사용자 만들기를 누릅니다.<br>
+<img src="/image/Amazon10.png" alt></li>
+</ol>
+<ol start="11">
+<li>제일 중요한 화면입니다. 이 화면을 벗어나게되면 확인할 수가 없습니다. 그러므로 .csv 다운로드를 통해 등록한 사용자의 ID와 시크릿키를 다운받습니다. <strong>절대 다른사람에게 노출이 되면 안됩니다.</strong><br>
+<img src="/image/Amazon11.png" alt></li>
+</ol>
+<ol start="12">
+<li>이제 django에서 사용자를 등록하도록 하겠습니다.<br>
+<code>pip install awscli</code>를 입력하여 설치해줍니다<br>
+<img src="/image/Amazon12.png" alt></li>
+</ol>
+<ol start="13">
+<li>설치가 다 되면 <code>aws configure</code>을 통해 다운받으신 csv파일의 ID와 Key를 입력하시면 됩니다. region은 서울이니 <code>ap-northeast-2</code>, output format은 <code>json, text, table</code>중 하나를 입력해주면 됩니다.<br>
+<img src="/image/Amazon13.png" alt></li>
+</ol>
+<ol start="14">
+<li>등록을 마치면 더이상 settings.py에 ID와 Key를 입력하지 않아도 자동으로 본인 root디렉토리에 .aws디렉토리 내부의 파일을 읽어 사용할 수 있습니다.<br>
+<img src="/image/Amazon14.png" alt></li>
+</ol>
+
+                    
+                        
+
+
+                    
+                    
+                        <p>
+                            <a href="/2019/05/31/2019-05-31-AWS-IAM/#post-footer" class="postShorten-excerpt_link link" aria-label>
+                                댓글 공유
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title">
+                    
                         <a class="link-unstyled" href="/2019/05/19/2019-05-19-아마존인증서/" aria-label=": 2019-05-19 아마존 인증서 발급받기">
                             2019-05-19 아마존 인증서 발급받기
                         </a>
@@ -325,145 +435,6 @@ DNS검증을 하게되면 자동으로 갱신이 된다.</p>
                     
                         <p>
                             <a href="/2019/05/01/2019-05-01-Web-framwork/#post-footer" class="postShorten-excerpt_link link" aria-label>
-                                댓글 공유
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title">
-                    
-                        <a class="link-unstyled" href="/2019/04/10/Git 특강2_git_branch/" aria-label=": 2019-04-10 Git 특강2 branch">
-                            2019-04-10 Git 특강2 branch
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time datetime="2019-04-10T18:32:46+09:00">
-	
-		    2019/04/10
-    	
-    </time>
-    
-        <span>카테고리 </span>
-        
-    <a class="category-link" href="/categories/기타/">기타</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content">
-                    <h1>Git</h1>
-<h3>브랜치란?</h3>
-<ul>
-<li>
-<p>분기점을 생성하고 독립적으로 코드를 변경할 수 있도록 도와주는 모델</p>
-</li>
-<li>
-<p>Ex)</p>
-<ul>
-<li>
-<p>matser branch</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"hellow python!"</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>another branch</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span>  range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">    print(<span class="string">'hello world for the %s times!" % i)</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li>
-<p>로컬의 branch와 리모트의 branch는 따로 존재한다</p>
-</li>
-<li>
-<p>git branch -r : 리모트의 브랜치를 조회한다</p>
-</li>
-<li>
-<p>git branch : 로컬의 브랜치를 조회한다</p>
-</li>
-</ul>
-<h4>브랜치 생성</h4>
-<ul>
-<li>git branch feat/loop -&gt; feat/loop라는 새로운 브랜치를 만든다
-<ul>
-<li><strong>현재 브랜치</strong>의 현재 상태 그대로 복제하여 만든다</li>
-</ul>
-</li>
-</ul>
-<h4>브랜치 이동</h4>
-<ul>
-<li>git checkout feat/loop -&gt; feat/loop 브랜치로 이동한다.</li>
-</ul>
-<h4>리모트 레포와 동기화</h4>
-<ul>
-<li>git push -u origin feat/loop : 리모트 레포에 feat/loop라는 새로운 브랜치 생성
-<ul>
-<li>-u : upstream의 약자 -&gt; 리모트 레포에 feat/loop가 없으므로 해주어야 한다.</li>
-</ul>
-</li>
-</ul>
-<p>브랜치를 해도 deletion이 없으면 평행으로 되고 있으면 밑으로 추가되고, 우리가 논리적으로 생각하는 것으로 그림을 그린다.</p>
-<h4>브랜치 병합하기</h4>
-<ol>
-<li>우선 병합하고자 하는 브랜치로 이동한다 -&gt; git checkout feat/loop</li>
-<li>git merge feat/con-state : feat/loop를 feat/con-state의 내용과 동기화시킨다(feat/con-state와 같아진다)</li>
-<li>자동으로 commit이 생긴다.</li>
-</ol>
-<h4>브랜치 삭제하기</h4>
-<ul>
-<li>git branch -D/d 브랜치명
-<ul>
-<li>D는 강제로 삭제한다</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Master 브랜치는 사용자에게 보여지기 때문에  개발자는 develop이라는 브랜치를 따로 만든다.</span><br></pre></td></tr></table></figure>
-<h4>브랜치및 머지를 보다 쉽게 하기</h4>
-<ul>
-<li>
-<p>git flow 전략 : <a href="https://danielkummer.github.io/git-flow-cheatsheet/index.ko_KR.html" target="_blank" rel="noopener">다운로드 링크</a></p>
-<ul>
-<li>master는 항상 개발이 끝난 것만 보여야한다<br>
-<img src="https://camo.githubusercontent.com/075a231fca71d6a23491041230f3a265671e3a36/68747470733a2f2f64616e69656c6b756d6d65722e6769746875622e696f2f6769742d666c6f772d636865617473686565742f696d672f6769742d666c6f772d636f6d6d616e64732e706e67" alt></li>
-</ul>
-</li>
-<li>
-<p>git init -&gt; git flow init : git init을 하면서 flow까지 한꺼번에 함</p>
-</li>
-<li>
-<p>develop 브랜치를 만들어도 기능 개발을 할때는 브랜치를 또 만들어서 해야한다</p>
-</li>
-<li>
-<p>git flow feature start Name : Name의 브랜치를 생성하고 checkout 한다</p>
-<ul>
-<li>자식 브랜치를 만들고나서 파일을 수정하고 꼭 commit을 해야 가지가 쳐진다.</li>
-</ul>
-</li>
-<li>
-<p>git flow feature finish Name : Name의 브랜치를 상위 브랜치와 merge하고 Name의 브랜치는 삭제 한다(<strong>remote와 local에서 같이 지운다</strong>)</p>
-</li>
-</ul>
-
-                    
-                        
-
-
-                    
-                    
-                        <p>
-                            <a href="/2019/04/10/Git 특강2_git_branch/#post-footer" class="postShorten-excerpt_link link" aria-label>
                                 댓글 공유
                             </a>
                         </p>
@@ -620,7 +591,7 @@ DNS검증을 하게되면 자동으로 갱신이 된다.</p>
         </div>
         <div class="modal-footer">
             <p class="results-count text-medium" data-message-zero="포스트가 없습니다." data-message-one="1 개의 포스트가 있습니다." data-message-other="{n} 개의 포스트가 있습니다.">
-                102 개의 포스트가 있습니다.
+                103 개의 포스트가 있습니다.
             </p>
         </div>
     </div>
